@@ -1,0 +1,112 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "#>")
+```
+
+<img src="massqc_logo.png" alt="" style="width:200px">
+
+<h1>**Analysis report**</h1>
+<h3>[massqc](https://tidymass.github.io/massqc/) from [tidymass](https://tidymass.github.io/tidymass/) by [Xiaotao Shen](https://www.shenxt.info/)</h3>
+<h3>`r format(Sys.Date())`</h3>
+
+---
+
+### **<font color = "lightseagreen">INTRODUCTION</font>**
+
+<h4> <p style="line-height:1.5em;">**massqc (version 0.01)**: Created in 2021 by Xiaotao Shen</p> </h4>
+
+---
+
+### **<font color = "lightseagreen">PARAMETERS</font>**
+
+#### **Table 1: Parameter setting**
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, message=FALSE}
+library(knitr)
+load("parameters.rda")
+kable(parameters, format = "markdown")
+```
+
+---
+
+### **<font color = "lightseagreen">SAMPLE INFORMATION</font>**
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, message=FALSE}
+load("object.rda")
+object
+```
+
+
+![](mz_rt_plot.png)
+
+#### **Figure 1: Peak intensity profile.**
+
+---
+
+### **<font color = "lightseagreen">MISSING VALUES</font>**
+
+---
+
+#### **<font color = "lightseagreen">MISSING VALUES IN DATASET</font>**
+
+> Black is MV.
+
+![](mv_plot.png)
+
+#### **Figure 2: Missing values in dataset**
+
+---
+
+#### **<font color = "lightseagreen">MISSING VALUES IN VARIABLES</font>**
+
+![](variable_mv_plot.png)
+
+#### **Figure 3: Missing values in variables**
+
+#### **<font color = "lightseagreen">MISSING VALUES IN SAMPLES</font>**
+
+![](sample_mv_plot.png)
+
+#### **Figure 4: Missing values in samples**
+
+---
+
+### **<font color = "lightseagreen">RSD DISTRIBUTATION</font>**
+
+![](rsd.png)
+
+#### **Figure 5: RSD distributation**
+
+
+---
+
+### **<font color = "lightseagreen">INTENSITY FOR ALL THE VARIABLES</font>**
+
+![](sample_box.png)
+
+#### **Figure 6: Intensity for all the variables**
+
+
+---
+
+### **<font color = "lightseagreen">SAMPLE CORRELATION</font>**
+
+![](sample_correlation.png)
+
+#### **Figure 7: Sample correlation**
+
+---
+
+### **<font color = "lightseagreen">PCA score plot</font>**
+
+![](pca.png)
+
+#### **Figure 7: PCA score plot**
+

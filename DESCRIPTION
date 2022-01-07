@@ -1,0 +1,62 @@
+Package: masstools
+Type: Package
+Title: All the useful tools for MS data processing and analysis
+Version: 0.99.1
+Date: 2021-11-06
+Authors@R: c(
+    person(given = "Xiaotao",
+           family = "Shen",
+           role = c("aut", "cre"),
+           email = "shenxt1990@outlook.com",
+           comment = c(ORCID = "0000-0002-9608-9964")),
+        person(given = "Chuchu",
+           family = "Wang",
+           role = c("aut", "ctb"))
+           )
+Description: This package contains a lot of base functions which can be used for 
+    mass spectrometry and metabolomics data processing and analysis. 
+    This package is used by all the tidymass packages. 
+URL: https://github.com/tidymass/masstools
+BugReports: https://github.com/tidymass/masstools/issues
+Encoding: UTF-8
+LazyData: false
+Depends: R (>= 4.1)
+Imports: 
+    dplyr,
+    magrittr,
+    tibble,
+    tidyr,
+    stringr,
+    rstudioapi,
+    ggplot2,
+    methods,
+    crayon,
+    cli,
+    purrr,
+    plotly,
+    pbapply,
+    clisymbols,
+    htmltools,
+    httr,
+    plyr,
+    readxl,
+    rvest,
+    xml2,
+    htmlwidgets,
+    leaflet,
+    stats,
+    utils
+License: GPL-2 | file LICENSE
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    BiocStyle,
+    RUnit,
+    BiocGenerics,
+    tidyverse,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Note:
+biocViews: Metabolomics, MassSpectrometry
+Config/testthat/edition: 3
