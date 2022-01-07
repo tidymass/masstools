@@ -51,7 +51,8 @@ mz_rt_match <-
             if (length(j) == 0) {
                 matrix(NA, ncol = 7)
             } else {
-                cbind(j, temp.mz1, mz2[j], mz.error[j], temp.rt1, rt2[j], rt.error[j])
+                cbind(j, temp.mz1, mz2[j], 
+                      mz.error[j], temp.rt1, rt2[j], rt.error[j])
             }
         })
 

@@ -14,7 +14,8 @@ Authors@R: c(
            role = c("aut", "ctb"))
            )
 Description: This package contains a lot of base functions which can be used for 
-    mass spectrometry and metabolomics data processing and analysis. 
+    mass spectrometry and metabolomics data processing and analysis. For example,
+    MS2 matching, dot product calculation, etc. 
     This package is used by all the tidymass packages. 
 URL: https://github.com/tidymass/masstools
 BugReports: https://github.com/tidymass/masstools/issues

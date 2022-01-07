@@ -18,50 +18,49 @@ sum_formula <-
         if (is.na(formula)) {
             return(NA)
         }
-
+        
         if (is.na(adduct)) {
             return(formula)
         }
-
+        
         if (adduct == "M+" | adduct == "M-") {
             return(formula)
         }
-
+        
         formula1 <- split_formula(formula)
         adduct1 <-
             strsplit(x = adduct, split = "\\-|\\+")[[1]][-1]
-
+        
         polymer <-
             as.numeric(gsub(
                 pattern = "M",
                 replacement = "",
                 strsplit(x = adduct, split = "\\-|\\+")[[1]][1]
             ))
-
+        
         if (is.na(polymer)) {
             polymer <- 1
         }
-
+        
         plusorminus <- strsplit(x = adduct, split = "")[[1]]
         plusorminus <-
             grep("\\+|\\-", plusorminus, value = TRUE)
-
+        
         formula1$number <- formula1$number * polymer
-
+        
         adduct1 <- mapply(function(x, y) {
             temp <- split_formula(x)
             temp$number <- temp$number * ifelse(y == "+", 1, -1)
             list(temp)
         },
         x = adduct1,
-        y = plusorminus
-        )
-
+        y = plusorminus)
+        
         adduct1 <- do.call(rbind, adduct1)
-
+        
         formula <- rbind(formula1, adduct1)
         rownames(formula) <- NULL
-
+        
         unique.element <- unique(formula$element.name)
         if (length(unique.element) == nrow(formula)) {
             if (any(formula$number < 0)) {
@@ -70,8 +69,7 @@ sum_formula <-
                 formula$number[formula$number == 1] <- "W"
                 formula <-
                     paste(paste(formula$element.name, formula$number, sep = ""),
-                        collapse = ""
-                    )
+                          collapse = "")
                 formula <- strsplit(formula, split = "")[[1]]
                 formula[formula == "W"] <- ""
                 formula <- paste(formula, collapse = "")
@@ -81,16 +79,15 @@ sum_formula <-
             formula <- lapply(unique.element, function(x) {
                 formula[formula$element.name == x, , drop = FALSE]
             })
-
+            
             formula <- lapply(formula, function(x) {
                 data.frame(unique(x$element.name),
-                    sum(x$number),
-                    stringsAsFactors = FALSE
-                )
+                           sum(x$number),
+                           stringsAsFactors = FALSE)
             })
-
+            
             formula <- do.call(rbind, formula)
-            formula <- formula[formula[, 2] != 0, ]
+            formula <- formula[formula[, 2] != 0,]
             colnames(formula) <- c("element.name", "number")
             if (any(formula$number < 0)) {
                 return(NA)
@@ -98,8 +95,7 @@ sum_formula <-
                 formula$number[formula$number == 1] <- "W"
                 formula <-
                     paste(paste(formula$element.name, formula$number, sep = ""),
-                        collapse = ""
-                    )
+                          collapse = "")
                 formula <- strsplit(formula, split = "")[[1]]
                 formula[formula == "W"] <- ""
                 formula <- paste(formula, collapse = "")
@@ -122,7 +118,7 @@ sum_formula <-
 split_formula <-
     function(formula = "C9H11NO2") {
         temp.formula <- strsplit(formula, split = "")[[1]]
-
+        
         number <- NULL
         for (i in seq_along(temp.formula)) {
             if (length(grep("[0-9]{1}", temp.formula[i])) == 0) {
@@ -130,7 +126,7 @@ split_formula <-
             }
             number[i] <- temp.formula[i]
         }
-
+        
         if (!is.null(number)) {
             number <- as.numeric(paste(number, collapse = ""))
         } else {
@@ -165,16 +161,15 @@ split_formula <-
                 remove.idx <-
                     c(remove.idx, idx1[i]:(idx1[i] + len1[i] - 1))
             }
-
+            
             double.formula <- data.frame(double.letter.element,
-                double.number,
-                stringsAsFactors = FALSE
-            )
+                                         double.number,
+                                         stringsAsFactors = FALSE)
             formula1 <- strsplit(formula, split = "")[[1]]
             formula1 <- formula1[-remove.idx]
             formula1 <- paste(formula1, collapse = "")
         }
-
+        
         ## no one element
         if (formula1 == "") {
             one.formula <- matrix(NA, ncol = 2)
@@ -191,26 +186,28 @@ split_formula <-
                 } else {
                     one.number[i] <-
                         as.numeric(substr(
-                            one.letter.element[i], 2,
+                            one.letter.element[i],
+                            2,
                             nchar(one.letter.element[i])
                         ))
                 }
-                one.letter.element[i] <- substr(one.letter.element[i], 1, 1)
+                one.letter.element[i] <-
+                    substr(one.letter.element[i], 1, 1)
             }
-            one.formula <- data.frame(one.letter.element, one.number,
-                stringsAsFactors = FALSE
-            )
+            one.formula <-
+                data.frame(one.letter.element, one.number,
+                           stringsAsFactors = FALSE)
         }
-
+        
         colnames(double.formula) <-
             colnames(one.formula) <- c("element.name", "number")
         formula <- rbind(double.formula, one.formula)
         formula <-
             formula[!apply(formula, 1, function(x) {
-                  any(is.na(x))
-              }), ]
-
-        formula <- formula[order(formula$element.name), ]
+                any(is.na(x))
+            }),]
+        
+        formula <- formula[order(formula$element.name),]
         formula$number <- formula$number * number
         unique.element <- unique(formula$element.name)
         if (length(unique.element) == nrow(formula)) {
@@ -219,14 +216,13 @@ split_formula <-
             formula <- lapply(unique.element, function(x) {
                 formula[formula$element.name == x, , drop = FALSE]
             })
-
+            
             formula <- lapply(formula, function(x) {
                 data.frame(unique(x$element.name),
-                    sum(x$number),
-                    stringsAsFactors = FALSE
-                )
+                           sum(x$number),
+                           stringsAsFactors = FALSE)
             })
-
+            
             formula <- do.call(rbind, formula)
             colnames(formula) <- c("element.name", "number")
             return(formula)

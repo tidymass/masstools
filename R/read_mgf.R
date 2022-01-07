@@ -29,7 +29,8 @@ read_mgf <- function(file) {
                   })
 
             info.mz <- unlist(info.mz)
-            # for orbitrap data, the intensity of precursor ion should be removed
+            # for orbitrap data, the intensity of 
+            # precursor ion should be removed
             info.mz <-
                 unlist(lapply(strsplit(x = info.mz, split = " "), function(x) {
                       x[1]
@@ -60,7 +61,6 @@ read_mgf <- function(file) {
             spec <- lapply(spec, function(x) {
                 temp <- cbind(as.numeric(x[, 1]), as.numeric(x[, 2]))
                 temp <- matrix(temp, ncol = 2)
-                # if(nrow(temp) > 0) temp <- temp[temp[,2] >= max(temp[,2])*0.01,]
                 temp <- matrix(temp, ncol = 2)
                 colnames(temp) <- c("mz", "intensity")
                 temp
