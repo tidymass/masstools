@@ -1,0 +1,298 @@
+---
+title: "masstools_introductinon"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{masstools_introductinon}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(masstools)
+```
+
+# **Chemical formula operation**
+
+You can use `masstools` to do the chemical formula operation.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+library(masstools)
+```
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+sum_formula(formula = "C9H11NO2", adduct = "M+H")
+sum_formula(formula = "C9H11NO2", adduct = "M+")
+sum_formula(formula = "C9H11NO2", adduct = "M+CH3COOH")
+sum_formula(formula = "C9H11", adduct = "M-H20")
+```
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+split_formula(formula = "C9H11NO2")
+split_formula(formula = "C2H4")
+```
+
+# **MS2 spectra operation**
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+###remove the noisy peaks in one ms2 spectrum
+exp.spectrum <- data.frame(mz = c(1:10, 1.0001), 
+                           intensity = c(1:10, 0.1))
+
+ms2_plot(exp.spectrum)
+
+exp.spectrum2 = removeNoise(exp.spectrum)
+
+ms2_plot(exp.spectrum, exp.spectrum2)
+
+###match two spectra according to mz
+exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
+lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
+ms2Match(exp.spectrum, lib.spectrum)
+
+
+## calculate the dot product of two matched intensity
+getDP(exp.int = 1:10, lib.int = 1:10)
+getDP(exp.int = 10:1, lib.int = 1:10)
+
+###matched two spectra and calculate dot product
+exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
+lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
+getSpectraMatchScore(exp.spectrum, lib.spectrum)
+```
+
+MS2 plot and MS2 matching plot.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+spectrum1 <- data.frame(
+    mz = c(
+        87.50874,
+        94.85532,
+        97.17808,
+        97.25629,
+        103.36186,
+        106.96647,
+        107.21461,
+        111.00887,
+        113.79269,
+        118.70564
+    ),
+    intensity =
+        c(
+            8356.306,
+            7654.128,
+            9456.207,
+            8837.188,
+            8560.228,
+            8746.359,
+            8379.361,
+            169741.797,
+            7953.080,
+            8378.066
+        )
+)
+spectrum2 <- spectrum1
+ms2_plot(spectrum1, spectrum2)
+ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)
+ms2_plot(spectrum1)
+ms2_plot(spectrum1, interactive_plot = TRUE)
+```
+
+# **Match two feature tables**
+
+We can match two feature tables according to mz and retention time.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+data1 <- data.frame(mz = 1:10, rt = 1:10)
+data2 <- data.frame(mz = 1:10, rt = 1:10)
+mz_rt_match(data1, data2, mz.tol = 10)
+```
+
+# **Compound ID converter**
+
+Two web tools are used for compound compound convert.
+
+## **1. cts.fiehnlab**
+
+cts.fiehnlab is http://cts.fiehnlab.ucdavis.edu/service/convert. It support a lot of databases. 
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+library(masstools)
+```
+
+We can use the `trans_id_database()` to get the databases that cts.fiehnlab.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+database_name = trans_id_database(server = "cts.fiehnlab")
+```
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+head(database_name$From$From)
+```
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+head(database_name$To$From)
+```
+
+We can see that it support a lot of (> 200) databases.
+
+We can try the most common convert, from KEGG to HMDB.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+trans_ID(
+  query = "C00001",
+  from = "KEGG",
+  to = "Human Metabolome Database",
+  top = 1,
+  server = "cts.fiehnlab"
+)
+```
+
+Now, `trans_ID` doesn't support verctor query. So you can use the `purrr::map()` to achive this.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+c("C00001", "C00001", "C00001") %>%
+  purrr::map(
+    .f = function(x) {
+      trans_ID(
+        query = x,
+        from = "KEGG",
+        to = "Human Metabolome Database",
+        top = 1,
+        server = "cts.fiehnlab"
+      )
+    }
+  ) %>%
+  do.call(rbind, .) %>%
+  as.data.frame()
+```
+
+## **2. chemspider**
+
+This is from https://www.chemspider.com/InChI.asmx. 
+
+We can use the `trans_id_database()` to get the databases that chemspider
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+database_name2 = trans_id_database(server = "chemspider")
+```
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+database_name2$From
+```
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+database_name2$To
+```
+
+This is very useful if you want to get the inchikey, inchi or smiles for one compound. But this web only support "ChemSpider ID" (csid), so we need use cts.fiehnlab convert to csid first.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+trans_ID(
+  query = "C00001",
+  from = "KEGG",
+  to = "ChemSpider",
+  top = 1,
+  server = "cts.fiehnlab"
+)
+```
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+trans_ID(
+  query = "140526",
+  from = "csid",
+  to = "mol",
+  top = 1,
+  server = "chemspider"
+)
+```
+
+# **Get compound class based on classyfire**
+
+Refer this publication: https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y
+
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+result = 
+get_compound_class(
+  inchikey = "QZDWODWEESGPLC-UHFFFAOYSA-N",
+  server = "http://classyfire.wishartlab.com/entities/",
+  sleep = 5
+)
+```
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+result
+```
+
+# **Other tools**
+
+## Rename one vector with duplicated items.
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+name_duplicated(c("a", "a", "b", "c", "a", "b", "c", "a"))
+name_duplicated(c(rep(1, 5), 2))
+name_duplicated(1:5)
+```
+
+## Open the current working directory in R
+
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
+####just open the current working directory
+openwd()
+###A new folder will be opened and pop up
+```
+
+## Set working directory in `Windows`
+
+Copy the file path in `File explorer` in `Windows`.
+
+Then type in R:
+
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
+setwd_win()
+```
+
+Then paste the file path and type `Enter`.
+
+## Set working directory where a R project is in
+
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
+setwd_project()
+```
+
+
+## Check the operate system
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+get_os()
+```
+
+## Check version of `masstools`
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+masstools_logo()
+```
+
+## Check conflicts of `masstools`
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+masstools_conflicts()
+```
+
+## List all pacakges in `masstools`
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+masstools_packages()
+```
+
+# **Session information**
+
+```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+sessionInfo()
+```

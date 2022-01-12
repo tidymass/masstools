@@ -15,3 +15,6 @@ logo.txt
 other_files
 demo_data
 get_worklist.R
+vignettes/*.html
+vignettes/*.pdf
+vignettes/*.cache

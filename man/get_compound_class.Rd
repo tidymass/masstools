@@ -24,7 +24,11 @@ A classyfire class object.
 Get the class information of a compound using classyfire.
 }
 \examples{
-get_compound_class()
+get_compound_class(
+inchikey = "QZDWODWEESGPLC-UHFFFAOYSA-N",
+server = "http://classyfire.wishartlab.com/entities/",
+sleep = 5
+)
 }
 \author{
 Xiaotao Shen
