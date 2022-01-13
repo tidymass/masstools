@@ -14,7 +14,7 @@
 #' @import ggplot2
 #' @importFrom plyr dlply .
 #' @import readxl
-#' @importFrom methods .hasSlot new
+#' @importFrom methods .hasSlot new is
 #' @importFrom stats p.adjust rgamma
 #' @importFrom utils data str
 #' @importFrom magrittr %>%
