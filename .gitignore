@@ -43,7 +43,11 @@ vignettes/*.cache
 .Renviron
 
 ##.DS_Store
-.DS_Store
+**/.DS_Store
+docs/.DS_Store
+
+other_files/
+other_files/.DS_Store
 
 .renviron 
 .rprofile 
