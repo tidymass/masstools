@@ -67,3 +67,6 @@ footer:
      
 toc:
   depth: 3
+  
+figures:
+   dev: grDevices::png

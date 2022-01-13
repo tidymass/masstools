@@ -15,8 +15,6 @@
 
 `masstools` is a collections of useful tiny tools.
 
-<img src="man/figures/workflow_masstools.jpg" align="middle" alt="" width = "80%"/>
-
 ## Installation
 
 You can install `masstools` from
