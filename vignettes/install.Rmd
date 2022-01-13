@@ -114,6 +114,10 @@ install.packages("raster")
 install.packages("Cairo")
 ```
 
+# **Other links**
+
+1. https://gist.github.com/lohenyumnam/2b127b9c3d1435dc12a33613c44e6308
+
 # **Session information**
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
