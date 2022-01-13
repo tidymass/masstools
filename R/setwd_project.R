@@ -48,7 +48,7 @@ setwd_project <- function() {
                 unlist() %>%
                 head(-1) %>%
                 paste(collapse = "/")
-            cat(
+            message(
                 "The project name is:",
                 file_name[project_index[1]] %>%
                     stringr::str_split("/") %>%
@@ -56,7 +56,7 @@ setwd_project <- function() {
                     tail(1),
                 "\n"
             )
-            cat(
+            message(
                 "The project wd is:",
                 project_wd, "\n"
             )
@@ -66,6 +66,6 @@ setwd_project <- function() {
         }
     }
     if (length(project_index) == 0) {
-        cat("There are no .Rproj in your file. No change for wd.\n")
+      message("There are no .Rproj in your file. No change for wd.\n")
     }
 }

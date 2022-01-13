@@ -138,7 +138,7 @@ trans_ID <- function(query = "C00001",
             stringsAsFactors = FALSE
         )
         if (!from_to %in% result$name) {
-            cat(
+          message(
                 crayon::red(
                     from_to,
                     "is not supported for server",
@@ -278,14 +278,14 @@ trans_id_database <- function(server = c(
 
         chemical_database_from <- sort(chemical_database_from)
         chemical_database_to <- sort(chemical_database_to)
-        cat(
+        message(
             crayon::green(
                 length(chemical_database_from),
                 "databases are supported in server
         http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'.\n"
             )
         )
-        cat(
+        message(
             crayon::green(
                 length(chemical_database_to),
                 "databases are supported in server
@@ -328,7 +328,7 @@ trans_id_database <- function(server = c(
             t() %>%
             tibble::as_tibble(.name_repair = "minimal")
         colnames(result) <- c("From", "To")
-        cat(
+        message(
             crayon::green(
                 nrow(result),
                 "are supported in server https://www.chemspider.com/InChI.asmx.\n"

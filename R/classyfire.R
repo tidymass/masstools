@@ -196,36 +196,36 @@ setClass(
 setMethod("show",
     signature = "classyfire",
     function(object) {
-        cat(cli::rule(
+        message(cli::rule(
             left = crayon::bold("classyfire Object"),
             right = paste0("masstools v", utils::packageVersion("masstools"))
         ), "\n")
 
-        cat(crayon::red(
+      message(crayon::red(
             "Object Size:",
             format(utils::object.size(object), units = "Kb"),
             "\n",
             "\n"
         ))
 
-        cat(crayon::green("Information:"), "\n")
+      message(crayon::green("Information:"), "\n")
 
-        cat(
+      message(
             "SMILES: ",
             dplyr::pull(object@compound_info, "value")[1],
             "\n"
         )
-        cat(
+      message(
             "InChIKey: ",
             dplyr::pull(object@compound_info, "value")[2],
             "\n"
         )
-        cat(
+      message(
             "Formula: ",
             dplyr::pull(object@compound_info, "value")[3],
             "\n"
         )
-        cat("Mass: ", dplyr::pull(object@compound_info, "value")[4], "\n")
+      message("Mass: ", dplyr::pull(object@compound_info, "value")[4], "\n")
 
 
         tree_list <-

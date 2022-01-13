@@ -28,12 +28,12 @@
 #' @examples
 #' masstools_logo()
 masstools_logo <- function() {
-    cat(crayon::green("Thank you for using masstools!\n"))
-    cat(crayon::green("Version 0.99.1 (2021-12-26)\n"))
-    cat(crayon::green(
+  message(crayon::green("Thank you for using masstools!\n"))
+  message(crayon::green("Version 0.99.1 (2021-12-26)\n"))
+  message(crayon::green(
         "More information: search 'tidymass masstools'\n"
     ))
-    cat(crayon::green(
+  cat(crayon::green(
         c(
             "  _   _          _______          _     ",
             " | | (_)        |__   __|        | |    ",

@@ -8,7 +8,7 @@
 
 read_mgf <- function(file) {
     pbapply::pboptions(style = 1)
-    cat(crayon::green("Reading mgf data...\n"))
+  message(crayon::green("Reading mgf data...\n"))
     # mgf.data.list <- pbapply::pblapply(file, ListMGF)
     ms2 <- purrr::map(
         .x = file,
@@ -98,8 +98,8 @@ read_mgf <- function(file) {
           spec.info <- spec.info[-remove.idx]
       }
     # ##remove noise
-    # cat("\n")
-    # cat("Remove noise of MS/MS spectra...\n")
+    # message("\n")
+    # message("Remove noise of MS/MS spectra...\n")
     # spec.info <- pbapply::pblapply(spec.info, function(x){
     #   temp.spec <- x[[2]]
     #   temp.spec <- removeNoise(temp.spec)

@@ -18,3 +18,5 @@ get_worklist.R
 vignettes/*.html
 vignettes/*.pdf
 vignettes/*.cache
+
+.DS_Store
