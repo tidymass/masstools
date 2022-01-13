@@ -23,37 +23,6 @@ template:
     ganalytics: UA-000000-01
 
 reference:
-  - title: Formula operation
-    desc: Formula operation
-    contents:
-    - split_formula
-    - sum_formula
-  - title: Convert long and wide data
-    desc: Convert long and wide data
-    contents:
-    - convert2long
-    - convert2wide
-  - title: Work directory operation
-    desc: Work directory operation
-    contents:
-    - setwd_win
-    - setwd_project
-  - title: System
-    desc: System
-    contents:
-    - get_os
-  - title: MS2 spectrum
-    desc: MS2 spectrum
-    contents:
-    - msMatch
-    - ms2_plot
-    - getDP
-  - title: Other tools
-    desc: Other tools
-    contents:
-    - masstools_logo
-    - mz_rt_match
-    - keep_one
 
 navbar:
   title: "sparklyr"

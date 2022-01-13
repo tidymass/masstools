@@ -1,4 +1,4 @@
 library(testthat)
-library(tinytools)
+library(masstools)
 
-test_check("tinytools")
+test_check("masstools")

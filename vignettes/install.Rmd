@@ -84,7 +84,6 @@ And then restart R session and try again.
 If you use the windoes os and the dependencies can not be installed, try to install all the `masstools` packages one by one.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-devtools::install_github("masstools/tinytools", dependencies = TRUE)
 devtools::install_github("masstools/massdataset", dependencies = TRUE)
 devtools::install_github("masstools/demodata", dependencies = TRUE)
 devtools::install_github("masstools/massqc", dependencies = TRUE)
