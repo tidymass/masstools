@@ -23,13 +23,16 @@
 #' @import htmlwidgets
 #' @import leaflet
 #' @import tidyr
+#' @importFrom BiocParallel bplapply
+#' @importFrom MSnbase readMSData
+#' @importFrom ProtGenerics spectra
 #' @export
 #' @return masstools logo
 #' @examples
 #' masstools_logo()
 masstools_logo <- function() {
   message(crayon::green("Thank you for using masstools!\n"))
-  message(crayon::green("Version 0.99.2 (2021-12-26)\n"))
+  message(crayon::green("Version 0.99.3 (2021-12-26)\n"))
   message(crayon::green(
         "More information: search 'tidymass masstools'\n"
     ))
