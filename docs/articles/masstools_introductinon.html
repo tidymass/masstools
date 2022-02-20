@@ -48,7 +48,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.3</span>
       </span>
     </div>
 
@@ -123,7 +123,7 @@
 
       
 
-      </header><script src="masstools_introductinon_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="masstools_introductinon_files/plotly-binding-4.10.0/plotly.js"></script><script src="masstools_introductinon_files/typedarray-0.1/typedarray.min.js"></script><script src="masstools_introductinon_files/jquery-3.5.1/jquery.min.js"></script><link href="masstools_introductinon_files/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+      </header><script src="masstools_introductinon_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="masstools_introductinon_files/plotly-binding-4.10.0/plotly.js"></script><script src="masstools_introductinon_files/typedarray-0.1/typedarray.min.js"></script><link href="masstools_introductinon_files/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="masstools_introductinon_files/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="masstools_introductinon_files/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="masstools_introductinon_files/plotly-main-2.5.1/plotly-latest.min.js"></script><div class="row">
   <div class="col-md-9 contents">
@@ -140,15 +140,21 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/masstools" class="external-link">masstools</a></span><span class="op">)</span>
-<span class="co">#&gt; ── <span style="font-weight: bold;">Attaching packages</span> ────────────────────────────────────── masstools 0.99.2 ──</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">magrittr</span> 2.0.1</span>
+<span class="co">#&gt; Warning in fun(libname, pkgname): mzR has been built against a different Rcpp version (1.0.7)</span>
+<span class="co">#&gt; than is installed on your system (1.0.8). This might lead to errors</span>
+<span class="co">#&gt; when loading mzR. If you encounter such issues, please send a report,</span>
+<span class="co">#&gt; including the output of sessionInfo() to the Bioc support forum at </span>
+<span class="co">#&gt; https://support.bioconductor.org/. For details see also</span>
+<span class="co">#&gt; https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.</span>
+<span class="co">#&gt; ── <span style="font-weight: bold;">Attaching packages</span> ────────────────────────────────────── masstools 0.99.3 ──</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">magrittr</span> 2.0.2</span>
 <span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── masstools_conflicts() ──</span>
 <span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">body&lt;-()</span>    masks <span style="color: #0000BB;">base</span>::body&lt;-()</span>
 <span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">kronecker()</span> masks <span style="color: #0000BB;">base</span>::kronecker()</span></code></pre></div>
-<div class="section level1">
-<h1 id="chemical-formula-operation">
+<div class="section level2">
+<h2 id="chemical-formula-operation">
 <strong>Chemical formula operation</strong><a class="anchor" aria-label="anchor" href="#chemical-formula-operation"></a>
-</h1>
+</h2>
 <p>You can use <code>masstools</code> to do the chemical formula operation.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/masstools" class="external-link">masstools</a></span><span class="op">)</span></code></pre></div>
@@ -173,10 +179,10 @@
 <span class="co">#&gt; 2            C      2</span>
 <span class="co">#&gt; 3            H      4</span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="ms2-spectra-operation">
+<div class="section level2">
+<h2 id="ms2-spectra-operation">
 <strong>MS2 spectra operation</strong><a class="anchor" aria-label="anchor" href="#ms2-spectra-operation"></a>
-</h1>
+</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">###remove the noisy peaks in one ms2 spectrum</span>
 <span class="va">exp.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1.0001</span><span class="op">)</span>, 
@@ -254,19 +260,19 @@
 <p><img src="masstools_introductinon_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ms2_plot.html">ms2_plot</a></span><span class="op">(</span><span class="va">spectrum1</span>, <span class="va">spectrum2</span>, interactive_plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-678e40ae26c869522dc9" style="width:700px;height:432.632880098888px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-678e40ae26c869522dc9">{"x":{"data":[{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,0.0492295129878942,null,0,0.0450927711104649,null,0,0.0557093607298148,null,0,0.0520625335432262,null,0,0.0504308788483016,null,0,0.0515274325745473,null,0,0.049365336929949,null,0,1,null,0,0.0468539872945966,null,0,0.0493577076952944],"text":["Exp.mz:  87.50874<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  87.50874<br />Exp.intensity: 0.04922951","Exp.mz:  87.50874<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  87.50874<br />Exp.intensity: 0.04922951",null,"Exp.mz:  94.85532<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  94.85532<br />Exp.intensity: 0.04509277","Exp.mz:  94.85532<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  94.85532<br />Exp.intensity: 0.04509277",null,"Exp.mz:  97.17808<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.17808<br />Exp.intensity: 0.05570936","Exp.mz:  97.17808<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.17808<br />Exp.intensity: 0.05570936",null,"Exp.mz:  97.25629<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.25629<br />Exp.intensity: 0.05206253","Exp.mz:  97.25629<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.25629<br />Exp.intensity: 0.05206253",null,"Exp.mz: 103.36186<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 103.36186<br />Exp.intensity: 0.05043088","Exp.mz: 103.36186<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 103.36186<br />Exp.intensity: 0.05043088",null,"Exp.mz: 106.96647<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 106.96647<br />Exp.intensity: 0.05152743","Exp.mz: 106.96647<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 106.96647<br />Exp.intensity: 0.05152743",null,"Exp.mz: 107.21461<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 107.21461<br />Exp.intensity: 0.04936534","Exp.mz: 107.21461<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 107.21461<br />Exp.intensity: 0.04936534",null,"Exp.mz: 111.00887<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 111.00887<br />Exp.intensity: 1.00000000","Exp.mz: 111.00887<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 111.00887<br />Exp.intensity: 1.00000000",null,"Exp.mz: 113.79269<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 113.79269<br />Exp.intensity: 0.04685399","Exp.mz: 113.79269<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 113.79269<br />Exp.intensity: 0.04685399",null,"Exp.mz: 118.70564<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 118.70564<br />Exp.intensity: 0.04935771","Exp.mz: 118.70564<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 118.70564<br />Exp.intensity: 0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,94.85532,97.17808,97.25629,103.36186,106.96647,107.21461,111.00887,113.79269,118.70564],"y":[0.0492295129878942,0.0450927711104649,0.0557093607298148,0.0520625335432262,0.0504308788483016,0.0515274325745473,0.049365336929949,1,0.0468539872945966,0.0493577076952944],"text":["Exp.mz:  87.50874<br />Exp.intensity: 0.04922951","Exp.mz:  94.85532<br />Exp.intensity: 0.04509277","Exp.mz:  97.17808<br />Exp.intensity: 0.05570936","Exp.mz:  97.25629<br />Exp.intensity: 0.05206253","Exp.mz: 103.36186<br />Exp.intensity: 0.05043088","Exp.mz: 106.96647<br />Exp.intensity: 0.05152743","Exp.mz: 107.21461<br />Exp.intensity: 0.04936534","Exp.mz: 111.00887<br />Exp.intensity: 1.00000000","Exp.mz: 113.79269<br />Exp.intensity: 0.04685399","Exp.mz: 118.70564<br />Exp.intensity: 0.04935771"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[null],"y":[null],"text":"spectrum1","hovertext":"x: Inf<br />y: Inf","textfont":{"size":14.6645669291339,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[null],"y":[null],"text":"spectrum2","hovertext":"x: Inf<br />y: -Inf","textfont":{"size":14.6645669291339,"color":"rgba(255,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,-0.0492295129878942,null,0,-0.0450927711104649,null,0,-0.0557093607298148,null,0,-0.0520625335432262,null,0,-0.0504308788483016,null,0,-0.0515274325745473,null,0,-0.049365336929949,null,0,-1,null,0,-0.0468539872945966,null,0,-0.0493577076952944],"text":["Lib.mz:  87.50874<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951","Lib.mz:  87.50874<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951",null,"Lib.mz:  94.85532<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277","Lib.mz:  94.85532<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277",null,"Lib.mz:  97.17808<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936","Lib.mz:  97.17808<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936",null,"Lib.mz:  97.25629<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253","Lib.mz:  97.25629<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253",null,"Lib.mz: 103.36186<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088","Lib.mz: 103.36186<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088",null,"Lib.mz: 106.96647<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743","Lib.mz: 106.96647<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743",null,"Lib.mz: 107.21461<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534","Lib.mz: 107.21461<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534",null,"Lib.mz: 111.00887<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000","Lib.mz: 111.00887<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000",null,"Lib.mz: 113.79269<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399","Lib.mz: 113.79269<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399",null,"Lib.mz: 118.70564<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771","Lib.mz: 118.70564<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,94.85532,97.17808,97.25629,103.36186,106.96647,107.21461,111.00887,113.79269,118.70564],"y":[-0.0492295129878942,-0.0450927711104649,-0.0557093607298148,-0.0520625335432262,-0.0504308788483016,-0.0515274325745473,-0.049365336929949,-1,-0.0468539872945966,-0.0493577076952944],"text":["Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951","Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277","Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936","Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253","Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088","Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743","Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534","Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000","Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399","Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.82100456621,"r":7.30593607305936,"b":55.3245330012453,"l":60.7721046077211},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[85.948895,120.265485],"tickmode":"array","ticktext":["90","100","110","120"],"tickvals":[90,100,110,120],"categoryorder":"array","categoryarray":["90","100","110","120"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Mass to charge ratio (m/z)","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1,1.1],"tickmode":"array","ticktext":["1","0.5","0","0.5","1"],"tickvals":[-1,-0.5,0,0.5,1],"categoryorder":"array","categoryarray":["1","0.5","0","0.5","1"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Relative intensity","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"785c5d130811":{"x":{},"y":{},"xend":{},"yend":{},"type":"scatter"},"785cc76c3d4":{"x":{},"y":{}},"785c493299b0":{"x":{},"y":{}},"785c1908175b":{"x":{},"y":{}},"785c62356433":{"x":{},"y":{},"xend":{},"yend":{}},"785c1f4582a4":{"x":{},"y":{}}},"cur_data":"785c5d130811","visdat":{"785c5d130811":["function (y) ","x"],"785cc76c3d4":["function (y) ","x"],"785c493299b0":["function (y) ","x"],"785c1908175b":["function (y) ","x"],"785c62356433":["function (y) ","x"],"785c1f4582a4":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e20df7ee10dd7837b3d9" style="width:700px;height:432.632880098888px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e20df7ee10dd7837b3d9">{"x":{"data":[{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,0.0492295129878942,null,0,0.0450927711104649,null,0,0.0557093607298148,null,0,0.0520625335432262,null,0,0.0504308788483016,null,0,0.0515274325745473,null,0,0.049365336929949,null,0,1,null,0,0.0468539872945966,null,0,0.0493577076952944],"text":["Exp.mz:  87.50874<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  87.50874<br />Exp.intensity: 0.04922951","Exp.mz:  87.50874<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  87.50874<br />Exp.intensity: 0.04922951",null,"Exp.mz:  94.85532<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  94.85532<br />Exp.intensity: 0.04509277","Exp.mz:  94.85532<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  94.85532<br />Exp.intensity: 0.04509277",null,"Exp.mz:  97.17808<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.17808<br />Exp.intensity: 0.05570936","Exp.mz:  97.17808<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.17808<br />Exp.intensity: 0.05570936",null,"Exp.mz:  97.25629<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.25629<br />Exp.intensity: 0.05206253","Exp.mz:  97.25629<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.25629<br />Exp.intensity: 0.05206253",null,"Exp.mz: 103.36186<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 103.36186<br />Exp.intensity: 0.05043088","Exp.mz: 103.36186<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 103.36186<br />Exp.intensity: 0.05043088",null,"Exp.mz: 106.96647<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 106.96647<br />Exp.intensity: 0.05152743","Exp.mz: 106.96647<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 106.96647<br />Exp.intensity: 0.05152743",null,"Exp.mz: 107.21461<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 107.21461<br />Exp.intensity: 0.04936534","Exp.mz: 107.21461<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 107.21461<br />Exp.intensity: 0.04936534",null,"Exp.mz: 111.00887<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 111.00887<br />Exp.intensity: 1.00000000","Exp.mz: 111.00887<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 111.00887<br />Exp.intensity: 1.00000000",null,"Exp.mz: 113.79269<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 113.79269<br />Exp.intensity: 0.04685399","Exp.mz: 113.79269<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 113.79269<br />Exp.intensity: 0.04685399",null,"Exp.mz: 118.70564<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 118.70564<br />Exp.intensity: 0.04935771","Exp.mz: 118.70564<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 118.70564<br />Exp.intensity: 0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,94.85532,97.17808,97.25629,103.36186,106.96647,107.21461,111.00887,113.79269,118.70564],"y":[0.0492295129878942,0.0450927711104649,0.0557093607298148,0.0520625335432262,0.0504308788483016,0.0515274325745473,0.049365336929949,1,0.0468539872945966,0.0493577076952944],"text":["Exp.mz:  87.50874<br />Exp.intensity: 0.04922951","Exp.mz:  94.85532<br />Exp.intensity: 0.04509277","Exp.mz:  97.17808<br />Exp.intensity: 0.05570936","Exp.mz:  97.25629<br />Exp.intensity: 0.05206253","Exp.mz: 103.36186<br />Exp.intensity: 0.05043088","Exp.mz: 106.96647<br />Exp.intensity: 0.05152743","Exp.mz: 107.21461<br />Exp.intensity: 0.04936534","Exp.mz: 111.00887<br />Exp.intensity: 1.00000000","Exp.mz: 113.79269<br />Exp.intensity: 0.04685399","Exp.mz: 118.70564<br />Exp.intensity: 0.04935771"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[null],"y":[null],"text":"spectrum1","hovertext":"x: Inf<br />y: Inf","textfont":{"size":14.6645669291339,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[null],"y":[null],"text":"spectrum2","hovertext":"x: Inf<br />y: -Inf","textfont":{"size":14.6645669291339,"color":"rgba(255,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,-0.0492295129878942,null,0,-0.0450927711104649,null,0,-0.0557093607298148,null,0,-0.0520625335432262,null,0,-0.0504308788483016,null,0,-0.0515274325745473,null,0,-0.049365336929949,null,0,-1,null,0,-0.0468539872945966,null,0,-0.0493577076952944],"text":["Lib.mz:  87.50874<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951","Lib.mz:  87.50874<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951",null,"Lib.mz:  94.85532<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277","Lib.mz:  94.85532<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277",null,"Lib.mz:  97.17808<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936","Lib.mz:  97.17808<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936",null,"Lib.mz:  97.25629<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253","Lib.mz:  97.25629<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253",null,"Lib.mz: 103.36186<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088","Lib.mz: 103.36186<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088",null,"Lib.mz: 106.96647<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743","Lib.mz: 106.96647<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743",null,"Lib.mz: 107.21461<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534","Lib.mz: 107.21461<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534",null,"Lib.mz: 111.00887<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000","Lib.mz: 111.00887<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000",null,"Lib.mz: 113.79269<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399","Lib.mz: 113.79269<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399",null,"Lib.mz: 118.70564<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771","Lib.mz: 118.70564<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,94.85532,97.17808,97.25629,103.36186,106.96647,107.21461,111.00887,113.79269,118.70564],"y":[-0.0492295129878942,-0.0450927711104649,-0.0557093607298148,-0.0520625335432262,-0.0504308788483016,-0.0515274325745473,-0.049365336929949,-1,-0.0468539872945966,-0.0493577076952944],"text":["Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951","Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277","Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936","Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253","Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088","Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743","Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534","Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000","Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399","Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.82100456621,"r":7.30593607305936,"b":55.3245330012453,"l":60.7721046077211},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[85.948895,120.265485],"tickmode":"array","ticktext":["90","100","110","120"],"tickvals":[90,100,110,120],"categoryorder":"array","categoryarray":["90","100","110","120"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Mass to charge ratio (m/z)","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1,1.1],"tickmode":"array","ticktext":["1","0.5","0","0.5","1"],"tickvals":[-1,-0.5,0,0.5,1],"categoryorder":"array","categoryarray":["1","0.5","0","0.5","1"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Relative intensity","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"e491537d4f0a":{"x":{},"y":{},"xend":{},"yend":{},"type":"scatter"},"e49147d04458":{"x":{},"y":{}},"e4913a37123d":{"x":{},"y":{}},"e491758e80a6":{"x":{},"y":{}},"e4915ea04e95":{"x":{},"y":{},"xend":{},"yend":{}},"e4916e8748bb":{"x":{},"y":{}}},"cur_data":"e491537d4f0a","visdat":{"e491537d4f0a":["function (y) ","x"],"e49147d04458":["function (y) ","x"],"e4913a37123d":["function (y) ","x"],"e491758e80a6":["function (y) ","x"],"e4915ea04e95":["function (y) ","x"],"e4916e8748bb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 ms2_plot(spectrum1)
 <p><img src="masstools_introductinon_files/figure-html/unnamed-chunk-6-3.png" width="700"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ms2_plot.html">ms2_plot</a></span><span class="op">(</span><span class="va">spectrum1</span>, interactive_plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-75580cd1693a852b9f81" style="width:700px;height:432.632880098888px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-75580cd1693a852b9f81">{"x":{"data":[{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,0.0492295129878942,null,0,0.0450927711104649,null,0,0.0557093607298148,null,0,0.0520625335432262,null,0,0.0504308788483016,null,0,0.0515274325745473,null,0,0.049365336929949,null,0,1,null,0,0.0468539872945966,null,0,0.0493577076952944],"text":["mz:  87.50874<br />y: 0<br />mz:  87.50874<br />intensity: 0.04922951","mz:  87.50874<br />y: 0<br />mz:  87.50874<br />intensity: 0.04922951",null,"mz:  94.85532<br />y: 0<br />mz:  94.85532<br />intensity: 0.04509277","mz:  94.85532<br />y: 0<br />mz:  94.85532<br />intensity: 0.04509277",null,"mz:  97.17808<br />y: 0<br />mz:  97.17808<br />intensity: 0.05570936","mz:  97.17808<br />y: 0<br />mz:  97.17808<br />intensity: 0.05570936",null,"mz:  97.25629<br />y: 0<br />mz:  97.25629<br />intensity: 0.05206253","mz:  97.25629<br />y: 0<br />mz:  97.25629<br />intensity: 0.05206253",null,"mz: 103.36186<br />y: 0<br />mz: 103.36186<br />intensity: 0.05043088","mz: 103.36186<br />y: 0<br />mz: 103.36186<br />intensity: 0.05043088",null,"mz: 106.96647<br />y: 0<br />mz: 106.96647<br />intensity: 0.05152743","mz: 106.96647<br />y: 0<br />mz: 106.96647<br />intensity: 0.05152743",null,"mz: 107.21461<br />y: 0<br />mz: 107.21461<br />intensity: 0.04936534","mz: 107.21461<br />y: 0<br />mz: 107.21461<br />intensity: 0.04936534",null,"mz: 111.00887<br />y: 0<br />mz: 111.00887<br />intensity: 1.00000000","mz: 111.00887<br />y: 0<br />mz: 111.00887<br />intensity: 1.00000000",null,"mz: 113.79269<br />y: 0<br />mz: 113.79269<br />intensity: 0.04685399","mz: 113.79269<br />y: 0<br />mz: 113.79269<br />intensity: 0.04685399",null,"mz: 118.70564<br />y: 0<br />mz: 118.70564<br />intensity: 0.04935771","mz: 118.70564<br />y: 0<br />mz: 118.70564<br />intensity: 0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.82100456621,"r":7.30593607305936,"b":55.3245330012453,"l":70.7347447073475},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[85.948895,120.265485],"tickmode":"array","ticktext":["90","100","110","120"],"tickvals":[90,100,110,120],"categoryorder":"array","categoryarray":["90","100","110","120"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Mass to charge ratio (m/z)","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,1.1],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Relative intensity","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"785c308eee9a":{"x":{},"y":{},"xend":{},"yend":{},"type":"scatter"}},"cur_data":"785c308eee9a","visdat":{"785c308eee9a":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3e465e271afbdb0b90a6" style="width:700px;height:432.632880098888px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3e465e271afbdb0b90a6">{"x":{"data":[{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,0.0492295129878942,null,0,0.0450927711104649,null,0,0.0557093607298148,null,0,0.0520625335432262,null,0,0.0504308788483016,null,0,0.0515274325745473,null,0,0.049365336929949,null,0,1,null,0,0.0468539872945966,null,0,0.0493577076952944],"text":["mz:  87.50874<br />y: 0<br />mz:  87.50874<br />intensity: 0.04922951","mz:  87.50874<br />y: 0<br />mz:  87.50874<br />intensity: 0.04922951",null,"mz:  94.85532<br />y: 0<br />mz:  94.85532<br />intensity: 0.04509277","mz:  94.85532<br />y: 0<br />mz:  94.85532<br />intensity: 0.04509277",null,"mz:  97.17808<br />y: 0<br />mz:  97.17808<br />intensity: 0.05570936","mz:  97.17808<br />y: 0<br />mz:  97.17808<br />intensity: 0.05570936",null,"mz:  97.25629<br />y: 0<br />mz:  97.25629<br />intensity: 0.05206253","mz:  97.25629<br />y: 0<br />mz:  97.25629<br />intensity: 0.05206253",null,"mz: 103.36186<br />y: 0<br />mz: 103.36186<br />intensity: 0.05043088","mz: 103.36186<br />y: 0<br />mz: 103.36186<br />intensity: 0.05043088",null,"mz: 106.96647<br />y: 0<br />mz: 106.96647<br />intensity: 0.05152743","mz: 106.96647<br />y: 0<br />mz: 106.96647<br />intensity: 0.05152743",null,"mz: 107.21461<br />y: 0<br />mz: 107.21461<br />intensity: 0.04936534","mz: 107.21461<br />y: 0<br />mz: 107.21461<br />intensity: 0.04936534",null,"mz: 111.00887<br />y: 0<br />mz: 111.00887<br />intensity: 1.00000000","mz: 111.00887<br />y: 0<br />mz: 111.00887<br />intensity: 1.00000000",null,"mz: 113.79269<br />y: 0<br />mz: 113.79269<br />intensity: 0.04685399","mz: 113.79269<br />y: 0<br />mz: 113.79269<br />intensity: 0.04685399",null,"mz: 118.70564<br />y: 0<br />mz: 118.70564<br />intensity: 0.04935771","mz: 118.70564<br />y: 0<br />mz: 118.70564<br />intensity: 0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.82100456621,"r":7.30593607305936,"b":55.3245330012453,"l":70.7347447073475},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[85.948895,120.265485],"tickmode":"array","ticktext":["90","100","110","120"],"tickvals":[90,100,110,120],"categoryorder":"array","categoryarray":["90","100","110","120"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Mass to charge ratio (m/z)","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,1.1],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Relative intensity","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"e4916bb5bbb":{"x":{},"y":{},"xend":{},"yend":{},"type":"scatter"}},"cur_data":"e4916bb5bbb","visdat":{"e4916bb5bbb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="section level1">
-<h1 id="match-two-feature-tables">
+<div class="section level2">
+<h2 id="match-two-feature-tables">
 <strong>Match two feature tables</strong><a class="anchor" aria-label="anchor" href="#match-two-feature-tables"></a>
-</h1>
+</h2>
 <p>We can match two feature tables according to mz and retention time.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, rt <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
@@ -284,15 +290,15 @@ ms2_plot(spectrum1)
 <span class="co">#&gt; 9       9      9   9   9        0   9   9        0</span>
 <span class="co">#&gt; 10     10     10  10  10        0  10  10        0</span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="compound-id-converter">
-<strong>Compound ID converter</strong><a class="anchor" aria-label="anchor" href="#compound-id-converter"></a>
-</h1>
-<p>Two web tools are used for compound compound convert.</p>
 <div class="section level2">
-<h2 id="cts-fiehnlab">
-<strong>1. cts.fiehnlab</strong><a class="anchor" aria-label="anchor" href="#cts-fiehnlab"></a>
+<h2 id="compound-id-converter">
+<strong>Compound ID converter</strong><a class="anchor" aria-label="anchor" href="#compound-id-converter"></a>
 </h2>
+<p>Two web tools are used for compound compound convert.</p>
+<div class="section level3">
+<h3 id="cts-fiehnlab">
+<strong>1. cts.fiehnlab</strong><a class="anchor" aria-label="anchor" href="#cts-fiehnlab"></a>
+</h3>
 <p>cts.fiehnlab is <a href="http://cts.fiehnlab.ucdavis.edu/service/convert" class="external-link uri">http://cts.fiehnlab.ucdavis.edu/service/convert</a>. It support a lot of databases.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/masstools" class="external-link">masstools</a></span><span class="op">)</span></code></pre></div>
@@ -342,10 +348,10 @@ ms2_plot(spectrum1)
 <span class="co">#&gt; 2 C00001               HMDB0002111</span>
 <span class="co">#&gt; 3 C00001               HMDB0002111</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="chemspider">
+<div class="section level3">
+<h3 id="chemspider">
 <strong>2. chemspider</strong><a class="anchor" aria-label="anchor" href="#chemspider"></a>
-</h2>
+</h3>
 <p>This is from <a href="https://www.chemspider.com/InChI.asmx" class="external-link uri">https://www.chemspider.com/InChI.asmx</a>.</p>
 <p>We can use the <code><a href="../reference/trans_id_database.html">trans_id_database()</a></code> to get the databases that chemspider</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
@@ -382,10 +388,10 @@ ms2_plot(spectrum1)
 <span class="co">#&gt; [1] NA</span></code></pre></div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="get-compound-class-based-on-classyfire">
+<div class="section level2">
+<h2 id="get-compound-class-based-on-classyfire">
 <strong>Get compound class based on classyfire</strong><a class="anchor" aria-label="anchor" href="#get-compound-class-based-on-classyfire"></a>
-</h1>
+</h2>
 <p>Refer this publication: <a href="https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y" class="external-link uri">https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y</a></p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">result</span> <span class="op">=</span> 
@@ -396,15 +402,17 @@ ms2_plot(spectrum1)
 <span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">result</span>
-<span class="co">#&gt; [1] NA</span></code></pre></div>
+<span class="co">#&gt; <span style="font-weight: bold;">Kingdom</span> : <span style="color: #00BBBB;">Organic compounds</span></span>
+<span class="co">#&gt; └─<span style="font-weight: bold;">Superclass</span> : <span style="color: #00BBBB;">Organoheterocyclic compounds</span></span>
+<span class="co">#&gt;   └─<span style="font-weight: bold;">Class</span> : <span style="color: #00BBBB;">Pyridines and derivatives</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="other-tools">
-<strong>Other tools</strong><a class="anchor" aria-label="anchor" href="#other-tools"></a>
-</h1>
 <div class="section level2">
-<h2 id="rename-one-vector-with-duplicated-items-">Rename one vector with duplicated items.<a class="anchor" aria-label="anchor" href="#rename-one-vector-with-duplicated-items-"></a>
+<h2 id="other-tools">
+<strong>Other tools</strong><a class="anchor" aria-label="anchor" href="#other-tools"></a>
 </h2>
+<div class="section level3">
+<h3 id="rename-one-vector-with-duplicated-items-">Rename one vector with duplicated items.<a class="anchor" aria-label="anchor" href="#rename-one-vector-with-duplicated-items-"></a>
+</h3>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/name_duplicated.html">name_duplicated</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"a"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "a_1" "a_2" "b_1" "c_1" "a_3" "b_2" "c_2" "a_4"</span>
@@ -413,39 +421,39 @@ ms2_plot(spectrum1)
 <span class="fu"><a href="../reference/name_duplicated.html">name_duplicated</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1 2 3 4 5</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="open-the-current-working-directory-in-r">Open the current working directory in R<a class="anchor" aria-label="anchor" href="#open-the-current-working-directory-in-r"></a>
-</h2>
+<div class="section level3">
+<h3 id="open-the-current-working-directory-in-r">Open the current working directory in R<a class="anchor" aria-label="anchor" href="#open-the-current-working-directory-in-r"></a>
+</h3>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">####just open the current working directory</span>
 <span class="fu"><a href="../reference/openwd.html">openwd</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">###A new folder will be opened and pop up</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="set-working-directory-in-windows">Set working directory in <code>Windows</code><a class="anchor" aria-label="anchor" href="#set-working-directory-in-windows"></a>
-</h2>
+<div class="section level3">
+<h3 id="set-working-directory-in-windows">Set working directory in <code>Windows</code><a class="anchor" aria-label="anchor" href="#set-working-directory-in-windows"></a>
+</h3>
 <p>Copy the file path in <code>File explorer</code> in <code>Windows</code>.</p>
 <p>Then type in R:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/setwd_win.html">setwd_win</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Then paste the file path and type <code>Enter</code>.</p>
 </div>
-<div class="section level2">
-<h2 id="set-working-directory-where-a-r-project-is-in">Set working directory where a R project is in<a class="anchor" aria-label="anchor" href="#set-working-directory-where-a-r-project-is-in"></a>
-</h2>
+<div class="section level3">
+<h3 id="set-working-directory-where-a-r-project-is-in">Set working directory where a R project is in<a class="anchor" aria-label="anchor" href="#set-working-directory-where-a-r-project-is-in"></a>
+</h3>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/setwd_project.html">setwd_project</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="check-the-operate-system">Check the operate system<a class="anchor" aria-label="anchor" href="#check-the-operate-system"></a>
-</h2>
+<div class="section level3">
+<h3 id="check-the-operate-system">Check the operate system<a class="anchor" aria-label="anchor" href="#check-the-operate-system"></a>
+</h3>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_os.html">get_os</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] "osx"</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="check-version-of-masstools">Check version of <code>masstools</code><a class="anchor" aria-label="anchor" href="#check-version-of-masstools"></a>
-</h2>
+<div class="section level3">
+<h3 id="check-version-of-masstools">Check version of <code>masstools</code><a class="anchor" aria-label="anchor" href="#check-version-of-masstools"></a>
+</h3>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/masstools_logo.html">masstools_logo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #00BB00;">  _   _          _______          _     </span></span>
@@ -457,40 +465,41 @@ ms2_plot(spectrum1)
 <span class="co">#&gt; <span style="color: #00BB00;">               __/ |                    </span></span>
 <span class="co">#&gt; <span style="color: #00BB00;">              |___/                     </span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="check-conflicts-of-masstools">Check conflicts of <code>masstools</code><a class="anchor" aria-label="anchor" href="#check-conflicts-of-masstools"></a>
-</h2>
+<div class="section level3">
+<h3 id="check-conflicts-of-masstools">Check conflicts of <code>masstools</code><a class="anchor" aria-label="anchor" href="#check-conflicts-of-masstools"></a>
+</h3>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/masstools_conflicts.html">masstools_conflicts</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── masstools_conflicts() ──</span>
 <span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">body&lt;-()</span>    masks <span style="color: #0000BB;">base</span>::body&lt;-()</span>
 <span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">kronecker()</span> masks <span style="color: #0000BB;">base</span>::kronecker()</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="list-all-pacakges-in-masstools">List all pacakges in <code>masstools</code><a class="anchor" aria-label="anchor" href="#list-all-pacakges-in-masstools"></a>
-</h2>
+<div class="section level3">
+<h3 id="list-all-pacakges-in-masstools">List all pacakges in <code>masstools</code><a class="anchor" aria-label="anchor" href="#list-all-pacakges-in-masstools"></a>
+</h3>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/masstools_packages.html">masstools_packages</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "dplyr"       "magrittr"    "tibble"      "tidyr"       "stringr"    </span>
-<span class="co">#&gt;  [6] "rstudioapi"  "ggplot2"     "methods"     "crayon"      "cli"        </span>
-<span class="co">#&gt; [11] "purrr"       "plotly"      "pbapply"     "clisymbols"  "htmltools"  </span>
-<span class="co">#&gt; [16] "httr"        "plyr"        "readxl"      "rvest"       "xml2"       </span>
-<span class="co">#&gt; [21] "htmlwidgets" "leaflet"     "stats"       "utils"       "masstools"</span></code></pre></div>
+<span class="co">#&gt;  [1] "dplyr"        "magrittr"     "tibble"       "tidyr"        "stringr"     </span>
+<span class="co">#&gt;  [6] "rstudioapi"   "ggplot2"      "methods"      "crayon"       "cli"         </span>
+<span class="co">#&gt; [11] "purrr"        "plotly"       "pbapply"      "clisymbols"   "htmltools"   </span>
+<span class="co">#&gt; [16] "httr"         "plyr"         "readxl"       "rvest"        "xml2"        </span>
+<span class="co">#&gt; [21] "htmlwidgets"  "leaflet"      "stats"        "utils"        "BiocParallel"</span>
+<span class="co">#&gt; [26] "MSnbase"      "ProtGenerics" "masstools"</span></code></pre></div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="session-information">
+<div class="section level2">
+<h2 id="session-information">
 <strong>Session information</strong><a class="anchor" aria-label="anchor" href="#session-information"></a>
-</h1>
+</h2>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R Under development (unstable) (2022-01-11 r81473)</span>
+<span class="co">#&gt; R version 4.1.2 (2021-11-01)</span>
 <span class="co">#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)</span>
-<span class="co">#&gt; Running under: macOS Big Sur/Monterey 10.16</span>
+<span class="co">#&gt; Running under: macOS Big Sur 10.16</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib</span>
-<span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib</span>
+<span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib</span>
+<span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; locale:</span>
 <span class="co">#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span>
@@ -499,27 +508,43 @@ ms2_plot(spectrum1)
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] magrittr_2.0.1   masstools_0.99.2</span>
+<span class="co">#&gt; [1] magrittr_2.0.2   masstools_0.99.3</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] Rcpp_1.0.7        tidyr_1.1.4       clisymbols_1.2.0  assertthat_0.2.1 </span>
-<span class="co">#&gt;  [5] rprojroot_2.0.2   digest_0.6.29     utf8_1.2.2        R6_2.5.1         </span>
-<span class="co">#&gt;  [9] cellranger_1.1.0  plyr_1.8.6        evaluate_0.14     httr_1.4.2       </span>
-<span class="co">#&gt; [13] ggplot2_3.3.5     highr_0.9         pillar_1.6.4      rlang_0.4.12     </span>
-<span class="co">#&gt; [17] lazyeval_0.2.2    curl_4.3.2        readxl_1.3.1      rstudioapi_0.13  </span>
-<span class="co">#&gt; [21] data.table_1.14.2 jquerylib_0.1.4   rmarkdown_2.11    pkgdown_2.0.1    </span>
-<span class="co">#&gt; [25] desc_1.4.0        labeling_0.4.2    stringr_1.4.0     selectr_0.4-2    </span>
-<span class="co">#&gt; [29] htmlwidgets_1.5.4 munsell_0.5.0     compiler_4.2.0    xfun_0.29        </span>
-<span class="co">#&gt; [33] pkgconfig_2.0.3   htmltools_0.5.2   tidyselect_1.1.1  tibble_3.1.6     </span>
-<span class="co">#&gt; [37] fansi_1.0.0       viridisLite_0.4.0 crayon_1.4.2      dplyr_1.0.7      </span>
-<span class="co">#&gt; [41] grid_4.2.0        jsonlite_1.7.2    gtable_0.3.0      lifecycle_1.0.1  </span>
-<span class="co">#&gt; [45] DBI_1.1.2         scales_1.1.1      cli_3.1.0         stringi_1.7.6    </span>
-<span class="co">#&gt; [49] cachem_1.0.6      pbapply_1.5-0     farver_2.1.0      fs_1.5.2         </span>
-<span class="co">#&gt; [53] leaflet_2.0.4.1   xml2_1.3.3        bslib_0.3.1       ellipsis_0.3.2   </span>
-<span class="co">#&gt; [57] generics_0.1.1    vctrs_0.3.8       tools_4.2.0       glue_1.6.0       </span>
-<span class="co">#&gt; [61] purrr_0.3.4       crosstalk_1.2.0   parallel_4.2.0    fastmap_1.1.0    </span>
-<span class="co">#&gt; [65] yaml_2.2.1        colorspace_2.0-2  rvest_1.0.2       memoise_2.0.1    </span>
-<span class="co">#&gt; [69] plotly_4.10.0     knitr_1.37        sass_0.4.0</span></code></pre></div>
+<span class="co">#&gt;   [1] ProtGenerics_1.26.0   fs_1.5.2              httr_1.4.2           </span>
+<span class="co">#&gt;   [4] doParallel_1.0.17     rprojroot_2.0.2       MSnbase_2.20.4       </span>
+<span class="co">#&gt;   [7] tools_4.1.2           bslib_0.3.1           utf8_1.2.2           </span>
+<span class="co">#&gt;  [10] R6_2.5.1              affyio_1.64.0         lazyeval_0.2.2       </span>
+<span class="co">#&gt;  [13] DBI_1.1.2             BiocGenerics_0.40.0   colorspace_2.0-2     </span>
+<span class="co">#&gt;  [16] tidyselect_1.1.1      leaflet_2.1.0         curl_4.3.2           </span>
+<span class="co">#&gt;  [19] compiler_4.1.2        preprocessCore_1.56.0 rvest_1.0.2          </span>
+<span class="co">#&gt;  [22] cli_3.2.0             Biobase_2.54.0        xml2_1.3.3           </span>
+<span class="co">#&gt;  [25] plotly_4.10.0         desc_1.4.0            labeling_0.4.2       </span>
+<span class="co">#&gt;  [28] sass_0.4.0            scales_1.1.1          affy_1.72.0          </span>
+<span class="co">#&gt;  [31] pbapply_1.5-0         pkgdown_2.0.2         stringr_1.4.0        </span>
+<span class="co">#&gt;  [34] digest_0.6.29         rmarkdown_2.11        pkgconfig_2.0.3      </span>
+<span class="co">#&gt;  [37] htmltools_0.5.2       highr_0.9             fastmap_1.1.0        </span>
+<span class="co">#&gt;  [40] limma_3.50.0          htmlwidgets_1.5.4     rlang_1.0.1          </span>
+<span class="co">#&gt;  [43] readxl_1.3.1          rstudioapi_0.13       impute_1.68.0        </span>
+<span class="co">#&gt;  [46] farver_2.1.0          jquerylib_0.1.4       generics_0.1.2       </span>
+<span class="co">#&gt;  [49] jsonlite_1.7.3        crosstalk_1.2.0       mzID_1.32.0          </span>
+<span class="co">#&gt;  [52] BiocParallel_1.28.3   dplyr_1.0.8           MALDIquant_1.21      </span>
+<span class="co">#&gt;  [55] Rcpp_1.0.8            munsell_0.5.0         S4Vectors_0.32.3     </span>
+<span class="co">#&gt;  [58] fansi_1.0.2           MsCoreUtils_1.6.0     lifecycle_1.0.1      </span>
+<span class="co">#&gt;  [61] vsn_3.62.0            stringi_1.7.6         yaml_2.3.4           </span>
+<span class="co">#&gt;  [64] MASS_7.3-55           zlibbioc_1.40.0       plyr_1.8.6           </span>
+<span class="co">#&gt;  [67] grid_4.1.2            parallel_4.1.2        crayon_1.5.0         </span>
+<span class="co">#&gt;  [70] lattice_0.20-45       mzR_2.28.0            knitr_1.37           </span>
+<span class="co">#&gt;  [73] pillar_1.7.0          clisymbols_1.2.0      codetools_0.2-18     </span>
+<span class="co">#&gt;  [76] stats4_4.1.2          XML_3.99-0.8          glue_1.6.1           </span>
+<span class="co">#&gt;  [79] evaluate_0.15         data.table_1.14.2     pcaMethods_1.86.0    </span>
+<span class="co">#&gt;  [82] BiocManager_1.30.16   selectr_0.4-2         vctrs_0.3.8          </span>
+<span class="co">#&gt;  [85] foreach_1.5.2         cellranger_1.1.0      gtable_0.3.0         </span>
+<span class="co">#&gt;  [88] purrr_0.3.4           tidyr_1.2.0           clue_0.3-60          </span>
+<span class="co">#&gt;  [91] assertthat_0.2.1      cachem_1.0.6          ggplot2_3.3.5        </span>
+<span class="co">#&gt;  [94] xfun_0.29             viridisLite_0.4.0     ncdf4_1.19           </span>
+<span class="co">#&gt;  [97] tibble_3.1.6          iterators_1.0.14      memoise_2.0.1        </span>
+<span class="co">#&gt; [100] IRanges_2.28.0        cluster_2.1.2         ellipsis_0.3.2</span></code></pre></div>
 </div>
   </div>
 

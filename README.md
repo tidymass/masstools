@@ -21,10 +21,10 @@ You can install `masstools` from
 [Github](https://github.com/tidymass/masstools).
 
 ``` r
-if(!require(devtools)){
-install.packages("devtools")
+if(!require(remotes)){
+install.packages("remotes")
 }
-devtools::install_github("tidymass/masstools")
+remotes::install_github("tidymass/masstools")
 ```
 
 ``` r

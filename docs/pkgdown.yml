@@ -1,11 +1,11 @@
 pandoc: 2.14.0.3
-pkgdown: 2.0.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   contact_us: contact_us.html
   install: install.html
   masstools_introductinon: masstools_introductinon.html
-last_built: 2022-01-14T00:56Z
+last_built: 2022-02-20T01:20Z
 urls:
   reference: https://tidymass.github.io/masstools/reference
   article: https://tidymass.github.io/masstools/articles
