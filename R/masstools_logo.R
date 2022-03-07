@@ -32,7 +32,7 @@
 #' masstools_logo()
 masstools_logo <- function() {
   message(crayon::green("Thank you for using masstools!\n"))
-  message(crayon::green("Version 0.99.3 (2021-12-26)\n"))
+  message(crayon::green("Version", masstools_version, "(", update_date, ')\n'))
   message(crayon::green(
         "More information: search 'tidymass masstools'\n"
     ))
@@ -50,7 +50,8 @@ masstools_logo <- function() {
     ), sep = "\n")
 }
 
-
+masstools_version <- "0.99.4"
+update_date <- as.character(Sys.time())
 
 # library(cowsay)
 # # https://onlineasciitools.com/convert-text-to-ascii-art
