@@ -7,7 +7,7 @@
 [![Dependencies](https://tinyverse.netlify.com/badge/masstools)](https://cran.r-project.org/package=masstools)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-`masstools` is a part of [tidymass](https://tidymass.github.io/tidymass/)
+`masstools` is a part of [tidymass](https://www.tidymass.org/)
 
 -------
 
