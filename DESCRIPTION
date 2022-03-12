@@ -49,7 +49,8 @@ Imports:
     utils,
     BiocParallel,
     MSnbase,
-    ProtGenerics
+    ProtGenerics,
+    lifecycle
 License: GPL-2 | file LICENSE
 RoxygenNote: 7.1.2
 Suggests: 

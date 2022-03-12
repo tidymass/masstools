@@ -73,6 +73,7 @@ style_grey <- function(level, ...) {
 #' @param fraction.weight fraction.weight
 #' @param dp.forward.weight dp.forward.weight
 #' @param dp.reverse.weight dp.reverse.weight
+#' @importFrom lifecycle deprecate_soft
 #' @return spectrum match score
 #' @export
 #' @examples
@@ -86,7 +87,10 @@ getSpectraMatchScore <- function(exp.spectrum,
                                  fraction.weight = 0.2,
                                  dp.forward.weight = 0.7,
                                  dp.reverse.weight = 0.1) {
-  .Deprecated(new = "get_spectra_match_score")
+  # .Deprecated(new = "get_spectra_match_score")
+  deprecate_soft(when = "0.99.9", 
+                 what = "getSpectraMatchScore()", 
+                 with = "get_spectra_match_score()")
   exp.spectrum <- as.data.frame(exp.spectrum)
   lib.spectrum <- as.data.frame(lib.spectrum)
   
@@ -194,7 +198,10 @@ get_spectra_match_score <- function(exp.spectrum,
 #' @examples
 #' getDP(exp.int = 1:10, lib.int = 1:10)
 getDP <- function(exp.int, lib.int) {
-  .Deprecated("get_dp")
+  # .Deprecated("get_dp")
+  deprecate_soft(when = "0.99.9", 
+                 what = "getDP()", 
+                 with = "get_dp()")
   exp.weight <- lapply(exp.int, function(x) {
     1 / (1 + x / (sum(exp.int) - 0.5))
   }) %>%
@@ -253,7 +260,10 @@ ms2Match <- function(exp.spectrum,
                      lib.spectrum,
                      ppm.tol = 30,
                      mz.ppm.thr = 400) {
-  .Deprecated(new = "ms2_match")
+  # .Deprecated(new = "ms2_match")
+  deprecate_soft(when = "0.99.9", 
+                 what = "ms2Match()", 
+                 with = "ms2_match()")
   ## remove noisy fragments
   exp.spectrum <- remove_noise(spec = exp.spectrum,
                               ppm.ms2match = ppm.tol,
@@ -408,7 +418,10 @@ ms2_match <- function(exp.spectrum,
 removeNoise <- function(spec,
                         ppm.ms2match = 30,
                         mz.ppm.thr = 400) {
-  .Deprecated("remove_noise")
+  # .Deprecated("remove_noise")
+  deprecate_soft(when = "0.99.9", 
+                 what = "removeNoise()", 
+                 with = "remove_noise()")
   if (nrow(spec) == 1) {
     return(spec)
   }
