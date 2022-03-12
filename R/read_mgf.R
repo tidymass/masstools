@@ -22,23 +22,32 @@ read_mgf <- function(file) {
         })
       info.mz <-
         lapply(mgf.data, function(x) {
-          grep("^PEPMASS", x, value = TRUE)
+          grep("^PEPMASS|PRECURSORMZ", x, value = TRUE)
         })
       info.rt <-
         lapply(mgf.data, function(x) {
-          grep("^RTINSECONDS", x, value = TRUE)
+          grep("^RTINSECONDS|RETENTIONTIME", x, value = TRUE)
         })
       
-      info.mz <- unlist(info.mz)
+      info.mz <- unlist(info.mz) %>% 
+        stringr::str_replace("[a-zA-Z|\\:|\\=]{1,20}", "") %>% 
+        stringr::str_trim() 
+      
       # for orbitrap data, the intensity of 
       # precursor ion should be removed
       info.mz <-
         unlist(lapply(strsplit(x = info.mz, split = " "), function(x) {
           x[1]
-        }))
+        })) %>% 
+        as.numeric()
       info.mz <-
         as.numeric(gsub(pattern = "\\w+=", "", info.mz))
-      info.rt <- unlist(info.rt)
+      
+      info.rt <- unlist(info.rt) %>%
+        stringr::str_replace("[a-zA-Z|\\:|\\=]{1,20}", "") %>%
+        stringr::str_trim() %>% 
+        as.numeric()
+      
       info.rt <-
         as.numeric(gsub(pattern = "\\w+=", "", info.rt))
       
