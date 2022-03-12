@@ -18,5 +18,6 @@ get_worklist.R
 vignettes/*.html
 vignettes/*.pdf
 vignettes/*.cache
+vignettes/install.Rmd
 
 .DS_Store
