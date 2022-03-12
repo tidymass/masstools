@@ -20,7 +20,6 @@ get_compound_class <-
     url <- paste(server, inchikey, sep = "")
     Sys.sleep(time = sleep)
     result <- try(expr = xml2::read_html(url), silent = TRUE)
-    # if (class(result)[1] == "try-error") {
     if (is(result, class2 = "try-error")) {
       message(
         crayon::red(
@@ -36,7 +35,6 @@ get_compound_class <-
     result <-
       try(result %>% rvest::html_nodes(css = ".main_card"), silent = TRUE)
     
-    # if (class(result)[1] == "try-error") {
     if (is(result, class2 = "try-error")) {
       message(
         crayon::red(
@@ -50,7 +48,6 @@ get_compound_class <-
       return(NA)
     }
     result <- try(rvest::html_text(x = result, trim = TRUE))
-    # if (class(result)[1] == "try-error") {
     if (is(result, class2 = "try-error")) {
       message(
         crayon::red(
@@ -89,13 +86,13 @@ get_compound_class <-
             dplyr::pull(value),
           silent = TRUE)
     idx <-
-      try(classification_info %>% `==`("Kingdom") %>% which())
+      which(classification_info == "Kingdom")
+      # try(classification_info %>% `==`("Kingdom") %>% which())
     taxonomy_tree <-
       try(classification_info[idx[1]:(idx[2] - 1)] %>%
             matrix(ncol = 2, byrow = TRUE) %>%
             tibble::as_tibble(.name_repair = "minimal"))
     try(colnames(taxonomy_tree) <- c("name", "value"))
-    # if (class(taxonomy_tree)[1] == "try-error") {
     if (is(taxonomy_tree, class2 = "try-error")) {
       taxonomy_tree <- tibble::tibble(
         name = c("Kingdom", "Superclass",
@@ -170,7 +167,6 @@ get_compound_class <-
             do.call(rbind, .) %>% tibble::as_tibble() %>%
             dplyr::distinct(name, value),
           silent = TRUE)
-    # if (class(compound_info)[1] == "try-error") {
     if (is(compound_info, class2 = "try-error")) {
       compound_info <-
         tibble::tibble(
@@ -178,7 +174,6 @@ get_compound_class <-
           value = rep(NA, 4)
         )
     }
-    # if (class(classification_info)[1] == "try-error") {
     if (is(classification_info, class2 = "try-error")) {
       classification_info <-
         tibble::tibble(
@@ -196,12 +191,10 @@ get_compound_class <-
           value = rep(NA, 9)
         )
     }
-    # if (class(description)[1] == "try-error") {
     if (is(description, class2 = "try-error")) {
       description <- tibble::tibble(name = "Description",
                                     value = NA)
     }
-    # if (class(external_descriptors)[1] == "try-error") {
       if (is(external_descriptors, class2 = "try-error")) {
       external_descriptors <- tibble::tibble(name = "External Descriptors",
                                              value = NA)

@@ -41,6 +41,21 @@ mz_rt_match.data.frame <-
                         rt.error.type = rt.error.type)
   }
 
+#' @export
+mz_rt_match.matrix <-
+  function(data1,
+           data2,
+           mz.tol,
+           rt.tol = 30,
+           rt.error.type = c("relative", "abs")) {
+    rt.error.type <- match.arg(rt.error.type)
+    mz_rt_match_default(data1 = data1,
+                        data2 = data2,
+                        mz.tol = mz.tol,
+                        rt.tol = rt.tol,
+                        rt.error.type = rt.error.type)
+  }
+
 
 mz_rt_match_default <-
   function(data1,

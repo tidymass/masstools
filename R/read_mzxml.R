@@ -11,13 +11,13 @@ read_mzxml <-
   function(file,
            threads = 3) {
     # pbapply::pboptions(style = 1)
-    cat(crayon::green("Reading MS2 data...\n"))
+    message(crayon::green("Reading MS2 data...\n"))
     # mzxml.data.list <- pbapply::pblapply(file, ListMGF)
     ms2 <-
       MSnbase::readMSData(files = file,
                           msLevel. = 2,
                           mode = "onDisk")
-    cat(crayon::green("Processing...\n"))
+    message(crayon::green("Processing...\n"))
     
     new.ms2 <- ProtGenerics::spectra(object = ms2)
     rm(list = c("ms2"))

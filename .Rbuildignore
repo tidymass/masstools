@@ -19,5 +19,6 @@ vignettes/*.html
 vignettes/*.pdf
 vignettes/*.cache
 vignettes/install.Rmd
+vignettes/contact_us.Rmd
 
 .DS_Store

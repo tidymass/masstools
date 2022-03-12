@@ -36,8 +36,8 @@ navbar:
       menu:
       - text: "Installation"
         href: articles/install.html
-      - text: "Introduction if masstools"
-        href: articles/masstools_introductinon.html
+      - text: "Introduction of masstools"
+        href: articles/masstools_introduction.html
     twitter:
       icon: "fab fa-twitter fa-lg"
       href: https://twitter.com/JasperShen1990

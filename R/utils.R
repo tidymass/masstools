@@ -284,7 +284,7 @@ removeNoise <- function(spec,
 #    OpenMS might have added its own old version.
 #
 #   path <- getOption("patRoon.path.pwiz")
-#   if (!is.null(path) && nzchar(path))
+#   if (!is.null(path) & nzchar(path))
 #     return(path)
 #
 #   if (Sys.info()[["sysname"]] == "Windows")
@@ -315,7 +315,7 @@ removeNoise <- function(spec,
 #           error = function(e)
 #             NULL
 #         )
-#       if (!is.null(path) &&
+#       if (!is.null(path) &
 #           file.exists(file.path(path, "msconvert.exe")))
 #         # extra check: see if msconvert is there
 #         return(path)

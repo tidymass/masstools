@@ -57,7 +57,6 @@ trans_ID <- function(query = "C00001",
                 expr = xml2::read_html(url, encoding = "UTF-8"),
                 silent = TRUE
             )
-        # if (any(class(result) %in% "try-error")) {
           if (is(result, class2 = "try-error")) {
             warning(
                 "Please check you query, from and to again.
