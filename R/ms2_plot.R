@@ -102,7 +102,7 @@ ms2_plot <- function(spectrum1,
             )
         }
 
-        matched.spec <- ms2Match(spectrum1,
+        matched.spec <- ms2_match(spectrum1,
             spectrum2,
             ppm.tol = ppm.tol,
             mz.ppm.thr = mz.ppm.thr
