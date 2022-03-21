@@ -48,7 +48,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.3</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.9</span>
       </span>
     </div>
 
@@ -65,7 +65,7 @@
       <a href="../articles/install.html">Installation</a>
     </li>
     <li>
-      <a href="../articles/masstools_introductinon.html">Introduction if masstools</a>
+      <a href="../articles/masstools_introduction.html">Introduction of masstools</a>
     </li>
   </ul>
 </li>
@@ -130,7 +130,7 @@
 </h1>
                         <h4 data-toc-skip class="author">Xiaotao Shen (<a href="https://www.shenxt.info/" class="external-link uri">https://www.shenxt.info/</a>)</h4>
                         
-            <h4 data-toc-skip class="date">Created on 2021-12-04 and updated on 2022-02-19</h4>
+            <h4 data-toc-skip class="date">Created on 2021-12-04 and updated on 2022-03-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tidymass/masstools/blob/HEAD/vignettes/install.Rmd" class="external-link"><code>vignettes/install.Rmd</code></a></small>
       <div class="hidden name"><code>install.Rmd</code></div>
@@ -140,17 +140,26 @@
     
     
 <div class="section level2">
-<h2 id="install-masstools-from-github">
-<strong>Install masstools from github</strong><a class="anchor" aria-label="anchor" href="#install-masstools-from-github"></a>
+<h2 id="install-masstools-from-gitlab">
+<strong>Install masstools from GitLab</strong><a class="anchor" aria-label="anchor" href="#install-masstools-from-gitlab"></a>
 </h2>
-<p>You can just use the <code>devtools</code> or <code>remote</code> to install <code>masstools</code>.</p>
-<p>Please update <code>devtools</code> first and then restart your r session.</p>
+<p>You can just use the or <code>remotes</code> to install <code>masstools</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></code></pre></div>
-<p>Then install <code>masstools</code>:</p>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_gitlab.html" class="external-link">install_gitlab</a></span><span class="op">(</span><span class="st">"jaspershen/masstools"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<blockquote>
+<p>During the installation, it will ask if you want to update some packages for few times, just enter <code>enter</code> key to skip it.</p>
+</blockquote>
+</div>
+<div class="section level2">
+<h2 id="install-masstools-from-github">
+<strong>Install masstools from GitHub</strong><a class="anchor" aria-label="anchor" href="#install-masstools-from-github"></a>
+</h2>
+<p>You can just use the or <code>remotes</code> to install <code>masstools</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"tidymass/masstools"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>In the installation, it will ask if you want to update some packages for few times, just enter <code>enter</code> key to skip it.</p>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"tidymass/masstools"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<blockquote>
+<p>During the installation, it will ask if you want to update some packages for few times, just enter <code>enter</code> key to skip it.</p>
+</blockquote>
 <p>If there is a error like below:</p>
 <pre><code>Error: Failed to install 'masstools' from GitHub: HTTP error 403. API rate limit exceeded for 171.66.10.237. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)</code></pre>
 <p>Try to resolve it by:</p>
@@ -172,21 +181,6 @@
 <p>The <code>GITHUB_PAT</code> should be yours that is created in step 1.</p>
 </blockquote>
 <p>And then restart R session and try again.</p>
-</div>
-<div class="section level2">
-<h2 id="install-masstools-packages-one-by-one">
-<strong>Install masstools packages one by one</strong><a class="anchor" aria-label="anchor" href="#install-masstools-packages-one-by-one"></a>
-</h2>
-<p>If you use the windoes os and the dependencies can not be installed, try to install all the <code>masstools</code> packages one by one.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"masstools/massdataset"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"masstools/demodata"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"masstools/massqc"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"masstools/massprocesser"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"masstools/masscleaner"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"masstools/massstat"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"masstools/metid"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"masstools/masstools"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><a href="shenxt1990@outlook.com">Let me know if you have any questions</a>.</p>
 </div>
 <div class="section level2">
@@ -198,10 +192,10 @@
 </li>
 </ol>
 <p><code>raster</code> is a package in <a href="https://cran.r-project.org/web/packages/raster/index.html" class="external-link">CRAN</a>, try to install it first and then install <code>masstools</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"raster"</span><span class="op">)</span></code></pre></div>
 <p><code>Cario</code> is a package in <a href="https://cran.r-project.org/web/packages/Cairo/index.html" class="external-link">CRAN</a>, try to install it first and then install <code>masstools</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"Cairo"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
@@ -217,15 +211,15 @@
 <h2 id="session-information">
 <strong>Session information</strong><a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; R Under development (unstable) (2022-01-11 r81473)</span>
+<span class="co">#&gt; R version 4.1.2 (2021-11-01)</span>
 <span class="co">#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)</span>
-<span class="co">#&gt; Running under: macOS Big Sur/Monterey 10.16</span>
+<span class="co">#&gt; Running under: macOS Big Sur 10.16</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Matrix products: default</span>
-<span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib</span>
-<span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib</span>
+<span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib</span>
+<span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; locale:</span>
 <span class="co">#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span>
@@ -234,17 +228,17 @@
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] leaflet_2.0.4.1</span>
+<span class="co">#&gt; [1] leaflet_2.1.0</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] rprojroot_2.0.2   digest_0.6.29     crayon_1.4.2      R6_2.5.1         </span>
-<span class="co">#&gt;  [5] jsonlite_1.7.2    magrittr_2.0.1    evaluate_0.14     stringi_1.7.6    </span>
-<span class="co">#&gt;  [9] rlang_0.4.12      cachem_1.0.6      fs_1.5.2          jquerylib_0.1.4  </span>
-<span class="co">#&gt; [13] bslib_0.3.1       rmarkdown_2.11    pkgdown_2.0.1     desc_1.4.0       </span>
-<span class="co">#&gt; [17] tools_4.2.0       stringr_1.4.0     htmlwidgets_1.5.4 purrr_0.3.4      </span>
-<span class="co">#&gt; [21] crosstalk_1.2.0   yaml_2.2.1        xfun_0.29         fastmap_1.1.0    </span>
-<span class="co">#&gt; [25] compiler_4.2.0    memoise_2.0.1     htmltools_0.5.2   knitr_1.37       </span>
-<span class="co">#&gt; [29] sass_0.4.0</span></code></pre></div>
+<span class="co">#&gt;  [1] rstudioapi_0.13   knitr_1.37        magrittr_2.0.2    R6_2.5.1         </span>
+<span class="co">#&gt;  [5] rlang_1.0.1       fastmap_1.1.0     stringr_1.4.0     tools_4.1.2      </span>
+<span class="co">#&gt;  [9] xfun_0.29         cli_3.2.0         jquerylib_0.1.4   htmltools_0.5.2  </span>
+<span class="co">#&gt; [13] crosstalk_1.2.0   yaml_2.3.4        digest_0.6.29     rprojroot_2.0.2  </span>
+<span class="co">#&gt; [17] pkgdown_2.0.2     crayon_1.5.0      purrr_0.3.4       sass_0.4.0       </span>
+<span class="co">#&gt; [21] htmlwidgets_1.5.4 fs_1.5.2          memoise_2.0.1     cachem_1.0.6     </span>
+<span class="co">#&gt; [25] evaluate_0.15     rmarkdown_2.11    stringi_1.7.6     compiler_4.1.2   </span>
+<span class="co">#&gt; [29] bslib_0.3.1       desc_1.4.0        jsonlite_1.7.3</span></code></pre></div>
 </div>
   </div>
 
@@ -265,7 +259,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p><b>Contact Us:</b> <br><i class="fa fa-envelope"></i> <a href="mailto:shenxt1990@outlook.com" class="email">shenxt1990@outlook.com</a> <br><i class="fa fa-weixin"></i> <a href="https://www.shenxt.info/files/wechat_QR.jpg" class="external-link">shenxt1990</a> <br><i class="fa fa-network-wired"></i> <a href="https://tidymass.github.io/tidymass/" class="external-link">A part of tidymass</a></p>
+<p><b>Contact Us:</b> <br><i class="fa fa-envelope"></i> <a href="mailto:shenxt1990@outlook.com" class="email">shenxt1990@outlook.com</a> <br><i class="fa fa-weixin"></i> <a href="https://www.shenxt.info/files/wechat_QR.jpg" class="external-link">shenxt1990</a> <br><i class="fa fa-network-wired"></i> <a href="https://www.tidymass.org/" class="external-link">A part of tidymass</a></p>
 </div>
 
       </footer>

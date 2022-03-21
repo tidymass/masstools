@@ -19,6 +19,9 @@
     <loc>https://tidymass.github.io/masstools/articles/masstools_introductinon.html</loc>
   </url>
   <url>
+    <loc>https://tidymass.github.io/masstools/articles/masstools_introduction.html</loc>
+  </url>
+  <url>
     <loc>https://tidymass.github.io/masstools/authors.html</loc>
   </url>
   <url>
@@ -37,7 +40,13 @@
     <loc>https://tidymass.github.io/masstools/reference/get_compound_class.html</loc>
   </url>
   <url>
+    <loc>https://tidymass.github.io/masstools/reference/get_dp.html</loc>
+  </url>
+  <url>
     <loc>https://tidymass.github.io/masstools/reference/get_os.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/get_spectra_match_score.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/index.html</loc>
@@ -56,6 +65,9 @@
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/ms2Match.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/ms2_match.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/ms2_plot.html</loc>
@@ -77,6 +89,9 @@
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/removeNoise.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/remove_noise.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/setwd_project.html</loc>
