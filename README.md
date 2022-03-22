@@ -35,7 +35,7 @@ remotes::install_github("tidymass/masstools")
 
 # Usage
 
-Please see the `Help document` page to get the instruction of `masstools`.
+Please see the `Help documents` page to get the instruction of `masstools`.
 
 # Need help?
 
@@ -56,7 +56,7 @@ Palo Alto, CA
 
 # Citation
 
-If you use `masstools` in you publication, please cite this publication:
+If you use `masstools` in your publications, please cite this paper:
 
 TidyMass: An Object-oriented Reproducible Analysis Framework for LC-MS Data.
 
