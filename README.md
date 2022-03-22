@@ -26,7 +26,7 @@ install.packages("remotes")
 remotes::install_gitlab("jaspershen/masstools")
 ```
 
-or [Github](https://github.com/tidymass/masstools).
+or [GitHub](https://github.com/tidymass/masstools).
 
 ``` r
 remotes::install_github("tidymass/masstools")
@@ -56,7 +56,7 @@ Palo Alto, CA
 
 # Citation
 
-If you use `masscleaner` in you publication, please cite this publication:
+If you use `masstools` in you publication, please cite this publication:
 
 TidyMass: An Object-oriented Reproducible Analysis Framework for LC-MS Data.
 
