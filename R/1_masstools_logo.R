@@ -20,7 +20,6 @@
 #' @importFrom magrittr %>%
 #' @importFrom purrr map map2 walk
 #' @import htmltools
-#' @import htmlwidgets
 #' @import tidyr
 #' @importFrom BiocParallel bplapply
 #' @importFrom MSnbase readMSData

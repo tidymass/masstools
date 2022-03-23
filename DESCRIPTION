@@ -43,7 +43,6 @@ Imports:
     readxl,
     rvest,
     xml2,
-    htmlwidgets,
     stats,
     utils,
     BiocParallel,
