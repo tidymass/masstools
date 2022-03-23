@@ -44,7 +44,6 @@ Imports:
     rvest,
     xml2,
     htmlwidgets,
-    leaflet,
     stats,
     utils,
     BiocParallel,
