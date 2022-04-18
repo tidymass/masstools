@@ -48,7 +48,8 @@ masstools_logo <- function() {
     ), sep = "\n")
 }
 
-masstools_version <- "0.99.9"
+masstools_version <- 
+  utils::packageVersion(pkg = "masstools")
 update_date <- as.character(Sys.time())
 
 # library(cowsay)
