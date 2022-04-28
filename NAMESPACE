@@ -3,6 +3,7 @@
 S3method(mz_rt_match,data.frame)
 S3method(mz_rt_match,matrix)
 S3method(print,masstools_conflicts)
+export(convert_precursor_mz2accurate_mass)
 export(getDP)
 export(getSpectraMatchScore)
 export(get_compound_class)
