@@ -112,6 +112,7 @@ sum_formula <-
 #' \email{shenxt1990@@outlook.com}
 #' @param formula Chemical formula.
 #' @return A splited formula.
+#' @importFrom Rdisop getMass getMolecule
 #' @export
 #' @examples
 #' split_formula(formula = "C9H11NO2")
@@ -233,7 +234,8 @@ split_formula <-
 
 
 
-
+#' @title convert_precursor_mz2accurate_mass
+#' @description convert_precursor_mz2accurate_mass
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
 #' @param precursor_mz Chemical formula.
@@ -304,5 +306,5 @@ convert_precursor_mz2accurate_mass <-
       precursor_number <- 1
     }
     
-    (precursor_mz + sum(additional_mass))/2
+    (precursor_mz + sum(additional_mass))/precursor_number
   }

@@ -48,7 +48,8 @@ Imports:
     BiocParallel,
     MSnbase,
     ProtGenerics,
-    lifecycle
+    lifecycle,
+    Rdisop
 License: GPL-2 | file LICENSE
 RoxygenNote: 7.1.2
 Suggests: 
