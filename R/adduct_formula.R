@@ -278,6 +278,10 @@ convert_precursor_mz2accurate_mass <-
     df <-
       data.frame(plus_minus, element_number, element)
     
+    if(nrow(df) == 0){
+      return(NA)
+    }
+    
     df$element[df$element == "ACN"] <- "C2H3N"
     df$element[df$element == "MeOH"] <- "CH4O"
     

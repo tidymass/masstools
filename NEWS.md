@@ -13,3 +13,7 @@
 # Version 0.99.12
 
 * New function convert_precursor_mz2accurate_mass.
+
+# Version 0.99.13
+
+* New argument in get_spectra_match_score function
