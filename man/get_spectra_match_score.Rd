@@ -12,7 +12,7 @@ get_spectra_match_score(
   fraction.weight = 0.2,
   dp.forward.weight = 0.7,
   dp.reverse.weight = 0.1,
-  remove_fragment_intensity_coutoff = 0
+  remove_fragment_intensity_cutoff = 0
 )
 }
 \arguments{
@@ -30,7 +30,7 @@ get_spectra_match_score(
 
 \item{dp.reverse.weight}{dp.reverse.weight}
 
-\item{remove_fragment_intensity_coutoff}{default is 0 (100 percentage).}
+\item{remove_fragment_intensity_cutoff}{default is 0 (100 percentage).}
 }
 \value{
 spectrum match score

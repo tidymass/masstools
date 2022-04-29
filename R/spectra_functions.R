@@ -73,7 +73,7 @@ getSpectraMatchScore <- function(exp.spectrum,
 #' @param fraction.weight fraction.weight
 #' @param dp.forward.weight dp.forward.weight
 #' @param dp.reverse.weight dp.reverse.weight
-#' @param remove_fragment_intensity_coutoff default is 0 (100 percentage).
+#' @param remove_fragment_intensity_cutoff default is 0 (100 percentage).
 #' @return spectrum match score
 #' @export
 #' @examples
@@ -89,7 +89,7 @@ get_spectra_match_score <-
            fraction.weight = 0.2,
            dp.forward.weight = 0.7,
            dp.reverse.weight = 0.1,
-           remove_fragment_intensity_coutoff = 0) {
+           remove_fragment_intensity_cutoff = 0) {
     exp.spectrum <- as.data.frame(exp.spectrum)
     lib.spectrum <- as.data.frame(lib.spectrum)
     
@@ -100,11 +100,11 @@ get_spectra_match_score <-
     
     exp.spectrum <-
       exp.spectrum %>%
-      dplyr::filter(intensity > remove_fragment_intensity_coutoff)
+      dplyr::filter(intensity > remove_fragment_intensity_cutoff)
     
     lib.spectrum <-
       lib.spectrum %>%
-      dplyr::filter(intensity > remove_fragment_intensity_coutoff)
+      dplyr::filter(intensity > remove_fragment_intensity_cutoff)
     
     match.matrix <- ms2_match(
       exp.spectrum = exp.spectrum,
