@@ -17,3 +17,7 @@
 # Version 0.99.13
 
 * New argument in get_spectra_match_score function
+
+# Version 1.0.1
+
+* Fixed bugs.

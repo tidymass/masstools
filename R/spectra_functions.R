@@ -8,7 +8,6 @@
 #' @param fraction.weight fraction.weight
 #' @param dp.forward.weight dp.forward.weight
 #' @param dp.reverse.weight dp.reverse.weight
-#' @importFrom lifecycle deprecate_soft
 #' @return spectrum match score
 #' @export
 #' @examples
@@ -23,9 +22,9 @@ getSpectraMatchScore <- function(exp.spectrum,
                                  dp.forward.weight = 0.7,
                                  dp.reverse.weight = 0.1) {
   # .Deprecated(new = "get_spectra_match_score")
-  deprecate_soft(when = "0.99.9",
-                 what = "getSpectraMatchScore()",
-                 with = "get_spectra_match_score()")
+  lifecycle::deprecate_soft(when = "0.99.9",
+                            what = "getSpectraMatchScore()",
+                            with = "get_spectra_match_score()")
   exp.spectrum <- as.data.frame(exp.spectrum)
   lib.spectrum <- as.data.frame(lib.spectrum)
   
@@ -62,7 +61,7 @@ getSpectraMatchScore <- function(exp.spectrum,
 
 
 #' @title get_spectra_match_score
-#' @description get_spectra_match_score is used to get two 
+#' @description get_spectra_match_score is used to get two
 #' MS2 spectra match score, see MS-DIAL
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
@@ -142,9 +141,9 @@ get_spectra_match_score <-
 #' getDP(exp.int = 1:10, lib.int = 1:10)
 getDP <- function(exp.int, lib.int) {
   # .Deprecated("get_dp")
-  deprecate_soft(when = "0.99.9",
-                 what = "getDP()",
-                 with = "get_dp()")
+  lifecycle::deprecate_soft(when = "0.99.9",
+                            what = "getDP()",
+                            with = "get_dp()")
   exp.weight <- lapply(exp.int, function(x) {
     1 / (1 + x / (sum(exp.int) - 0.5))
   }) %>%
@@ -208,9 +207,9 @@ ms2Match <- function(exp.spectrum,
                      ppm.tol = 30,
                      mz.ppm.thr = 400) {
   # .Deprecated(new = "ms2_match")
-  deprecate_soft(when = "0.99.9",
-                 what = "ms2Match()",
-                 with = "ms2_match()")
+  lifecycle::deprecate_soft(when = "0.99.9",
+                            what = "ms2Match()",
+                            with = "ms2_match()")
   ## remove noisy fragments
   exp.spectrum <- remove_noise(spec = exp.spectrum,
                                ppm.ms2match = ppm.tol,
@@ -369,13 +368,13 @@ removeNoise <- function(spec,
                         ppm.ms2match = 30,
                         mz.ppm.thr = 400) {
   # .Deprecated("remove_noise")
-  deprecate_soft(when = "0.99.9",
-                 what = "removeNoise()",
-                 with = "remove_noise()")
+  lifecycle::deprecate_soft(when = "0.99.9",
+                            what = "removeNoise()",
+                            with = "remove_noise()")
   if (nrow(spec) == 1) {
     return(spec)
   }
-  spec <- spec[order(spec[, 1]), ]
+  spec <- spec[order(spec[, 1]),]
   mz <- spec[, 1]
   mz <- mz[-1]
   diff.mz <- diff(spec[, 1])
@@ -416,7 +415,7 @@ remove_noise <- function(spec,
   if (nrow(spec) == 1) {
     return(spec)
   }
-  spec <- spec[order(spec[, 1]), ]
+  spec <- spec[order(spec[, 1]),]
   mz <- spec[, 1]
   mz <- mz[-1]
   diff.mz <- diff(spec[, 1])

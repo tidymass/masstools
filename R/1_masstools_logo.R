@@ -13,7 +13,6 @@
 #' @importFrom pbapply pblapply
 #' @import ggplot2
 #' @importFrom plyr dlply .
-#' @import readxl
 #' @importFrom methods .hasSlot new is
 #' @importFrom stats p.adjust rgamma
 #' @importFrom utils data str
@@ -24,6 +23,7 @@
 #' @importFrom BiocParallel bplapply
 #' @importFrom MSnbase readMSData
 #' @importFrom ProtGenerics spectra
+#' @importFrom lifecycle deprecate_soft
 #' @export
 #' @return masstools logo
 #' @examples

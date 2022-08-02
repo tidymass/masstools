@@ -36,7 +36,7 @@ get_spectra_match_score(
 spectrum match score
 }
 \description{
-get_spectra_match_score is used to get two 
+get_spectra_match_score is used to get two
 MS2 spectra match score, see MS-DIAL
 }
 \examples{
