@@ -76,12 +76,12 @@ ms2_plot <- function(spectrum1,
   }
   if (!missing(spectrum1)) {
     spectrum1 <-
-      spectrum1 %>% 
-      as.data.frame() %>% 
-      purrr::map(function(x){
+      spectrum1 %>%
+      as.data.frame() %>%
+      purrr::map(function(x) {
         as.numeric(x)
-      }) %>% 
-      dplyr::bind_cols() %>% 
+      }) %>%
+      dplyr::bind_cols() %>%
       as.data.frame()
     
     spectrum1[, 2] <- spectrum1[, 2] / max(spectrum1[, 2])
@@ -89,12 +89,12 @@ ms2_plot <- function(spectrum1,
   
   if (!missing(spectrum2)) {
     spectrum2 <-
-      spectrum2 %>% 
-      as.data.frame() %>% 
-      purrr::map(function(x){
+      spectrum2 %>%
+      as.data.frame() %>%
+      purrr::map(function(x) {
         as.numeric(x)
-      }) %>% 
-      dplyr::bind_cols() %>% 
+      }) %>%
+      dplyr::bind_cols() %>%
       as.data.frame()
     spectrum2[, 2] <- spectrum2[, 2] / max(spectrum2[, 2])
   }
@@ -102,17 +102,14 @@ ms2_plot <- function(spectrum1,
   ## two spectrum
   if (!missing(spectrum1) & !missing(spectrum2)) {
     if (missing(range.mz)) {
-      range.mz <- c(
-        min(spectrum1[, 1], spectrum2[, 1]),
-        max(spectrum1[, 1], spectrum2[, 1])
-      )
+      range.mz <- c(min(spectrum1[, 1], spectrum2[, 1]),
+                    max(spectrum1[, 1], spectrum2[, 1]))
     }
     
     matched.spec <- ms2_match(spectrum1,
                               spectrum2,
                               ppm.tol = ppm.tol,
-                              mz.ppm.thr = mz.ppm.thr
-    )
+                              mz.ppm.thr = mz.ppm.thr)
     
     matched.idx <- which(matched.spec[, "Lib.intensity"] > 0 &
                            matched.spec[, "Exp.intensity"] > 0)
@@ -225,15 +222,13 @@ ms2_plot <- function(spectrum1,
   }
   
   plot <- ggplot(spectrum) +
-    geom_segment(
-      mapping = aes(
-        x = mz,
-        y = 0,
-        xend = mz,
-        yend = intensity
-      ),
-      colour = col1
-    ) +
+    geom_segment(mapping = aes(
+      x = mz,
+      y = 0,
+      xend = mz,
+      yend = intensity
+    ),
+    colour = col1) +
     xlim(range.mz[1], range.mz[2]) +
     labs(x = xlab, y = ylab) +
     scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
