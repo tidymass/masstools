@@ -9,7 +9,7 @@
 
 read_mgf <- function(file) {
   pbapply::pboptions(style = 1)
-  message(crayon::green("Reading mgf data...\n"))
+  message(crayon::green("Reading mgf data..."))
   # mgf.data.list <- pbapply::pblapply(file, ListMGF)
   ms2 <- purrr::map(
     .x = file,

@@ -29,27 +29,26 @@
 #' @examples
 #' masstools_logo()
 masstools_logo <- function() {
-  message(crayon::green("Thank you for using masstools!\n"))
-  message(crayon::green("Version", masstools_version, "(", update_date, ')\n'))
-  message(crayon::green(
-        "More information: search 'tidymass masstools'\n"
-    ))
-  cat(crayon::green(
-        c(
-            "  _   _          _______          _     ",
-            " | | (_)        |__   __|        | |    ",
-            " | |_ _ _ __  _   _| | ___   ___ | |___ ",
-            " | __| | '_ \\| | | | |/ _ \\ / _ \\| / __|",
-            " | |_| | | | | |_| | | (_) | (_) | \\__ \\",
-            "  \\__|_|_| |_|\\__, |_|\\___/ \\___/|_|___/",
-            "               __/ |                    ",
-            "              |___/                     "
-        )
-    ), sep = "\n")
+  message("Thank you for using masstools!")
+  message("Version ", masstools_version, " (", update_date, ')')
+  message("More information: masstools.tidymass.org")
+  cat(
+    c(
+      "  _   _          _______          _     ",
+      " | | (_)        |__   __|        | |    ",
+      " | |_ _ _ __  _   _| | ___   ___ | |___ ",
+      " | __| | '_ \\| | | | |/ _ \\ / _ \\| / __|",
+      " | |_| | | | | |_| | | (_) | (_) | \\__ \\",
+      "  \\__|_|_| |_|\\__, |_|\\___/ \\___/|_|___/",
+      "               __/ |                    ",
+      "              |___/                     "
+    ),
+    sep = "\n"
+  )
 }
 
-masstools_version <- 
-  utils::packageVersion(pkg = "masstools")
+masstools_version <-
+  as.character(utils::packageVersion(pkg = "masstools"))
 update_date <- as.character(Sys.time())
 
 # library(cowsay)

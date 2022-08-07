@@ -37,6 +37,7 @@ You can use `masstools` to do the chemical formula operation.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 library(masstools)
+library(tidyverse)
 ```
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}

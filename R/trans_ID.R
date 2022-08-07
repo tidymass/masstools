@@ -137,7 +137,7 @@ trans_ID <-
           crayon::red(
             from_to,
             "is not supported for server",
-            "https://www.chemspider.com/InChI.asmx\n"
+            "https://www.chemspider.com/InChI.asmx"
           )
         )
         return(NA)
@@ -264,14 +264,14 @@ trans_id_database <- function(server = c("cts.fiehnlab",
       crayon::green(
         length(chemical_database_from),
         "databases are supported in server
-        http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'.\n"
+        http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'."
       )
     )
     message(
       crayon::green(
         length(chemical_database_to),
         "databases are supported in server
-        http://cts.fiehnlab.ucdavis.edu/service/convert for 'to'.\n"
+        http://cts.fiehnlab.ucdavis.edu/service/convert for 'to'."
       )
     )
     result <-
@@ -309,7 +309,7 @@ trans_id_database <- function(server = c("cts.fiehnlab",
     message(
       crayon::green(
         nrow(result),
-        "are supported in server https://www.chemspider.com/InChI.asmx.\n"
+        "are supported in server https://www.chemspider.com/InChI.asmx."
       )
     )
     result

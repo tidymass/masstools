@@ -53,12 +53,11 @@ setwd_project <- function() {
                 file_name[project_index[1]] %>%
                     stringr::str_split("/") %>%
                     unlist() %>%
-                    tail(1),
-                "\n"
+                    tail(1)
             )
             message(
                 "The project wd is:",
-                project_wd, "\n"
+                project_wd
             )
 
             setwd(project_wd)
@@ -66,6 +65,6 @@ setwd_project <- function() {
         }
     }
     if (length(project_index) == 0) {
-      message("There are no .Rproj in your file. No change for wd.\n")
+      message("There are no .Rproj in your file. No change for wd.")
     }
 }

@@ -26,8 +26,7 @@ get_compound_class <-
           clisymbols::symbol$cross,
           inchikey,
           "is not available in website.\nPlease check this link:\n",
-          url,
-          "\n"
+          url
         )
       )
       return(NA)
@@ -41,8 +40,7 @@ get_compound_class <-
           clisymbols::symbol$cross,
           inchikey,
           "is not available in website.\nPlease check this link:\n",
-          url,
-          "\n"
+          url
         )
       )
       return(NA)
@@ -54,8 +52,7 @@ get_compound_class <-
           clisymbols::symbol$cross,
           inchikey,
           "is not available in website.\nPlease check this link:\n",
-          url,
-          "\n"
+          url
         )
       )
       return(NA)
@@ -110,7 +107,7 @@ get_compound_class <-
       message(crayon::green(
         clisymbols::symbol$tick,
         inchikey,
-        "is available in website.\n"
+        "is available in website."
       ))
     }
     classification_info <-
@@ -227,7 +224,7 @@ setMethod("show",
             message(cli::rule(
               left = crayon::bold("classyfire Object"),
               right = paste0("masstools v", utils::packageVersion("masstools"))
-            ), "\n")
+            ))
             
             message(crayon::red(
               "Object Size:",
@@ -236,18 +233,15 @@ setMethod("show",
               "\n"
             ))
             
-            message(crayon::green("Information:"), "\n")
+            message(crayon::green("Information:"))
             
             message("SMILES: ",
-                    dplyr::pull(object@compound_info, "value")[1],
-                    "\n")
+                    dplyr::pull(object@compound_info, "value")[1])
             message("InChIKey: ",
-                    dplyr::pull(object@compound_info, "value")[2],
-                    "\n")
+                    dplyr::pull(object@compound_info, "value")[2])
             message("Formula: ",
-                    dplyr::pull(object@compound_info, "value")[3],
-                    "\n")
-            message("Mass: ", dplyr::pull(object@compound_info, "value")[4], "\n")
+                    dplyr::pull(object@compound_info, "value")[3])
+            message("Mass: ", dplyr::pull(object@compound_info, "value")[4])
             
             
             tree_list <-
