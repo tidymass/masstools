@@ -23,13 +23,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.9</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Help documents
      
     <span class="caret"></span>
@@ -42,7 +42,7 @@
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     News
      
     <span class="caret"></span>
@@ -69,7 +69,7 @@
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/JasperShen1990" class="external-link">
+  <a href="https://twitter.com/xiaotaoshen1990" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
@@ -98,13 +98,13 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">mz_rt_match</span><span class="op">(</span>
-  <span class="va">data1</span>,
-  <span class="va">data2</span>,
-  <span class="va">mz.tol</span>,
-  rt.tol <span class="op">=</span> <span class="fl">30</span>,
-  rt.error.type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"relative"</span>, <span class="st">"abs"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mz_rt_match</span><span class="op">(</span></span>
+<span>  <span class="va">data1</span>,</span>
+<span>  <span class="va">data2</span>,</span>
+<span>  <span class="va">mz.tol</span>,</span>
+<span>  rt.tol <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  rt.error.type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"relative"</span>, <span class="st">"abs"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -112,19 +112,30 @@
     <dl><dt>data1</dt>
 <dd><p>First data for matching, first column must be mz
 and seconod column must be rt.</p></dd>
+
+
 <dt>data2</dt>
 <dd><p>Second data for matching, first column must be mz
 and seconod column must be rt.</p></dd>
+
+
 <dt>mz.tol</dt>
 <dd><p>mz tol for ms1 and ms2 data matching.</p></dd>
+
+
 <dt>rt.tol</dt>
 <dd><p>RT tol for ms1 and ms2 data matching.</p></dd>
+
+
 <dt>rt.error.type</dt>
 <dd><p>RT error is calculated with relative or absolute.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Return a result which give the matching
+    
+
+<p>Return a result which give the matching
 result of data1 and database.</p>
     </div>
     <div id="author">
@@ -135,9 +146,9 @@ result of data1 and database.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, rt <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, rt <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">mz_rt_match</span><span class="op">(</span><span class="va">data1</span>, <span class="va">data2</span>, mz.tol <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, rt <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, rt <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">mz_rt_match</span><span class="op">(</span><span class="va">data1</span>, <span class="va">data2</span>, mz.tol <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Index1 Index2 mz1 mz2 mz error rt1 rt2 rt error</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1       1      1   1   1        0   1   1        0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2       2      2   2   2        0   2   2        0</span>

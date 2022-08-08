@@ -23,13 +23,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.9</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Help documents
      
     <span class="caret"></span>
@@ -42,7 +42,7 @@
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     News
      
     <span class="caret"></span>
@@ -69,7 +69,7 @@
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/JasperShen1990" class="external-link">
+  <a href="https://twitter.com/xiaotaoshen1990" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
@@ -98,35 +98,46 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">trans_ID</span><span class="op">(</span>
-  query <span class="op">=</span> <span class="st">"C00001"</span>,
-  from <span class="op">=</span> <span class="st">"KEGG"</span>,
-  to <span class="op">=</span> <span class="st">"PubChem SID"</span>,
-  top <span class="op">=</span> <span class="fl">1</span>,
-  server <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cts.fiehnlab"</span>, <span class="st">"chemspider"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">trans_ID</span><span class="op">(</span></span>
+<span>  query <span class="op">=</span> <span class="st">"C00001"</span>,</span>
+<span>  from <span class="op">=</span> <span class="st">"KEGG"</span>,</span>
+<span>  to <span class="op">=</span> <span class="st">"PubChem SID"</span>,</span>
+<span>  top <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  server <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cts.fiehnlab"</span>, <span class="st">"chemspider"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>query</dt>
 <dd><p>The ID/name of metabolite you want to translate.</p></dd>
+
+
 <dt>from</dt>
 <dd><p>The databases of metabolites.
 Supported database can be shown using trans_id_database("from").</p></dd>
+
+
 <dt>to</dt>
 <dd><p>The databases of metabolites.
 Supported database can be shown using trans_id_database("to").</p></dd>
+
+
 <dt>top</dt>
 <dd><p>How many results should be returned?</p></dd>
+
+
 <dt>server</dt>
 <dd><p>server. cts.fiehnlab
 (http://cts.fiehnlab.ucdavis.edu/service/convert)
 or chemspider (https://www.chemspider.com/InChI.asmx)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame.</p>
+    
+
+<p>A data frame.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -136,27 +147,23 @@ or chemspider (https://www.chemspider.com/InChI.asmx)</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">trans_ID</span><span class="op">(</span></span>
-<span class="r-in">    query <span class="op">=</span> <span class="st">"C00001"</span>,</span>
-<span class="r-in">    from <span class="op">=</span> <span class="st">"KEGG"</span>,</span>
-<span class="r-in">    to <span class="op">=</span> <span class="st">"PubChem SID"</span>,</span>
-<span class="r-in">    top <span class="op">=</span> <span class="fl">1</span>,</span>
-<span class="r-in">    server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   KEGG   `PubChem SID`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> C00001 103059594    </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">trans_ID</span><span class="op">(</span></span>
-<span class="r-in">    query <span class="op">=</span> <span class="st">"C00001"</span>,</span>
-<span class="r-in">    to <span class="op">=</span> <span class="st">"Human Metabolome Database"</span>,</span>
-<span class="r-in">    server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   KEGG   `Human Metabolome Database`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> C00001 HMDB0002111                </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">trans_ID</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    query <span class="op">=</span> <span class="st">"C00001"</span>,</span></span>
+<span class="r-in"><span>    from <span class="op">=</span> <span class="st">"KEGG"</span>,</span></span>
+<span class="r-in"><span>    to <span class="op">=</span> <span class="st">"PubChem SID"</span>,</span></span>
+<span class="r-in"><span>    top <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>    server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     KEGG PubChem SID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 C00001   103059594</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">trans_ID</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    query <span class="op">=</span> <span class="st">"C00001"</span>,</span></span>
+<span class="r-in"><span>    to <span class="op">=</span> <span class="st">"Human Metabolome Database"</span>,</span></span>
+<span class="r-in"><span>    server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     KEGG Human Metabolome Database</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 C00001               HMDB0002111</span>
 </code></pre></div>
     </div>
   </div>

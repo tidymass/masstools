@@ -23,13 +23,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.9</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Help documents
      
     <span class="caret"></span>
@@ -42,7 +42,7 @@
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     News
      
     <span class="caret"></span>
@@ -69,7 +69,7 @@
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/JasperShen1990" class="external-link">
+  <a href="https://twitter.com/xiaotaoshen1990" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
@@ -89,7 +89,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>ms2Match</h1>
-    <small class="dont-index">Source: <a href="https://github.com/tidymass/masstools/blob/HEAD/R/utils.R" class="external-link"><code>R/utils.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/tidymass/masstools/blob/HEAD/R/spectra_functions.R" class="external-link"><code>R/spectra_functions.R</code></a></small>
     <div class="hidden name"><code>ms2Match.Rd</code></div>
     </div>
 
@@ -98,30 +98,39 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ms2Match</span><span class="op">(</span><span class="va">exp.spectrum</span>, <span class="va">lib.spectrum</span>, ppm.tol <span class="op">=</span> <span class="fl">30</span>, mz.ppm.thr <span class="op">=</span> <span class="fl">400</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ms2Match</span><span class="op">(</span><span class="va">exp.spectrum</span>, <span class="va">lib.spectrum</span>, ppm.tol <span class="op">=</span> <span class="fl">30</span>, mz.ppm.thr <span class="op">=</span> <span class="fl">400</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>exp.spectrum</dt>
 <dd><p>exp.spectrum</p></dd>
+
+
 <dt>lib.spectrum</dt>
 <dd><p>lib.spectrum</p></dd>
+
+
 <dt>ppm.tol</dt>
 <dd><p>ppm.tol</p></dd>
+
+
 <dt>mz.ppm.thr</dt>
 <dd><p>mz.ppm.thr</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>ms2 match data frame</p>
+    
+
+<p>ms2 match data frame</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">exp.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, intensity <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">lib.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, intensity <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">ms2Match</span><span class="op">(</span><span class="va">exp.spectrum</span>, <span class="va">lib.spectrum</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">exp.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, intensity <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lib.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, intensity <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ms2Match</span><span class="op">(</span><span class="va">exp.spectrum</span>, <span class="va">lib.spectrum</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`ms2Match()` was deprecated in masstools 0.99.9.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Please use `ms2_match()` instead.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Lib.index Exp.index Lib.mz Lib.intensity Exp.mz Exp.intensity</span>

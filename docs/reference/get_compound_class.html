@@ -23,13 +23,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.9</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Help documents
      
     <span class="caret"></span>
@@ -42,7 +42,7 @@
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     News
      
     <span class="caret"></span>
@@ -69,7 +69,7 @@
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/JasperShen1990" class="external-link">
+  <a href="https://twitter.com/xiaotaoshen1990" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
@@ -98,25 +98,32 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_compound_class</span><span class="op">(</span>
-  inchikey <span class="op">=</span> <span class="st">"QZDWODWEESGPLC-UHFFFAOYSA-N"</span>,
-  server <span class="op">=</span> <span class="st">"http://classyfire.wishartlab.com/entities/"</span>,
-  sleep <span class="op">=</span> <span class="fl">5</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_compound_class</span><span class="op">(</span></span>
+<span>  inchikey <span class="op">=</span> <span class="st">"QZDWODWEESGPLC-UHFFFAOYSA-N"</span>,</span>
+<span>  server <span class="op">=</span> <span class="st">"http://classyfire.wishartlab.com/entities/"</span>,</span>
+<span>  sleep <span class="op">=</span> <span class="fl">5</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>inchikey</dt>
 <dd><p>The inchikey ID of a metabolite.</p></dd>
+
+
 <dt>server</dt>
 <dd><p>server.</p></dd>
+
+
 <dt>sleep</dt>
 <dd><p>Sleep time for system. Second.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A classyfire class object.</p>
+    
+
+<p>A classyfire class object.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -126,16 +133,24 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">get_compound_class</span><span class="op">(</span></span>
-<span class="r-in">inchikey <span class="op">=</span> <span class="st">"QZDWODWEESGPLC-UHFFFAOYSA-N"</span>,</span>
-<span class="r-in">server <span class="op">=</span> <span class="st">"http://classyfire.wishartlab.com/entities/"</span>,</span>
-<span class="r-in">sleep <span class="op">=</span> <span class="fl">5</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖ QZDWODWEESGPLC-UHFFFAOYSA-N is not available in website.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">Please check this link:</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;"> http://classyfire.wishartlab.com/entities/QZDWODWEESGPLC-UHFFFAOYSA-N </span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_compound_class</span><span class="op">(</span></span></span>
+<span class="r-in"><span>inchikey <span class="op">=</span> <span class="st">"QZDWODWEESGPLC-UHFFFAOYSA-N"</span>,</span></span>
+<span class="r-in"><span>server <span class="op">=</span> <span class="st">"http://classyfire.wishartlab.com/entities/"</span>,</span></span>
+<span class="r-in"><span>sleep <span class="op">=</span> <span class="fl">5</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔ QZDWODWEESGPLC-UHFFFAOYSA-N is available in website.</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">classyfire Object</span> ─────────────────────────────────────── masstools v1.0.2 ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">Object Size: 9.1 Kb </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;"> </span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Information:</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> SMILES: CC(=O)Oc1cccnc1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> InChIKey: InChIKey=QZDWODWEESGPLC-UHFFFAOYSA-N</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Formula: C7H7NO2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Mass: 137.138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Kingdom</span> : <span style="color: #00BBBB;">Organic compounds</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> └─<span style="font-weight: bold;">Superclass</span> : <span style="color: #00BBBB;">Organoheterocyclic compounds</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   └─<span style="font-weight: bold;">Class</span> : <span style="color: #00BBBB;">Pyridines and derivatives</span></span>
 </code></pre></div>
     </div>
   </div>

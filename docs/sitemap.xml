@@ -31,6 +31,9 @@
     <loc>https://tidymass.github.io/masstools/news/index.html</loc>
   </url>
   <url>
+    <loc>https://tidymass.github.io/masstools/reference/convert_precursor_mz2accurate_mass.html</loc>
+  </url>
+  <url>
     <loc>https://tidymass.github.io/masstools/reference/getDP.html</loc>
   </url>
   <url>
@@ -98,6 +101,9 @@
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/setwd_win.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/show_progresser.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/split_formula.html</loc>

@@ -51,14 +51,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.9</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Help documents
      
     <span class="caret"></span>
@@ -73,7 +73,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     News
      
     <span class="caret"></span>
@@ -146,13 +146,13 @@
 </h1>
 <p>You can install <code>masstools</code> from <a href="https://gitlab.com/jaspershen/masstools" class="external-link">GitLab</a></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_gitlab.html" class="external-link">install_gitlab</a></span><span class="op">(</span><span class="st">"jaspershen/masstools"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_gitlab.html" class="external-link">install_gitlab</a></span><span class="op">(</span><span class="st">"jaspershen/masstools"</span><span class="op">)</span></span></code></pre></div>
 <p>or <a href="https://github.com/tidymass/masstools" class="external-link">GitHub</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"tidymass/masstools"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"tidymass/masstools"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level1">
 <h1 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -172,9 +172,8 @@
 <h1 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h1>
 <p>If you use <code>masstools</code> in your publications, please cite this paper:</p>
-<p>TidyMass: An Object-oriented Reproducible Analysis Framework for LC-MS Data.</p>
-<p>Xiaotao Shen, Hong Yan, Chuchu Wang, Peng Gao, Caroline H. Johnson, Michael P. Snyder.</p>
-<p><a href="https://www.biorxiv.org/content/10.1101/2022.03.15.484499v1" class="external-link">Web Link</a>.</p>
+<p>Shen, X., Yan, H., Wang, C. et al. TidyMass an object-oriented reproducible analysis framework for LC–MS data. Nat Commun 13, 4365 (2022).</p>
+<p><a href="https://www.nature.com/articles/s41467-022-32155-w" class="external-link">Weblink</a></p>
 <p>Thanks very much!</p>
 </div>
 
@@ -215,15 +214,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=masstools" class="external-link"><img src="https://www.r-pkg.org/badges/version/masstools?color=green"></a></li>
-<li><a href="https://github.com/tidymass/masstools" class="external-link"><img src="https://img.shields.io/github/languages/code-size/tidymass/masstools.svg"></a></li>
-<li><a href="https://cran.r-project.org/package=masstools" class="external-link"><img src="https://tinyverse.netlify.com/badge/masstools" alt="Dependencies"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"></a></li>
-</ul>
-</div>
+
 
   </div>
 </div>
