@@ -25,3 +25,7 @@
 # Version 1.0.2 (20220806)
 
 * Fixed bugs.
+
+# Version 1.0.3 (20220906)
+
+* Fixed bugs.
