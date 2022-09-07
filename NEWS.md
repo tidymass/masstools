@@ -29,3 +29,7 @@
 # Version 1.0.3 (20220906)
 
 * Fixed bugs.
+
+# Version 1.0.4 
+
+* New function read_mgf4database.
