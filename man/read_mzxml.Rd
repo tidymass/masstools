@@ -4,12 +4,14 @@
 \alias{read_mzxml}
 \title{read_mzxml}
 \usage{
-read_mzxml(file, threads = 3)
+read_mzxml(file, threads = 3, mode = c("inMemory", "onDisk"))
 }
 \arguments{
 \item{file}{The vector of names of ms2 files. MS2 file must be mzXML or mzML.}
 
 \item{threads}{Thread number}
+
+\item{mode}{inMemory or onDisk}
 }
 \value{
 Return ms2 data. This is a list.
