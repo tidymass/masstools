@@ -34,6 +34,6 @@
 
 * New function read_mgf4database.
 
-# Version 1.0.5
+# Version 1.0.5 (20220910)
 
 * Improve speed of read_mzxml.
