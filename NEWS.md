@@ -37,3 +37,7 @@
 # Version 1.0.5 (20220910)
 
 * Improve speed of read_mzxml.
+
+# Version 1.0.6 (20220916)
+
+* New function for ms2_plot.

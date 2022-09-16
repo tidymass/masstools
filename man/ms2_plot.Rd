@@ -2,9 +2,51 @@
 % Please edit documentation in R/ms2_plot.R
 \name{ms2_plot}
 \alias{ms2_plot}
+\alias{ms2_plot.data.frame}
+\alias{ms2_plot.matrix}
 \title{ms2_plot2}
 \usage{
 ms2_plot(
+  spectrum1,
+  spectrum2,
+  spectrum1_name = "spectrum1",
+  spectrum2_name = "spectrum2",
+  range.mz,
+  ppm.tol = 30,
+  mz.ppm.thr = 400,
+  xlab = "Mass to charge ratio (m/z)",
+  ylab = "Relative intensity",
+  col1 = "red",
+  col2 = "black",
+  title.size = 15,
+  lab.size = 15,
+  axis.text.size = 15,
+  legend.title.size = 15,
+  legend.text.size = 15,
+  interactive_plot = FALSE
+)
+
+\method{ms2_plot}{data.frame}(
+  spectrum1,
+  spectrum2,
+  spectrum1_name = "spectrum1",
+  spectrum2_name = "spectrum2",
+  range.mz,
+  ppm.tol = 30,
+  mz.ppm.thr = 400,
+  xlab = "Mass to charge ratio (m/z)",
+  ylab = "Relative intensity",
+  col1 = "red",
+  col2 = "black",
+  title.size = 15,
+  lab.size = 15,
+  axis.text.size = 15,
+  legend.title.size = 15,
+  legend.text.size = 15,
+  interactive_plot = FALSE
+)
+
+\method{ms2_plot}{matrix}(
   spectrum1,
   spectrum2,
   spectrum1_name = "spectrum1",
@@ -63,7 +105,7 @@ ms2_plot(
 Return a MS2 spectrum.
 }
 \description{
-Plot ms2 spectra or ms2 match plot.
+ms2_plot2
 }
 \examples{
 spectrum1 <- data.frame(
@@ -98,8 +140,4 @@ ms2_plot(spectrum1, spectrum2)
 ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)
 ms2_plot(spectrum1)
 ms2_plot(spectrum1, interactive_plot = TRUE)
-}
-\author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
 }
