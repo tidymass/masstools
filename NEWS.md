@@ -45,3 +45,7 @@
 # Version 1.0.7 (20220919)
 
 * Fix bug in read_mgf4database
+
+# Version 1.0.8 (20220919)
+
+* Fix bug in read_mgf
