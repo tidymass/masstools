@@ -1,6 +1,6 @@
 ####install_fastgit, credit to Shixiang Wang
 #' @title install_fastgit
-#' @param pkg pkg name from github, gitlab or gitee
+#' @param pkg pkg name from github, gitlab or gitee, "name/repo" format
 #' @param from gitlab, github or gitee
 #' @param ... Other parameters for remotes::install_git
 #' @return Return a MS2 spectrum.
