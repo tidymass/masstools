@@ -21,6 +21,19 @@ read_mgf4database <- function(file) {
         lapply(mgf.data, function(x) {
           grep("^\\d", x)
         })
+      
+      ###remove NULL spec
+      remove_idx <- 
+      lapply(nl.spec, length) %>% 
+        unlist() %>% 
+        `==`(0) %>% 
+        which()
+      
+      if(length(remove_idx) > 0){
+        mgf.data <- mgf.data[-remove_idx]
+        nl.spec <- nl.spec[-remove_idx]
+      }
+      
       info.mz <-
         lapply(mgf.data, function(x) {
           grep("^PEPMASS|PRECURSORMZ", x, value = TRUE)

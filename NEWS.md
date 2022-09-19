@@ -41,3 +41,7 @@
 # Version 1.0.6 (20220916)
 
 * New function for ms2_plot.
+
+# Version 1.0.7 (20220919)
+
+* Fix bug in read_mgf4database

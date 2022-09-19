@@ -364,5 +364,4 @@ ms2_plot.matrix <-
       legend.text.size = legend.text.size,
       interactive_plot = interactive_plot
     )
-    
   }
