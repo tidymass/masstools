@@ -50,7 +50,7 @@ Imports:
     Rdisop,
     lifecycle
 License: GPL-2 | file LICENSE
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Suggests: 
     knitr,
     rmarkdown,
