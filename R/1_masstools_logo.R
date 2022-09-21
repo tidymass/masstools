@@ -12,13 +12,11 @@
 #' @importFrom plotly ggplotly
 #' @importFrom pbapply pblapply
 #' @import ggplot2
-#' @importFrom plyr dlply .
 #' @importFrom methods .hasSlot new is
 #' @importFrom stats p.adjust rgamma
 #' @importFrom utils data str
 #' @importFrom magrittr %>%
 #' @importFrom purrr map map2 walk
-#' @import htmltools
 #' @import tidyr
 #' @importFrom BiocParallel bplapply
 #' @importFrom MSnbase readMSData
