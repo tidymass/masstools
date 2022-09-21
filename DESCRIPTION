@@ -24,6 +24,7 @@ LazyData: false
 Depends: R (>= 4.1)
 Imports: 
     dplyr,
+    remotes,
     magrittr,
     tibble,
     tidyr,

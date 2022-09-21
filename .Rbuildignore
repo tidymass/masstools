@@ -8,7 +8,7 @@ NEWS.md
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-.git
+\\.git
 ^\.github$
 .gitignore
 logo.txt
@@ -22,3 +22,5 @@ vignettes/install.Rmd
 vignettes/contact_us.Rmd
 
 .DS_Store
+
+cran-comments.md

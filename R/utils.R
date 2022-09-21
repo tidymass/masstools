@@ -212,8 +212,6 @@ install_fastgit <-
               remotes::install_github(pkg)
             }
           )
-        } else {
-          BiocManager::install(pkg)
         }
       }
     }

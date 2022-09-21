@@ -24,6 +24,7 @@
 #' @importFrom MSnbase readMSData
 #' @importFrom ProtGenerics spectra
 #' @importFrom lifecycle deprecate_soft
+#' @importFrom remotes install_git install_github install_gitlab
 #' @export
 #' @return masstools logo
 #' @examples
