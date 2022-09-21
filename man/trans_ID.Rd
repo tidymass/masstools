@@ -34,6 +34,7 @@ A data frame.
 Translate metabolite ID.
 }
 \examples{
+\dontrun{
 trans_ID(
     query = "C00001",
     from = "KEGG",
@@ -47,6 +48,7 @@ trans_ID(
     to = "Human Metabolome Database",
     server = "cts.fiehnlab"
 )
+}
 }
 \author{
 Xiaotao Shen

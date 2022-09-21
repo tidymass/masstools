@@ -18,7 +18,9 @@ A vector..
 Whate databases are supported.
 }
 \examples{
+\dontrun{
 trans_id_database(server = "cts.fiehnlab")
+}
 }
 \author{
 Xiaotao Shen

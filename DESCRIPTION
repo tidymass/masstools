@@ -1,6 +1,6 @@
 Package: masstools
 Type: Package
-Title: All the useful tools for MS data processing and analysis
+Title: A Collection of Useful Tools for MS Data Processing and Analysis
 Version: 1.0.8
 Date: 2021-11-06
 Authors@R: c(
@@ -60,5 +60,4 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Note:
-biocViews: Metabolomics, MassSpectrometry
 Config/testthat/edition: 3

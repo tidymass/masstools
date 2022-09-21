@@ -12,6 +12,11 @@ inder.
 \description{
 Open current work directory.
 }
+\examples{
+\dontrun{
+openwd()
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt1990@outlook.com}

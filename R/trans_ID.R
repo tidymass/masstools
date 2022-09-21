@@ -14,6 +14,7 @@
 #' @return A data frame.
 #' @export
 #' @examples
+#' \dontrun{
 #' trans_ID(
 #'     query = "C00001",
 #'     from = "KEGG",
@@ -27,6 +28,7 @@
 #'     to = "Human Metabolome Database",
 #'     server = "cts.fiehnlab"
 #' )
+#' }
 trans_ID <-
   function(query = "C00001",
            from = "KEGG",
@@ -194,7 +196,9 @@ trans_ID <-
 #' @return A vector..
 #' @export
 #' @examples
+#' \dontrun{
 #' trans_id_database(server = "cts.fiehnlab")
+#' }
 trans_id_database <- function(server = c("cts.fiehnlab",
                                          "chemspider")) {
   server <- match.arg(server)

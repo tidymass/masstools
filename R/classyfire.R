@@ -8,11 +8,13 @@
 #' @return A classyfire class object.
 #' @export
 #' @examples
+#' \dontrun{
 #' get_compound_class(
 #' inchikey = "QZDWODWEESGPLC-UHFFFAOYSA-N",
 #' server = "http://classyfire.wishartlab.com/entities/",
 #' sleep = 5
 #' )
+#' }
 get_compound_class <-
   function(inchikey = "QZDWODWEESGPLC-UHFFFAOYSA-N",
            server = "http://classyfire.wishartlab.com/entities/",
