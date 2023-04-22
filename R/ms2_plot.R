@@ -139,9 +139,9 @@ ms2_plot.data.frame <-
       matched.idx <- which(matched.spec[, "Lib.intensity"] > 0 &
                              matched.spec[, "Exp.intensity"] > 0)
       
-      plot <- ggplot(matched.spec) +
-        geom_segment(
-          mapping = aes(
+      plot <- ggplot2::ggplot(matched.spec) +
+        ggplot2::geom_segment(
+          mapping = ggplot2::aes(
             x = Exp.mz,
             y = Exp.intensity - Exp.intensity,
             xend = Exp.mz,
@@ -149,14 +149,14 @@ ms2_plot.data.frame <-
           ),
           colour = col2
         ) +
-        geom_point(
+        ggplot2::geom_point(
           data = matched.spec[matched.idx, , drop = FALSE],
-          mapping = aes(x = Exp.mz, y = Exp.intensity),
+          mapping = ggplot2::aes(x = Exp.mz, y = Exp.intensity),
           colour = col2
         ) +
-        xlim(range.mz[1], range.mz[2]) +
-        labs(x = xlab, y = ylab) +
-        scale_y_continuous(
+        ggplot2::xlim(range.mz[1], range.mz[2]) +
+        ggplot2::labs(x = xlab, y = ylab) +
+        ggplot2::scale_y_continuous(
           limits = c(-1, 1),
           breaks = c(-1, -0.5, 0, 0.5, 1),
           labels = c("1", "0.5", "0", "0.5", "1")
@@ -229,7 +229,9 @@ ms2_plot.data.frame <-
           colour = col1
         )
       if (interactive_plot) {
-        plot <- plotly::ggplotly(plot)
+        if (requireNamespace("plotly", quietly = TRUE)) {
+          plot <- plotly::ggplotly(plot)
+        }
       }
       return(plot)
     }
@@ -289,10 +291,11 @@ ms2_plot.data.frame <-
       )
     
     if (interactive_plot) {
-      plot <- plotly::ggplotly(plot)
+      if (requireNamespace("plotly", quietly = TRUE)) {
+        plot <- plotly::ggplotly(plot)
+      }
     }
     plot
-    
   }
 
 

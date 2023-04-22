@@ -4,21 +4,18 @@
 #' \email{shenxt1990@@outlook.com}
 #' @importFrom stringr str_replace str_split str_replace_all str_trim
 #' @importFrom dplyr filter mutate select everything
-#' @importFrom rstudioapi isAvailable hasFun getThemeInfo
 #' @importFrom utils packageDescription write.csv
 #' @importFrom cli rule symbol
 #' @importFrom crayon green blue col_align
 #' @importFrom crayon red black white style make_style num_colors
-#' @importFrom plotly ggplotly
 #' @importFrom pbapply pblapply
-#' @import ggplot2
 #' @importFrom methods .hasSlot new is
 #' @importFrom stats p.adjust rgamma
 #' @importFrom utils data str
 #' @importFrom magrittr %>%
 #' @importFrom purrr map map2 walk
 #' @import tidyr
-#' @importFrom BiocParallel bplapply
+#' @import ggplot2
 #' @importFrom MSnbase readMSData
 #' @importFrom ProtGenerics spectra
 #' @importFrom lifecycle deprecate_soft

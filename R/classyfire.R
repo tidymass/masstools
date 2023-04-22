@@ -25,7 +25,6 @@ get_compound_class <-
     if (is(result, class2 = "try-error")) {
       message(
         crayon::red(
-          clisymbols::symbol$cross,
           inchikey,
           "is not available in website.\nPlease check this link:\n",
           url
@@ -39,7 +38,6 @@ get_compound_class <-
     if (is(result, class2 = "try-error")) {
       message(
         crayon::red(
-          clisymbols::symbol$cross,
           inchikey,
           "is not available in website.\nPlease check this link:\n",
           url
@@ -51,7 +49,6 @@ get_compound_class <-
     if (is(result, class2 = "try-error")) {
       message(
         crayon::red(
-          clisymbols::symbol$cross,
           inchikey,
           "is not available in website.\nPlease check this link:\n",
           url
@@ -100,14 +97,12 @@ get_compound_class <-
       )
       message(
         crayon::red(
-          clisymbols::symbol$cross,
           inchikey,
           "is not available in website.\n"
         )
       )
     } else {
       message(crayon::green(
-        clisymbols::symbol$tick,
         inchikey,
         "is available in website."
       ))

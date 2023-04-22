@@ -20,7 +20,7 @@ Description: This package contains a lot of base functions which can be used for
 URL: https://github.com/tidymass/masstools
 BugReports: https://github.com/tidymass/masstools/issues
 Encoding: UTF-8
-LazyData: false
+LazyData: true
 Depends: R (>= 4.1)
 Imports: 
     dplyr,
@@ -29,32 +29,29 @@ Imports:
     tibble,
     tidyr,
     stringr,
-    rstudioapi,
-    ggplot2,
     methods,
     crayon,
     cli,
     purrr,
-    plotly,
     pbapply,
-    clisymbols,
     httr,
     rvest,
     xml2,
     stats,
     utils,
-    BiocParallel,
     MSnbase,
     ProtGenerics,
     Rdisop,
-    lifecycle
+    lifecycle,
+    ggplot2
 License: GPL-2 | file LICENSE
 RoxygenNote: 7.2.1
 Suggests: 
     knitr,
     rmarkdown,
     tidyverse,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    plotly
 VignetteBuilder: knitr
 Note:
 Config/testthat/edition: 3
