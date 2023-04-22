@@ -1,6 +1,6 @@
 ## -----------------------------------------------------------------------
 #' @title get_os
-#' @description Convert from wide data to long data.
+#' @description get os information.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
 #' @export

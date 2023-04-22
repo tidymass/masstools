@@ -10,7 +10,7 @@ get_os()
 os name
 }
 \description{
-Convert from wide data to long data.
+get os information.
 }
 \examples{
 get_os()

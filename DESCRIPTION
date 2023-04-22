@@ -2,7 +2,7 @@ Package: masstools
 Type: Package
 Title: A Collection of Useful Tools for MS Data Processing and Analysis
 Version: 1.0.8
-Date: 2021-11-06
+Date: 2023-04-22
 Authors@R: c(
     person(given = "Xiaotao",
            family = "Shen",
@@ -53,9 +53,6 @@ RoxygenNote: 7.2.1
 Suggests: 
     knitr,
     rmarkdown,
-    BiocStyle,
-    RUnit,
-    BiocGenerics,
     tidyverse,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
