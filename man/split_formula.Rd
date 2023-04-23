@@ -10,7 +10,7 @@ split_formula(formula = "C9H11NO2")
 \item{formula}{Chemical formula.}
 }
 \value{
-A splited formula.
+A spited formula.
 }
 \description{
 Split a formula into element and number.

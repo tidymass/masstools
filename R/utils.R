@@ -13,13 +13,13 @@
 #   if (!rstudioapi::isAvailable()) {
 #     return(x)
 #   }
-#   
+#
 #   if (!rstudioapi::hasFun("getThemeInfo")) {
 #     return(x)
 #   }
-#   
+#
 #   theme <- rstudioapi::getThemeInfo()
-#   
+#
 #   if (isTRUE(theme$dark)) {
 #     crayon::white(x)
 #   } else {
@@ -187,6 +187,7 @@ show_progresser <-
 #' @param pkg pkg name from github, gitlab or gitee, "name/repo" format
 #' @param from gitlab, github or gitee.
 #' @param ... Other parameters for install_git
+#' @return NULL
 #' @export
 
 install_fastgit <-
@@ -216,4 +217,3 @@ install_fastgit <-
       }
     }
   }
-

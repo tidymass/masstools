@@ -111,7 +111,7 @@ sum_formula <-
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
 #' @param formula Chemical formula.
-#' @return A splited formula.
+#' @return A spited formula.
 #' @importFrom Rdisop getMass getMolecule
 #' @export
 #' @examples

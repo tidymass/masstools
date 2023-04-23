@@ -1,8 +1,8 @@
 Package: masstools
 Type: Package
-Title: A Collection of Useful Tools for MS Data Processing and Analysis
-Version: 1.0.8
-Date: 2023-04-22
+Title: A Collection of Useful Tools for Mass Spectrometry Data Processing and Analysis
+Version: 1.0.9
+Date: 2023-04-23
 Authors@R: c(
     person(given = "Xiaotao",
            family = "Shen",
@@ -13,15 +13,15 @@ Authors@R: c(
            family = "Wang",
            role = c("aut", "ctb"))
            )
-Description: This package contains a lot of base functions which can be used for 
+Description: The masstools package contains a lot of base functions which can be used for 
     mass spectrometry and metabolomics data processing and analysis. For example,
-    MS2 matching, dot product calculation, etc. 
-    This package is used by all the tidymass packages. 
-URL: https://github.com/tidymass/masstools
+    tandem mass spectrometry (MS2) matching, dot product calculation, etc. 
+URL: https://masstools.tidymass.org/
 BugReports: https://github.com/tidymass/masstools/issues
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.1)
+License: MIT + file LICENSE
 Imports: 
     dplyr,
     remotes,
@@ -44,7 +44,6 @@ Imports:
     Rdisop,
     lifecycle,
     ggplot2
-License: GPL-2 | file LICENSE
 RoxygenNote: 7.2.1
 Suggests: 
     knitr,

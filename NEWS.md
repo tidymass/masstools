@@ -49,3 +49,7 @@
 # Version 1.0.8 (20220919)
 
 * Fix bug in read_mgf
+
+# Version 1.0.9 (20230423)
+
+* Fix some bugs.

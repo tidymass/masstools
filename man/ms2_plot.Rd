@@ -102,7 +102,7 @@ ms2_plot(
 \item{interactive_plot}{Interactive plot or not.}
 }
 \value{
-Return a MS2 spectrum.
+Return a tandem mass spectrometry (MS2) spectrum.
 }
 \description{
 ms2_plot2

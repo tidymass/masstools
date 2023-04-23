@@ -6,9 +6,6 @@
 \usage{
 setwd_project()
 }
-\value{
-nothing
-}
 \description{
 Set work directory where Rproj object in.
 }

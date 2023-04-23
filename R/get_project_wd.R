@@ -1,5 +1,5 @@
-#' @title setwd_project
-#' @description Set work directory where Rproj object in.
+#' @title get_project_wd
+#' @description Get the working directory where Rproj object is in.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
 #' @import dplyr
@@ -7,10 +7,10 @@
 #' @importFrom stringr str_split
 #' @importFrom utils head
 #' @importFrom utils tail
-#' @return NULL
+#' @return A working directory.
 #' @export
 
-setwd_project <- function() {
+get_project_wd <- function() {
   current_wd <-
     getwd()
   candidate_wd <-
@@ -53,13 +53,10 @@ setwd_project <- function() {
           unlist() %>%
           tail(1)
       )
-      message("The project wd is:",
-              project_wd)
+      # message("The project wd is:",
+      #         project_wd)
       
-      oldwd <- getwd()
-      on.exit(setwd(oldwd))
-      
-      setwd(project_wd)
+      return(project_wd)
       break()
     }
   }
