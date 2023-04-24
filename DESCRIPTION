@@ -1,8 +1,8 @@
 Package: masstools
 Type: Package
 Title: A Collection of Useful Tools for Mass Spectrometry Data Processing and Analysis
-Version: 1.0.9
-Date: 2023-04-23
+Version: 1.0.10
+Date: 2023-04-24
 Authors@R: c(
     person(given = "Xiaotao",
            family = "Shen",
@@ -21,7 +21,7 @@ BugReports: https://github.com/tidymass/masstools/issues
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.1)
-License: MIT + file LICENSE
+License: MIT
 Imports: 
     dplyr,
     remotes,
