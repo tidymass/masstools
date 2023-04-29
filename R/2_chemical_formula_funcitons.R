@@ -1,3 +1,239 @@
+
+
+
+## ---------------------------------------------------------------------------
+#' @title check_formula
+#' @description Check a formula is valid or not.
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@outlook.com}
+#' #' @param formula Chemical formula.
+#' #' @return TRUE or FALSE
+#' #' @export
+#' #' @examples
+#' #' check_formula(formula = "C9H11NO2")
+#'
+#' check_formula <- function(formula) {
+#'
+#' }
+
+## ---------------------------------------------------------------------------
+#' @title split_formula
+#' @description Split a formula into element and number.
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@outlook.com}
+#' @param formula Chemical formula.
+#' @return A spited formula.
+#' @importFrom Rdisop getMass getMolecule
+#' @export
+#' @examples
+#' split_formula(formula = "C9H11NO2")
+#' split_formula(formula = "CH3")
+split_formula <-
+  function(formula = "C9H11NO2") {
+    temp.formula <- strsplit(formula, split = "")[[1]]
+    
+    number <- NULL
+    for (i in seq_along(temp.formula)) {
+      if (length(grep("[0-9]{1}", temp.formula[i])) == 0) {
+        break
+      }
+      number[i] <- temp.formula[i]
+    }
+    
+    if (!is.null(number)) {
+      number <- as.numeric(paste(number, collapse = ""))
+    } else {
+      number <- 1
+    }
+    
+    ## first select the Na, Cl and so on element
+    idx1 <- gregexpr("[A-Z][a-z][0-9]*", formula)[[1]]
+    len1 <- attributes(idx1)$match.length
+    
+    ## no double element
+    if (idx1[1] == -1) {
+      double.formula <- matrix(NA, ncol = 2)
+      formula1 <- formula
+    } else {
+      double.letter.element <- NULL
+      double.number <- NULL
+      remove.idx <- NULL
+      for (i in seq_along(idx1)) {
+        double.letter.element[i] <-
+          substr(formula, idx1[i], idx1[i] + len1[i] - 1)
+        if (nchar(double.letter.element[i]) == 2) {
+          double.number[i] <- 1
+        } else {
+          double.number[i] <-
+            as.numeric(substr(
+              double.letter.element[i],
+              3,
+              nchar(double.letter.element[i])
+            ))
+        }
+        double.letter.element[i] <-
+          substr(double.letter.element[i], 1, 2)
+        remove.idx <-
+          c(remove.idx, idx1[i]:(idx1[i] + len1[i] - 1))
+      }
+      
+      double.formula <- data.frame(double.letter.element,
+                                   double.number,
+                                   stringsAsFactors = FALSE)
+      formula1 <- strsplit(formula, split = "")[[1]]
+      formula1 <- formula1[-remove.idx]
+      formula1 <- paste(formula1, collapse = "")
+    }
+    
+    ## no one element
+    if (formula1 == "") {
+      one.formula <- matrix(NA, ncol = 2)
+    } else {
+      idx2 <- gregexpr("[A-Z][0-9]*", formula1)[[1]]
+      len2 <- attributes(idx2)$match.length
+      one.letter.element <- NULL
+      one.number <- NULL
+      for (i in seq_along(idx2)) {
+        one.letter.element[i] <-
+          substr(formula1, idx2[i], idx2[i] + len2[i] - 1)
+        if (nchar(one.letter.element[i]) == 1) {
+          one.number[i] <- 1
+        } else {
+          one.number[i] <-
+            as.numeric(substr(one.letter.element[i],
+                              2,
+                              nchar(one.letter.element[i])))
+        }
+        one.letter.element[i] <-
+          substr(one.letter.element[i], 1, 1)
+      }
+      one.formula <-
+        data.frame(one.letter.element, one.number,
+                   stringsAsFactors = FALSE)
+    }
+    
+    colnames(double.formula) <-
+      colnames(one.formula) <- c("element.name", "number")
+    formula <- rbind(double.formula, one.formula)
+    formula <-
+      formula[!apply(formula, 1, function(x) {
+        any(is.na(x))
+      }),]
+    
+    formula <- formula[order(formula$element.name),]
+    formula$number <- formula$number * number
+    unique.element <- unique(formula$element.name)
+    if (length(unique.element) == nrow(formula)) {
+      return(formula)
+    } else {
+      formula <- lapply(unique.element, function(x) {
+        formula[formula$element.name == x, , drop = FALSE]
+      })
+      
+      formula <- lapply(formula, function(x) {
+        data.frame(unique(x$element.name),
+                   sum(x$number),
+                   stringsAsFactors = FALSE)
+      })
+      
+      formula <- do.call(rbind, formula)
+      colnames(formula) <- c("element.name", "number")
+      return(formula)
+    }
+  }
+
+
+
+
+
+
+
+#' @title convert_precursor_mz2accurate_mass
+#' @description convert_precursor_mz2accurate_mass
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@outlook.com}
+#' @param precursor_mz Chemical formula.
+#' @param adduct Adduct.
+#' @export
+#' @return formula
+#' @examples
+# convert_precursor_mz2accurate_mass(
+# precursor_mz = 805.559,
+# adduct = "2M-2H+Na")
+convert_precursor_mz2accurate_mass <-
+  function(precursor_mz = 805.559,
+           adduct = "2M-2H+Na") {
+    precursor_mz <- as.numeric(precursor_mz)
+    if (is.na(precursor_mz)) {
+      return(NA)
+    }
+    
+    if (is.na(adduct)) {
+      return(NA)
+    }
+    
+    if (adduct == "M+" | adduct == "M-") {
+      return(precursor_mz)
+    }
+    
+    element <-
+      stringr::str_split(adduct, "[\\-\\+]{1}")[[1]][-1]
+    element_number <-
+      stringr::str_extract(element, "[0-9]{1,3}") %>%
+      as.numeric()
+    element_number[is.na(element_number)] <- 1
+    element <-
+      element %>%
+      stringr::str_replace("[0-9]{1,3}", "") %>%
+      stringr::str_replace_all("\\(\\)", "")
+    plus_minus <-
+      stringr::str_extract_all(adduct, "[\\-\\+]{1}")[[1]]
+    
+    df <-
+      data.frame(plus_minus, element_number, element)
+    
+    if (nrow(df) == 0) {
+      return(NA)
+    }
+    
+    df$element[df$element == "ACN"] <- "C2H3N"
+    df$element[df$element == "MeOH"] <- "CH4O"
+    
+    df$element_mass <-
+      df$element %>%
+      purrr::map(function(x) {
+        tryCatch(
+          Rdisop::getMass(Rdisop::getMolecule(x)),
+          error = function(e)
+            NA
+        )
+      }) %>%
+      unlist()
+    
+    df <-
+      df %>%
+      dplyr::mutate(pos_neg =
+                      case_when(plus_minus == "+" ~ -1,
+                                plus_minus == "-" ~ 1))
+    
+    additional_mass <-
+      (df$element_mass * df$element_number) * df$pos_neg
+    
+    precursor_number <-
+      stringr::str_extract(adduct, "^[0-9]{1,2}") %>%
+      as.numeric()
+    
+    if (is.na(precursor_number)) {
+      precursor_number <- 1
+    }
+    
+    (precursor_mz + sum(additional_mass)) / precursor_number
+  }
+
+
+
+
+
 ## ----------------------------------------------------------------------------
 #' @title sum_formula
 #' @description Get the total formula after add adduct.
@@ -87,7 +323,7 @@ sum_formula <-
       })
       
       formula <- do.call(rbind, formula)
-      formula <- formula[formula[, 2] != 0, ]
+      formula <- formula[formula[, 2] != 0,]
       colnames(formula) <- c("element.name", "number")
       if (any(formula$number < 0)) {
         return(NA)
@@ -102,213 +338,4 @@ sum_formula <-
         return(formula)
       }
     }
-  }
-
-
-## ---------------------------------------------------------------------------
-#' @title split_formula
-#' @description Split a formula into element and number.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param formula Chemical formula.
-#' @return A spited formula.
-#' @importFrom Rdisop getMass getMolecule
-#' @export
-#' @examples
-#' split_formula(formula = "C9H11NO2")
-split_formula <-
-  function(formula = "C9H11NO2") {
-    temp.formula <- strsplit(formula, split = "")[[1]]
-    
-    number <- NULL
-    for (i in seq_along(temp.formula)) {
-      if (length(grep("[0-9]{1}", temp.formula[i])) == 0) {
-        break
-      }
-      number[i] <- temp.formula[i]
-    }
-    
-    if (!is.null(number)) {
-      number <- as.numeric(paste(number, collapse = ""))
-    } else {
-      number <- 1
-    }
-    ## first select the Na, Cl and so on element
-    idx1 <- gregexpr("[A-Z][a-z][0-9]*", formula)[[1]]
-    len1 <- attributes(idx1)$match.length
-    ## no double element
-    if (idx1[1] == -1) {
-      double.formula <- matrix(NA, ncol = 2)
-      formula1 <- formula
-    } else {
-      double.letter.element <- NULL
-      double.number <- NULL
-      remove.idx <- NULL
-      for (i in seq_along(idx1)) {
-        double.letter.element[i] <-
-          substr(formula, idx1[i], idx1[i] + len1[i] - 1)
-        if (nchar(double.letter.element[i]) == 2) {
-          double.number[i] <- 1
-        } else {
-          double.number[i] <-
-            as.numeric(substr(
-              double.letter.element[i],
-              3,
-              nchar(double.letter.element[i])
-            ))
-        }
-        double.letter.element[i] <-
-          substr(double.letter.element[i], 1, 2)
-        remove.idx <-
-          c(remove.idx, idx1[i]:(idx1[i] + len1[i] - 1))
-      }
-      
-      double.formula <- data.frame(double.letter.element,
-                                   double.number,
-                                   stringsAsFactors = FALSE)
-      formula1 <- strsplit(formula, split = "")[[1]]
-      formula1 <- formula1[-remove.idx]
-      formula1 <- paste(formula1, collapse = "")
-    }
-    
-    ## no one element
-    if (formula1 == "") {
-      one.formula <- matrix(NA, ncol = 2)
-    } else {
-      idx2 <- gregexpr("[A-Z][0-9]*", formula1)[[1]]
-      len2 <- attributes(idx2)$match.length
-      one.letter.element <- NULL
-      one.number <- NULL
-      for (i in seq_along(idx2)) {
-        one.letter.element[i] <-
-          substr(formula1, idx2[i], idx2[i] + len2[i] - 1)
-        if (nchar(one.letter.element[i]) == 1) {
-          one.number[i] <- 1
-        } else {
-          one.number[i] <-
-            as.numeric(substr(one.letter.element[i],
-                              2,
-                              nchar(one.letter.element[i])))
-        }
-        one.letter.element[i] <-
-          substr(one.letter.element[i], 1, 1)
-      }
-      one.formula <-
-        data.frame(one.letter.element, one.number,
-                   stringsAsFactors = FALSE)
-    }
-    
-    colnames(double.formula) <-
-      colnames(one.formula) <- c("element.name", "number")
-    formula <- rbind(double.formula, one.formula)
-    formula <-
-      formula[!apply(formula, 1, function(x) {
-        any(is.na(x))
-      }), ]
-    
-    formula <- formula[order(formula$element.name), ]
-    formula$number <- formula$number * number
-    unique.element <- unique(formula$element.name)
-    if (length(unique.element) == nrow(formula)) {
-      return(formula)
-    } else {
-      formula <- lapply(unique.element, function(x) {
-        formula[formula$element.name == x, , drop = FALSE]
-      })
-      
-      formula <- lapply(formula, function(x) {
-        data.frame(unique(x$element.name),
-                   sum(x$number),
-                   stringsAsFactors = FALSE)
-      })
-      
-      formula <- do.call(rbind, formula)
-      colnames(formula) <- c("element.name", "number")
-      return(formula)
-    }
-  }
-
-
-
-
-
-
-
-#' @title convert_precursor_mz2accurate_mass
-#' @description convert_precursor_mz2accurate_mass
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param precursor_mz Chemical formula.
-#' @param adduct Adduct.
-#' @export
-#' @return formula
-#' @examples
-#' convert_precursor_mz2accurate_mass(
-#' precursor_mz = 805.559,
-#' adduct = "2M-2H+Na")
-convert_precursor_mz2accurate_mass <-
-  function(precursor_mz = 805.559,
-           adduct = "2M-2H+Na") {
-    precursor_mz <- as.numeric(precursor_mz)
-    if (is.na(precursor_mz)) {
-      return(NA)
-    }
-    
-    if (is.na(adduct)) {
-      return(NA)
-    }
-    
-    if (adduct == "M+" | adduct == "M-") {
-      return(precursor_mz)
-    }
-    
-    element <-
-      stringr::str_split(adduct, "[\\-\\+]{1}")[[1]][-1]
-    element_number <-
-      stringr::str_extract(element, "[0-9]{1,3}") %>%
-      as.numeric()
-    element_number[is.na(element_number)] <- 1
-    element <-
-      element %>%
-      stringr::str_replace("[0-9]{1,3}", "") %>%
-      stringr::str_replace_all("\\(\\)", "")
-    plus_minus <-
-      stringr::str_extract_all(adduct, "[\\-\\+]{1}")[[1]]
-    
-    df <-
-      data.frame(plus_minus, element_number, element)
-    
-    if(nrow(df) == 0){
-      return(NA)
-    }
-    
-    df$element[df$element == "ACN"] <- "C2H3N"
-    df$element[df$element == "MeOH"] <- "CH4O"
-    
-    df$element_mass <-
-      df$element %>%
-      purrr::map(function(x) {
-        tryCatch(Rdisop::getMass(Rdisop::getMolecule(x)),
-                 error = function(e) NA)
-      }) %>%
-      unlist()
-    
-    df <-
-      df %>%
-      dplyr::mutate(pos_neg =
-                      case_when(plus_minus == "+" ~ -1,
-                                plus_minus == "-" ~ 1))
-    
-    additional_mass <-
-      (df$element_mass * df$element_number) * df$pos_neg
-    
-    precursor_number <-
-      stringr::str_extract(adduct, "^[0-9]{1,2}") %>%
-      as.numeric()
-    
-    if(is.na(precursor_number)){
-      precursor_number <- 1
-    }
-    
-    (precursor_mz + sum(additional_mass))/precursor_number
   }
