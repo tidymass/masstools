@@ -1,8 +1,8 @@
 Package: masstools
 Type: Package
 Title: A Collection of Useful Tools for Mass Spectrometry Data Processing and Analysis
-Version: 1.0.10
-Date: 2023-04-24
+Version: 1.0.11
+Date: 2023-09-29
 Authors@R: c(
     person(given = "Xiaotao",
            family = "Shen",
@@ -41,10 +41,9 @@ Imports:
     utils,
     MSnbase,
     ProtGenerics,
-    Rdisop,
     lifecycle,
     ggplot2
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests: 
     knitr,
     rmarkdown,
