@@ -2,9 +2,51 @@
 % Please edit documentation in R/ms2_plot.R
 \name{ms2_plot}
 \alias{ms2_plot}
+\alias{ms2_plot.data.frame}
+\alias{ms2_plot.matrix}
 \title{Plot MS2 Spectra Comparisons}
 \usage{
 ms2_plot(
+  spectrum1,
+  spectrum2,
+  spectrum1_name = "spectrum1",
+  spectrum2_name = "spectrum2",
+  range.mz,
+  ppm.tol = 30,
+  mz.ppm.thr = 400,
+  xlab = "Mass to charge ratio (m/z)",
+  ylab = "Relative intensity",
+  col1 = "red",
+  col2 = "black",
+  title.size = 15,
+  lab.size = 15,
+  axis.text.size = 15,
+  legend.title.size = 15,
+  legend.text.size = 15,
+  interactive_plot = FALSE
+)
+
+\method{ms2_plot}{data.frame}(
+  spectrum1,
+  spectrum2,
+  spectrum1_name = "spectrum1",
+  spectrum2_name = "spectrum2",
+  range.mz,
+  ppm.tol = 30,
+  mz.ppm.thr = 400,
+  xlab = "Mass to charge ratio (m/z)",
+  ylab = "Relative intensity",
+  col1 = "red",
+  col2 = "black",
+  title.size = 15,
+  lab.size = 15,
+  axis.text.size = 15,
+  legend.title.size = 15,
+  legend.text.size = 15,
+  interactive_plot = FALSE
+)
+
+\method{ms2_plot}{matrix}(
   spectrum1,
   spectrum2,
   spectrum1_name = "spectrum1",
@@ -61,11 +103,26 @@ ms2_plot(
 }
 \value{
 A plot visualizing the comparison between the two provided MS2 spectra.
+
+A ggplot or plotly object visualizing the comparison between the provided MS2 spectra.
+
+A ggplot or plotly object visualizing the comparison between 
+the provided MS2 spectra.
 }
 \description{
 This function provides a method to visualize and compare two MS2 spectra side by side.
 The method to be used for the comparison depends on the class of the `spectrum1` and `spectrum2`
 objects provided.
+
+This function visualizes and compares two MS2 spectra given as data frames side by side.
+}
+\details{
+If both `spectrum1` and `spectrum2` are provided, the function plots the comparison between the two spectra.
+If only one spectrum is provided, it plots that spectrum.
+
+If both `spectrum1` and `spectrum2` are provided, the function plots 
+the comparison between the two spectra.
+If only one spectrum is provided, it plots that spectrum.
 }
 \examples{
 \dontrun{
@@ -73,9 +130,50 @@ objects provided.
 ms2_plot(spec1, spec2)
 }
 
+spectrum1 <- data.frame(
+    mz = c(
+        87.50874,
+        94.85532,
+        97.17808,
+        97.25629,
+        103.36186,
+        106.96647,
+        107.21461,
+        111.00887,
+        113.79269,
+        118.70564
+    ),
+    intensity =
+        c(
+            8356.306,
+            7654.128,
+            9456.207,
+            8837.188,
+            8560.228,
+            8746.359,
+            8379.361,
+            169741.797,
+            7953.080,
+            8378.066
+        )
+)
+spectrum2 <- spectrum1
+ms2_plot(spectrum1, spectrum2)
+ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)
+ms2_plot(spectrum1)
+ms2_plot(spectrum1, interactive_plot = TRUE)
+\dontrun{
+# Assuming `spec1_mat` and `spec2_mat` are matrices with MS2 spectra data
+ms2_plot(spec1_mat, spec2_mat)
+}
+
 }
 \seealso{
 The specific plotting methods associated with different spectrum classes that implement this generic function.
+
+`ms2_plot` for the generic method.
+
+`ms2_plot` for the generic method.
 }
 \author{
 Xiaotao Shen <shenxt1990@outlook.com>

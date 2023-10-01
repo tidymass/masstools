@@ -62,7 +62,7 @@ ms2_plot <-
 #'
 #'
 #' @method ms2_plot data.frame
-#' @rdname ms2_plot-methods
+#' @rdname ms2_plot
 #'
 #' @details
 #' If both `spectrum1` and `spectrum2` are provided, the function plots the comparison between the two spectra.
@@ -347,7 +347,7 @@ ms2_plot.data.frame <- function(spectrum1,
 #' @author Xiaotao Shen <shenxt1990@outlook.com>
 #' @seealso `ms2_plot` for the generic method.
 #' @method ms2_plot matrix
-#' @rdname ms2_plot-methods
+#' @rdname ms2_plot
 #' @export
 ms2_plot.matrix <- function(spectrum1,
                             spectrum2,
