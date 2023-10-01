@@ -1,10 +1,22 @@
-#' @title read_mgf4database
-#' @description Read MGF data.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param file The vector of names of ms2 files. MS2 file must be mgf.
-#' @importFrom tidyr separate
-#' @return Return ms2 data. This is a list.
+#' Read and Process MGF Files for Database Analysis
+#'
+#' Reads MGF files and extracts the relevant MS2 spectra information. 
+#' This function is tailored for database-oriented analyses.
+#'
+#' @param file A character vector specifying the path(s) to the MGF file(s).
+#'
+#' @return A list containing processed MS2 spectra information for each provided MGF file. 
+#' Each element of the list contains two components: 
+#' \itemize{
+#'   \item \code{info}: A data frame with columns for the name (composed of m/z and retention time), m/z, retention time, and file name.
+#'   \item \code{spec}: A data frame where each row represents a fragment ion peak, with columns for m/z and intensity values.
+#' }
+#' Empty spectra are removed from the output.
+#'
+#' @examples 
+#' # Assuming 'sample.mgf' is the path to your MGF file.
+#' # mgf_data <- read_mgf4database('sample.mgf')
+#'
 #' @export
 
 read_mgf4database <- function(file) {

@@ -14,7 +14,7 @@
 #' @importFrom pbapply pblapply
 #' @importFrom methods .hasSlot new is
 #' @importFrom stats p.adjust rgamma
-#' @importFrom utils data str
+#' @importFrom utils data str head tail
 #' @importFrom magrittr %>%
 #' @importFrom purrr map map2 walk
 #' @import tidyr

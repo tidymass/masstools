@@ -2,7 +2,7 @@
 % Please edit documentation in R/name_duplicated.R
 \name{name_duplicated}
 \alias{name_duplicated}
-\title{name_duplicated}
+\title{Handle Duplicated Names by Appending Sequence Number}
 \usage{
 name_duplicated(x)
 }
@@ -10,17 +10,14 @@ name_duplicated(x)
 \item{x}{A character vector.}
 }
 \value{
-A character vector without duplicated.
+A character vector where duplicated names are made unique by appending a sequence number.
 }
 \description{
-name_duplicated
+This function checks for duplicated elements in a vector. If duplicated elements are found,
+it appends an underscore and a sequence number to each occurrence of the duplicated element.
 }
 \examples{
-name_duplicated(c("a", "a", "b", "c", "a", "b", "c", "a"))
-name_duplicated(c(rep(1, 5), 2))
-name_duplicated(1:5)
-}
-\author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
+vec <- c("apple", "orange", "apple", "banana", "orange")
+name_duplicated(vec)
+
 }

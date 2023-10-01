@@ -2,20 +2,28 @@
 % Please edit documentation in R/read_mgf.R
 \name{read_mgf}
 \alias{read_mgf}
-\title{read_mgf}
+\title{Read and Process MGF Files}
 \usage{
 read_mgf(file)
 }
 \arguments{
-\item{file}{The vector of names of ms2 files. MS2 file must be mgf.}
+\item{file}{A character vector specifying the path(s) to the MGF file(s).}
 }
 \value{
-Return ms2 data. This is a list.
+A list containing processed MS2 spectra information for each provided MGF file. 
+Each element of the list contains two components: 
+\itemize{
+  \item \code{info}: A named numeric vector containing the m/z and retention time of the precursor ion.
+  \item \code{spec}: A matrix where each row represents a fragment ion peak, with columns for m/z and intensity values.
+}
+Empty spectra are removed from the output.
 }
 \description{
-Read MGF data.
+This function reads MGF files and extracts the relevant MS2 spectra information. 
+Duplicated peaks and noise can be optionally removed.
 }
-\author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
+\examples{
+# Assuming 'sample.mgf' is the path to your MGF file.
+# mgf_data <- read_mgf('sample.mgf')
+
 }

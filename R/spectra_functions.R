@@ -1,14 +1,28 @@
-### getSpectraMatchScore is used to get
-### two MS2 spectra match score, see MS-DIAL
-#' @title getSpectraMatchScore
-#' @param exp.spectrum exp.spectrum
-#' @param lib.spectrum lib.spectrum
-#' @param ppm.tol ppm.tol
-#' @param mz.ppm.thr mz.ppm.thr
-#' @param fraction.weight fraction.weight
-#' @param dp.forward.weight dp.forward.weight
-#' @param dp.reverse.weight dp.reverse.weight
-#' @return spectrum match score
+#' Compute Similarity Score Between Two Mass Spectra
+#'
+#' This function computes the similarity score between two mass spectra.
+#' The similarity is calculated based on a weighted sum of the fraction of
+#' matching peaks and dot products (forward and reverse).
+#'
+#' @param exp.spectrum A data frame representing the experimental spectrum.
+#'   This data frame should contain columns for 'mz' and 'intensity'.
+#' @param lib.spectrum A data frame representing the library spectrum.
+#'   This data frame should contain columns for 'mz' and 'intensity'.
+#' @param ppm.tol A numeric value indicating the ppm tolerance.
+#' @param mz.ppm.thr A numeric value for m/z threshold for ppm calculation.
+#' @param fraction.weight A numeric value for weight of fraction component in score.
+#' @param dp.forward.weight A numeric value for weight of forward dot product component in score.
+#' @param dp.reverse.weight A numeric value for weight of reverse dot product component in score.
+#'
+#' @return A numeric value representing the similarity score between
+#'   \code{exp.spectrum} and \code{lib.spectrum}.
+#'
+#' @details
+#' The function scales the intensities of both spectra to a range of 0 to 1,
+#' identifies matching peaks, and computes a weighted similarity score using
+#' fraction of matching peaks and dot products. The function is deprecated,
+#' and users should transition to using the new function.
+#'
 #' @export
 #' @examples
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
@@ -60,20 +74,30 @@ getSpectraMatchScore <- function(exp.spectrum,
 }
 
 
-#' @title get_spectra_match_score
-#' @description get_spectra_match_score is used to get two
-#' MS2 spectra match score, see MS-DIAL
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param exp.spectrum exp.spectrum
-#' @param lib.spectrum lib.spectrum
-#' @param ppm.tol ppm.tol
-#' @param mz.ppm.thr mz.ppm.thr
-#' @param fraction.weight fraction.weight
-#' @param dp.forward.weight dp.forward.weight
-#' @param dp.reverse.weight dp.reverse.weight
-#' @param remove_fragment_intensity_cutoff default is 0 (100 percentage).
-#' @return spectrum match score
+#' Compute Similarity Score Between Two Mass Spectra
+#'
+#' This function computes the similarity score between two mass spectra
+#' considering an option to filter out lower fragment intensities.
+#'
+#' @param exp.spectrum A data frame representing the experimental spectrum.
+#'   This data frame should contain columns for 'mz' and 'intensity'.
+#' @param lib.spectrum A data frame representing the library spectrum.
+#'   This data frame should contain columns for 'mz' and 'intensity'.
+#' @param ppm.tol A numeric value indicating the ppm tolerance.
+#' @param mz.ppm.thr A numeric value for m/z threshold for ppm calculation.
+#' @param fraction.weight A numeric value for weight of fraction component in score.
+#' @param dp.forward.weight A numeric value for weight of forward dot product component in score.
+#' @param dp.reverse.weight A numeric value for weight of reverse dot product component in score.
+#' @param remove_fragment_intensity_cutoff A numeric value specifying the intensity cutoff for filtering out fragments in the spectra. Default is 0, which means no fragments are filtered out based on intensity.
+#'
+#' @return A numeric value representing the similarity score between
+#'   \code{exp.spectrum} and \code{lib.spectrum}.
+#'
+#' @details
+#' The function scales the intensities of both spectra to a range of 0 to 1,
+#' identifies matching peaks, and computes a weighted similarity score using
+#' fraction of matching peaks and dot products. Additionally, fragments below
+#' the specified intensity cutoff can be removed from the spectra before matching.
 #' @export
 #' @examples
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
@@ -131,11 +155,24 @@ get_spectra_match_score <-
     return(score)
   }
 
-##### getDP is used to calculate dot product
-#' @title getDP
-#' @param exp.int exp.int
-#' @param lib.int lib.int
-#' @return dot product
+
+
+
+#' Compute Dot Product Between Two Intensity Vectors
+#'
+#' This function computes the weighted dot product between two intensity vectors
+#' from experimental and library spectra, considering weights for each intensity.
+#'
+#' @param exp.int A numeric vector representing the intensity values of the experimental spectrum.
+#' @param lib.int A numeric vector representing the intensity values of the library spectrum.
+#'
+#' @return A numeric value representing the dot product between
+#'   \code{exp.int} and \code{lib.int}.
+#'
+#' @details
+#' The function computes weights for each intensity value in both vectors based
+#' on their relative contribution to the total intensity. The dot product is then
+#' computed using these weighted intensity values.
 #' @export
 #' @examples
 #' getDP(exp.int = 1:10, lib.int = 1:10)
@@ -163,41 +200,63 @@ getDP <- function(exp.int, lib.int) {
 
 
 
-##### get_dp is used to calculate dot product
-#' @title get_dp
-#' @param exp.int exp.int
-#' @param lib.int lib.int
-#' @return dot product
+#' Compute Weighted Dot Product Between Two Intensity Vectors
+#'
+#' This function computes the weighted dot product between two intensity vectors
+#' from experimental and library spectra, taking into account weights for each intensity.
+#'
+#' @param exp.int A numeric vector representing the intensity values of the experimental spectrum.
+#' @param lib.int A numeric vector representing the intensity values of the library spectrum.
+#'
+#' @return A numeric value representing the weighted dot product between 
+#'   \code{exp.int} and \code{lib.int}.
+#'
+#' @details
+#' For each intensity in both the experimental and library spectra, weights are computed
+#' based on their relative contribution to the total intensity. The dot product is then 
+#' calculated using these weighted intensity values.
+#'
 #' @export
 #' @examples
 #' get_dp(exp.int = 1:10, lib.int = 1:10)
-get_dp <- function(exp.int, lib.int) {
-  exp.weight <- lapply(exp.int, function(x) {
-    1 / (1 + x / (sum(exp.int) - 0.5))
-  }) %>%
-    unlist()
-  
-  lib.weight <- lapply(lib.int, function(x) {
-    1 / (1 + x / (sum(lib.int) - 0.5))
-  }) %>%
-    unlist()
-  
-  x <- exp.weight * exp.int
-  y <- lib.weight * lib.int
-  return(sum(x * y) ^ 2 / (sum(x ^ 2) * sum(y ^ 2)))
-}
+get_dp <-
+  function(exp.int, lib.int) {
+    exp.weight <- lapply(exp.int, function(x) {
+      1 / (1 + x / (sum(exp.int) - 0.5))
+    }) %>%
+      unlist()
+    
+    lib.weight <- lapply(lib.int, function(x) {
+      1 / (1 + x / (sum(lib.int) - 0.5))
+    }) %>%
+      unlist()
+    
+    x <- exp.weight * exp.int
+    y <- lib.weight * lib.int
+    return(sum(x * y) ^ 2 / (sum(x ^ 2) * sum(y ^ 2)))
+  }
 
 
 
 
-### ms2Match is used to match two MS2 spectra
-#' @title ms2Match
-#' @param exp.spectrum exp.spectrum
-#' @param lib.spectrum lib.spectrum
-#' @param ppm.tol ppm.tol
-#' @param mz.ppm.thr mz.ppm.thr
+#' Match Fragments in Experimental and Library Spectra
+#'
+#' Matches fragments in experimental and library spectra based on their m/z values
+#' within a given ppm tolerance. Noisy fragments are removed before matching.
+#'
+#' @param exp.spectrum A data frame representing the experimental spectrum with columns for m/z and intensity.
+#' @param lib.spectrum A data frame representing the library spectrum with columns for m/z and intensity.
+#' @param ppm.tol A numeric value specifying the ppm tolerance for matching fragments. Default is 30.
+#' @param mz.ppm.thr A numeric value for the m/z threshold. Default is 400.
+#'
+#' @return A data frame with columns for library index, experimental index, library m/z, library intensity, experimental m/z, and experimental intensity.
+#'
+#' @details
+#' For each fragment in the library spectrum, the function searches for a matching fragment in the experimental spectrum based on the specified ppm tolerance. 
+#' Prior to matching, noisy fragments are removed from both spectra using the `remove_noise` function.
+#' The resulting data frame provides matched fragments as well as unmatched fragments from both spectra.
+#'
 #' @export
-#' @return ms2 match data frame
 #' @examples
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 #' lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
@@ -275,14 +334,24 @@ ms2Match <- function(exp.spectrum,
 
 
 
-### ms2_match is used to match two MS2 spectra
-#' @title ms2_match
-#' @param exp.spectrum exp.spectrum
-#' @param lib.spectrum lib.spectrum
-#' @param ppm.tol ppm.tol
-#' @param mz.ppm.thr mz.ppm.thr
+#' Match Fragments in Experimental and Library Spectra
+#'
+#' This function matches fragments in experimental and library spectra based on their m/z values
+#' within a given ppm tolerance. Noisy fragments are removed before matching.
+#'
+#' @param exp.spectrum A data frame representing the experimental spectrum with columns for m/z and intensity.
+#' @param lib.spectrum A data frame representing the library spectrum with columns for m/z and intensity.
+#' @param ppm.tol A numeric value specifying the ppm tolerance for matching fragments. Default is 30.
+#' @param mz.ppm.thr A numeric value for the m/z threshold. Default is 400.
+#'
+#' @return A data frame with columns for library index, experimental index, library m/z, library intensity, experimental m/z, and experimental intensity.
+#'
+#' @details
+#' For each fragment in the library spectrum, the function searches for a matching fragment in the experimental spectrum based on the specified ppm tolerance. 
+#' Prior to matching, noisy fragments are removed from both spectra using the `remove_noise` function.
+#' The resulting data frame provides matched fragments as well as unmatched fragments from both spectra.
+#'
 #' @export
-#' @return ms2 match data frame
 #' @examples
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 #' lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
@@ -352,14 +421,23 @@ ms2_match <- function(exp.spectrum,
 
 
 
-### for a spectrum, if two fragments with the similar m/z,
-### the fragment with the low fragment should be removed from
-## the spectrum
-#' @title removeNoise
-#' @param spec spec
-#' @param ppm.ms2match ppm.ms2match
-#' @param mz.ppm.thr mz.ppm.thr
-#' @return clear spec
+#' Remove Noisy Fragments from a Spectrum
+#'
+#' This function removes noisy fragments from a given spectrum. Fragments with m/z values too close to each other, 
+#' determined by a ppm threshold, are considered noisy. Among such close fragments, the one with the lower intensity is removed.
+#'
+#' @param spec A data frame representing the spectrum with columns for m/z and intensity.
+#' @param ppm.ms2match A numeric value specifying the ppm threshold for identifying close fragments. Default is 30.
+#' @param mz.ppm.thr A numeric value for the m/z threshold below which the m/z is set to this threshold. Default is 400.
+#'
+#' @return A data frame representing the cleaned spectrum after removing noisy fragments.
+#'
+#' @details
+#' For a given spectrum, the function identifies fragments whose m/z values are too close to each other, based on the specified ppm threshold.
+#' Among such close fragments, the one with the lower intensity is removed from the spectrum.
+#' 
+#' @note This function is deprecated. Use `remove_noise()` instead.
+#'
 #' @export
 #' @examples
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
@@ -374,7 +452,7 @@ removeNoise <- function(spec,
   if (nrow(spec) == 1) {
     return(spec)
   }
-  spec <- spec[order(spec[, 1]),]
+  spec <- spec[order(spec[, 1]), ]
   mz <- spec[, 1]
   mz <- mz[-1]
   diff.mz <- diff(spec[, 1])
@@ -397,14 +475,23 @@ removeNoise <- function(spec,
 
 
 
-### for a spectrum, if two fragments with the similar m/z,
-### the fragment with the low fragment should be removed from
-## the spectrum
-#' @title remove_noise
-#' @param spec spec
-#' @param ppm.ms2match ppm.ms2match
-#' @param mz.ppm.thr mz.ppm.thr
-#' @return clear spec
+#' Remove Noisy Fragments from a Spectrum
+#'
+#' This function removes noisy fragments from a given spectrum based on m/z values and intensities.
+#' Fragments with m/z values that are too close to each other, determined by a ppm threshold, are considered noisy.
+#' Among these close fragments, the fragment with the lowest intensity is removed.
+#'
+#' @param spec A data frame representing the spectrum with columns for m/z and intensity.
+#' @param ppm.ms2match A numeric value specifying the ppm threshold for identifying close fragments. Default is 30.
+#' @param mz.ppm.thr A numeric value for the m/z threshold below which the m/z value will be set to this threshold. Default is 400.
+#'
+#' @return A data frame representing the cleaned spectrum after removing the noisy fragments.
+#'
+#' @details
+#' The function first sorts the spectrum based on m/z values and calculates the differences between consecutive m/z values.
+#' Fragments whose m/z differences are below the specified ppm threshold are identified.
+#' Among these fragments, the one with the lowest intensity is removed from the spectrum.
+#' 
 #' @export
 #' @examples
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
@@ -415,7 +502,7 @@ remove_noise <- function(spec,
   if (nrow(spec) == 1) {
     return(spec)
   }
-  spec <- spec[order(spec[, 1]),]
+  spec <- spec[order(spec[, 1]), ]
   mz <- spec[, 1]
   mz <- mz[-1]
   diff.mz <- diff(spec[, 1])

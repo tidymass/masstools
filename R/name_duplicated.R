@@ -1,14 +1,17 @@
-#' @title name_duplicated
-#' @description name_duplicated
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
+#' Handle Duplicated Names by Appending Sequence Number
+#'
+#' This function checks for duplicated elements in a vector. If duplicated elements are found,
+#' it appends an underscore and a sequence number to each occurrence of the duplicated element.
+#'
 #' @param x A character vector.
-#' @return A character vector without duplicated.
-#' @export
+#'
+#' @return A character vector where duplicated names are made unique by appending a sequence number.
+#'
 #' @examples
-#' name_duplicated(c("a", "a", "b", "c", "a", "b", "c", "a"))
-#' name_duplicated(c(rep(1, 5), 2))
-#' name_duplicated(1:5)
+#' vec <- c("apple", "orange", "apple", "banana", "orange")
+#' name_duplicated(vec)
+#'
+#' @export
 name_duplicated <- function(x) {
     if (sum(duplicated(x)) == 0) {
         return(x)

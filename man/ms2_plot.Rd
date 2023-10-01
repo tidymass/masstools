@@ -103,26 +103,11 @@ ms2_plot(
 }
 \value{
 A plot visualizing the comparison between the two provided MS2 spectra.
-
-A ggplot or plotly object visualizing the comparison between the provided MS2 spectra.
-
-A ggplot or plotly object visualizing the comparison between 
-the provided MS2 spectra.
 }
 \description{
 This function provides a method to visualize and compare two MS2 spectra side by side.
 The method to be used for the comparison depends on the class of the `spectrum1` and `spectrum2`
 objects provided.
-
-This function visualizes and compares two MS2 spectra given as data frames side by side.
-}
-\details{
-If both `spectrum1` and `spectrum2` are provided, the function plots the comparison between the two spectra.
-If only one spectrum is provided, it plots that spectrum.
-
-If both `spectrum1` and `spectrum2` are provided, the function plots 
-the comparison between the two spectra.
-If only one spectrum is provided, it plots that spectrum.
 }
 \examples{
 \dontrun{
@@ -170,10 +155,6 @@ ms2_plot(spec1_mat, spec2_mat)
 }
 \seealso{
 The specific plotting methods associated with different spectrum classes that implement this generic function.
-
-`ms2_plot` for the generic method.
-
-`ms2_plot` for the generic method.
 }
 \author{
 Xiaotao Shen <shenxt1990@outlook.com>

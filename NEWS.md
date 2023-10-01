@@ -57,3 +57,7 @@
 # Version 1.0.11 (20230929)
 
 * Add some functions for chemical analysis.
+
+# Version 1.0.13 (20230930)
+
+* Update documents.

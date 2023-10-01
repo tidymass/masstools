@@ -2,22 +2,30 @@
 % Please edit documentation in R/spectra_functions.R
 \name{removeNoise}
 \alias{removeNoise}
-\title{removeNoise}
+\title{Remove Noisy Fragments from a Spectrum}
 \usage{
 removeNoise(spec, ppm.ms2match = 30, mz.ppm.thr = 400)
 }
 \arguments{
-\item{spec}{spec}
+\item{spec}{A data frame representing the spectrum with columns for m/z and intensity.}
 
-\item{ppm.ms2match}{ppm.ms2match}
+\item{ppm.ms2match}{A numeric value specifying the ppm threshold for identifying close fragments. Default is 30.}
 
-\item{mz.ppm.thr}{mz.ppm.thr}
+\item{mz.ppm.thr}{A numeric value for the m/z threshold below which the m/z is set to this threshold. Default is 400.}
 }
 \value{
-clear spec
+A data frame representing the cleaned spectrum after removing noisy fragments.
 }
 \description{
-removeNoise
+This function removes noisy fragments from a given spectrum. Fragments with m/z values too close to each other, 
+determined by a ppm threshold, are considered noisy. Among such close fragments, the one with the lower intensity is removed.
+}
+\details{
+For a given spectrum, the function identifies fragments whose m/z values are too close to each other, based on the specified ppm threshold.
+Among such close fragments, the one with the lower intensity is removed from the spectrum.
+}
+\note{
+This function is deprecated. Use `remove_noise()` instead.
 }
 \examples{
 exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)

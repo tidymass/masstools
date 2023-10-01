@@ -1,12 +1,11 @@
-## -----------------------------------------------------------------------
-#' @title get_os
-#' @description get os information.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @export
-#' @return os name
+#' Determine the Operating System of the Current R Session
+#'
+#' This function identifies the operating system on which the R session is running and returns it in a standardized format.
+#'
+#' @return A character string indicating the operating system. Possible values are "windows", "osx", "linux", or others based on the system.
 #' @examples
 #' get_os()
+#' @export
 get_os <- function() {
     sysinf <- Sys.info()
     if (!is.null(sysinf)) {

@@ -2,27 +2,21 @@
 % Please edit documentation in R/trans_ID.R
 \name{trans_id_database}
 \alias{trans_id_database}
-\title{trans_id_database}
+\title{Retrieve Supported Databases for Chemical Identifier Conversion}
 \usage{
 trans_id_database(server = c("cts.fiehnlab", "chemspider"))
 }
 \arguments{
-\item{server}{server. cts.fiehnlab
-(http://cts.fiehnlab.ucdavis.edu/service/convert)
-or chemspider (https://www.chemspider.com/InChI.asmx)}
+\item{server}{A character string indicating which server to use. Possible values are "cts.fiehnlab" or "chemspider".}
 }
 \value{
-A vector..
+A list of supported databases. If using the `cts.fiehnlab` server, the list will contain two data frames: 'From' and 'To'. If using the `chemspider` server, the result will be a single data frame with 'From' and 'To' columns.
 }
 \description{
-Whate databases are supported.
+This function lists the databases supported for chemical identifier conversion by either the `cts.fiehnlab` or `chemspider` services.
 }
 \examples{
 \dontrun{
 trans_id_database(server = "cts.fiehnlab")
 }
-}
-\author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
 }

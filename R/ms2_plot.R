@@ -56,24 +56,10 @@ ms2_plot <-
   }
 
 
-#' Plot MS2 Spectra Comparisons for Data Frames
-#'
-#' This function visualizes and compares two MS2 spectra given as data frames side by side.
-#'
-#'
 #' @method ms2_plot data.frame
 #' @rdname ms2_plot
-#'
-#' @details
-#' If both `spectrum1` and `spectrum2` are provided, the function plots the comparison between the two spectra.
-#' If only one spectrum is provided, it plots that spectrum.
-#'
-#'@inheritParams ms2_plot
-#'
-#' @return A ggplot or plotly object visualizing the comparison between the provided MS2 spectra.
-#'
+#' @inheritParams ms2_plot
 #' @author Xiaotao Shen <shenxt1990@outlook.com>
-#' @seealso `ms2_plot` for the generic method.
 #' @export
 #' @examples
 #' spectrum1 <- data.frame(
@@ -329,15 +315,7 @@ ms2_plot.data.frame <- function(spectrum1,
 }
 
 
-#' This function visualizes and compares two MS2 spectra given as matrices 
-#' side by side.
-#' @details
-#' If both `spectrum1` and `spectrum2` are provided, the function plots 
-#' the comparison between the two spectra.
-#' If only one spectrum is provided, it plots that spectrum.
 #' @inheritParams ms2_plot
-#' @return A ggplot or plotly object visualizing the comparison between 
-#' the provided MS2 spectra.
 #' @examples
 #' \dontrun{
 #' # Assuming `spec1_mat` and `spec2_mat` are matrices with MS2 spectra data
@@ -345,7 +323,6 @@ ms2_plot.data.frame <- function(spectrum1,
 #' }
 #'
 #' @author Xiaotao Shen <shenxt1990@outlook.com>
-#' @seealso `ms2_plot` for the generic method.
 #' @method ms2_plot matrix
 #' @rdname ms2_plot
 #' @export

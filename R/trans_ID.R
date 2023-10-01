@@ -1,17 +1,16 @@
-#' @title trans_ID
-#' @description Translate metabolite ID.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param query The ID/name of metabolite you want to translate.
-#' @param from The databases of metabolites.
-#' Supported database can be shown using trans_id_database("from").
-#' @param to The databases of metabolites.
-#' Supported database can be shown using trans_id_database("to").
-#' @param top How many results should be returned?
-#' @param server server. cts.fiehnlab
-#' (http://cts.fiehnlab.ucdavis.edu/service/convert)
-#' or chemspider (https://www.chemspider.com/InChI.asmx)
-#' @return A data frame.
+#' Convert Chemical Identifier Between Different Databases
+#'
+#' This function takes an identifier from a given database (`from`) and converts it to the desired database (`to`).
+#' It uses either the `cts.fiehnlab` or `chemspider` services for conversion.
+#'
+#' @param query A character string of the chemical identifier to be converted.
+#' @param from A character string of the database from which the query is.
+#' @param to A character string of the desired database to which the identifier should be converted.
+#' @param top Numeric value indicating the top results to be returned.
+#' @param server A character string indicating which server to use. Possible values are "cts.fiehnlab" or "chemspider".
+#'
+#' @return A character string of the converted identifier, or `NA` if the conversion was unsuccessful.
+#'
 #' @export
 #' @examples
 #' \dontrun{
@@ -186,14 +185,14 @@ trans_ID <-
   }
 
 
-#' @title trans_id_database
-#' @description Whate databases are supported.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param server server. cts.fiehnlab
-#' (http://cts.fiehnlab.ucdavis.edu/service/convert)
-#' or chemspider (https://www.chemspider.com/InChI.asmx)
-#' @return A vector..
+#' Retrieve Supported Databases for Chemical Identifier Conversion
+#'
+#' This function lists the databases supported for chemical identifier conversion by either the `cts.fiehnlab` or `chemspider` services.
+#'
+#' @param server A character string indicating which server to use. Possible values are "cts.fiehnlab" or "chemspider".
+#'
+#' @return A list of supported databases. If using the `cts.fiehnlab` server, the list will contain two data frames: 'From' and 'To'. If using the `chemspider` server, the result will be a single data frame with 'From' and 'To' columns.
+#'
 #' @export
 #' @examples
 #' \dontrun{

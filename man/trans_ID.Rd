@@ -2,7 +2,7 @@
 % Please edit documentation in R/trans_ID.R
 \name{trans_ID}
 \alias{trans_ID}
-\title{trans_ID}
+\title{Convert Chemical Identifier Between Different Databases}
 \usage{
 trans_ID(
   query = "C00001",
@@ -13,25 +13,22 @@ trans_ID(
 )
 }
 \arguments{
-\item{query}{The ID/name of metabolite you want to translate.}
+\item{query}{A character string of the chemical identifier to be converted.}
 
-\item{from}{The databases of metabolites.
-Supported database can be shown using trans_id_database("from").}
+\item{from}{A character string of the database from which the query is.}
 
-\item{to}{The databases of metabolites.
-Supported database can be shown using trans_id_database("to").}
+\item{to}{A character string of the desired database to which the identifier should be converted.}
 
-\item{top}{How many results should be returned?}
+\item{top}{Numeric value indicating the top results to be returned.}
 
-\item{server}{server. cts.fiehnlab
-(http://cts.fiehnlab.ucdavis.edu/service/convert)
-or chemspider (https://www.chemspider.com/InChI.asmx)}
+\item{server}{A character string indicating which server to use. Possible values are "cts.fiehnlab" or "chemspider".}
 }
 \value{
-A data frame.
+A character string of the converted identifier, or `NA` if the conversion was unsuccessful.
 }
 \description{
-Translate metabolite ID.
+This function takes an identifier from a given database (`from`) and converts it to the desired database (`to`).
+It uses either the `cts.fiehnlab` or `chemspider` services for conversion.
 }
 \examples{
 \dontrun{
@@ -49,8 +46,4 @@ trans_ID(
     server = "cts.fiehnlab"
 )
 }
-}
-\author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
 }

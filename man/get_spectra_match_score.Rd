@@ -2,7 +2,7 @@
 % Please edit documentation in R/spectra_functions.R
 \name{get_spectra_match_score}
 \alias{get_spectra_match_score}
-\title{get_spectra_match_score}
+\title{Compute Similarity Score Between Two Mass Spectra}
 \usage{
 get_spectra_match_score(
   exp.spectrum,
@@ -16,35 +16,40 @@ get_spectra_match_score(
 )
 }
 \arguments{
-\item{exp.spectrum}{exp.spectrum}
+\item{exp.spectrum}{A data frame representing the experimental spectrum.
+This data frame should contain columns for 'mz' and 'intensity'.}
 
-\item{lib.spectrum}{lib.spectrum}
+\item{lib.spectrum}{A data frame representing the library spectrum.
+This data frame should contain columns for 'mz' and 'intensity'.}
 
-\item{ppm.tol}{ppm.tol}
+\item{ppm.tol}{A numeric value indicating the ppm tolerance.}
 
-\item{mz.ppm.thr}{mz.ppm.thr}
+\item{mz.ppm.thr}{A numeric value for m/z threshold for ppm calculation.}
 
-\item{fraction.weight}{fraction.weight}
+\item{fraction.weight}{A numeric value for weight of fraction component in score.}
 
-\item{dp.forward.weight}{dp.forward.weight}
+\item{dp.forward.weight}{A numeric value for weight of forward dot product component in score.}
 
-\item{dp.reverse.weight}{dp.reverse.weight}
+\item{dp.reverse.weight}{A numeric value for weight of reverse dot product component in score.}
 
-\item{remove_fragment_intensity_cutoff}{default is 0 (100 percentage).}
+\item{remove_fragment_intensity_cutoff}{A numeric value specifying the intensity cutoff for filtering out fragments in the spectra. Default is 0, which means no fragments are filtered out based on intensity.}
 }
 \value{
-spectrum match score
+A numeric value representing the similarity score between
+  \code{exp.spectrum} and \code{lib.spectrum}.
 }
 \description{
-get_spectra_match_score is used to get two
-MS2 spectra match score, see MS-DIAL
+This function computes the similarity score between two mass spectra
+considering an option to filter out lower fragment intensities.
+}
+\details{
+The function scales the intensities of both spectra to a range of 0 to 1,
+identifies matching peaks, and computes a weighted similarity score using
+fraction of matching peaks and dot products. Additionally, fragments below
+the specified intensity cutoff can be removed from the spectra before matching.
 }
 \examples{
 exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 get_spectra_match_score(exp.spectrum, lib.spectrum)
-}
-\author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
 }

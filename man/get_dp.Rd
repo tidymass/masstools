@@ -2,20 +2,27 @@
 % Please edit documentation in R/spectra_functions.R
 \name{get_dp}
 \alias{get_dp}
-\title{get_dp}
+\title{Compute Weighted Dot Product Between Two Intensity Vectors}
 \usage{
 get_dp(exp.int, lib.int)
 }
 \arguments{
-\item{exp.int}{exp.int}
+\item{exp.int}{A numeric vector representing the intensity values of the experimental spectrum.}
 
-\item{lib.int}{lib.int}
+\item{lib.int}{A numeric vector representing the intensity values of the library spectrum.}
 }
 \value{
-dot product
+A numeric value representing the weighted dot product between 
+  \code{exp.int} and \code{lib.int}.
 }
 \description{
-get_dp
+This function computes the weighted dot product between two intensity vectors
+from experimental and library spectra, taking into account weights for each intensity.
+}
+\details{
+For each intensity in both the experimental and library spectra, weights are computed
+based on their relative contribution to the total intensity. The dot product is then 
+calculated using these weighted intensity values.
 }
 \examples{
 get_dp(exp.int = 1:10, lib.int = 1:10)

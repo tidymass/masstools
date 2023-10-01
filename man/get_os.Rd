@@ -2,20 +2,16 @@
 % Please edit documentation in R/system_tools.R
 \name{get_os}
 \alias{get_os}
-\title{get_os}
+\title{Determine the Operating System of the Current R Session}
 \usage{
 get_os()
 }
 \value{
-os name
+A character string indicating the operating system. Possible values are "windows", "osx", "linux", or others based on the system.
 }
 \description{
-get os information.
+This function identifies the operating system on which the R session is running and returns it in a standardized format.
 }
 \examples{
 get_os()
-}
-\author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
 }
