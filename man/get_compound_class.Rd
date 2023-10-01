@@ -2,7 +2,7 @@
 % Please edit documentation in R/classyfire.R
 \name{get_compound_class}
 \alias{get_compound_class}
-\title{get_compound_class}
+\title{Retrieve Compound Classification Information}
 \usage{
 get_compound_class(
   inchikey = "QZDWODWEESGPLC-UHFFFAOYSA-N",
@@ -11,17 +11,24 @@ get_compound_class(
 )
 }
 \arguments{
-\item{inchikey}{The inchikey ID of a metabolite.}
+\item{inchikey}{A character string representing the InChIKey of the compound. 
+Default is "QZDWODWEESGPLC-UHFFFAOYSA-N".}
 
-\item{server}{server.}
+\item{server}{A character string representing the base URL of the ClassyFire server. 
+Default is "http://classyfire.wishartlab.com/entities/".}
 
-\item{sleep}{Sleep time for system. Second.}
+\item{sleep}{A numeric value indicating the time (in seconds) to pause between the 
+request and fetching the result to avoid overloading the server. Default is 5 seconds.}
 }
 \value{
-A classyfire class object.
+An S4 object of class "classyfire" containing details about the compound, 
+including its basic information, taxonomic classification, description, and external 
+descriptors. If the InChIKey is not found in the database or there's an error, it 
+returns relevant NA-filled placeholders and warnings.
 }
 \description{
-Get the class information of a compound using classyfire.
+Queries the ClassyFire database to retrieve the taxonomic classification 
+information and other relevant details for a given compound, based on its InChIKey.
 }
 \examples{
 \dontrun{
@@ -33,6 +40,5 @@ sleep = 5
 }
 }
 \author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
+Xiaotao Shen <shenxt1990@outlook.com>
 }

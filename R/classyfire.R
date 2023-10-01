@@ -1,11 +1,21 @@
-#' @title get_compound_class
-#' @description Get the class information of a compound using classyfire.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param inchikey The inchikey ID of a metabolite.
-#' @param server server.
-#' @param sleep Sleep time for system. Second.
-#' @return A classyfire class object.
+#' Retrieve Compound Classification Information
+#'
+#' Queries the ClassyFire database to retrieve the taxonomic classification 
+#' information and other relevant details for a given compound, based on its InChIKey.
+#'
+#' @param inchikey A character string representing the InChIKey of the compound. 
+#' Default is "QZDWODWEESGPLC-UHFFFAOYSA-N".
+#' @param server A character string representing the base URL of the ClassyFire server. 
+#' Default is "http://classyfire.wishartlab.com/entities/".
+#' @param sleep A numeric value indicating the time (in seconds) to pause between the 
+#' request and fetching the result to avoid overloading the server. Default is 5 seconds.
+#'
+#' @return An S4 object of class "classyfire" containing details about the compound, 
+#' including its basic information, taxonomic classification, description, and external 
+#' descriptors. If the InChIKey is not found in the database or there's an error, it 
+#' returns relevant NA-filled placeholders and warnings.
+#'
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
 #' @export
 #' @examples
 #' \dontrun{
@@ -203,6 +213,28 @@ get_compound_class <-
   }
 
 
+
+#' S4 Class Representation for ClassyFire Result
+#'
+#' An S4 class object that holds the results of a ClassyFire query, 
+#' structured into various components like compound information, taxonomic 
+#' classification, description, and external descriptors.
+#'
+#' @slot compound_info A tibble containing basic compound information such as 
+#' SMILES, InChIKey, Formula, and Mass.
+#' @slot taxonomy_tree A tibble representing the taxonomic tree of the compound 
+#' that includes classifications like Kingdom, Superclass, Class, and Subclass.
+#' @slot classification_info A tibble containing a detailed taxonomic 
+#' classification of the compound.
+#' @slot description A tibble holding the compound's description from ClassyFire.
+#' @slot external_descriptors A tibble with external descriptors related to the 
+#' compound.
+#'
+#' @name classyfire
+#' @docType class
+#' @seealso \code{\link[methods:show]{show}}
+#'
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
 setClass(
   Class = "classyfire",
   representation = representation(
@@ -214,6 +246,23 @@ setClass(
   )
 )
 
+
+#' Display Method for 'classyfire' Objects
+#'
+#' This function provides a custom display for 'classyfire' S4 objects.
+#' It prints out the main details of the object including compound 
+#' information and its taxonomic classification in a structured format.
+#'
+#' @param object An object of class 'classyfire'.
+#'
+#' @examples
+#' \dontrun{
+#' cf <- new("classyfire", ...)
+#' show(cf)
+#' }
+#'
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @export
 
 setMethod("show",
           signature = "classyfire",

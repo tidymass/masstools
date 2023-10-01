@@ -2,15 +2,18 @@
 % Please edit documentation in R/1-masstools_logo.R
 \name{masstools_logo}
 \alias{masstools_logo}
-\title{masstools_logo}
+\title{Masstools Logo Printer}
 \usage{
 masstools_logo()
 }
 \value{
-masstools logo
+Prints messages to the console and does not return any value.
 }
 \description{
-Get the detailed of metPath package.
+`masstools_logo` is a function designed to display the masstools logo, 
+thank the user, show the version information, and provide a URL for 
+additional details about the package. This can be useful for branding
+and user interaction when they load or utilize the package.
 }
 \examples{
 masstools_logo()

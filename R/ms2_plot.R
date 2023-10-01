@@ -1,23 +1,38 @@
-####ms2_plot2
-#' @title ms2_plot2
-#' @param spectrum1 Spectrum 1.
-#' @param spectrum2 Spectrum 2.
-#' @param spectrum1_name Name of spectrum1
-#' @param spectrum2_name Name of spectrum2
-#' @param range.mz range.mz
-#' @param ppm.tol ppm.tol
-#' @param mz.ppm.thr mz.ppm.thr
-#' @param xlab xlab.
-#' @param ylab ylab.
-#' @param col1 Color 1.
-#' @param col2 Color 2.
-#' @param title.size title.size
-#' @param lab.size lab.size
-#' @param axis.text.size axis.text.size.
-#' @param legend.title.size legend.title.size
-#' @param legend.text.size legend.text.size
-#' @param interactive_plot Interactive plot or not.
-#' @return Return a tandem mass spectrometry (MS2) spectrum.
+#' Plot MS2 Spectra Comparisons
+#'
+#' This function provides a method to visualize and compare two MS2 spectra side by side.
+#' The method to be used for the comparison depends on the class of the `spectrum1` and `spectrum2`
+#' objects provided.
+#'
+#' @param spectrum1 A spectrum object representing the first MS2 spectrum.
+#' @param spectrum2 A spectrum object representing the second MS2 spectrum.
+#' @param spectrum1_name A character string specifying the name/label for the first spectrum. Default is "spectrum1".
+#' @param spectrum2_name A character string specifying the name/label for the second spectrum. Default is "spectrum2".
+#' @param range.mz Numeric vector of length 2 specifying the range of m/z values to display in the plot.
+#' @param ppm.tol Numeric value specifying the ppm tolerance for matching peaks between the spectra. Default is 30.
+#' @param mz.ppm.thr Numeric value specifying the threshold for m/z ppm difference. Default is 400.
+#' @param xlab Character string specifying the x-axis label. Default is "Mass to charge ratio (m/z)".
+#' @param ylab Character string specifying the y-axis label. Default is "Relative intensity".
+#' @param col1 Character string specifying the color for the first spectrum. Default is "red".
+#' @param col2 Character string specifying the color for the second spectrum. Default is "black".
+#' @param title.size Numeric value specifying the font size for the plot title. Default is 15.
+#' @param lab.size Numeric value specifying the font size for x and y labels. Default is 15.
+#' @param axis.text.size Numeric value specifying the font size for axis text. Default is 15.
+#' @param legend.title.size Numeric value specifying the font size for the legend title. Default is 15.
+#' @param legend.text.size Numeric value specifying the font size for the legend text. Default is 15.
+#' @param interactive_plot Logical indicating whether the plot should be interactive (e.g., using plotly). Default is FALSE.
+#'
+#' @return A plot visualizing the comparison between the two provided MS2 spectra.
+#'
+#' @seealso The specific plotting methods associated with different spectrum classes that implement this generic function.
+#'
+#' @examples
+#' \dontrun{
+#' # Assuming `spec1` and `spec2` are spectrum objects
+#' ms2_plot(spec1, spec2)
+#' }
+#'
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
 #' @export
 ms2_plot <-
   function(spectrum1,
@@ -41,8 +56,24 @@ ms2_plot <-
   }
 
 
+#' Plot MS2 Spectra Comparisons for Data Frames
+#'
+#' This function visualizes and compares two MS2 spectra given as data frames side by side.
+#'
+#'
 #' @method ms2_plot data.frame
-#' @rdname ms2_plot
+#' @rdname ms2_plot-methods
+#'
+#' @details
+#' If both `spectrum1` and `spectrum2` are provided, the function plots the comparison between the two spectra.
+#' If only one spectrum is provided, it plots that spectrum.
+#'
+#'@inheritParams ms2_plot
+#'
+#' @return A ggplot or plotly object visualizing the comparison between the provided MS2 spectra.
+#'
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @seealso `ms2_plot` for the generic method.
 #' @export
 #' @examples
 #' spectrum1 <- data.frame(
@@ -298,8 +329,25 @@ ms2_plot.data.frame <- function(spectrum1,
 }
 
 
+#' This function visualizes and compares two MS2 spectra given as matrices 
+#' side by side.
+#' @details
+#' If both `spectrum1` and `spectrum2` are provided, the function plots 
+#' the comparison between the two spectra.
+#' If only one spectrum is provided, it plots that spectrum.
+#' @inheritParams ms2_plot
+#' @return A ggplot or plotly object visualizing the comparison between 
+#' the provided MS2 spectra.
+#' @examples
+#' \dontrun{
+#' # Assuming `spec1_mat` and `spec2_mat` are matrices with MS2 spectra data
+#' ms2_plot(spec1_mat, spec2_mat)
+#' }
+#'
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @seealso `ms2_plot` for the generic method.
 #' @method ms2_plot matrix
-#' @rdname ms2_plot
+#' @rdname ms2_plot-methods
 #' @export
 ms2_plot.matrix <- function(spectrum1,
                             spectrum2,

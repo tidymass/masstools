@@ -2,17 +2,30 @@
 % Please edit documentation in R/get_project_wd.R
 \name{get_project_wd}
 \alias{get_project_wd}
-\title{get_project_wd}
+\title{Retrieve Project Working Directory}
 \usage{
 get_project_wd()
 }
 \value{
-A working directory.
+A character string representing the directory path to the RStudio project 
+(`*.Rproj`) file. If no such file is found, the function returns `NULL` and a message 
+indicating that there are no `.Rproj` files in your directory.
 }
 \description{
-Get the working directory where Rproj object is in.
+This function identifies and returns the working directory of an RStudio project 
+(`*.Rproj`) that is located at or above the current working directory.
+}
+\details{
+If there's a project directory within the current directory or its parent directories, 
+it will return the path to that directory. If no such directory is found, it sends a message 
+indicating that no `.Rproj` files were found and does not change the working directory.
+}
+\examples{
+\dontrun{
+get_project_wd()
+}
+
 }
 \author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
+Xiaotao Shen <shenxt1990@outlook.com>
 }

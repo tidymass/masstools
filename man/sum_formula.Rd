@@ -2,20 +2,27 @@
 % Please edit documentation in R/2-chemical_formula_funcitons.R
 \name{sum_formula}
 \alias{sum_formula}
-\title{sum_formula}
+\title{Summation of Chemical Formulas with Adducts}
 \usage{
 sum_formula(formula = "C9H11NO2", adduct = "M-H2O+H")
 }
 \arguments{
-\item{formula}{Chemical formula.}
+\item{formula}{A character string representing the base chemical formula. 
+Default is "C9H11NO2".}
 
-\item{adduct}{Adduct.}
+\item{adduct}{A character string representing the adduct to be added or 
+subtracted from the base formula. Examples include "M-H2O+H", "M+", and "M-". 
+Default is "M-H2O+H".}
 }
 \value{
-formula
+A character string of the resulting chemical formula after combining 
+the base formula with the adduct. If an error occurs or the summation results 
+in negative counts for any element, it returns `NA`.
 }
 \description{
-Get the total formula after add adduct.
+Combines a chemical formula with a specified adduct, and returns the resultant
+summed formula. This function can handle addition or subtraction of elements
+from the main formula based on the adduct.
 }
 \examples{
 sum_formula(formula = "C9H11NO2", adduct = "M+H")
@@ -24,6 +31,5 @@ sum_formula(formula = "C9H11NO2", adduct = "M+CH3COOH")
 sum_formula(formula = "C9H11", adduct = "M-H20")
 }
 \author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
+Xiaotao Shen <shenxt1990@outlook.com>
 }

@@ -2,24 +2,23 @@
 % Please edit documentation in R/2-chemical_formula_funcitons.R
 \name{split_formula}
 \alias{split_formula}
-\title{split_formula}
+\title{Split Chemical Formula}
 \usage{
 split_formula(formula = "C9H11NO2")
 }
 \arguments{
-\item{formula}{Chemical formula.}
+\item{formula}{A character string representing a chemical formula (e.g., "C9H11NO2"). 
+Default is "C9H11NO2".}
 }
 \value{
-A spited formula.
+A data frame with two columns: `element.name` contains the elemental symbols 
+and `number` contains the respective counts for each element in the formula.
 }
 \description{
-Split a formula into element and number.
+Takes a chemical formula string and breaks it down into its 
+individual elemental components and their respective counts.
 }
 \examples{
 split_formula(formula = "C9H11NO2")
 split_formula(formula = "CH3")
-}
-\author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
 }

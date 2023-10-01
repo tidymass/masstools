@@ -1,10 +1,11 @@
 ## ---------------------------------------------------------------------------
-#' @title split_formula
-#' @description Split a formula into element and number.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param formula Chemical formula.
-#' @return A spited formula.
+#' @title Split Chemical Formula
+#' @description Takes a chemical formula string and breaks it down into its 
+#' individual elemental components and their respective counts.
+#' @param formula A character string representing a chemical formula (e.g., "C9H11NO2"). 
+#' Default is "C9H11NO2".
+#' @return A data frame with two columns: `element.name` contains the elemental symbols 
+#' and `number` contains the respective counts for each element in the formula.
 #' @export
 #' @examples
 #' split_formula(formula = "C9H11NO2")
@@ -125,18 +126,23 @@ split_formula <-
 
 
 
-#' @title convert_precursor_mz2accurate_mass
-#' @description convert_precursor_mz2accurate_mass
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param precursor_mz Chemical formula.
-#' @param adduct Adduct.
+#' @title Convert Precursor m/z to Accurate Mass
+#' @description This function computes the accurate mass from the given precursor m/z and adduct type. 
+#' It uses specific rules to adjust the provided m/z based on the adduct type, 
+#' and then calculates the accurate mass of the molecule.
+#' @param precursor_mz A numeric value representing the precursor m/z value. 
+#' Default is 805.559.
+#' @param adduct A character string representing the type of adduct. 
+#' Possible values include but are not limited to "M+", "M-", and "2M-2H+Na". 
+#' Default is "2M-2H+Na".
+#' @return A numeric value representing the accurate mass of the molecule 
+#' based on the precursor m/z and adduct type.
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
 #' @export
-#' @return formula
 #' @examples
-# convert_precursor_mz2accurate_mass(
-# precursor_mz = 805.559,
-# adduct = "2M-2H+Na")
+#' convert_precursor_mz2accurate_mass(
+#' precursor_mz = 805.559,
+#' adduct = "2M-2H+Na")
 convert_precursor_mz2accurate_mass <-
   function(precursor_mz = 805.559,
            adduct = "2M-2H+Na") {
@@ -212,14 +218,23 @@ convert_precursor_mz2accurate_mass <-
 
 
 ## ----------------------------------------------------------------------------
-#' @title sum_formula
-#' @description Get the total formula after add adduct.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param formula Chemical formula.
-#' @param adduct Adduct.
+#' Summation of Chemical Formulas with Adducts
+#'
+#' Combines a chemical formula with a specified adduct, and returns the resultant
+#' summed formula. This function can handle addition or subtraction of elements
+#' from the main formula based on the adduct.
+#'
+#' @param formula A character string representing the base chemical formula. 
+#' Default is "C9H11NO2".
+#' @param adduct A character string representing the adduct to be added or 
+#' subtracted from the base formula. Examples include "M-H2O+H", "M+", and "M-". 
+#' Default is "M-H2O+H".
+#'
+#' @return A character string of the resulting chemical formula after combining 
+#' the base formula with the adduct. If an error occurs or the summation results 
+#' in negative counts for any element, it returns `NA`.
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
 #' @export
-#' @return formula
 #' @examples
 #' sum_formula(formula = "C9H11NO2", adduct = "M+H")
 #' sum_formula(formula = "C9H11NO2", adduct = "M+")
@@ -840,5 +855,10 @@ get_mass <-
       formula
     return(mass)
   }
+
+
+
+
+
 
 

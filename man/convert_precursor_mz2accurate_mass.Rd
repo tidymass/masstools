@@ -2,22 +2,32 @@
 % Please edit documentation in R/2-chemical_formula_funcitons.R
 \name{convert_precursor_mz2accurate_mass}
 \alias{convert_precursor_mz2accurate_mass}
-\title{convert_precursor_mz2accurate_mass}
+\title{Convert Precursor m/z to Accurate Mass}
 \usage{
 convert_precursor_mz2accurate_mass(precursor_mz = 805.559, adduct = "2M-2H+Na")
 }
 \arguments{
-\item{precursor_mz}{Chemical formula.}
+\item{precursor_mz}{A numeric value representing the precursor m/z value. 
+Default is 805.559.}
 
-\item{adduct}{Adduct.}
+\item{adduct}{A character string representing the type of adduct. 
+Possible values include but are not limited to "M+", "M-", and "2M-2H+Na". 
+Default is "2M-2H+Na".}
 }
 \value{
-formula
+A numeric value representing the accurate mass of the molecule 
+based on the precursor m/z and adduct type.
 }
 \description{
-convert_precursor_mz2accurate_mass
+This function computes the accurate mass from the given precursor m/z and adduct type. 
+It uses specific rules to adjust the provided m/z based on the adduct type, 
+and then calculates the accurate mass of the molecule.
+}
+\examples{
+convert_precursor_mz2accurate_mass(
+precursor_mz = 805.559,
+adduct = "2M-2H+Na")
 }
 \author{
-Xiaotao Shen
-\email{shenxt1990@outlook.com}
+Xiaotao Shen <shenxt1990@outlook.com>
 }

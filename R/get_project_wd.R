@@ -1,13 +1,22 @@
-#' @title get_project_wd
-#' @description Get the working directory where Rproj object is in.
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @import dplyr
-#' @importFrom magrittr %>%
-#' @importFrom stringr str_split
-#' @importFrom utils head
-#' @importFrom utils tail
-#' @return A working directory.
+#' Retrieve Project Working Directory
+#'
+#' This function identifies and returns the working directory of an RStudio project 
+#' (`*.Rproj`) that is located at or above the current working directory.
+#' 
+#' If there's a project directory within the current directory or its parent directories, 
+#' it will return the path to that directory. If no such directory is found, it sends a message 
+#' indicating that no `.Rproj` files were found and does not change the working directory.
+#'
+#' @return A character string representing the directory path to the RStudio project 
+#' (`*.Rproj`) file. If no such file is found, the function returns `NULL` and a message 
+#' indicating that there are no `.Rproj` files in your directory.
+#'
+#' @examples
+#' \dontrun{
+#' get_project_wd()
+#' }
+#'
+#' @author Xiaotao Shen <shenxt1990@outlook.com>
 #' @export
 
 get_project_wd <- function() {

@@ -1,5 +1,8 @@
-#' @title masstools_logo
-#' @description Get the detailed of metPath package.
+#' @title Masstools Logo Printer
+#' @description `masstools_logo` is a function designed to display the masstools logo, 
+#' thank the user, show the version information, and provide a URL for 
+#' additional details about the package. This can be useful for branding
+#' and user interaction when they load or utilize the package.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
 #' @importFrom stringr str_replace str_split str_replace_all str_trim
@@ -21,7 +24,7 @@
 #' @importFrom lifecycle deprecate_soft
 #' @importFrom remotes install_git install_github install_gitlab
 #' @export
-#' @return masstools logo
+#' @return Prints messages to the console and does not return any value.
 #' @examples
 #' masstools_logo()
 masstools_logo <- function() {
