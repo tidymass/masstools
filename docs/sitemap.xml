@@ -7,6 +7,9 @@
     <loc>https://tidymass.github.io/masstools/LICENSE-text.html</loc>
   </url>
   <url>
+    <loc>https://tidymass.github.io/masstools/LICENSE.html</loc>
+  </url>
+  <url>
     <loc>https://tidymass.github.io/masstools/articles/contact_us.html</loc>
   </url>
   <url>
@@ -14,9 +17,6 @@
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/articles/install.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/articles/masstools_introductinon.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/articles/masstools_introduction.html</loc>
@@ -29,6 +29,9 @@
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/classyfire.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/convert_precursor_mz2accurate_mass.html</loc>
@@ -46,13 +49,25 @@
     <loc>https://tidymass.github.io/masstools/reference/get_dp.html</loc>
   </url>
   <url>
+    <loc>https://tidymass.github.io/masstools/reference/get_mass.html</loc>
+  </url>
+  <url>
     <loc>https://tidymass.github.io/masstools/reference/get_os.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/get_project_wd.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/get_spectra_match_score.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/install_fastgit.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/is_valid_chemical_formula.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/keep_one.html</loc>
@@ -85,7 +100,13 @@
     <loc>https://tidymass.github.io/masstools/reference/openwd.html</loc>
   </url>
   <url>
+    <loc>https://tidymass.github.io/masstools/reference/parse_chemical_formula.html</loc>
+  </url>
+  <url>
     <loc>https://tidymass.github.io/masstools/reference/read_mgf.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/read_mgf4database.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/read_mzxml.html</loc>
@@ -101,6 +122,9 @@
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/setwd_win.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/masstools/reference/show-classyfire-method.html</loc>
   </url>
   <url>
     <loc>https://tidymass.github.io/masstools/reference/show_progresser.html</loc>

@@ -48,7 +48,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.13</span>
       </span>
     </div>
 
@@ -123,9 +123,7 @@
 
       
 
-      </header><script src="masstools_introduction_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="masstools_introduction_files/plotly-binding-4.10.0/plotly.js"></script><script src="masstools_introduction_files/typedarray-0.1/typedarray.min.js"></script><link href="masstools_introduction_files/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="masstools_introduction_files/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="masstools_introduction_files/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="masstools_introduction_files/plotly-main-2.5.1/plotly-latest.min.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction of masstools</h1>
@@ -133,7 +131,7 @@
 (<a href="https://www.shenxt.info/" class="external-link uri">https://www.shenxt.info/</a>)</h4>
                         
             <h4 data-toc-skip class="date">Created on 2022-02-18 and
-updated on 2022-08-07</h4>
+updated on 2023-10-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tidymass/masstools/blob/HEAD/vignettes/masstools_introduction.Rmd" class="external-link"><code>vignettes/masstools_introduction.Rmd</code></a></small>
       <div class="hidden name"><code>masstools_introduction.Rmd</code></div>
@@ -158,7 +156,7 @@ chemical formula operation, MS2 spectra matching. And
 <p>You can use <code>masstools</code> to do the chemical formula
 operation.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/masstools" class="external-link">masstools</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://masstools.tidymass.org/" class="external-link">masstools</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sum_formula.html">sum_formula</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="st">"C9H11NO2"</span>, adduct <span class="op">=</span> <span class="st">"M+H"</span><span class="op">)</span></span>
@@ -261,15 +259,11 @@ operation.</p>
 <span><span class="fu"><a href="../reference/ms2_plot.html">ms2_plot</a></span><span class="op">(</span><span class="va">spectrum1</span>, <span class="va">spectrum2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="masstools_introduction_files/figure-html/unnamed-chunk-6-1.png" width="100%"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ms2_plot.html">ms2_plot</a></span><span class="op">(</span><span class="va">spectrum1</span>, <span class="va">spectrum2</span>, interactive_plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-34f8c4d51fc9e70fea1d" style="width:100%;height:432.632880098888px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-34f8c4d51fc9e70fea1d">{"x":{"data":[{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,0.0492295129878942,null,0,0.0450927711104649,null,0,0.0557093607298148,null,0,0.0520625335432262,null,0,0.0504308788483016,null,0,0.0515274325745473,null,0,0.049365336929949,null,0,1,null,0,0.0468539872945966,null,0,0.0493577076952944],"text":["Exp.mz:  87.50874<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  87.50874<br />Exp.intensity: 0.04922951","Exp.mz:  87.50874<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  87.50874<br />Exp.intensity: 0.04922951",null,"Exp.mz:  94.85532<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  94.85532<br />Exp.intensity: 0.04509277","Exp.mz:  94.85532<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  94.85532<br />Exp.intensity: 0.04509277",null,"Exp.mz:  97.17808<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.17808<br />Exp.intensity: 0.05570936","Exp.mz:  97.17808<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.17808<br />Exp.intensity: 0.05570936",null,"Exp.mz:  97.25629<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.25629<br />Exp.intensity: 0.05206253","Exp.mz:  97.25629<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz:  97.25629<br />Exp.intensity: 0.05206253",null,"Exp.mz: 103.36186<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 103.36186<br />Exp.intensity: 0.05043088","Exp.mz: 103.36186<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 103.36186<br />Exp.intensity: 0.05043088",null,"Exp.mz: 106.96647<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 106.96647<br />Exp.intensity: 0.05152743","Exp.mz: 106.96647<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 106.96647<br />Exp.intensity: 0.05152743",null,"Exp.mz: 107.21461<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 107.21461<br />Exp.intensity: 0.04936534","Exp.mz: 107.21461<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 107.21461<br />Exp.intensity: 0.04936534",null,"Exp.mz: 111.00887<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 111.00887<br />Exp.intensity: 1.00000000","Exp.mz: 111.00887<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 111.00887<br />Exp.intensity: 1.00000000",null,"Exp.mz: 113.79269<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 113.79269<br />Exp.intensity: 0.04685399","Exp.mz: 113.79269<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 113.79269<br />Exp.intensity: 0.04685399",null,"Exp.mz: 118.70564<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 118.70564<br />Exp.intensity: 0.04935771","Exp.mz: 118.70564<br />Exp.intensity - Exp.intensity: 0<br />Exp.mz: 118.70564<br />Exp.intensity: 0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,94.85532,97.17808,97.25629,103.36186,106.96647,107.21461,111.00887,113.79269,118.70564],"y":[0.0492295129878942,0.0450927711104649,0.0557093607298148,0.0520625335432262,0.0504308788483016,0.0515274325745473,0.049365336929949,1,0.0468539872945966,0.0493577076952944],"text":["Exp.mz:  87.50874<br />Exp.intensity: 0.04922951","Exp.mz:  94.85532<br />Exp.intensity: 0.04509277","Exp.mz:  97.17808<br />Exp.intensity: 0.05570936","Exp.mz:  97.25629<br />Exp.intensity: 0.05206253","Exp.mz: 103.36186<br />Exp.intensity: 0.05043088","Exp.mz: 106.96647<br />Exp.intensity: 0.05152743","Exp.mz: 107.21461<br />Exp.intensity: 0.04936534","Exp.mz: 111.00887<br />Exp.intensity: 1.00000000","Exp.mz: 113.79269<br />Exp.intensity: 0.04685399","Exp.mz: 118.70564<br />Exp.intensity: 0.04935771"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[null],"y":[null],"text":"spectrum1","hovertext":"x: Inf<br />y: Inf","textfont":{"size":14.6645669291339,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[null],"y":[null],"text":"spectrum2","hovertext":"x: Inf<br />y: -Inf","textfont":{"size":14.6645669291339,"color":"rgba(255,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,-0.0492295129878942,null,0,-0.0450927711104649,null,0,-0.0557093607298148,null,0,-0.0520625335432262,null,0,-0.0504308788483016,null,0,-0.0515274325745473,null,0,-0.049365336929949,null,0,-1,null,0,-0.0468539872945966,null,0,-0.0493577076952944],"text":["Lib.mz:  87.50874<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951","Lib.mz:  87.50874<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951",null,"Lib.mz:  94.85532<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277","Lib.mz:  94.85532<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277",null,"Lib.mz:  97.17808<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936","Lib.mz:  97.17808<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936",null,"Lib.mz:  97.25629<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253","Lib.mz:  97.25629<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253",null,"Lib.mz: 103.36186<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088","Lib.mz: 103.36186<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088",null,"Lib.mz: 106.96647<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743","Lib.mz: 106.96647<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743",null,"Lib.mz: 107.21461<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534","Lib.mz: 107.21461<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534",null,"Lib.mz: 111.00887<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000","Lib.mz: 111.00887<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000",null,"Lib.mz: 113.79269<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399","Lib.mz: 113.79269<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399",null,"Lib.mz: 118.70564<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771","Lib.mz: 118.70564<br />Lib.intensity - Lib.intensity: 0<br />Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[87.50874,94.85532,97.17808,97.25629,103.36186,106.96647,107.21461,111.00887,113.79269,118.70564],"y":[-0.0492295129878942,-0.0450927711104649,-0.0557093607298148,-0.0520625335432262,-0.0504308788483016,-0.0515274325745473,-0.049365336929949,-1,-0.0468539872945966,-0.0493577076952944],"text":["Lib.mz:  87.50874<br />-Lib.intensity: -0.04922951","Lib.mz:  94.85532<br />-Lib.intensity: -0.04509277","Lib.mz:  97.17808<br />-Lib.intensity: -0.05570936","Lib.mz:  97.25629<br />-Lib.intensity: -0.05206253","Lib.mz: 103.36186<br />-Lib.intensity: -0.05043088","Lib.mz: 106.96647<br />-Lib.intensity: -0.05152743","Lib.mz: 107.21461<br />-Lib.intensity: -0.04936534","Lib.mz: 111.00887<br />-Lib.intensity: -1.00000000","Lib.mz: 113.79269<br />-Lib.intensity: -0.04685399","Lib.mz: 118.70564<br />-Lib.intensity: -0.04935771"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.82100456621,"r":7.30593607305936,"b":55.3245330012453,"l":60.7721046077211},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[85.948895,120.265485],"tickmode":"array","ticktext":["90","100","110","120"],"tickvals":[90,100,110,120],"categoryorder":"array","categoryarray":["90","100","110","120"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Mass to charge ratio (m/z)","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1,1.1],"tickmode":"array","ticktext":["1","0.5","0","0.5","1"],"tickvals":[-1,-0.5,0,0.5,1],"categoryorder":"array","categoryarray":["1","0.5","0","0.5","1"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Relative intensity","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"84ce1d05e3dd":{"x":{},"y":{},"xend":{},"yend":{},"type":"scatter"},"84ce6db2d10d":{"x":{},"y":{}},"84ce76bae4be":{"x":{},"y":{}},"84ce67ffb2d7":{"x":{},"y":{}},"84ce44367698":{"x":{},"y":{},"xend":{},"yend":{}},"84ce53a41824":{"x":{},"y":{}}},"cur_data":"84ce1d05e3dd","visdat":{"84ce1d05e3dd":["function (y) ","x"],"84ce6db2d10d":["function (y) ","x"],"84ce76bae4be":["function (y) ","x"],"84ce67ffb2d7":["function (y) ","x"],"84ce44367698":["function (y) ","x"],"84ce53a41824":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-ms2_plot(spectrum1)
-<p><img src="masstools_introduction_files/figure-html/unnamed-chunk-6-3.png" width="100%"></p>
+<code class="sourceCode R"><span><span class="co"># ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)</span></span>
+<span><span class="fu"><a href="../reference/ms2_plot.html">ms2_plot</a></span><span class="op">(</span><span class="va">spectrum1</span><span class="op">)</span></span></code></pre></div>
+<p><img src="masstools_introduction_files/figure-html/unnamed-chunk-6-2.png" width="100%"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ms2_plot.html">ms2_plot</a></span><span class="op">(</span><span class="va">spectrum1</span>, interactive_plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-6790114748c38fa1be0f" style="width:100%;height:432.632880098888px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6790114748c38fa1be0f">{"x":{"data":[{"x":[87.50874,87.50874,null,94.85532,94.85532,null,97.17808,97.17808,null,97.25629,97.25629,null,103.36186,103.36186,null,106.96647,106.96647,null,107.21461,107.21461,null,111.00887,111.00887,null,113.79269,113.79269,null,118.70564,118.70564],"y":[0,0.0492295129878942,null,0,0.0450927711104649,null,0,0.0557093607298148,null,0,0.0520625335432262,null,0,0.0504308788483016,null,0,0.0515274325745473,null,0,0.049365336929949,null,0,1,null,0,0.0468539872945966,null,0,0.0493577076952944],"text":["mz:  87.50874<br />y: 0<br />mz:  87.50874<br />intensity: 0.04922951","mz:  87.50874<br />y: 0<br />mz:  87.50874<br />intensity: 0.04922951",null,"mz:  94.85532<br />y: 0<br />mz:  94.85532<br />intensity: 0.04509277","mz:  94.85532<br />y: 0<br />mz:  94.85532<br />intensity: 0.04509277",null,"mz:  97.17808<br />y: 0<br />mz:  97.17808<br />intensity: 0.05570936","mz:  97.17808<br />y: 0<br />mz:  97.17808<br />intensity: 0.05570936",null,"mz:  97.25629<br />y: 0<br />mz:  97.25629<br />intensity: 0.05206253","mz:  97.25629<br />y: 0<br />mz:  97.25629<br />intensity: 0.05206253",null,"mz: 103.36186<br />y: 0<br />mz: 103.36186<br />intensity: 0.05043088","mz: 103.36186<br />y: 0<br />mz: 103.36186<br />intensity: 0.05043088",null,"mz: 106.96647<br />y: 0<br />mz: 106.96647<br />intensity: 0.05152743","mz: 106.96647<br />y: 0<br />mz: 106.96647<br />intensity: 0.05152743",null,"mz: 107.21461<br />y: 0<br />mz: 107.21461<br />intensity: 0.04936534","mz: 107.21461<br />y: 0<br />mz: 107.21461<br />intensity: 0.04936534",null,"mz: 111.00887<br />y: 0<br />mz: 111.00887<br />intensity: 1.00000000","mz: 111.00887<br />y: 0<br />mz: 111.00887<br />intensity: 1.00000000",null,"mz: 113.79269<br />y: 0<br />mz: 113.79269<br />intensity: 0.04685399","mz: 113.79269<br />y: 0<br />mz: 113.79269<br />intensity: 0.04685399",null,"mz: 118.70564<br />y: 0<br />mz: 118.70564<br />intensity: 0.04935771","mz: 118.70564<br />y: 0<br />mz: 118.70564<br />intensity: 0.04935771"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.82100456621,"r":7.30593607305936,"b":55.3245330012453,"l":70.7347447073475},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[85.948895,120.265485],"tickmode":"array","ticktext":["90","100","110","120"],"tickvals":[90,100,110,120],"categoryorder":"array","categoryarray":["90","100","110","120"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Mass to charge ratio (m/z)","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0,1.1],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Relative intensity","font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":19.9252801992528}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"84ce273fbe2c":{"x":{},"y":{},"xend":{},"yend":{},"type":"scatter"}},"cur_data":"84ce273fbe2c","visdat":{"84ce273fbe2c":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<code class="sourceCode R"><span><span class="co"># ms2_plot(spectrum1, interactive_plot = TRUE)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="match-two-feature-tables">
@@ -305,7 +299,7 @@ time.</p>
 <p>cts.fiehnlab is <a href="http://cts.fiehnlab.ucdavis.edu/service/convert" class="external-link uri">http://cts.fiehnlab.ucdavis.edu/service/convert</a>. It
 support a lot of databases.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/masstools" class="external-link">masstools</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://masstools.tidymass.org/" class="external-link">masstools</a></span><span class="op">)</span></span></code></pre></div>
 <p>We can use the <code><a href="../reference/trans_id_database.html">trans_id_database()</a></code> to get the databases
 that cts.fiehnlab.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -431,7 +425,7 @@ we need use cts.fiehnlab convert to csid first.</p>
 </h3>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">####just open the current working directory</span></span>
-<span><span class="fu"><a href="../reference/openwd.html">openwd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">openwd</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">###A new folder will be opened and pop up</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -441,14 +435,14 @@ we need use cts.fiehnlab convert to csid first.</p>
 <code>Windows</code>.</p>
 <p>Then type in R:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/setwd_win.html">setwd_win</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">setwd_win</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Then paste the file path and type <code>Enter</code>.</p>
 </div>
 <div class="section level3">
 <h3 id="set-working-directory-where-a-r-project-is-in">Set working directory where a R project is in<a class="anchor" aria-label="anchor" href="#set-working-directory-where-a-r-project-is-in"></a>
 </h3>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/setwd_project.html">setwd_project</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">setwd_project</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="check-the-operate-system">Check the operate system<a class="anchor" aria-label="anchor" href="#check-the-operate-system"></a>
@@ -478,21 +472,22 @@ we need use cts.fiehnlab convert to csid first.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/masstools_conflicts.html">masstools_conflicts</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── masstools_conflicts() ──</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">body&lt;-()</span>    masks <span style="color: #0000BB;">base</span>::body&lt;-()</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">tidyr</span>::<span style="color: #00BB00;">extract()</span>     masks <span style="color: #0000BB;">magrittr</span>::extract()</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span>      masks <span style="color: #0000BB;">stats</span>::filter()</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">kronecker()</span> masks <span style="color: #0000BB;">base</span>::kronecker()</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>         masks <span style="color: #0000BB;">stats</span>::lag()</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>         masks <span style="color: #0000BB;">stats</span>::lag()</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">purrr</span>::<span style="color: #00BB00;">set_names()</span>   masks <span style="color: #0000BB;">magrittr</span>::set_names()</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="list-all-pacakges-in-masstools">List all pacakges in <code>masstools</code><a class="anchor" aria-label="anchor" href="#list-all-pacakges-in-masstools"></a>
 </h3>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/masstools_packages.html">masstools_packages</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "dplyr"        "magrittr"     "tibble"       "tidyr"        "stringr"     </span></span>
-<span><span class="co">#&gt;  [6] "rstudioapi"   "ggplot2"      "methods"      "crayon"       "cli"         </span></span>
-<span><span class="co">#&gt; [11] "purrr"        "plotly"       "pbapply"      "clisymbols"   "htmltools"   </span></span>
-<span><span class="co">#&gt; [16] "httr"         "plyr"         "rvest"        "xml2"         "stats"       </span></span>
-<span><span class="co">#&gt; [21] "utils"        "BiocParallel" "MSnbase"      "ProtGenerics" "Rdisop"      </span></span>
-<span><span class="co">#&gt; [26] "lifecycle"    "masstools"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "dplyr"        "remotes"      "magrittr"     "tibble"       "tidyr"       </span></span>
+<span><span class="co">#&gt;  [6] "stringr"      "methods"      "crayon"       "cli"          "purrr"       </span></span>
+<span><span class="co">#&gt; [11] "pbapply"      "httr"         "rvest"        "xml2"         "stats"       </span></span>
+<span><span class="co">#&gt; [16] "utils"        "MSnbase"      "ProtGenerics" "lifecycle"    "ggplot2"     </span></span>
+<span><span class="co">#&gt; [21] "masstools"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -501,62 +496,59 @@ we need use cts.fiehnlab convert to csid first.</p>
 </h2>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.2.1 (2022-06-23)</span></span>
-<span><span class="co">#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)</span></span>
-<span><span class="co">#&gt; Running under: macOS Big Sur ... 10.16</span></span>
+<span><span class="co">#&gt; R version 4.3.0 (2023-04-21)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-apple-darwin20 (64-bit)</span></span>
+<span><span class="co">#&gt; Running under: macOS 14.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib</span></span>
-<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib</span></span>
+<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib </span></span>
+<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; locale:</span></span>
 <span><span class="co">#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; time zone: America/Los_Angeles</span></span>
+<span><span class="co">#&gt; tzcode source: internal</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] forcats_0.5.1.9000 stringr_1.4.0      dplyr_1.0.9        purrr_0.3.4       </span></span>
-<span><span class="co">#&gt;  [5] readr_2.1.2        tidyr_1.2.0        tibble_3.1.7       ggplot2_3.3.6     </span></span>
-<span><span class="co">#&gt;  [9] tidyverse_1.3.1    masstools_1.0.2   </span></span>
+<span><span class="co">#&gt;  [1] lubridate_1.9.2  forcats_1.0.0    stringr_1.5.0    purrr_1.0.1     </span></span>
+<span><span class="co">#&gt;  [5] readr_2.1.4      tidyr_1.3.0      tibble_3.2.1     ggplot2_3.4.2   </span></span>
+<span><span class="co">#&gt;  [9] tidyverse_2.0.0  dplyr_1.1.2      magrittr_2.0.3   masstools_1.0.13</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;   [1] colorspace_2.0-3      selectr_0.4-2         ellipsis_0.3.2       </span></span>
-<span><span class="co">#&gt;   [4] rprojroot_2.0.3       fs_1.5.2              clue_0.3-61          </span></span>
-<span><span class="co">#&gt;   [7] rstudioapi_0.13       mzR_2.30.0            farver_2.1.1         </span></span>
-<span><span class="co">#&gt;  [10] affyio_1.66.0         fansi_1.0.3           lubridate_1.8.0      </span></span>
-<span><span class="co">#&gt;  [13] xml2_1.3.3            codetools_0.2-18      ncdf4_1.19           </span></span>
-<span><span class="co">#&gt;  [16] doParallel_1.0.17     cachem_1.0.6          impute_1.70.0        </span></span>
-<span><span class="co">#&gt;  [19] knitr_1.39            jsonlite_1.8.0        broom_1.0.0          </span></span>
-<span><span class="co">#&gt;  [22] cluster_2.1.3         vsn_3.64.0            dbplyr_2.2.1         </span></span>
-<span><span class="co">#&gt;  [25] BiocManager_1.30.18   compiler_4.2.1        httr_1.4.3           </span></span>
-<span><span class="co">#&gt;  [28] backports_1.4.1       assertthat_0.2.1      fastmap_1.1.0        </span></span>
-<span><span class="co">#&gt;  [31] lazyeval_0.2.2        limma_3.52.2          cli_3.3.0            </span></span>
-<span><span class="co">#&gt;  [34] htmltools_0.5.2       tools_4.2.1           gtable_0.3.0         </span></span>
-<span><span class="co">#&gt;  [37] glue_1.6.2            affy_1.74.0           Rcpp_1.0.8.3         </span></span>
-<span><span class="co">#&gt;  [40] MALDIquant_1.21       Biobase_2.56.0        cellranger_1.1.0     </span></span>
-<span><span class="co">#&gt;  [43] jquerylib_0.1.4       pkgdown_2.0.5         vctrs_0.4.1          </span></span>
-<span><span class="co">#&gt;  [46] preprocessCore_1.58.0 iterators_1.0.14      crosstalk_1.2.0      </span></span>
-<span><span class="co">#&gt;  [49] xfun_0.31             rvest_1.0.2           lifecycle_1.0.1      </span></span>
-<span><span class="co">#&gt;  [52] XML_3.99-0.10         zlibbioc_1.42.0       MASS_7.3-57          </span></span>
-<span><span class="co">#&gt;  [55] scales_1.2.0          MSnbase_2.22.0        pcaMethods_1.88.0    </span></span>
-<span><span class="co">#&gt;  [58] clisymbols_1.2.0      hms_1.1.1             ProtGenerics_1.28.0  </span></span>
-<span><span class="co">#&gt;  [61] parallel_4.2.1        yaml_2.3.5            curl_4.3.2           </span></span>
-<span><span class="co">#&gt;  [64] memoise_2.0.1         pbapply_1.5-0         sass_0.4.1           </span></span>
-<span><span class="co">#&gt;  [67] stringi_1.7.6         highr_0.9             S4Vectors_0.34.0     </span></span>
-<span><span class="co">#&gt;  [70] desc_1.4.1            foreach_1.5.2         BiocGenerics_0.42.0  </span></span>
-<span><span class="co">#&gt;  [73] BiocParallel_1.30.3   rlang_1.0.3           pkgconfig_2.0.3      </span></span>
-<span><span class="co">#&gt;  [76] mzID_1.34.0           evaluate_0.15         lattice_0.20-45      </span></span>
-<span><span class="co">#&gt;  [79] htmlwidgets_1.5.4     labeling_0.4.2        tidyselect_1.1.2     </span></span>
-<span><span class="co">#&gt;  [82] plyr_1.8.7            magrittr_2.0.3        R6_2.5.1             </span></span>
-<span><span class="co">#&gt;  [85] IRanges_2.30.0        generics_0.1.3        DBI_1.1.3            </span></span>
-<span><span class="co">#&gt;  [88] pillar_1.7.0          haven_2.5.0           withr_2.5.0          </span></span>
-<span><span class="co">#&gt;  [91] MsCoreUtils_1.8.0     modelr_0.1.8          crayon_1.5.1         </span></span>
-<span><span class="co">#&gt;  [94] utf8_1.2.2            plotly_4.10.0         tzdb_0.3.0           </span></span>
-<span><span class="co">#&gt;  [97] rmarkdown_2.14        grid_4.2.1            readxl_1.4.0         </span></span>
-<span><span class="co">#&gt; [100] data.table_1.14.2     reprex_2.0.1          digest_0.6.29        </span></span>
-<span><span class="co">#&gt; [103] Rdisop_1.56.0         stats4_4.2.1          munsell_0.5.0        </span></span>
-<span><span class="co">#&gt; [106] viridisLite_0.4.0     bslib_0.3.1</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] tidyselect_1.2.0      farver_2.1.1          fastmap_1.1.1        </span></span>
+<span><span class="co">#&gt;  [4] XML_3.99-0.14         digest_0.6.31         timechange_0.2.0     </span></span>
+<span><span class="co">#&gt;  [7] lifecycle_1.0.3       cluster_2.1.4         ProtGenerics_1.32.0  </span></span>
+<span><span class="co">#&gt; [10] compiler_4.3.0        rlang_1.1.1           sass_0.4.6           </span></span>
+<span><span class="co">#&gt; [13] tools_4.3.0           utf8_1.2.3            yaml_2.3.7           </span></span>
+<span><span class="co">#&gt; [16] knitr_1.43            labeling_0.4.2        curl_5.0.1           </span></span>
+<span><span class="co">#&gt; [19] xml2_1.3.4            plyr_1.8.8            BiocParallel_1.34.2  </span></span>
+<span><span class="co">#&gt; [22] withr_2.5.0           BiocGenerics_0.46.0   desc_1.4.2           </span></span>
+<span><span class="co">#&gt; [25] grid_4.3.0            stats4_4.3.0          preprocessCore_1.62.1</span></span>
+<span><span class="co">#&gt; [28] fansi_1.0.4           colorspace_2.1-0      scales_1.2.1         </span></span>
+<span><span class="co">#&gt; [31] iterators_1.0.14      MASS_7.3-58.4         cli_3.6.1            </span></span>
+<span><span class="co">#&gt; [34] mzR_2.34.0            rmarkdown_2.22        crayon_1.5.2         </span></span>
+<span><span class="co">#&gt; [37] generics_0.1.3        remotes_2.4.2.1       rstudioapi_0.14      </span></span>
+<span><span class="co">#&gt; [40] httr_1.4.6            tzdb_0.4.0            ncdf4_1.21           </span></span>
+<span><span class="co">#&gt; [43] pbapply_1.7-0         cachem_1.0.8          affy_1.78.0          </span></span>
+<span><span class="co">#&gt; [46] zlibbioc_1.46.0       rvest_1.0.3           parallel_4.3.0       </span></span>
+<span><span class="co">#&gt; [49] impute_1.74.1         selectr_0.4-2         BiocManager_1.30.21  </span></span>
+<span><span class="co">#&gt; [52] vsn_3.68.0            vctrs_0.6.2           jsonlite_1.8.5       </span></span>
+<span><span class="co">#&gt; [55] IRanges_2.34.0        hms_1.1.3             S4Vectors_0.38.1     </span></span>
+<span><span class="co">#&gt; [58] MALDIquant_1.22.1     clue_0.3-64           foreach_1.5.2        </span></span>
+<span><span class="co">#&gt; [61] limma_3.56.2          jquerylib_0.1.4       affyio_1.70.0        </span></span>
+<span><span class="co">#&gt; [64] glue_1.6.2            MSnbase_2.26.0        pkgdown_2.0.7        </span></span>
+<span><span class="co">#&gt; [67] codetools_0.2-19      stringi_1.7.12        gtable_0.3.3         </span></span>
+<span><span class="co">#&gt; [70] mzID_1.38.0           munsell_0.5.0         pillar_1.9.0         </span></span>
+<span><span class="co">#&gt; [73] pcaMethods_1.92.0     htmltools_0.5.5       R6_2.5.1             </span></span>
+<span><span class="co">#&gt; [76] doParallel_1.0.17     rprojroot_2.0.3       evaluate_0.21        </span></span>
+<span><span class="co">#&gt; [79] lattice_0.21-8        Biobase_2.60.0        highr_0.10           </span></span>
+<span><span class="co">#&gt; [82] memoise_2.0.1         bslib_0.5.0           Rcpp_1.0.10          </span></span>
+<span><span class="co">#&gt; [85] xfun_0.39             MsCoreUtils_1.12.0    fs_1.6.2             </span></span>
+<span><span class="co">#&gt; [88] pkgconfig_2.0.3</span></span></code></pre></div>
 </div>
   </div>
 

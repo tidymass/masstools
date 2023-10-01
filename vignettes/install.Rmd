@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 You can just use the or `remotes` to install `masstools`. 
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE, cache=TRUE}
-remotes::install_gitlab("jaspershen/masstools", dependencies = TRUE)
+remotes::install_gitlab("tidymass/masstools", dependencies = TRUE)
 ```
 
 > During the installation, it will ask if you want to update some packages for few times, just enter `enter` key to skip it.

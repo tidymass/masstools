@@ -24,7 +24,7 @@ and other packages that you have loaded."><meta property="og:image" content="htt
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.13</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@ and other packages that you have loaded."><meta property="og:image" content="htt
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Conflicts between the masstools and other packages</h1>
-    <small class="dont-index">Source: <a href="https://github.com/tidymass/masstools/blob/HEAD/R/conflicts.R" class="external-link"><code>R/conflicts.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/tidymass/masstools/blob/HEAD/R/4-conflicts.R" class="external-link"><code>R/4-conflicts.R</code></a></small>
     <div class="hidden name"><code>masstools_conflicts.Rd</code></div>
     </div>
 
@@ -123,7 +123,9 @@ existing code.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">masstools_conflicts</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── masstools_conflicts() ──</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">body&lt;-()</span>    masks <span style="color: #0000BB;">base</span>::body&lt;-()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span>      masks <span style="color: #0000BB;">stats</span>::filter()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">kronecker()</span> masks <span style="color: #0000BB;">base</span>::kronecker()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>         masks <span style="color: #0000BB;">stats</span>::lag()</span>
 </code></pre></div>
     </div>
   </div>
