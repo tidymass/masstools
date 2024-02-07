@@ -51,7 +51,7 @@ read_mgf <- function(file) {
         })
       info.rt <-
         lapply(mgf.data, function(x) {
-          grep("^RTINSECONDS|RETENTIONTIME", x, value = TRUE)
+          grep("^RTINSECONDS|RETENTIONTIME|RTINMINUTES", x, value = TRUE)
         })
       
       info.mz <- unlist(info.mz) %>% 
