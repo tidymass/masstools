@@ -10,6 +10,7 @@ utils::globalVariables(
         "sample_id",
         "value",
         ".",
-        "name"
+        "name",
+        "chemical_elements_information"
     )
 )

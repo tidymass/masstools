@@ -61,3 +61,7 @@
 # Version 1.0.13 (20230930)
 
 * Update documents.
+
+# Version 1.0.15 (20241203)
+
+* Fix a small bug in check_chemical_formula.
