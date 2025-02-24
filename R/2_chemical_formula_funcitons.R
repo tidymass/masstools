@@ -13,7 +13,7 @@
 #' parse_chemical_formula("C6H12O6")   # Returns a data frame with C:6, H:12, and O:6
 #' parse_chemical_formula("Fe2O3")     # Returns a data frame with Fe:2 and O:3
 #'
-#' @author Xiaotao Shen \email{shenxt1990@outlook.com}
+#' @author Xiaotao Shen \email{xiaotao.shen@outlook.com}
 #' @title Parse a Chemical Formula into its Constituent Elements and Counts
 #' @description Breaks down a chemical formula into its individual elements and counts,
 #' returning the results as a data frame.
@@ -72,7 +72,7 @@ parse_chemical_formula <-
 #' calculate_mass("H2O", which = "average_mass")
 #' calculate_mass("C6H12O6", which = "exact_mass")
 #'
-#' @author Xiaotao Shen \email{shenxt1990@outlook.com}
+#' @author Xiaotao Shen \email{xiaotao.shen@outlook.com}
 #' @title Calculate Mass of a Chemical Formula
 #' @description Computes the mass of a given chemical formula based either on the exact mass or the average mass of its constituent elements.
 #' @export
@@ -121,7 +121,7 @@ calculate_mass <-
 #' Default is "2M-2H+Na".
 #' @return A numeric value representing the accurate mass of the molecule
 #' based on the precursor m/z and adduct type.
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 #' @examples
 #' convert_precursor_mz2accurate_mass(805.559, "(2M-2H+Na)-")
@@ -225,7 +225,7 @@ convert_precursor_mz2accurate_mass <-
 #' @return A character string of the resulting chemical formula after combining
 #' the base formula with the adduct. If an error occurs or the summation results
 #' in negative counts for any element, it returns `NA`.
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 #' @examples
 #' sum_formula(formula = "C9H11NO2", adduct = "M+H")

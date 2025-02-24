@@ -157,5 +157,5 @@ ms2_plot(spec1_mat, spec2_mat)
 The specific plotting methods associated with different spectrum classes that implement this generic function.
 }
 \author{
-Xiaotao Shen <shenxt1990@outlook.com>
+Xiaotao Shen <xiaotao.shen@outlook.com>
 }

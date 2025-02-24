@@ -31,5 +31,5 @@ sum_formula(formula = "C9H11NO2", adduct = "M+CH3COOH")
 sum_formula(formula = "C9H11", adduct = "M-H20")
 }
 \author{
-Xiaotao Shen <shenxt1990@outlook.com>
+Xiaotao Shen <xiaotao.shen@outlook.com>
 }

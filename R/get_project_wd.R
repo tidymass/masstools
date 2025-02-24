@@ -16,7 +16,7 @@
 #' get_project_wd()
 #' }
 #'
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 
 get_project_wd <- function() {

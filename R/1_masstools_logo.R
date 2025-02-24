@@ -5,7 +5,7 @@
 #' and user interaction when they load or utilize the package.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
-#' @importFrom stringr str_replace str_split str_replace_all str_trim
+#' @importFrom stringr str_replace str_split str_replace_all str_trim str_detect str_extract
 #' @importFrom dplyr filter mutate select everything
 #' @importFrom utils packageDescription write.csv
 #' @importFrom cli rule symbol
@@ -23,6 +23,9 @@
 #' @importFrom ProtGenerics spectra
 #' @importFrom lifecycle deprecate_soft
 #' @importFrom remotes install_git install_github install_gitlab
+#' @importFrom jsonlite toJSON fromJSON
+#' @importFrom xml2 read_html read_xml xml_text
+#' @importFrom rvest html_nodes html_text
 #' @export
 #' @return Prints messages to the console and does not return any value.
 #' @examples

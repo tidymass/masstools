@@ -30,5 +30,5 @@ parse_chemical_formula("Fe2O3")     # Returns a data frame with Fe:2 and O:3
 
 }
 \author{
-Xiaotao Shen \email{shenxt1990@outlook.com}
+Xiaotao Shen \email{xiaotao.shen@outlook.com}
 }

@@ -11,6 +11,8 @@ utils::globalVariables(
         "value",
         ".",
         "name",
-        "chemical_elements_information"
+        "chemical_elements_information",
+        "code",
+        "apikey"
     )
 )

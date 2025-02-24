@@ -32,7 +32,7 @@
 #' ms2_plot(spec1, spec2)
 #' }
 #'
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 ms2_plot <-
   function(spectrum1,
@@ -59,7 +59,7 @@ ms2_plot <-
 #' @method ms2_plot data.frame
 #' @rdname ms2_plot
 #' @inheritParams ms2_plot
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 #' @examples
 #' spectrum1 <- data.frame(
@@ -322,7 +322,7 @@ ms2_plot.data.frame <- function(spectrum1,
 #' ms2_plot(spec1_mat, spec2_mat)
 #' }
 #'
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @method ms2_plot matrix
 #' @rdname ms2_plot
 #' @export

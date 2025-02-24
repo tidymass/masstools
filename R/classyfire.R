@@ -15,7 +15,7 @@
 #' descriptors. If the InChIKey is not found in the database or there's an error, it 
 #' returns relevant NA-filled placeholders and warnings.
 #'
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 #' @examples
 #' \dontrun{
@@ -234,7 +234,7 @@ get_compound_class <-
 #' @docType class
 #' @seealso \code{\link[methods:show]{show}}
 #'
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 setClass(
   Class = "classyfire",
   representation = representation(
@@ -261,7 +261,7 @@ setClass(
 #' show(cf)
 #' }
 #'
-#' @author Xiaotao Shen <shenxt1990@outlook.com>
+#' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 
 setMethod("show",

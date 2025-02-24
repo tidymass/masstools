@@ -31,5 +31,5 @@ convert_precursor_mz2accurate_mass(805.559, "(2M-2H+Na)-")
 convert_precursor_mz2accurate_mass(805.559, "(M-H)-")
 }
 \author{
-Xiaotao Shen <shenxt1990@outlook.com>
+Xiaotao Shen <xiaotao.shen@outlook.com>
 }

@@ -7,7 +7,7 @@ Authors@R: c(
     person(given = "Xiaotao",
            family = "Shen",
            role = c("aut", "cre"),
-           email = "shenxt1990@outlook.com",
+           email = "xiaotao.shen@outlook.com",
            comment = c(ORCID = "0000-0002-9608-9964")),
         person(given = "Chuchu",
            family = "Wang",
@@ -24,6 +24,7 @@ Depends: R (>= 4.1)
 License: MIT + file LICENSE
 Imports: 
     dplyr,
+    jsonlite,
     remotes,
     magrittr,
     tibble,
