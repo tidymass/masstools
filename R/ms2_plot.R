@@ -27,10 +27,36 @@
 #' @seealso The specific plotting methods associated with different spectrum classes that implement this generic function.
 #'
 #' @examples
-#' \dontrun{
 #' # Assuming `spec1` and `spec2` are spectrum objects
+#' spec1 <- data.frame(
+#'     mz = c(
+#'         87.50874,
+#'         94.85532,
+#'         97.17808,
+#'         97.25629,
+#'         103.36186,
+#'         106.96647,
+#'         107.21461,
+#'         111.00887,
+#'         113.79269,
+#'         118.70564
+#'     ),
+#'     intensity =
+#'         c(
+#'             8356.306,
+#'             7654.128,
+#'             9456.207,
+#'             8837.188,
+#'             8560.228,
+#'             8746.359,
+#'             8379.361,
+#'             169741.797,
+#'             7953.080,
+#'             8378.066
+#'         )
+#' )
+#' spec2 <- spec1
 #' ms2_plot(spec1, spec2)
-#' }
 #'
 #' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
@@ -58,7 +84,7 @@ ms2_plot <-
 
 #' @method ms2_plot data.frame
 #' @rdname ms2_plot
-#' @inheritParams ms2_plot
+
 #' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 #' @examples
@@ -124,10 +150,10 @@ ms2_plot.data.frame <- function(spectrum1,
       }) %>%
       dplyr::bind_cols() %>%
       as.data.frame()
-    
+
     spectrum1[, 2] <- spectrum1[, 2] / max(spectrum1[, 2])
   }
-  
+
   if (!missing(spectrum2)) {
     spectrum2 <-
       spectrum2 %>%
@@ -139,22 +165,22 @@ ms2_plot.data.frame <- function(spectrum1,
       as.data.frame()
     spectrum2[, 2] <- spectrum2[, 2] / max(spectrum2[, 2])
   }
-  
+
   ## two spectrum
   if (!missing(spectrum1) & !missing(spectrum2)) {
     if (missing(range.mz)) {
       range.mz <- c(min(spectrum1[, 1], spectrum2[, 1]),
                     max(spectrum1[, 1], spectrum2[, 1]))
     }
-    
+
     matched.spec <- ms2_match(spectrum1,
                               spectrum2,
                               ppm.tol = ppm.tol,
                               mz.ppm.thr = mz.ppm.thr)
-    
+
     matched.idx <- which(matched.spec[, "Lib.intensity"] > 0 &
                            matched.spec[, "Exp.intensity"] > 0)
-    
+
     plot <- ggplot2::ggplot(matched.spec) +
       ggplot2::geom_segment(
         mapping = ggplot2::aes(
@@ -207,7 +233,7 @@ ms2_plot.data.frame <- function(spectrum1,
           face = "plain"
         )
       )
-    
+
     plot <- plot +
       annotate(
         geom = "text",
@@ -227,7 +253,7 @@ ms2_plot.data.frame <- function(spectrum1,
         hjust = 1,
         vjust = -1
       )
-    
+
     plot <- plot +
       geom_segment(
         data = matched.spec,
@@ -251,19 +277,19 @@ ms2_plot.data.frame <- function(spectrum1,
     }
     return(plot)
   }
-  
+
   if (!missing(spectrum1) & missing(spectrum2)) {
     spectrum <- spectrum1
   }
-  
+
   if (!missing(spectrum2) & missing(spectrum1)) {
     spectrum <- spectrum2
   }
-  
+
   if (missing(range.mz)) {
     range.mz <- c(min(spectrum[, 1]), max(spectrum[, 1]))
   }
-  
+
   plot <- ggplot(spectrum) +
     geom_segment(mapping = aes(
       x = mz,
@@ -305,7 +331,7 @@ ms2_plot.data.frame <- function(spectrum1,
         face = "plain"
       )
     )
-  
+
   if (interactive_plot) {
     if (requireNamespace("plotly", quietly = TRUE)) {
       plot <- plotly::ggplotly(plot)
@@ -315,12 +341,38 @@ ms2_plot.data.frame <- function(spectrum1,
 }
 
 
-#' @inheritParams ms2_plot
+
 #' @examples
-#' \dontrun{
 #' # Assuming `spec1_mat` and `spec2_mat` are matrices with MS2 spectra data
+#' spec1_mat <- data.frame(
+#'     mz = c(
+#'         87.50874,
+#'         94.85532,
+#'         97.17808,
+#'         97.25629,
+#'         103.36186,
+#'         106.96647,
+#'         107.21461,
+#'         111.00887,
+#'         113.79269,
+#'         118.70564
+#'     ),
+#'     intensity =
+#'         c(
+#'             8356.306,
+#'             7654.128,
+#'             9456.207,
+#'             8837.188,
+#'             8560.228,
+#'             8746.359,
+#'             8379.361,
+#'             169741.797,
+#'             7953.080,
+#'             8378.066
+#'         )
+#' )
+#' spec2_mat <- spec1_mat
 #' ms2_plot(spec1_mat, spec2_mat)
-#' }
 #'
 #' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @method ms2_plot matrix
@@ -355,10 +407,10 @@ ms2_plot.matrix <- function(spectrum1,
       }) %>%
       dplyr::bind_cols() %>%
       as.data.frame()
-    
+
     spectrum1[, 2] <- spectrum1[, 2] / max(spectrum1[, 2])
   }
-  
+
   if (!missing(spectrum2)) {
     spectrum2 <-
       spectrum2 %>%
@@ -370,7 +422,7 @@ ms2_plot.matrix <- function(spectrum1,
       as.data.frame()
     spectrum2[, 2] <- spectrum2[, 2] / max(spectrum2[, 2])
   }
-  
+
   ms2_plot.data.frame(
     spectrum1 = spectrum1,
     spectrum2 = spectrum2,

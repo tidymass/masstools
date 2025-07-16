@@ -13,10 +13,11 @@
 #' }
 #' Empty spectra are removed from the output.
 #'
-#' @examples 
-#' # Assuming 'sample.mgf' is the path to your MGF file.
-#' # mgf_data <- read_mgf4database('sample.mgf')
-#'
+#' @examples
+#' # Locate the example mgf file in the installed package
+#' file_path <- system.file("extdata", "example.mgf", package = "masstools")
+#' # Then use it in your function
+#' result <- read_mgf(file_path)
 #' @export
 
 read_mgf4database <- function(file) {

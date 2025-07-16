@@ -16,6 +16,8 @@ Authors@R: c(
 Description: The masstools package contains a lot of base functions which can be used for 
     mass spectrometry and metabolomics data processing and analysis. For example,
     tandem mass spectrometry (MS2) matching, dot product calculation, etc. 
+biocViews: Metabolomics, MassSpectrometry, Preprocessing, Visualization
+          , DataImport, Software
 URL: https://masstools.tidymass.org/
 BugReports: https://github.com/tidymass/masstools/issues
 Encoding: UTF-8

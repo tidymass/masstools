@@ -92,16 +92,16 @@ calculate_mass <-
     if (which == "exact_mass") {
       mass <-
         seq_len(nrow(elements)) %>%
-        sapply(function(idx) {
+        vapply(function(idx) {
           chemical_elements_information$accurate_mass[elements$Element[idx] == chemical_elements_information$element] * elements$Count[idx]
-        }) %>%
+        }, FUN.VALUE = numeric(1)) %>%
         sum()
     } else{
       mass <-
         seq_len(nrow(elements)) %>%
-        sapply(function(idx) {
+        vapply(function(idx) {
           chemical_elements_information$average_mass[elements$Element[idx] == chemical_elements_information$element] * elements$Count[idx]
-        }) %>%
+        }, FUN.VALUE = numeric(1)) %>%
         sum()
     }
     names(mass) <-

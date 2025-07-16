@@ -23,7 +23,7 @@ convert_metabolite_id_chemspider(
 
 \item{chemspider_apikey}{Character. API key for ChemSpider (required if using `"chemspider"` server).
 **How to Obtain a ChemSpider API Key:**
-1. Go to the **Royal Society of Chemistry (RSC) Developer Portal**:  
+1. Go to the **Royal Society of Chemistry (RSC) Developer Portal**:
    [https://developer.rsc.org/](https://developer.rsc.org/)
 2. Sign in or create an account.
 3. Navigate to **My Account** > **API Keys**.
@@ -36,4 +36,25 @@ A data frame with the original query and converted metabolite ID(s).
 }
 \description{
 Converts metabolite IDs from one format to another using the ChemSpider API.
+}
+\examples{
+\donttest{
+# Example 1: Convert from InChIKey to InChI using ChemSpider (API key required)
+# Replace 'your_chemspider_api_key' with your actual API key
+convert_metabolite_id_chemspider(
+  query = "BQJCRHHNABKAKU-KBQPJGBKSA-N",
+  from = "InChIKey",
+  to = "InChI",
+  chemspider_apikey = "your_chemspider_api_key"
+)
+
+# Example 2: Convert from a metabolite ID in "csid" format
+# Assuming '12345' is a valid ChemSpider ID
+convert_metabolite_id_chemspider(
+  query = "12345", 
+  from = "ChemSpider", 
+  to = "InChI",
+  chemspider_apikey = "your_chemspider_api_key"
+)
+}
 }
