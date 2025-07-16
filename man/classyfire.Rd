@@ -5,25 +5,25 @@
 \alias{classyfire}
 \title{S4 Class Representation for ClassyFire Result}
 \description{
-An S4 class object that holds the results of a ClassyFire query, 
-structured into various components like compound information, taxonomic 
+An S4 class object that holds the results of a ClassyFire query,
+structured into various components like compound information, taxonomic
 classification, description, and external descriptors.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{compound_info}}{A tibble containing basic compound information such as 
+\item{\code{compound_info}}{A tibble containing basic compound information such as
 SMILES, InChIKey, Formula, and Mass.}
 
-\item{\code{taxonomy_tree}}{A tibble representing the taxonomic tree of the compound 
+\item{\code{taxonomy_tree}}{A tibble representing the taxonomic tree of the compound
 that includes classifications like Kingdom, Superclass, Class, and Subclass.}
 
-\item{\code{classification_info}}{A tibble containing a detailed taxonomic 
+\item{\code{classification_info}}{A tibble containing a detailed taxonomic
 classification of the compound.}
 
 \item{\code{description}}{A tibble holding the compound's description from ClassyFire.}
 
-\item{\code{external_descriptors}}{A tibble with external descriptors related to the 
+\item{\code{external_descriptors}}{A tibble with external descriptors related to the
 compound.}
 }}
 

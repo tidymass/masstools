@@ -110,10 +110,36 @@ The method to be used for the comparison depends on the class of the `spectrum1`
 objects provided.
 }
 \examples{
-\dontrun{
 # Assuming `spec1` and `spec2` are spectrum objects
+spec1 <- data.frame(
+    mz = c(
+        87.50874,
+        94.85532,
+        97.17808,
+        97.25629,
+        103.36186,
+        106.96647,
+        107.21461,
+        111.00887,
+        113.79269,
+        118.70564
+    ),
+    intensity =
+        c(
+            8356.306,
+            7654.128,
+            9456.207,
+            8837.188,
+            8560.228,
+            8746.359,
+            8379.361,
+            169741.797,
+            7953.080,
+            8378.066
+        )
+)
+spec2 <- spec1
 ms2_plot(spec1, spec2)
-}
 
 spectrum1 <- data.frame(
     mz = c(
@@ -147,10 +173,36 @@ ms2_plot(spectrum1, spectrum2)
 ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)
 ms2_plot(spectrum1)
 ms2_plot(spectrum1, interactive_plot = TRUE)
-\dontrun{
 # Assuming `spec1_mat` and `spec2_mat` are matrices with MS2 spectra data
+spec1_mat <- data.frame(
+    mz = c(
+        87.50874,
+        94.85532,
+        97.17808,
+        97.25629,
+        103.36186,
+        106.96647,
+        107.21461,
+        111.00887,
+        113.79269,
+        118.70564
+    ),
+    intensity =
+        c(
+            8356.306,
+            7654.128,
+            9456.207,
+            8837.188,
+            8560.228,
+            8746.359,
+            8379.361,
+            169741.797,
+            7953.080,
+            8378.066
+        )
+)
+spec2_mat <- spec1_mat
 ms2_plot(spec1_mat, spec2_mat)
-}
 
 }
 \seealso{

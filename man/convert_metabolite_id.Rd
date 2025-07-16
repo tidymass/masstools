@@ -27,7 +27,7 @@ convert_metabolite_id(
 
 \item{chemspider_apikey}{Character. API key for ChemSpider (required if using `"chemspider"` server).
 **How to Obtain a ChemSpider API Key:**
-1. Go to the **Royal Society of Chemistry (RSC) Developer Portal**:  
+1. Go to the **Royal Society of Chemistry (RSC) Developer Portal**:
    [https://developer.rsc.org/](https://developer.rsc.org/)
 2. Sign in or create an account.
 3. Navigate to **My Account** > **API Keys**.
@@ -41,16 +41,14 @@ convert_metabolite_id(
 A data frame with the original query and converted metabolite ID(s).
 }
 \description{
-This function converts metabolite identifiers from one database format to another using different 
+This function converts metabolite identifiers from one database format to another using different
 online services, including CTS FiehnLab, ChemSpider, and OpenAI.
 }
 \examples{
-\dontrun{
-convert_metabolite_id(query = "C00001", from = "KEGG", 
+convert_metabolite_id(query = "C00001", from = "KEGG",
 to = "Chemical Name", server = "cts.fiehnlab")
-convert_metabolite_id(query = "BQJCRHHNABKAKU-KBQPJGBKSA-N", 
+convert_metabolite_id(query = "BQJCRHHNABKAKU-KBQPJGBKSA-N",
 from = "InChIKey", to = "InChI", server = "chemspider", chemspider_apikey = "your_key")
-convert_metabolite_id(query = "C00001", from = "KEGG", 
+convert_metabolite_id(query = "C00001", from = "KEGG",
 to = "Chemical Name", server = "openai", openai_apikey = "your_key")
-}
 }

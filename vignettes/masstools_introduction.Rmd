@@ -26,7 +26,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 # **Brief introduction**
 
 `masstools` is a package which contains multiple functions for LC-MS metabolomics data processing and analysis. For example, chemical formula operation, MS2 spectra matching. And `masstools` is a part of [`tidymass` project](https://www.tidymass.org/).
@@ -134,7 +133,7 @@ Two web tools are used for compound compound convert.
 
 ## **1. cts.fiehnlab**
 
-cts.fiehnlab is http://cts.fiehnlab.ucdavis.edu/service/convert. It support a lot of databases. 
+cts.fiehnlab is <http://cts.fiehnlab.ucdavis.edu/service/convert>. It support a lot of databases.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 library(masstools)
@@ -142,18 +141,18 @@ library(masstools)
 
 We can use the `trans_id_database()` to get the databases that cts.fiehnlab.
 
-```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 database_name = trans_id_database(server = "cts.fiehnlab")
 ```
 
-```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 head(database_name$From$From)
 ```
-```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 head(database_name$To$From)
 ```
 
-We can see that it support a lot of (> 200) databases.
+We can see that it support a lot of (\> 200) databases.
 
 We can try the most common convert, from KEGG to HMDB.
 
@@ -188,19 +187,19 @@ c("C00001", "C00001", "C00001") %>%
 
 ## **2. chemspider**
 
-This is from https://www.chemspider.com/InChI.asmx. 
+This is from <https://www.chemspider.com/InChI.asmx>.
 
 We can use the `trans_id_database()` to get the databases that chemspider
 
-```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 database_name2 = trans_id_database(server = "chemspider")
 ```
 
-```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 database_name2$From
 ```
 
-```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
+```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 database_name2$To
 ```
 
@@ -228,8 +227,7 @@ trans_ID(
 
 # **Get compound class based on classyfire**
 
-Refer this publication: https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y
-
+Refer this publication: <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y>
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 result = 
@@ -279,7 +277,6 @@ Then paste the file path and type `Enter`.
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 setwd_project()
 ```
-
 
 ## Check the operate system
 

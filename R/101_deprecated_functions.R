@@ -24,17 +24,17 @@ split_formula <-
       }
       number[i] <- temp_formula[i]
     }
-    
+
     if (!is.null(number)) {
       number <- as.numeric(paste(number, collapse = ""))
     } else {
       number <- 1
     }
-    
+
     ## first select the Na, Cl and so on element
     idx1 <- gregexpr("[A-Z][a-z][0-9]*", formula)[[1]]
     len1 <- attributes(idx1)$match.length
-    
+
     ## no double element
     if (idx1[1] == -1) {
       double.formula <- matrix(NA, ncol = 2)
@@ -61,13 +61,14 @@ split_formula <-
         remove.idx <-
           c(remove.idx, idx1[i]:(idx1[i] + len1[i] - 1))
       }
-      
-      double.formula <- data.frame(double.letter.element, double.number, stringsAsFactors = FALSE)
+
+      double.formula <- data.frame(double.letter.element, double.number, 
+                                   stringsAsFactors = FALSE)
       formula1 <- strsplit(formula, split = "")[[1]]
       formula1 <- formula1[-remove.idx]
       formula1 <- paste(formula1, collapse = "")
     }
-    
+
     ## no one element
     if (formula1 == "") {
       one.formula <- matrix(NA, ncol = 2)
@@ -83,7 +84,8 @@ split_formula <-
           one.number[i] <- 1
         } else {
           one.number[i] <-
-            as.numeric(substr(one.letter.element[i], 2, nchar(one.letter.element[i])))
+            as.numeric(substr(one.letter.element[i], 2, 
+                              nchar(one.letter.element[i])))
         }
         one.letter.element[i] <-
           substr(one.letter.element[i], 1, 1)
@@ -91,7 +93,7 @@ split_formula <-
       one.formula <-
         data.frame(one.letter.element, one.number, stringsAsFactors = FALSE)
     }
-    
+
     colnames(double.formula) <-
       colnames(one.formula) <- c("element", "number")
     formula <- rbind(double.formula, one.formula)
@@ -99,7 +101,7 @@ split_formula <-
       formula[!apply(formula, 1, function(x) {
         any(is.na(x))
       }), ]
-    
+
     formula <- formula[order(formula$element), ]
     formula$number <- formula$number * number
     unique.element <- unique(formula$element)
@@ -109,11 +111,11 @@ split_formula <-
       formula <- lapply(unique.element, function(x) {
         formula[formula$element == x, , drop = FALSE]
       })
-      
+
       formula <- lapply(formula, function(x) {
         data.frame(unique(x$element), sum(x$number), stringsAsFactors = FALSE)
       })
-      
+
       formula <- do.call(rbind, formula)
       colnames(formula) <- c("element", "number")
       return(formula)
@@ -142,7 +144,6 @@ split_formula <-
 #' @note This function is deprecated. Use `convert_metabolite_id()` instead.
 #' @export
 #' @examples
-#' \dontrun{
 #' trans_ID(
 #'     query = "C00001",
 #'     from = "KEGG",
@@ -156,7 +157,6 @@ split_formula <-
 #'     to = "Human Metabolome Database",
 #'     server = "cts.fiehnlab"
 #' )
-#' }
 trans_ID <-
   function(query = "C00001",
            from = "KEGG",
@@ -165,22 +165,22 @@ trans_ID <-
            server = c("cts.fiehnlab",
                       "chemspider")) {
     server <- match.arg(server)
-    
+
     if (server == "cts.fiehnlab") {
       server <- "http://cts.fiehnlab.ucdavis.edu/service/convert"
     } else {
       server <- "https://www.chemspider.com/InChI.asmx"
     }
-    
+
     top <- as.numeric(top)
     if (is.na(top)) {
       top <- 1
     }
-    
+
     if (server == "http://cts.fiehnlab.ucdavis.edu/service/convert") {
       url <- paste(server, from, to, query, sep = "/")
       url <- stringr::str_replace_all(url, " ", "%20")
-      
+
       result <-
         try(expr = xml2::read_html(url, encoding = "UTF-8"),
             silent = TRUE)
@@ -217,16 +217,16 @@ trans_ID <-
                 dplyr::filter(!stringr::str_detect(name,
                                                    "fromIdentifier|searchTerm|toIdentifier")) %>%
                 dplyr::pull(name))
-        
+
         if (is(result, class2 = "try-error")) {
           result <- NA
         }
-        
+
         if (length(result) == 0) {
           result <- NA
         }
       }
-      
+
       if (top > length(result)) {
         top <- length(result)
       }
@@ -279,7 +279,7 @@ trans_ID <-
       # baseurl <-
       #   "https://www.chemspider.com/InChI.asmx/InChIToSMILES"
       Sys.sleep(rgamma(1, shape = 15, scale = 1 / 45))
-      
+
       body <-
         switch(
           EXPR = from,
@@ -289,25 +289,25 @@ trans_ID <-
           smiles = list(smiles = query),
           mol = list(mol = query)
         )
-      
+
       res <-
         try(httr::POST(url = baseurl,
                        body = body,
                        encode = "form"),
             silent = TRUE)
-      
+
       if (inherits(res, "try-error")) {
         warning("Problem with service... Returning NA.")
         return(NA)
       }
-      
+
       out <-
         try(xml2::read_xml(httr::content(res, "raw")), silent = TRUE)
       if (inherits(out, "try-error")) {
         warning("inchi not found... Returning NA.")
         return(NA)
       }
-      
+
       out <- xml2::xml_text(out)
       out
     }
@@ -316,134 +316,140 @@ trans_ID <-
 
 #' Retrieve Supported Databases for Chemical Identifier Conversion
 #'
-#' This function lists the databases supported for chemical identifier conversion by either the `cts.fiehnlab` or `chemspider` services.
+#' This function lists the databases supported for chemical identifier 
+#' conversion by either the `cts.fiehnlab` or `chemspider` services.
 #'
-#' @param server A character string indicating which server to use. Possible values are "cts.fiehnlab" or "chemspider".
+#' @param server A character string indicating which server to use. 
+#' Possible values are "cts.fiehnlab" or "chemspider".
 #'
-#' @return A list of supported databases. If using the `cts.fiehnlab` server, the list will contain two data frames: 'From' and 'To'. If using the `chemspider` server, the result will be a single data frame with 'From' and 'To' columns.
-#' @note This function is deprecated. 
+#' @return A list of supported databases. If using the `cts.fiehnlab` server, 
+#' the list will contain two data frames: 'From' and 'To'. 
+#' If using the `chemspider` server, 
+#' the result will be a single data frame with 'From' and 'To' columns.
+#' @note This function is deprecated.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' trans_id_database(server = "cts.fiehnlab")
 #' }
-trans_id_database <- function(server = c("cts.fiehnlab",
-                                         "chemspider")) {
-  server <- match.arg(server)
-  if (server == "cts.fiehnlab") {
-    server <- "http://cts.fiehnlab.ucdavis.edu/service/convert"
-  } else {
-    server <- "https://www.chemspider.com/InChI.asmx"
-  }
-  
-  if (server == "http://cts.fiehnlab.ucdavis.edu/service/convert") {
-    chemical_database_from <-
-      xml2::read_html("http://cts.fiehnlab.ucdavis.edu/service/conversion/fromValues")
-    chemical_database_to <-
-      xml2::read_html("http://cts.fiehnlab.ucdavis.edu/service/conversion/toValues")
-    
-    chemical_database_from <-
-      chemical_database_from %>%
-      rvest::html_nodes("p") %>%
-      rvest::html_text(TRUE) %>%
-      stringr::str_split(pattern = "\n") %>%
-      `[[`(1) %>%
-      lapply(function(x) {
-        x <- stringr::str_trim(x, "both")
-        x <-
-          stringr::str_replace_all(string = x,
-                                   pattern = '\"',
-                                   replacement = "")
-        x <-
-          stringr::str_replace_all(string = x,
-                                   pattern = ",",
-                                   replacement = "")
-      }) %>%
-      unlist() %>%
-      unname() %>%
-      data.frame(name = ., stringsAsFactors = FALSE) %>%
-      dplyr::filter(!name %in% c("[", "]", "{", "}")) %>%
-      dplyr::pull(name)
-    
-    
-    chemical_database_to <-
-      chemical_database_to %>%
-      rvest::html_nodes("p") %>%
-      rvest::html_text(TRUE) %>%
-      stringr::str_split(pattern = "\n") %>%
-      `[[`(1) %>%
-      lapply(function(x) {
-        x <- stringr::str_trim(x, "both")
-        x <-
-          stringr::str_replace_all(string = x,
-                                   pattern = '\"',
-                                   replacement = "")
-        x <-
-          stringr::str_replace_all(string = x,
-                                   pattern = ",",
-                                   replacement = "")
-      }) %>%
-      unlist() %>%
-      unname() %>%
-      data.frame(name = ., stringsAsFactors = FALSE) %>%
-      dplyr::filter(!name %in% c("[", "]", "{", "}")) %>%
-      dplyr::pull(name)
-    
-    
-    chemical_database_from <- sort(chemical_database_from)
-    chemical_database_to <- sort(chemical_database_to)
-    message(
-      crayon::green(
-        length(chemical_database_from),
-        "databases are supported in server
-        http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'."
-      )
-    )
-    message(
-      crayon::green(
-        length(chemical_database_to),
-        "databases are supported in server
-        http://cts.fiehnlab.ucdavis.edu/service/convert for 'to'."
-      )
-    )
-    result <-
-      list(
-        From = tibble::as_tibble(
-          data.frame(From = chemical_database_from,
-                     stringsAsFactors = FALSE)
-        ),
-        To = tibble::as_tibble(
-          data.frame(From = chemical_database_to,
-                     stringsAsFactors = FALSE)
-        )
-      )
-    
-    result
-  } else {
-    result <- c(
-      "csid_mol",
-      "inchikey_csid",
-      "inchikey_inchi",
-      "inchikey_mol",
-      "inchi_csid",
-      "inchi_inchikey",
-      "inchi_mol",
-      "inchi_smiles",
-      "smiles_inchi"
-    )
-    
-    result <-
-      stringr::str_split(result, "_") %>%
-      dplyr::bind_cols() %>%
-      t() %>%
-      tibble::as_tibble(.name_repair = "minimal")
-    colnames(result) <- c("From", "To")
-    message(
-      crayon::green(
-        nrow(result),
-        "are supported in server https://www.chemspider.com/InChI.asmx."
-      )
-    )
-    result
-  }
-}
+
+# trans_id_database <- function(server = c("cts.fiehnlab",
+#                                          "chemspider")) {
+#   server <- match.arg(server)
+#   if (server == "cts.fiehnlab") {
+#     server <- "http://cts.fiehnlab.ucdavis.edu/service/convert"
+#   } else {
+#     server <- "https://www.chemspider.com/InChI.asmx"
+#   }
+#
+#   if (server == "http://cts.fiehnlab.ucdavis.edu/service/convert") {
+#     chemical_database_from <-
+#       xml2::read_html("http://cts.fiehnlab.ucdavis.edu/service/conversion/fromValues")
+#     chemical_database_to <-
+#       xml2::read_html("http://cts.fiehnlab.ucdavis.edu/service/conversion/toValues")
+#
+#     chemical_database_from <-
+#       chemical_database_from %>%
+#       rvest::html_nodes("p") %>%
+#       rvest::html_text(TRUE) %>%
+#       stringr::str_split(pattern = "\n") %>%
+#       `[[`(1) %>%
+#       lapply(function(x) {
+#         x <- stringr::str_trim(x, "both")
+#         x <-
+#           stringr::str_replace_all(string = x,
+#                                    pattern = '\"',
+#                                    replacement = "")
+#         x <-
+#           stringr::str_replace_all(string = x,
+#                                    pattern = ",",
+#                                    replacement = "")
+#       }) %>%
+#       unlist() %>%
+#       unname() %>%
+#       data.frame(name = ., stringsAsFactors = FALSE) %>%
+#       dplyr::filter(!name %in% c("[", "]", "{", "}")) %>%
+#       dplyr::pull(name)
+#
+#
+#     chemical_database_to <-
+#       chemical_database_to %>%
+#       rvest::html_nodes("p") %>%
+#       rvest::html_text(TRUE) %>%
+#       stringr::str_split(pattern = "\n") %>%
+#       `[[`(1) %>%
+#       lapply(function(x) {
+#         x <- stringr::str_trim(x, "both")
+#         x <-
+#           stringr::str_replace_all(string = x,
+#                                    pattern = '\"',
+#                                    replacement = "")
+#         x <-
+#           stringr::str_replace_all(string = x,
+#                                    pattern = ",",
+#                                    replacement = "")
+#       }) %>%
+#       unlist() %>%
+#       unname() %>%
+#       data.frame(name = ., stringsAsFactors = FALSE) %>%
+#       dplyr::filter(!name %in% c("[", "]", "{", "}")) %>%
+#       dplyr::pull(name)
+#
+#
+#     chemical_database_from <- sort(chemical_database_from)
+#     chemical_database_to <- sort(chemical_database_to)
+#     message(
+#       crayon::green(
+#         length(chemical_database_from),
+#         "databases are supported in server
+#         http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'."
+#       )
+#     )
+#     message(
+#       crayon::green(
+#         length(chemical_database_to),
+#         "databases are supported in server
+#         http://cts.fiehnlab.ucdavis.edu/service/convert for 'to'."
+#       )
+#     )
+#     result <-
+#       list(
+#         From = tibble::as_tibble(
+#           data.frame(From = chemical_database_from,
+#                      stringsAsFactors = FALSE)
+#         ),
+#         To = tibble::as_tibble(
+#           data.frame(From = chemical_database_to,
+#                      stringsAsFactors = FALSE)
+#         )
+#       )
+#
+#     result
+#   } else {
+#     result <- c(
+#       "csid_mol",
+#       "inchikey_csid",
+#       "inchikey_inchi",
+#       "inchikey_mol",
+#       "inchi_csid",
+#       "inchi_inchikey",
+#       "inchi_mol",
+#       "inchi_smiles",
+#       "smiles_inchi"
+#     )
+#
+#     result <-
+#       stringr::str_split(result, "_") %>%
+#       dplyr::bind_cols() %>%
+#       t() %>%
+#       tibble::as_tibble(.name_repair = "minimal")
+#     colnames(result) <- c("From", "To")
+#     message(
+#       crayon::green(
+#         nrow(result),
+#         "are supported in server https://www.chemspider.com/InChI.asmx."
+#       )
+#     )
+#     result
+#   }
+# }

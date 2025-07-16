@@ -26,3 +26,18 @@ A data frame with the original query and converted metabolite ID(s).
 \description{
 Converts metabolite IDs from one database to another using the CTS FiehnLab online service.
 }
+\examples{
+# Convert KEGG ID to Chemical Name using FiehnLab CTS
+convert_metabolite_id_oliver(
+  query = "C00001",
+  from = "KEGG",
+  to = "Chemical Name"
+)
+
+# Convert InChIKey to PubChem CID
+convert_metabolite_id_oliver(
+  query = "BQJCRHHNABKAKU-KBQPJGBKSA-N",
+  from = "InChIKey",
+  to = "PubChem CID"
+)
+}

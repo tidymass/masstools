@@ -10,26 +10,26 @@ request_metabolite_id_systems(
 )
 }
 \arguments{
-\item{server}{Character. The server to retrieve supported identifier formats from. 
+\item{server}{Character. The server to retrieve supported identifier formats from.
 Available options:
 - `"cts.fiehnlab"`: The **Chemical Translation Service (CTS) by FiehnLab** at UC Davis.
 - `"chemspider"`: The **ChemSpider API** provided by the Royal Society of Chemistry.
 - `"openai"`: Uses OpenAI's language models for metabolite ID conversions.}
 
-\item{source_format}{Character. Specifies whether to use a **local** or **online** source 
+\item{source_format}{Character. Specifies whether to use a **local** or **online** source
 for fetching the available databases. Options:
 - `"local"`: Uses locally stored information about supported databases.
 - `"online"`: Fetches real-time data from the respective API endpoints.}
 }
 \value{
-A data frame or vector containing the supported **From-To** identifier conversions 
+A data frame or vector containing the supported **From-To** identifier conversions
   for the selected `server`.
   - If `server = "cts.fiehnlab"`, returns a vector of available **from** and **to** databases.
   - If `server = "chemspider"`, returns a data frame listing valid identifier conversions.
   - If `server = "openai"`, returns a predefined set of supported sources.
 }
 \description{
-This function returns the available metabolite identifier conversion systems supported by 
+This function returns the available metabolite identifier conversion systems supported by
 different online services, including **CTS FiehnLab**, **ChemSpider**, and **OpenAI**.
 It provides a list of identifier formats that can be used for conversion.
 }
@@ -43,10 +43,14 @@ It provides a list of identifier formats that can be used for conversion.
 If using the `"chemspider"` server, an API key is required for querying ChemSpider’s services.
 
 **How to Obtain a ChemSpider API Key:**
-1. Visit the **Royal Society of Chemistry (RSC) Developer Portal**:  
+1. Visit the **Royal Society of Chemistry (RSC) Developer Portal**:
    [https://developer.rsc.org/](https://developer.rsc.org/)
 2. Sign in or create an account.
 3. Navigate to **My Account** > **API Keys**.
 4. Apply for access to the **ChemSpider API**.
 5. Once approved, generate your API key and copy it for use.
+}
+\examples{
+# Get supported conversion systems for CTS FiehnLab (local)
+request_metabolite_id_systems(server = "cts.fiehnlab", source_format = "local")
 }

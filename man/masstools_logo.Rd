@@ -10,8 +10,8 @@ masstools_logo()
 Prints messages to the console and does not return any value.
 }
 \description{
-`masstools_logo` is a function designed to display the masstools logo, 
-thank the user, show the version information, and provide a URL for 
+`masstools_logo` is a function designed to display the masstools
+logo,#' thank the user, show the version information, and provide a URL for
 additional details about the package. This can be useful for branding
 and user interaction when they load or utilize the package.
 }

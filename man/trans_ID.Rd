@@ -34,7 +34,6 @@ It uses either the `cts.fiehnlab` or `chemspider` services for conversion.
 This function is deprecated. Use `convert_metabolite_id()` instead.
 }
 \examples{
-\dontrun{
 trans_ID(
     query = "C00001",
     from = "KEGG",
@@ -48,5 +47,4 @@ trans_ID(
     to = "Human Metabolome Database",
     server = "cts.fiehnlab"
 )
-}
 }

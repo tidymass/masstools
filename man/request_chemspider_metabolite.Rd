@@ -11,7 +11,7 @@ request_chemspider_metabolite(chemspider_id, chemspider_apikey = "")
 
 \item{chemspider_apikey}{Character. The API key required to access the ChemSpider database.
 **How to Obtain a ChemSpider API Key:**
-1. Visit the **Royal Society of Chemistry (RSC) Developer Portal**:  
+1. Visit the **Royal Society of Chemistry (RSC) Developer Portal**:
    [https://developer.rsc.org/](https://developer.rsc.org/)
 2. Sign in or create an account.
 3. Navigate to **My Account** > **API Keys**.
@@ -46,11 +46,9 @@ This function queries the **ChemSpider API** to retrieve detailed metabolite inf
 for a given ChemSpider ID, including molecular formula, mass, InChI, InChIKey, and other properties.
 }
 \examples{
-\dontrun{
 # Retrieve metabolite information for a specific ChemSpider ID
 request_chemspider_metabolite(chemspider_id = 12345, chemspider_apikey = "your_key")
 
 # Retrieve information for multiple IDs
 request_chemspider_metabolite(chemspider_id = c(12345, 67890), chemspider_apikey = "your_key")
-}
 }

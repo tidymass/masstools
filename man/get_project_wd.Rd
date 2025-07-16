@@ -21,9 +21,7 @@ it will return the path to that directory. If no such directory is found, it sen
 indicating that no `.Rproj` files were found and does not change the working directory.
 }
 \examples{
-\dontrun{
 get_project_wd()
-}
 
 }
 \author{

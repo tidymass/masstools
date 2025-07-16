@@ -12,9 +12,7 @@
 #' indicating that there are no `.Rproj` files in your directory.
 #'
 #' @examples
-#' \dontrun{
 #' get_project_wd()
-#' }
 #'
 #' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export

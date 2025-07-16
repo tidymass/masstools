@@ -23,7 +23,8 @@ This function reads MGF files and extracts the relevant MS2 spectra information.
 Duplicated peaks and noise can be optionally removed.
 }
 \examples{
-# Assuming 'sample.mgf' is the path to your MGF file.
-# mgf_data <- read_mgf('sample.mgf')
-
+# Locate the example mgf file in the installed package
+file_path <- system.file("extdata", "example.mgf", package = "masstools")
+# Then use it in your function
+result <- read_mgf(file_path)
 }

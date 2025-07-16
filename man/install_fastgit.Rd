@@ -13,8 +13,20 @@ install_fastgit(pkg, from = c("gitee", "gitlab", "github"), ...)
 
 \item{...}{Other parameters for install_git}
 }
+\value{
+`NULL`. This function is called for its side effect of installing packages from specified Git repository mirrors.
+}
 \description{
 install packages from fastgit. Credit to Shixiang Wang
+}
+\examples{
+\dontrun{
+# Install a package from GitHub using the fastgit mirror
+install_fastgit(pkg = "tidyverse/ggplot2", from = "github")
+
+# Install a package from Gitee
+install_fastgit(pkg = "yourusername/yourpkg", from = "gitee")
+}
 }
 \author{
 Xiaotao Shen
