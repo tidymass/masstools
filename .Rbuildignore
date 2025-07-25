@@ -24,3 +24,5 @@ vignettes/contact_us.Rmd
 
 cran-comments.md
 ^LICENSE\.md$
+^doc$
+^Meta$
