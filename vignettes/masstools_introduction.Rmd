@@ -26,9 +26,29 @@ knitr::opts_chunk$set(
 )
 ```
 
-# **Brief introduction**
+# **Introduction**
 
-`masstools` is a package which contains multiple functions for LC-MS metabolomics data processing and analysis. For example, chemical formula operation, MS2 spectra matching. And `masstools` is a part of [`tidymass` project](https://www.tidymass.org/).
+`masstools` is a comprehensive R package that provides a collection of useful tools for mass spectrometry data processing and analysis. As an integral component of the `tidymass` ecosystem, `masstools` serves as a foundational package that offers essential utilities for metabolomics and mass spectrometry workflows. The package encompasses a wide range of functionality designed to support various aspects of mass spectrometry data analysis, including tandem mass spectrometry (MS2) matching, dot product calculations, and other fundamental operations. masstools provides researchers and analysts with reliable, well-tested tools for handling complex mass spectrometry datasets.
+
+The package includes specialized functions for: - Spectral similarity calculations and MS2 matching - Chemical formula processing - Mass spectrometry data file reading and manipulation - Data visualization tools for mass spectra
+
+Developed primarily by Xiaotao Shen and contributors, `masstools` is designed to work seamlessly with modern R workflows and integrates well with other packages in the `tidymass` ecosystem, making it an essential tool for anyone working with mass spectrometry data in R.And `masstools` is a part of [`tidymass` project](https://www.tidymass.org/).
+
+# **Motivation for Inclusion in Bioconductor**
+
+The inclusion of masstools in Bioconductor is motivated by the need for a lightweight, dependency-conscious utility package that addresses common tasks in metabolomics and untargeted MS pipelines. It helps bridge gaps between core infrastructure packages (e.g., Spectra, MSnbase) and applied workflows by providing optimized, reusable building blocks for data parsing, similarity computation, and identifier conversion.
+
+# **Comparison to Related Bioconductor Packages**
+
+-   `Spectra` (core MS infrastructure): `Spectra` provides a formal class system for raw and processed spectra. `masstools` does not define new S4 classes, but instead offers functional utilities that can be applied directly to vectors, data frames, or lists of spectra—often after data is read via `Spectra` or `MSnbase`. For example, similarity metrics (`get_dp()`) or plotting (`ms2_plot()`) can complement `Spectra` workflows in downstream annotation tasks.
+
+-   `MSCoreUtils`: This package offers generic low-level tools for MS data manipulation. `masstools` extends beyond these core operations by offering metabolomics-specific functions such as formula validation, adduct summation, and spectral similarity tailored to compound annotation tasks.
+
+-   `ProtGenerics`: Used internally to align with Bioconductor’s S4 generic interface, though `masstools` primarily operates using S3 methods and functional programming paradigms. Future compatibility with Bioconductor S4 classes is planned and partially supported through its flexible function design.
+
+-   `MSnbase`: While not directly dependent on `MSnbase`, users often pair `MSnbase's` data structure and raw data access with `masstools` utilities for data exploration and spectral annotation, e.g., using MSnExp with `get_spectra_match_score()` or `ms2_plot()`.
+
+- []
 
 # **Chemical formula operation**
 
@@ -39,12 +59,16 @@ library(masstools)
 library(tidyverse)
 ```
 
+The `sum_formula()` function is designed to calculate the resulting chemical formula after applying a specific adduct transformation to a given base formula. This is particularly useful in mass spectrometry and metabolomics, where observed m/z values often correspond to the base compound plus/minus an adduct (e.g., `[M+H]+`, `[M+Na]+`, `[M-H2O+H]+`).
+
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 sum_formula(formula = "C9H11NO2", adduct = "M+H")
 sum_formula(formula = "C9H11NO2", adduct = "M+")
 sum_formula(formula = "C9H11NO2", adduct = "M+CH3COOH")
 sum_formula(formula = "C9H11", adduct = "M-H20")
 ```
+
+The `split_formula()` function is a utility designed to parse a chemical formula string into a structured tabular form—specifically a `data.frame` containing the elemental composition (symbols and their counts). This function is a foundational step for any downstream chemical formula manipulation, such as computing molecular weights, summing with adducts (see `sum_formula()`), or formula validation.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 split_formula(formula = "C9H11NO2")
@@ -53,12 +77,18 @@ split_formula(formula = "C2H4")
 
 # **MS2 spectra operation**
 
+This section demonstrates a typical workflow for comparing and scoring similarity between two MS2 spectra, such as those from an experimental run and a reference library. It involves preprocessing, visualization, peak matching, and similarity scoring.
+
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 ###remove the noisy peaks in one ms2 spectrum
 exp.spectrum <- data.frame(mz = c(1:10, 1.0001), 
                            intensity = c(1:10, 0.1))
+						   
+###The `ms2_plot()` function enables side-by-side comparison of two MS2 spectra using either static or interactive plots. It allows control over visual styling (colors, font sizes) and comparison parameters (e.g., ppm tolerance).						   
 
 ms2_plot(exp.spectrum)
+
+###The `removeNoise()` function identifies and removes redundant or spurious peaks based on a ppm-based closeness criterion. For overlapping m/z values, it retains the more intense peak.
 
 exp.spectrum2 = removeNoise(exp.spectrum)
 
@@ -67,20 +97,30 @@ ms2_plot(exp.spectrum, exp.spectrum2)
 ###match two spectra according to mz
 exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
+
+###The `ms2Match()` function aligns peaks between experimental and library MS2 spectra based on m/z proximity within a ppm tolerance.
+
 ms2Match(exp.spectrum, lib.spectrum)
 
 
 ## calculate the dot product of two matched intensity
+## The `getDP()` function calculates a weighted dot product between two intensity vectors. This is a common metric for comparing shape similarity between two spectra.
 getDP(exp.int = 1:10, lib.int = 1:10)
 getDP(exp.int = 10:1, lib.int = 1:10)
 
 ###matched two spectra and calculate dot product
 exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
+
+## This function combines multiple aspects of similarity into a composite similarity score between an experimental and a library MS2 spectrum.
+
 getSpectraMatchScore(exp.spectrum, lib.spectrum)
 ```
 
 MS2 plot and MS2 matching plot.
+The `ms2_plot()` function is designed to visualize one or two MS2 spectra, enabling side-by-side comparison. This is useful in spectral library matching, experimental result inspection, or quality control.
+
+Here, we simulate two identical MS2 spectra and demonstrate how the function can be used for both single-spectrum display and comparative visualization.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 spectrum1 <- data.frame(
@@ -120,6 +160,9 @@ ms2_plot(spectrum1)
 # **Match two feature tables**
 
 We can match two feature tables according to mz and retention time.
+In LC-MS-based metabolomics or proteomics, features (i.e., detected signals) are typically characterized by mass-to-charge ratio (m/z) and retention time (RT). Accurate matching of features between samples, instruments, or datasets is a fundamental requirement for annotation, alignment, and statistical comparison.
+
+The `mz_rt_match()` function performs feature-wise matching between two datasets (`data1` and `data2`) using both m/z and RT criteria, allowing users to define mass tolerance in ppm and RT tolerance either in absolute units or relative percentage.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 data1 <- data.frame(mz = 1:10, rt = 1:10)
@@ -140,6 +183,7 @@ library(masstools)
 ```
 
 We can use the `trans_id_database()` to get the databases that cts.fiehnlab.
+**Caution**: `trans_id_database` function temporarily can not be used.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 database_name = trans_id_database(server = "cts.fiehnlab")
@@ -148,6 +192,7 @@ database_name = trans_id_database(server = "cts.fiehnlab")
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 head(database_name$From$From)
 ```
+
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 head(database_name$To$From)
 ```
@@ -155,6 +200,8 @@ head(database_name$To$From)
 We can see that it support a lot of (\> 200) databases.
 
 We can try the most common convert, from KEGG to HMDB.
+
+The `trans_ID()` function facilitates the conversion of metabolite or chemical identifiers between widely used databases such as KEGG, PubChem, HMDB, ChEBI, and others. This is a critical task in metabolomics and cheminformatics, especially when integrating datasets from different sources, performing compound annotation, or preparing data for submission to external tools and repositories.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 trans_ID(
@@ -229,6 +276,8 @@ trans_ID(
 
 Refer this publication: <https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y>
 
+The `get_compound_class()` function provides a convenient interface to query the ClassyFire database (https://classyfire.wishartlab.com), retrieving the chemical taxonomy and classification of a compound given its InChIKey. ClassyFire organizes chemical compounds into a structured taxonomy (Kingdom → Superclass → Class → Subclass...), and is widely used in cheminformatics, metabolomics, and compound annotation.
+
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 result = 
 get_compound_class(
@@ -246,6 +295,10 @@ result
 
 ## Rename one vector with duplicated items.
 
+In many data processing workflows—especially during column naming, feature annotation, or ID assignment—duplicate names can lead to ambiguity, overwriting, or unexpected behavior in downstream analyses.
+
+The `name_duplicated()` function provides a simple and robust mechanism to disambiguate repeated values in a character vector by appending sequential suffixes (e.g., `_1`, `_2`, ...).
+
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 name_duplicated(c("a", "a", "b", "c", "a", "b", "c", "a"))
 name_duplicated(c(rep(1, 5), 2))
@@ -253,6 +306,8 @@ name_duplicated(1:5)
 ```
 
 ## Open the current working directory in R
+
+This function temporarily can not be used.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 ####just open the current working directory
@@ -274,11 +329,15 @@ Then paste the file path and type `Enter`.
 
 ## Set working directory where a R project is in
 
+This function temporarily can not be used.
+
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
 setwd_project()
 ```
 
 ## Check the operate system
+
+The `get_os()` function is a lightweight utility that determines the operating system (OS) on which the current R session is running. This is often necessary when designing scripts or packages that involve platform-dependent behavior.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 get_os()
@@ -286,17 +345,25 @@ get_os()
 
 ## Check version of `masstools`
 
+Output logo and version of masstools.
+
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 masstools_logo()
 ```
 
 ## Check conflicts of `masstools`
 
+The `masstools_conflicts()` function is a diagnostic tool designed to identify function name conflicts between functions exported by the `masstools` package and functions from other packages currently attached in the R session.
+
+Function name conflicts are common in the R ecosystem due to the way the search path is managed. When multiple packages export functions with the same name (e.g., `filter()` from both `stats` and `dplyr`), the one most recently attached typically "masks" the others. This can lead to confusing or unintended behavior.
+
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 masstools_conflicts()
 ```
 
 ## List all pacakges in `masstools`
+
+The `masstools_packages()` function provides a programmatic way to retrieve the list of R packages imported by `masstools`, as declared in its `DESCRIPTION` file under the `Imports` field. This utility is particularly helpful in diagnostic functions, dependency management, and package introspection.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 masstools_packages()
