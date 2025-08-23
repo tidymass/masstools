@@ -186,7 +186,7 @@ We can use the `trans_id_database()` to get the databases that cts.fiehnlab.
 **Caution**: `trans_id_database` function temporarily can not be used.
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-database_name = trans_id_database(server = "cts.fiehnlab")
+database_name <- trans_id_database(server = "cts.fiehnlab")
 ```
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
@@ -239,7 +239,7 @@ This is from <https://www.chemspider.com/InChI.asmx>.
 We can use the `trans_id_database()` to get the databases that chemspider
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-database_name2 = trans_id_database(server = "chemspider")
+database_name2 <- trans_id_database(server = "chemspider")
 ```
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
@@ -279,7 +279,7 @@ Refer this publication: <https://jcheminf.biomedcentral.com/articles/10.1186/s13
 The `get_compound_class()` function provides a convenient interface to query the ClassyFire database (https://classyfire.wishartlab.com), retrieving the chemical taxonomy and classification of a compound given its InChIKey. ClassyFire organizes chemical compounds into a structured taxonomy (Kingdom → Superclass → Class → Subclass...), and is widely used in cheminformatics, metabolomics, and compound annotation.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
-result = 
+result <- 
 get_compound_class(
   inchikey = "QZDWODWEESGPLC-UHFFFAOYSA-N",
   server = "http://classyfire.wishartlab.com/entities/",

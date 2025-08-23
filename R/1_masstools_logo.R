@@ -5,7 +5,7 @@
 #' and user interaction when they load or utilize the package.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
-#' @importFrom stringr str_replace str_split str_replace_all str_trim str_detect 
+#' @importFrom stringr str_replace str_split str_replace_all str_trim str_detect
 #' str_extract
 #' @importFrom dplyr filter mutate select everything
 #' @importFrom utils packageDescription write.csv
@@ -33,7 +33,7 @@
 #' masstools_logo()
 masstools_logo <- function() {
   message("Thank you for using masstools!")
-  message("Version ", masstools_version, " (", update_date, ')')
+  message("Version ", masstools_version, " (", update_date, ")")
   message("More information: masstools.tidymass.org")
   ascii_art <- c(
       "                       _______          _     ",

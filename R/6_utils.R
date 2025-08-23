@@ -179,52 +179,52 @@ show_progresser <-
 
 
 
-#' @title install_fastgit
-#' @description install packages from fastgit. Credit to Shixiang Wang
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param pkg pkg name from github, gitlab or gitee, "name/repo" format
-#' @param from gitlab, github or gitee.
-#' @param ... Other parameters for install_git
-#' @return `NULL`. This function is called for its side effect of installing packages from specified Git repository mirrors.
-#' @export
-#' @examples
-#' \dontrun{
-#' # Install a package from GitHub using the fastgit mirror
-#' install_fastgit(pkg = "tidyverse/ggplot2", from = "github")
-#'
-#' # Install a package from Gitee
-#' install_fastgit(pkg = "yourusername/yourpkg", from = "gitee")
-#' }
+# #' @title install_fastgit
+# #' @description install packages from fastgit. Credit to Shixiang Wang
+# #' @author Xiaotao Shen
+# #' \email{shenxt1990@@outlook.com}
+# #' @param pkg pkg name from github, gitlab or gitee, "name/repo" format
+# #` @param from gitlab, github or gitee.
+# #` @param ... Other parameters for install_git
+# #` @return `NULL`. This function is called for its side effect of installing packages from specified Git repository mirrors.
+# #` @export
+# #` @examples
+# #` \dontrun{
+# #` # Install a package from GitHub using the fastgit mirror
+# #` install_fastgit(pkg = "tidyverse/ggplot2", from = "github")
+# #`
+# #` # Install a package from Gitee
+# #` install_fastgit(pkg = "yourusername/yourpkg", from = "gitee")
+# #` }
 
 
-install_fastgit <-
-  function(pkg,
-           from = c("gitee", "gitlab", "github"),
-           ...) {
-    from <- match.arg(from)
-
-    if (from == "gitee") {
-      if (!grepl("/", pkg)) {
-        stop("Expected 'name/repo' format for 'pkg'.")
-      }
-      remotes::install_git(paste0("https://gitee.com/", pkg), ...)
-    } else {
-      if (any(grepl(":", pkg))) {
-        remotes::install_git(pkg, ...)
-      } else {
-        if (any(grepl("/", pkg))) {
-          tryCatch(
-            remotes::install_git(paste0("https://hub.fastgit.org/", pkg)),
-            error = function(e) {
-              message("Installation failed using the GitHub mirror; falling back to the official GitHub.")
-              remotes::install_github(pkg)
-            }
-          )
-        }
-      }
-    }
-  }
+# install_fastgit <-
+#   function(pkg,
+#            from = c("gitee", "gitlab", "github"),
+#            ...) {
+#     from <- match.arg(from)
+# 
+#     if (from == "gitee") {
+#       if (!grepl("/", pkg)) {
+#         stop("Expected 'name/repo' format for 'pkg'.")
+#       }
+#       remotes::install_git(paste0("https://gitee.com/", pkg), ...)
+#     } else {
+#       if (any(grepl(":", pkg))) {
+#         remotes::install_git(pkg, ...)
+#       } else {
+#         if (any(grepl("/", pkg))) {
+#           tryCatch(
+#             remotes::install_git(paste0("https://hub.fastgit.org/", pkg)),
+#             error = function(e) {
+#               message("Installation failed using the GitHub mirror; falling back to the official GitHub.")
+#               remotes::install_github(pkg)
+#             }
+#           )
+#         }
+#       }
+#     }
+#   }
 
 
 

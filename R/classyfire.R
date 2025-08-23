@@ -267,7 +267,7 @@ setClass(
 #'     name = c("Kingdom", "Superclass", "Class"),
 #'     value = c("Organic compounds", "Organonitrogen compounds", "Amino acids")
 #'   ),
-#'   classification_info = tibble::tibble(),  # 空表也可以
+#'   classification_info = tibble::tibble(), 
 #'   description = tibble::tibble(),
 #'   external_descriptors = tibble::tibble()
 #' )

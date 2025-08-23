@@ -138,7 +138,7 @@ ms2_plot.data.frame <- function(spectrum1,
                                 legend.title.size = 15,
                                 legend.text.size = 15,
                                 interactive_plot = FALSE) {
-  if (missing(spectrum1) & missing(spectrum2)) {
+  if (missing(spectrum1) && missing(spectrum2)) {
     stop("No spectrum1 and spectrum2")
   }
   if (!missing(spectrum1)) {
@@ -167,7 +167,7 @@ ms2_plot.data.frame <- function(spectrum1,
   }
 
   ## two spectrum
-  if (!missing(spectrum1) & !missing(spectrum2)) {
+  if (!missing(spectrum1) && !missing(spectrum2)) {
     if (missing(range.mz)) {
       range.mz <- c(min(spectrum1[, 1], spectrum2[, 1]),
                     max(spectrum1[, 1], spectrum2[, 1]))
@@ -278,11 +278,11 @@ ms2_plot.data.frame <- function(spectrum1,
     return(plot)
   }
 
-  if (!missing(spectrum1) & missing(spectrum2)) {
+  if (!missing(spectrum1) && missing(spectrum2)) {
     spectrum <- spectrum1
   }
 
-  if (!missing(spectrum2) & missing(spectrum1)) {
+  if (!missing(spectrum2) && missing(spectrum1)) {
     spectrum <- spectrum2
   }
 
@@ -395,7 +395,7 @@ ms2_plot.matrix <- function(spectrum1,
                             legend.title.size = 15,
                             legend.text.size = 15,
                             interactive_plot = FALSE) {
-  if (missing(spectrum1) & missing(spectrum2)) {
+  if (missing(spectrum1) && missing(spectrum2)) {
     stop("No spectrum1 and spectrum2")
   }
   if (!missing(spectrum1)) {

@@ -65,7 +65,7 @@ mz_rt_match_default <-
            rt.error.type = c("relative", "abs")) {
     rt.error.type <- match.arg(rt.error.type)
     #
-    if (nrow(data1) == 0 | nrow(data2) == 0) {
+    if (nrow(data1) == 0 || nrow(data2) == 0) {
       result <- NULL
       return(result)
     }
@@ -153,7 +153,7 @@ keep_one <- function(result,
     return(result)
   }
   
-  if (!is.matrix(result) & !is.data.frame(result)) {
+  if (!is.matrix(result) && !is.data.frame(result)) {
     stop("result must be matrix or data.frame.")
   }
   
