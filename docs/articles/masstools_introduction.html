@@ -6,13 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction of masstools • masstools</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -20,8 +19,6 @@
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Introduction of masstools">
-<meta property="og:description" content="masstools">
-<meta property="og:image" content="https://tidymass.github.io/masstools/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -34,7 +31,7 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -48,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">masstools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.13</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.0</span>
       </span>
     </div>
 
@@ -57,7 +54,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Help documents
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -72,7 +69,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     News
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -98,13 +95,13 @@
 <li>
   <a href="https://github.com/tidymass/masstools/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
 <li>
   <a href="https://twitter.com/xiaotaoshen1990" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -113,7 +110,7 @@
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
       </form>
-      
+
     </div>
 <!--/.nav-collapse -->
   </div>
@@ -121,7 +118,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -131,7 +128,7 @@
 (<a href="https://www.shenxt.info/" class="external-link uri">https://www.shenxt.info/</a>)</h4>
                         
             <h4 data-toc-skip class="date">Created on 2022-02-18 and
-updated on 2023-10-01</h4>
+updated on 2025-09-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tidymass/masstools/blob/HEAD/vignettes/masstools_introduction.Rmd" class="external-link"><code>vignettes/masstools_introduction.Rmd</code></a></small>
       <div class="hidden name"><code>masstools_introduction.Rmd</code></div>
@@ -141,13 +138,76 @@ updated on 2023-10-01</h4>
     
     
 <div class="section level2">
-<h2 id="brief-introduction">
-<strong>Brief introduction</strong><a class="anchor" aria-label="anchor" href="#brief-introduction"></a>
+<h2 id="introduction">
+<strong>Introduction</strong><a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p><code>masstools</code> is a package which contains multiple functions
-for LC-MS metabolomics data processing and analysis. For example,
-chemical formula operation, MS2 spectra matching. And
-<code>masstools</code> is a part of <a href="https://www.tidymass.org/" class="external-link"><code>tidymass</code> project</a>.</p>
+<p><code>masstools</code> is a comprehensive R package that provides a
+collection of useful tools for mass spectrometry data processing and
+analysis. As an integral component of the <code>tidymass</code>
+ecosystem, <code>masstools</code> serves as a foundational package that
+offers essential utilities for metabolomics and mass spectrometry
+workflows. The package encompasses a wide range of functionality
+designed to support various aspects of mass spectrometry data analysis,
+including tandem mass spectrometry (MS2) matching, dot product
+calculations, and other fundamental operations. masstools provides
+researchers and analysts with reliable, well-tested tools for handling
+complex mass spectrometry datasets.</p>
+<p>The package includes specialized functions for: - Spectral similarity
+calculations and MS2 matching - Chemical formula processing - Mass
+spectrometry data file reading and manipulation - Data visualization
+tools for mass spectra</p>
+<p>Developed primarily by Xiaotao Shen and contributors,
+<code>masstools</code> is designed to work seamlessly with modern R
+workflows and integrates well with other packages in the
+<code>tidymass</code> ecosystem, making it an essential tool for anyone
+working with mass spectrometry data in R.And <code>masstools</code> is a
+part of <a href="https://www.tidymass.org/" class="external-link"><code>tidymass</code>
+project</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="motivation-for-inclusion-in-bioconductor">
+<strong>Motivation for Inclusion in Bioconductor</strong><a class="anchor" aria-label="anchor" href="#motivation-for-inclusion-in-bioconductor"></a>
+</h2>
+<p>The inclusion of masstools in Bioconductor is motivated by the need
+for a lightweight, dependency-conscious utility package that addresses
+common tasks in metabolomics and untargeted MS pipelines. It helps
+bridge gaps between core infrastructure packages (e.g., Spectra,
+MSnbase) and applied workflows by providing optimized, reusable building
+blocks for data parsing, similarity computation, and identifier
+conversion.</p>
+</div>
+<div class="section level2">
+<h2 id="comparison-to-related-bioconductor-packages">
+<strong>Comparison to Related Bioconductor Packages</strong><a class="anchor" aria-label="anchor" href="#comparison-to-related-bioconductor-packages"></a>
+</h2>
+<ul>
+<li><p><code>Spectra</code> (core MS infrastructure):
+<code>Spectra</code> provides a formal class system for raw and
+processed spectra. <code>masstools</code> does not define new S4
+classes, but instead offers functional utilities that can be applied
+directly to vectors, data frames, or lists of spectra—often after data
+is read via <code>Spectra</code> or <code>MSnbase</code>. For example,
+similarity metrics (<code><a href="../reference/get_dp.html">get_dp()</a></code>) or plotting
+(<code><a href="../reference/ms2_plot.html">ms2_plot()</a></code>) can complement <code>Spectra</code> workflows
+in downstream annotation tasks.</p></li>
+<li><p><code>MSCoreUtils</code>: This package offers generic low-level
+tools for MS data manipulation. <code>masstools</code> extends beyond
+these core operations by offering metabolomics-specific functions such
+as formula validation, adduct summation, and spectral similarity
+tailored to compound annotation tasks.</p></li>
+<li><p><code>ProtGenerics</code>: Used internally to align with
+Bioconductor’s S4 generic interface, though <code>masstools</code>
+primarily operates using S3 methods and functional programming
+paradigms. Future compatibility with Bioconductor S4 classes is planned
+and partially supported through its flexible function design.</p></li>
+<li><p><code>MSnbase</code>: While not directly dependent on
+<code>MSnbase</code>, users often pair <code>MSnbase's</code> data
+structure and raw data access with <code>masstools</code> utilities for
+data exploration and spectral annotation, e.g., using MSnExp with
+<code><a href="../reference/get_spectra_match_score.html">get_spectra_match_score()</a></code> or
+<code><a href="../reference/ms2_plot.html">ms2_plot()</a></code>.</p></li>
+<li><p>[]</p></li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="chemical-formula-operation">
@@ -158,6 +218,12 @@ operation.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://masstools.tidymass.org/" class="external-link">masstools</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<p>The <code><a href="../reference/sum_formula.html">sum_formula()</a></code> function is designed to calculate the
+resulting chemical formula after applying a specific adduct
+transformation to a given base formula. This is particularly useful in
+mass spectrometry and metabolomics, where observed m/z values often
+correspond to the base compound plus/minus an adduct (e.g.,
+<code>[M+H]+</code>, <code>[M+Na]+</code>, <code>[M-H2O+H]+</code>).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sum_formula.html">sum_formula</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="st">"C9H11NO2"</span>, adduct <span class="op">=</span> <span class="st">"M+H"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "C9H12NO2"</span></span>
@@ -167,31 +233,46 @@ operation.</p>
 <span><span class="co">#&gt; [1] "C11H15NO4"</span></span>
 <span><span class="fu"><a href="../reference/sum_formula.html">sum_formula</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="st">"C9H11"</span>, adduct <span class="op">=</span> <span class="st">"M-H20"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
+<p>The <code><a href="../reference/split_formula.html">split_formula()</a></code> function is a utility designed to
+parse a chemical formula string into a structured tabular
+form—specifically a <code>data.frame</code> containing the elemental
+composition (symbols and their counts). This function is a foundational
+step for any downstream chemical formula manipulation, such as computing
+molecular weights, summing with adducts (see
+<code><a href="../reference/sum_formula.html">sum_formula()</a></code>), or formula validation.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/split_formula.html">split_formula</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="st">"C9H11NO2"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   element.name number</span></span>
-<span><span class="co">#&gt; 2            C      9</span></span>
-<span><span class="co">#&gt; 3            H     11</span></span>
-<span><span class="co">#&gt; 4            N      1</span></span>
-<span><span class="co">#&gt; 5            O      2</span></span>
+<span><span class="co">#&gt;   element number</span></span>
+<span><span class="co">#&gt; 2       C      9</span></span>
+<span><span class="co">#&gt; 3       H     11</span></span>
+<span><span class="co">#&gt; 4       N      1</span></span>
+<span><span class="co">#&gt; 5       O      2</span></span>
 <span><span class="fu"><a href="../reference/split_formula.html">split_formula</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="st">"C2H4"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   element.name number</span></span>
-<span><span class="co">#&gt; 2            C      2</span></span>
-<span><span class="co">#&gt; 3            H      4</span></span></code></pre></div>
+<span><span class="co">#&gt;   element number</span></span>
+<span><span class="co">#&gt; 2       C      2</span></span>
+<span><span class="co">#&gt; 3       H      4</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="ms2-spectra-operation">
 <strong>MS2 spectra operation</strong><a class="anchor" aria-label="anchor" href="#ms2-spectra-operation"></a>
 </h2>
+<p>This section demonstrates a typical workflow for comparing and
+scoring similarity between two MS2 spectra, such as those from an
+experimental run and a reference library. It involves preprocessing,
+visualization, peak matching, and similarity scoring.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">###remove the noisy peaks in one ms2 spectrum</span></span>
 <span><span class="va">exp.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1.0001</span><span class="op">)</span>, </span>
 <span>                           intensity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
+<span>                           </span>
+<span><span class="co">###The `ms2_plot()` function enables side-by-side comparison of two MS2 spectra using either static or interactive plots. It allows control over visual styling (colors, font sizes) and comparison parameters (e.g., ppm tolerance).                          </span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/ms2_plot.html">ms2_plot</a></span><span class="op">(</span><span class="va">exp.spectrum</span><span class="op">)</span></span></code></pre></div>
 <p><img src="masstools_introduction_files/figure-html/unnamed-chunk-5-1.png" width="100%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
+<span><span class="co">###The `removeNoise()` function identifies and removes redundant or spurious peaks based on a ppm-based closeness criterion. For overlapping m/z values, it retains the more intense peak.</span></span>
+<span></span>
 <span><span class="va">exp.spectrum2</span> <span class="op">=</span> <span class="fu"><a href="../reference/removeNoise.html">removeNoise</a></span><span class="op">(</span><span class="va">exp.spectrum</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/ms2_plot.html">ms2_plot</a></span><span class="op">(</span><span class="va">exp.spectrum</span>, <span class="va">exp.spectrum2</span><span class="op">)</span></span></code></pre></div>
@@ -201,6 +282,9 @@ operation.</p>
 <span><span class="co">###match two spectra according to mz</span></span>
 <span><span class="va">exp.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, intensity <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">lib.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, intensity <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">###The `ms2Match()` function aligns peaks between experimental and library MS2 spectra based on m/z proximity within a ppm tolerance.</span></span>
+<span></span>
 <span><span class="fu"><a href="../reference/ms2Match.html">ms2Match</a></span><span class="op">(</span><span class="va">exp.spectrum</span>, <span class="va">lib.spectrum</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Lib.index Exp.index Lib.mz Lib.intensity Exp.mz Exp.intensity</span></span>
 <span><span class="co">#&gt; 1          1         1      1             1      1             1</span></span>
@@ -216,6 +300,7 @@ operation.</p>
 <span></span>
 <span></span>
 <span><span class="co">## calculate the dot product of two matched intensity</span></span>
+<span><span class="co">## The `getDP()` function calculates a weighted dot product between two intensity vectors. This is a common metric for comparing shape similarity between two spectra.</span></span>
 <span><span class="fu"><a href="../reference/getDP.html">getDP</a></span><span class="op">(</span>exp.int <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, lib.int <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="fu"><a href="../reference/getDP.html">getDP</a></span><span class="op">(</span>exp.int <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">1</span>, lib.int <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
@@ -224,9 +309,18 @@ operation.</p>
 <span><span class="co">###matched two spectra and calculate dot product</span></span>
 <span><span class="va">exp.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, intensity <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">lib.spectrum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, intensity <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## This function combines multiple aspects of similarity into a composite similarity score between an experimental and a library MS2 spectrum.</span></span>
+<span></span>
 <span><span class="fu"><a href="../reference/getSpectraMatchScore.html">getSpectraMatchScore</a></span><span class="op">(</span><span class="va">exp.spectrum</span>, <span class="va">lib.spectrum</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
-<p>MS2 plot and MS2 matching plot.</p>
+<p>MS2 plot and MS2 matching plot. The <code><a href="../reference/ms2_plot.html">ms2_plot()</a></code> function
+is designed to visualize one or two MS2 spectra, enabling side-by-side
+comparison. This is useful in spectral library matching, experimental
+result inspection, or quality control.</p>
+<p>Here, we simulate two identical MS2 spectra and demonstrate how the
+function can be used for both single-spectrum display and comparative
+visualization.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">spectrum1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>    mz <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -269,8 +363,17 @@ operation.</p>
 <h2 id="match-two-feature-tables">
 <strong>Match two feature tables</strong><a class="anchor" aria-label="anchor" href="#match-two-feature-tables"></a>
 </h2>
-<p>We can match two feature tables according to mz and retention
-time.</p>
+<p>We can match two feature tables according to mz and retention time.
+In LC-MS-based metabolomics or proteomics, features (i.e., detected
+signals) are typically characterized by mass-to-charge ratio (m/z) and
+retention time (RT). Accurate matching of features between samples,
+instruments, or datasets is a fundamental requirement for annotation,
+alignment, and statistical comparison.</p>
+<p>The <code><a href="../reference/mz_rt_match.html">mz_rt_match()</a></code> function performs feature-wise
+matching between two datasets (<code>data1</code> and
+<code>data2</code>) using both m/z and RT criteria, allowing users to
+define mass tolerance in ppm and RT tolerance either in absolute units
+or relative percentage.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, rt <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>mz <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, rt <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
@@ -300,20 +403,23 @@ time.</p>
 support a lot of databases.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://masstools.tidymass.org/" class="external-link">masstools</a></span><span class="op">)</span></span></code></pre></div>
-<p>We can use the <code><a href="../reference/trans_id_database.html">trans_id_database()</a></code> to get the databases
-that cts.fiehnlab.</p>
+<p>We can use the <code>trans_id_database()</code> to get the databases
+that cts.fiehnlab. <strong>Caution</strong>:
+<code>trans_id_database</code> function temporarily can not be used.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">database_name</span> <span class="op">=</span> <span class="fu"><a href="../reference/trans_id_database.html">trans_id_database</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">database_name</span> <span class="op">&lt;-</span> <span class="fu">trans_id_database</span><span class="op">(</span>server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">database_name</span><span class="op">$</span><span class="va">From</span><span class="op">$</span><span class="va">From</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "AAA Chemistry"     "ABBLIS Chemicals"  "Abbott Labs"      </span></span>
-<span><span class="co">#&gt; [4] "ABI Chem"          "AbMole Bioscience" "Acesobio"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">database_name</span><span class="op">$</span><span class="va">From</span><span class="op">$</span><span class="va">From</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">database_name</span><span class="op">$</span><span class="va">To</span><span class="op">$</span><span class="va">From</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "AAA Chemistry"     "ABBLIS Chemicals"  "Abbott Labs"      </span></span>
-<span><span class="co">#&gt; [4] "ABI Chem"          "AbMole Bioscience" "Acesobio"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">database_name</span><span class="op">$</span><span class="va">To</span><span class="op">$</span><span class="va">From</span><span class="op">)</span></span></code></pre></div>
 <p>We can see that it support a lot of (&gt; 200) databases.</p>
 <p>We can try the most common convert, from KEGG to HMDB.</p>
+<p>The <code><a href="../reference/trans_ID.html">trans_ID()</a></code> function facilitates the conversion of
+metabolite or chemical identifiers between widely used databases such as
+KEGG, PubChem, HMDB, ChEBI, and others. This is a critical task in
+metabolomics and cheminformatics, especially when integrating datasets
+from different sources, performing compound annotation, or preparing
+data for submission to external tools and repositories.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/trans_ID.html">trans_ID</a></span><span class="op">(</span></span>
 <span>  query <span class="op">=</span> <span class="st">"C00001"</span>,</span>
@@ -323,7 +429,7 @@ that cts.fiehnlab.</p>
 <span>  server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt;     KEGG Human Metabolome Database</span></span>
-<span><span class="co">#&gt; 1 C00001               HMDB0002111</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 C00001                        NA</span></span></code></pre></div>
 <p>Now, <code>trans_ID</code> doesn’t support verctor query. So you can
 use the <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map()</a></code> to achive this.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -342,27 +448,23 @@ use the <code><a href="https://purrr.tidyverse.org/reference/map.html" class="ex
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     KEGG Human Metabolome Database</span></span>
-<span><span class="co">#&gt; 1 C00001               HMDB0002111</span></span>
-<span><span class="co">#&gt; 2 C00001               HMDB0002111</span></span>
-<span><span class="co">#&gt; 3 C00001               HMDB0002111</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 C00001                        NA</span></span>
+<span><span class="co">#&gt; 2 C00001                        NA</span></span>
+<span><span class="co">#&gt; 3 C00001                        NA</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="chemspider">
 <strong>2. chemspider</strong><a class="anchor" aria-label="anchor" href="#chemspider"></a>
 </h3>
 <p>This is from <a href="https://www.chemspider.com/InChI.asmx" class="external-link uri">https://www.chemspider.com/InChI.asmx</a>.</p>
-<p>We can use the <code><a href="../reference/trans_id_database.html">trans_id_database()</a></code> to get the databases
+<p>We can use the <code>trans_id_database()</code> to get the databases
 that chemspider</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">database_name2</span> <span class="op">=</span> <span class="fu"><a href="../reference/trans_id_database.html">trans_id_database</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">"chemspider"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">database_name2</span> <span class="op">&lt;-</span> <span class="fu">trans_id_database</span><span class="op">(</span>server <span class="op">=</span> <span class="st">"chemspider"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">database_name2</span><span class="op">$</span><span class="va">From</span></span>
-<span><span class="co">#&gt; [1] "csid"     "inchikey" "inchikey" "inchikey" "inchi"    "inchi"    "inchi"   </span></span>
-<span><span class="co">#&gt; [8] "inchi"    "smiles"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">database_name2</span><span class="op">$</span><span class="va">From</span></span></code></pre></div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">database_name2</span><span class="op">$</span><span class="va">To</span></span>
-<span><span class="co">#&gt; [1] "mol"      "csid"     "inchi"    "mol"      "csid"     "inchikey" "mol"     </span></span>
-<span><span class="co">#&gt; [8] "smiles"   "inchi"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">database_name2</span><span class="op">$</span><span class="va">To</span></span></code></pre></div>
 <p>This is very useful if you want to get the inchikey, inchi or smiles
 for one compound. But this web only support “ChemSpider ID” (csid), so
 we need use cts.fiehnlab convert to csid first.</p>
@@ -375,7 +477,7 @@ we need use cts.fiehnlab convert to csid first.</p>
 <span>  server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt;     KEGG ChemSpider</span></span>
-<span><span class="co">#&gt; 1 C00001     140526</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 C00001         NA</span></span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/trans_ID.html">trans_ID</a></span><span class="op">(</span></span>
 <span>  query <span class="op">=</span> <span class="st">"140526"</span>,</span>
@@ -392,8 +494,14 @@ we need use cts.fiehnlab convert to csid first.</p>
 <strong>Get compound class based on classyfire</strong><a class="anchor" aria-label="anchor" href="#get-compound-class-based-on-classyfire"></a>
 </h2>
 <p>Refer this publication: <a href="https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y" class="external-link uri">https://jcheminf.biomedcentral.com/articles/10.1186/s13321-016-0174-y</a></p>
+<p>The <code><a href="../reference/get_compound_class.html">get_compound_class()</a></code> function provides a convenient
+interface to query the ClassyFire database (<a href="https://classyfire.wishartlab.com" class="external-link uri">https://classyfire.wishartlab.com</a>), retrieving the
+chemical taxonomy and classification of a compound given its InChIKey.
+ClassyFire organizes chemical compounds into a structured taxonomy
+(Kingdom → Superclass → Class → Subclass…), and is widely used in
+cheminformatics, metabolomics, and compound annotation.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result</span> <span class="op">=</span> </span>
+<code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> </span>
 <span><span class="fu"><a href="../reference/get_compound_class.html">get_compound_class</a></span><span class="op">(</span></span>
 <span>  inchikey <span class="op">=</span> <span class="st">"QZDWODWEESGPLC-UHFFFAOYSA-N"</span>,</span>
 <span>  server <span class="op">=</span> <span class="st">"http://classyfire.wishartlab.com/entities/"</span>,</span>
@@ -412,6 +520,14 @@ we need use cts.fiehnlab convert to csid first.</p>
 <div class="section level3">
 <h3 id="rename-one-vector-with-duplicated-items-">Rename one vector with duplicated items.<a class="anchor" aria-label="anchor" href="#rename-one-vector-with-duplicated-items-"></a>
 </h3>
+<p>In many data processing workflows—especially during column naming,
+feature annotation, or ID assignment—duplicate names can lead to
+ambiguity, overwriting, or unexpected behavior in downstream
+analyses.</p>
+<p>The <code><a href="../reference/name_duplicated.html">name_duplicated()</a></code> function provides a simple and
+robust mechanism to disambiguate repeated values in a character vector
+by appending sequential suffixes (e.g., <code>_1</code>,
+<code>_2</code>, …).</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/name_duplicated.html">name_duplicated</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"a"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "a_1" "a_2" "b_1" "c_1" "a_3" "b_2" "c_2" "a_4"</span></span>
@@ -421,40 +537,32 @@ we need use cts.fiehnlab convert to csid first.</p>
 <span><span class="co">#&gt; [1] 1 2 3 4 5</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="open-the-current-working-directory-in-r">Open the current working directory in R<a class="anchor" aria-label="anchor" href="#open-the-current-working-directory-in-r"></a>
-</h3>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">####just open the current working directory</span></span>
-<span><span class="fu">openwd</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">###A new folder will be opened and pop up</span></span></code></pre></div>
-</div>
-<div class="section level3">
 <h3 id="set-working-directory-in-windows">Set working directory in <code>Windows</code><a class="anchor" aria-label="anchor" href="#set-working-directory-in-windows"></a>
 </h3>
 <p>Copy the file path in <code>File explorer</code> in
 <code>Windows</code>.</p>
 <p>Then type in R:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">setwd_win</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Then paste the file path and type <code>Enter</code>.</p>
 </div>
 <div class="section level3">
-<h3 id="set-working-directory-where-a-r-project-is-in">Set working directory where a R project is in<a class="anchor" aria-label="anchor" href="#set-working-directory-where-a-r-project-is-in"></a>
-</h3>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">setwd_project</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
 <h3 id="check-the-operate-system">Check the operate system<a class="anchor" aria-label="anchor" href="#check-the-operate-system"></a>
 </h3>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<p>The <code><a href="../reference/get_os.html">get_os()</a></code> function is a lightweight utility that
+determines the operating system (OS) on which the current R session is
+running. This is often necessary when designing scripts or packages that
+involve platform-dependent behavior.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_os.html">get_os</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "osx"</span></span></code></pre></div>
+<span><span class="co">#&gt;   sysname </span></span>
+<span><span class="co">#&gt; "windows"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="check-version-of-masstools">Check version of <code>masstools</code><a class="anchor" aria-label="anchor" href="#check-version-of-masstools"></a>
 </h3>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<p>Output logo and version of masstools.</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/masstools_logo.html">masstools_logo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                        _______          _     </span></span>
 <span><span class="co">#&gt;                       |__   __|        | |    </span></span>
@@ -468,7 +576,17 @@ we need use cts.fiehnlab convert to csid first.</p>
 <div class="section level3">
 <h3 id="check-conflicts-of-masstools">Check conflicts of <code>masstools</code><a class="anchor" aria-label="anchor" href="#check-conflicts-of-masstools"></a>
 </h3>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<p>The <code><a href="../reference/masstools_conflicts.html">masstools_conflicts()</a></code> function is a diagnostic tool
+designed to identify function name conflicts between functions exported
+by the <code>masstools</code> package and functions from other packages
+currently attached in the R session.</p>
+<p>Function name conflicts are common in the R ecosystem due to the way
+the search path is managed. When multiple packages export functions with
+the same name (e.g., <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> from both <code>stats</code>
+and <code>dplyr</code>), the one most recently attached typically
+“masks” the others. This can lead to confusing or unintended
+behavior.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/masstools_conflicts.html">masstools_conflicts</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── masstools_conflicts() ──</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">body&lt;-()</span>    masks <span style="color: #0000BB;">base</span>::body&lt;-()</span></span>
@@ -481,82 +599,112 @@ we need use cts.fiehnlab convert to csid first.</p>
 <div class="section level3">
 <h3 id="list-all-pacakges-in-masstools">List all pacakges in <code>masstools</code><a class="anchor" aria-label="anchor" href="#list-all-pacakges-in-masstools"></a>
 </h3>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<p>The <code><a href="../reference/masstools_packages.html">masstools_packages()</a></code> function provides a
+programmatic way to retrieve the list of R packages imported by
+<code>masstools</code>, as declared in its <code>DESCRIPTION</code> file
+under the <code>Imports</code> field. This utility is particularly
+helpful in diagnostic functions, dependency management, and package
+introspection.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/masstools_packages.html">masstools_packages</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "dplyr"        "remotes"      "magrittr"     "tibble"       "tidyr"       </span></span>
-<span><span class="co">#&gt;  [6] "stringr"      "methods"      "crayon"       "cli"          "purrr"       </span></span>
-<span><span class="co">#&gt; [11] "pbapply"      "httr"         "rvest"        "xml2"         "stats"       </span></span>
-<span><span class="co">#&gt; [16] "utils"        "MSnbase"      "ProtGenerics" "lifecycle"    "ggplot2"     </span></span>
-<span><span class="co">#&gt; [21] "masstools"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "dplyr"        "jsonlite"     "remotes"      "magrittr"     "tibble"      </span></span>
+<span><span class="co">#&gt;  [6] "tidyr"        "stringr"      "methods"      "crayon"       "cli"         </span></span>
+<span><span class="co">#&gt; [11] "purrr"        "pbapply"      "httr"         "rvest"        "xml2"        </span></span>
+<span><span class="co">#&gt; [16] "stats"        "utils"        "MSnbase"      "ProtGenerics" "lifecycle"   </span></span>
+<span><span class="co">#&gt; [21] "ggplot2"      "masstools"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="session-information">
 <strong>Session information</strong><a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.3.0 (2023-04-21)</span></span>
-<span><span class="co">#&gt; Platform: x86_64-apple-darwin20 (64-bit)</span></span>
-<span><span class="co">#&gt; Running under: macOS 14.0</span></span>
+<span><span class="co">#&gt; R version 4.4.3 (2025-02-28 ucrt)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-w64-mingw32/x64</span></span>
+<span><span class="co">#&gt; Running under: Windows 11 x64 (build 26100)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib </span></span>
-<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; locale:</span></span>
-<span><span class="co">#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
+<span><span class="co">#&gt; [1] LC_COLLATE=Chinese (Simplified)_China.utf8 </span></span>
+<span><span class="co">#&gt; [2] LC_CTYPE=Chinese (Simplified)_China.utf8   </span></span>
+<span><span class="co">#&gt; [3] LC_MONETARY=Chinese (Simplified)_China.utf8</span></span>
+<span><span class="co">#&gt; [4] LC_NUMERIC=C                               </span></span>
+<span><span class="co">#&gt; [5] LC_TIME=Chinese (Simplified)_China.utf8    </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: America/Los_Angeles</span></span>
+<span><span class="co">#&gt; time zone: Asia/Shanghai</span></span>
 <span><span class="co">#&gt; tzcode source: internal</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] lubridate_1.9.2  forcats_1.0.0    stringr_1.5.0    purrr_1.0.1     </span></span>
-<span><span class="co">#&gt;  [5] readr_2.1.4      tidyr_1.3.0      tibble_3.2.1     ggplot2_3.4.2   </span></span>
-<span><span class="co">#&gt;  [9] tidyverse_2.0.0  dplyr_1.1.2      magrittr_2.0.3   masstools_1.0.13</span></span>
+<span><span class="co">#&gt;  [1] lubridate_1.9.4  forcats_1.0.0    stringr_1.5.1    purrr_1.0.4     </span></span>
+<span><span class="co">#&gt;  [5] readr_2.1.5      tidyr_1.3.1      tibble_3.3.0     ggplot2_3.5.2   </span></span>
+<span><span class="co">#&gt;  [9] tidyverse_2.0.0  dplyr_1.1.4      magrittr_2.0.3   masstools_0.99.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] tidyselect_1.2.0      farver_2.1.1          fastmap_1.1.1        </span></span>
-<span><span class="co">#&gt;  [4] XML_3.99-0.14         digest_0.6.31         timechange_0.2.0     </span></span>
-<span><span class="co">#&gt;  [7] lifecycle_1.0.3       cluster_2.1.4         ProtGenerics_1.32.0  </span></span>
-<span><span class="co">#&gt; [10] compiler_4.3.0        rlang_1.1.1           sass_0.4.6           </span></span>
-<span><span class="co">#&gt; [13] tools_4.3.0           utf8_1.2.3            yaml_2.3.7           </span></span>
-<span><span class="co">#&gt; [16] knitr_1.43            labeling_0.4.2        curl_5.0.1           </span></span>
-<span><span class="co">#&gt; [19] xml2_1.3.4            plyr_1.8.8            BiocParallel_1.34.2  </span></span>
-<span><span class="co">#&gt; [22] withr_2.5.0           BiocGenerics_0.46.0   desc_1.4.2           </span></span>
-<span><span class="co">#&gt; [25] grid_4.3.0            stats4_4.3.0          preprocessCore_1.62.1</span></span>
-<span><span class="co">#&gt; [28] fansi_1.0.4           colorspace_2.1-0      scales_1.2.1         </span></span>
-<span><span class="co">#&gt; [31] iterators_1.0.14      MASS_7.3-58.4         cli_3.6.1            </span></span>
-<span><span class="co">#&gt; [34] mzR_2.34.0            rmarkdown_2.22        crayon_1.5.2         </span></span>
-<span><span class="co">#&gt; [37] generics_0.1.3        remotes_2.4.2.1       rstudioapi_0.14      </span></span>
-<span><span class="co">#&gt; [40] httr_1.4.6            tzdb_0.4.0            ncdf4_1.21           </span></span>
-<span><span class="co">#&gt; [43] pbapply_1.7-0         cachem_1.0.8          affy_1.78.0          </span></span>
-<span><span class="co">#&gt; [46] zlibbioc_1.46.0       rvest_1.0.3           parallel_4.3.0       </span></span>
-<span><span class="co">#&gt; [49] impute_1.74.1         selectr_0.4-2         BiocManager_1.30.21  </span></span>
-<span><span class="co">#&gt; [52] vsn_3.68.0            vctrs_0.6.2           jsonlite_1.8.5       </span></span>
-<span><span class="co">#&gt; [55] IRanges_2.34.0        hms_1.1.3             S4Vectors_0.38.1     </span></span>
-<span><span class="co">#&gt; [58] MALDIquant_1.22.1     clue_0.3-64           foreach_1.5.2        </span></span>
-<span><span class="co">#&gt; [61] limma_3.56.2          jquerylib_0.1.4       affyio_1.70.0        </span></span>
-<span><span class="co">#&gt; [64] glue_1.6.2            MSnbase_2.26.0        pkgdown_2.0.7        </span></span>
-<span><span class="co">#&gt; [67] codetools_0.2-19      stringi_1.7.12        gtable_0.3.3         </span></span>
-<span><span class="co">#&gt; [70] mzID_1.38.0           munsell_0.5.0         pillar_1.9.0         </span></span>
-<span><span class="co">#&gt; [73] pcaMethods_1.92.0     htmltools_0.5.5       R6_2.5.1             </span></span>
-<span><span class="co">#&gt; [76] doParallel_1.0.17     rprojroot_2.0.3       evaluate_0.21        </span></span>
-<span><span class="co">#&gt; [79] lattice_0.21-8        Biobase_2.60.0        highr_0.10           </span></span>
-<span><span class="co">#&gt; [82] memoise_2.0.1         bslib_0.5.0           Rcpp_1.0.10          </span></span>
-<span><span class="co">#&gt; [85] xfun_0.39             MsCoreUtils_1.12.0    fs_1.6.2             </span></span>
-<span><span class="co">#&gt; [88] pkgconfig_2.0.3</span></span></code></pre></div>
+<span><span class="co">#&gt;   [1] pbapply_1.7-2               remotes_2.5.0              </span></span>
+<span><span class="co">#&gt;   [3] rlang_1.1.6                 clue_0.3-66                </span></span>
+<span><span class="co">#&gt;   [5] matrixStats_1.5.0           compiler_4.4.3             </span></span>
+<span><span class="co">#&gt;   [7] vctrs_0.6.5                 reshape2_1.4.4             </span></span>
+<span><span class="co">#&gt;   [9] rvest_1.0.4                 ProtGenerics_1.38.0        </span></span>
+<span><span class="co">#&gt;  [11] pkgconfig_2.0.3             crayon_1.5.3               </span></span>
+<span><span class="co">#&gt;  [13] fastmap_1.2.0               XVector_0.46.0             </span></span>
+<span><span class="co">#&gt;  [15] labeling_0.4.3              rmarkdown_2.29             </span></span>
+<span><span class="co">#&gt;  [17] tzdb_0.5.0                  UCSC.utils_1.2.0           </span></span>
+<span><span class="co">#&gt;  [19] preprocessCore_1.68.0       xfun_0.52                  </span></span>
+<span><span class="co">#&gt;  [21] MultiAssayExperiment_1.32.0 zlibbioc_1.52.0            </span></span>
+<span><span class="co">#&gt;  [23] cachem_1.1.0                GenomeInfoDb_1.42.3        </span></span>
+<span><span class="co">#&gt;  [25] jsonlite_2.0.0              DelayedArray_0.32.0        </span></span>
+<span><span class="co">#&gt;  [27] BiocParallel_1.36.0         parallel_4.4.3             </span></span>
+<span><span class="co">#&gt;  [29] cluster_2.1.8               R6_2.6.1                   </span></span>
+<span><span class="co">#&gt;  [31] bslib_0.9.0                 stringi_1.8.7              </span></span>
+<span><span class="co">#&gt;  [33] RColorBrewer_1.1-3          limma_3.62.2               </span></span>
+<span><span class="co">#&gt;  [35] GenomicRanges_1.58.0        jquerylib_0.1.4            </span></span>
+<span><span class="co">#&gt;  [37] Rcpp_1.1.0                  SummarizedExperiment_1.36.0</span></span>
+<span><span class="co">#&gt;  [39] iterators_1.0.14            knitr_1.50                 </span></span>
+<span><span class="co">#&gt;  [41] IRanges_2.40.1              timechange_0.3.0           </span></span>
+<span><span class="co">#&gt;  [43] Matrix_1.7-2                igraph_2.1.4               </span></span>
+<span><span class="co">#&gt;  [45] tidyselect_1.2.1            rstudioapi_0.17.1          </span></span>
+<span><span class="co">#&gt;  [47] abind_1.4-8                 yaml_2.3.10                </span></span>
+<span><span class="co">#&gt;  [49] doParallel_1.0.17           codetools_0.2-20           </span></span>
+<span><span class="co">#&gt;  [51] affy_1.84.0                 curl_6.4.0                 </span></span>
+<span><span class="co">#&gt;  [53] lattice_0.22-6              plyr_1.8.9                 </span></span>
+<span><span class="co">#&gt;  [55] withr_3.0.2                 Biobase_2.66.0             </span></span>
+<span><span class="co">#&gt;  [57] evaluate_1.0.4              desc_1.4.3                 </span></span>
+<span><span class="co">#&gt;  [59] xml2_1.3.8                  pillar_1.11.0              </span></span>
+<span><span class="co">#&gt;  [61] affyio_1.76.0               BiocManager_1.30.26        </span></span>
+<span><span class="co">#&gt;  [63] MatrixGenerics_1.18.1       foreach_1.5.2              </span></span>
+<span><span class="co">#&gt;  [65] stats4_4.4.3                MSnbase_2.32.0             </span></span>
+<span><span class="co">#&gt;  [67] MALDIquant_1.22.3           ncdf4_1.24                 </span></span>
+<span><span class="co">#&gt;  [69] generics_0.1.4              hms_1.1.3                  </span></span>
+<span><span class="co">#&gt;  [71] S4Vectors_0.44.0            scales_1.4.0               </span></span>
+<span><span class="co">#&gt;  [73] glue_1.8.0                  lazyeval_0.2.2             </span></span>
+<span><span class="co">#&gt;  [75] tools_4.4.3                 mzID_1.44.0                </span></span>
+<span><span class="co">#&gt;  [77] QFeatures_1.16.0            vsn_3.74.0                 </span></span>
+<span><span class="co">#&gt;  [79] mzR_2.40.0                  fs_1.6.6                   </span></span>
+<span><span class="co">#&gt;  [81] XML_3.99-0.18               grid_4.4.3                 </span></span>
+<span><span class="co">#&gt;  [83] impute_1.80.0               MsCoreUtils_1.18.0         </span></span>
+<span><span class="co">#&gt;  [85] colorspace_2.1-1            GenomeInfoDbData_1.2.13    </span></span>
+<span><span class="co">#&gt;  [87] PSMatch_1.10.0              cli_3.6.5                  </span></span>
+<span><span class="co">#&gt;  [89] S4Arrays_1.6.0              AnnotationFilter_1.30.0    </span></span>
+<span><span class="co">#&gt;  [91] pcaMethods_1.98.0           gtable_0.3.6               </span></span>
+<span><span class="co">#&gt;  [93] selectr_0.4-2               sass_0.4.10                </span></span>
+<span><span class="co">#&gt;  [95] digest_0.6.37               BiocGenerics_0.52.0        </span></span>
+<span><span class="co">#&gt;  [97] SparseArray_1.6.2           htmlwidgets_1.6.4          </span></span>
+<span><span class="co">#&gt;  [99] farver_2.1.2                htmltools_0.5.8.1          </span></span>
+<span><span class="co">#&gt; [101] pkgdown_2.1.3               lifecycle_1.0.4            </span></span>
+<span><span class="co">#&gt; [103] httr_1.4.7                  statmod_1.5.0              </span></span>
+<span><span class="co">#&gt; [105] MASS_7.3-65</span></span></code></pre></div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -564,7 +712,7 @@ we need use cts.fiehnlab convert to csid first.</p>
 
       <footer><div class="copyright">
   <p></p>
-<p>masstools Developed by Xiaotao Shen, Chuchu Wang. <br> from <i class="fa fa-university"></i> Stanford University <br><i class="fa fa-clinic-medical"></i>School of Medicine <br><i class="fa fa-dna"></i> Genetics Department</p>
+<p>masstools Developed by Xiaotao Shen, Chuchu Wang, Shunpeng Bai. <br> from <i class="fa fa-university"></i> Stanford University <br><i class="fa fa-clinic-medical"></i>School of Medicine <br><i class="fa fa-dna"></i> Genetics Department</p>
 </div>
 
 <div class="pkgdown">
@@ -575,11 +723,11 @@ we need use cts.fiehnlab convert to csid first.</p>
       </footer>
 </div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-    
-    
+
+
     apiKey: '21ff2860978c5d2ceb7d4150364070ff',
     indexName: 'masstools',
     inputSelector: 'input#search-input.form-control',

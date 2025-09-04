@@ -49,7 +49,7 @@ masstools_attach <- function() {
         packages <- append(packages, "")
     }
     col1 <- seq_len(length(packages) / 2)
-    info <- paste0(packages[col1], "     ", packages[-col1])
+    # info <- paste0(packages[col1], "     ", packages[-col1])
 
     # msg(paste(info, collapse = "\n"), startup = TRUE)
 

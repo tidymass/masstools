@@ -62,7 +62,7 @@ split_formula <-
           c(remove.idx, idx1[i]:(idx1[i] + len1[i] - 1))
       }
 
-      double.formula <- data.frame(double.letter.element, double.number, 
+      double.formula <- data.frame(double.letter.element, double.number,
                                    stringsAsFactors = FALSE)
       formula1 <- strsplit(formula, split = "")[[1]]
       formula1 <- formula1[-remove.idx]
@@ -84,7 +84,7 @@ split_formula <-
           one.number[i] <- 1
         } else {
           one.number[i] <-
-            as.numeric(substr(one.letter.element[i], 2, 
+            as.numeric(substr(one.letter.element[i], 2,
                               nchar(one.letter.element[i])))
         }
         one.letter.element[i] <-
@@ -316,15 +316,15 @@ trans_ID <-
 
 #' Retrieve Supported Databases for Chemical Identifier Conversion
 #'
-#' This function lists the databases supported for chemical identifier 
+#' This function lists the databases supported for chemical identifier
 #' conversion by either the `cts.fiehnlab` or `chemspider` services.
 #'
-#' @param server A character string indicating which server to use. 
+#' @param server A character string indicating which server to use.
 #' Possible values are "cts.fiehnlab" or "chemspider".
 #'
-#' @return A list of supported databases. If using the `cts.fiehnlab` server, 
-#' the list will contain two data frames: 'From' and 'To'. 
-#' If using the `chemspider` server, 
+#' @return A list of supported databases. If using the `cts.fiehnlab` server,
+#' the list will contain two data frames: 'From' and 'To'.
+#' If using the `chemspider` server,
 #' the result will be a single data frame with 'From' and 'To' columns.
 #' @note This function is deprecated.
 #' @export

@@ -154,7 +154,7 @@ convert_metabolite_id_oliver <-
         try(result %>%
               rvest::html_nodes("p") %>%
               rvest::html_text(trim = TRUE) %>%
-              stringr::str_split('results') %>%
+              stringr::str_split("results") %>%
               `[[`(1) %>%
               `[[`(2) %>%
               stringr::str_trim("both") %>%
