@@ -305,15 +305,6 @@ name_duplicated(c(rep(1, 5), 2))
 name_duplicated(1:5)
 ```
 
-## Open the current working directory in R
-
-This function temporarily can not be used.
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-####just open the current working directory
-openwd()
-###A new folder will be opened and pop up
-```
 
 ## Set working directory in `Windows`
 
@@ -327,13 +318,6 @@ setwd_win()
 
 Then paste the file path and type `Enter`.
 
-## Set working directory where a R project is in
-
-This function temporarily can not be used.
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-setwd_project()
-```
 
 ## Check the operate system
 

@@ -1,144 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://tidymass.github.io/masstools/404.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/articles/contact_us.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/articles/install.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/articles/masstools_introduction.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/index.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/classyfire.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/convert_precursor_mz2accurate_mass.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/getDP.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/getSpectraMatchScore.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/get_compound_class.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/get_dp.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/get_mass.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/get_os.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/get_project_wd.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/get_spectra_match_score.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/install_fastgit.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/is_valid_chemical_formula.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/keep_one.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/masstools_conflicts.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/masstools_logo.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/masstools_packages.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/ms2Match.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/ms2_match.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/ms2_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/mz_rt_match.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/name_duplicated.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/openwd.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/parse_chemical_formula.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/read_mgf.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/read_mgf4database.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/read_mzxml.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/removeNoise.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/remove_noise.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/setwd_project.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/setwd_win.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/show-classyfire-method.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/show_progresser.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/split_formula.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/sum_formula.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/trans_ID.html</loc>
-  </url>
-  <url>
-    <loc>https://tidymass.github.io/masstools/reference/trans_id_database.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://tidymass.github.io/masstools/404.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/articles/contact_us.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/articles/index.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/articles/install.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/articles/masstools_introduction.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/authors.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/index.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/LICENSE-text.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/LICENSE.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/news/index.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/calculate_mass.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/check_adduct_formula.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/check_chemical_element.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/check_chemical_formula.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/classyfire.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/convert_metabolite_id.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/convert_metabolite_id_chemspider.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/convert_metabolite_id_oliver.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/convert_metabolite_id_openai.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/convert_precursor_mz2accurate_mass.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/getDP.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/getSpectraMatchScore.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/get_compound_class.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/get_dp.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/get_os.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/get_spectra_match_score.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/index.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/keep_one.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/masstools_conflicts.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/masstools_logo.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/masstools_packages.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/ms2Match.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/ms2_match.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/ms2_plot.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/mz_rt_match.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/name_duplicated.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/parse_chemical_formula.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/read_mgf.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/read_mgf4database.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/read_mzxml.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/removeNoise.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/remove_noise.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/request_chemspider_metabolite.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/request_metabolite_id_systems.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/show-classyfire-method.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/show_progresser.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/split_formula.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/sum_formula.html</loc></url>
+<url><loc>https://tidymass.github.io/masstools/reference/trans_ID.html</loc></url>
 </urlset>
+
