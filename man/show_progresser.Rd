@@ -5,7 +5,7 @@
 \title{show_progresser}
 \usage{
 show_progresser(
-  index = 1:1000,
+  index = seq_len(1000),
   progresser = c(1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
 )
 }
@@ -19,6 +19,9 @@ A data.frame
 }
 \description{
 show_progresser
+}
+\examples{
+show_progresser()
 }
 \author{
 Xiaotao Shen

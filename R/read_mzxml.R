@@ -16,10 +16,11 @@
 #'   with columns for m/z and intensity values.
 #' }
 #'
-#' @examples 
-#' # Assuming 'sample.mzXML' is the path to your mzXML file.
-#' # mzxml_data <- read_mzxml('sample.mzXML')
-#'
+#' @examples
+#' # Locate the example mzXML file in the installed package
+#' file_path <- system.file("extdata", "example.mzXML", package = "masstools")
+#' # Then use it in your function
+#' result <- read_mzxml(file_path)
 #' @export
 
 read_mzxml <-

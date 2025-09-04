@@ -17,13 +17,13 @@
 
 # Installation
 
-You can install `masstools` from [GitLab](https://gitlab.com/jaspershen/masstools)
+You can install `masstools` from [GitLab](https://gitlab.com/tidymass/masstools)
 
 ``` r
 if(!require(remotes)){
 install.packages("remotes")
 }
-remotes::install_gitlab("jaspershen/masstools")
+remotes::install_gitlab("tidymass/masstools")
 ```
 
 or [GitHub](https://github.com/tidymass/masstools).

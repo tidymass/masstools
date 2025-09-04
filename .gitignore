@@ -54,3 +54,6 @@ other_files/
 other_files/.DS_Store
 
 demo_data
+/doc/
+/Meta/
+pkgdown/

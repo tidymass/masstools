@@ -9,14 +9,33 @@
 \arguments{
 \item{object}{An object of class 'classyfire'.}
 }
+\value{
+`NULL`. This method is called for its side effect of printing a summary of the 'classyfire' object.
+}
 \description{
 This function provides a custom display for 'classyfire' S4 objects.
-It prints out the main details of the object including compound 
+It prints out the main details of the object including compound
 information and its taxonomic classification in a structured format.
 }
 \examples{
-\dontrun{
-cf <- new("classyfire", ...)
+\donttest{
+library(tibble)
+
+cf <- new("classyfire",
+  compound_info = tibble::tibble(
+    name = c("SMILES", "InChIKey", "Formula", "Mass"),
+    value = c("C(C(=O)O)N", "BQJCRHHNABKAKU-KBQPJGBKSA-N", "C2H5NO2", "75.07")
+  ),
+  taxonomy_tree = tibble::tibble(
+    name = c("Kingdom", "Superclass", "Class"),
+    value = c("Organic compounds", "Organonitrogen compounds", "Amino acids")
+  ),
+  classification_info = tibble::tibble(), 
+  description = tibble::tibble(),
+  external_descriptors = tibble::tibble()
+)
+
+# 调用 show 方法
 show(cf)
 }
 

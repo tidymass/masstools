@@ -40,11 +40,11 @@ masstools_packages <- function(include_self = TRUE) {
   parsed <- gsub("^\\s+|\\s+$", "", imports)
   names <-
     vapply(strsplit(parsed, "\\s+"), "[[", 1, FUN.VALUE = character(1))
-  
+
   if (include_self) {
     names <- c(names, "masstools")
   }
-  
+
   names
 }
 
@@ -160,9 +160,11 @@ style_grey <- function(level, ...) {
 #' @importFrom purrr map map2 walk
 #' @importFrom crayon green
 #' @export
+#' @examples
+#' show_progresser()
 
 show_progresser <-
-  function(index = 1:1000,
+  function(index = seq_len(1000),
            progresser = c(1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)) {
     idx <-
       seq(
@@ -171,49 +173,58 @@ show_progresser <-
         length.out = length(progresser)
       ) %>%
       round()
-    
+
     data.frame(idx = idx, progresser = paste0(progresser, "%"))
   }
 
 
 
-#' @title install_fastgit
-#' @description install packages from fastgit. Credit to Shixiang Wang
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param pkg pkg name from github, gitlab or gitee, "name/repo" format
-#' @param from gitlab, github or gitee.
-#' @param ... Other parameters for install_git
-#' @return NULL
-#' @export
+# #' @title install_fastgit
+# #' @description install packages from fastgit. Credit to Shixiang Wang
+# #' @author Xiaotao Shen
+# #' \email{shenxt1990@@outlook.com}
+# #' @param pkg pkg name from github, gitlab or gitee, "name/repo" format
+# #` @param from gitlab, github or gitee.
+# #` @param ... Other parameters for install_git
+# #` @return `NULL`. This function is called for its side effect of installing packages from specified Git repository mirrors.
+# #` @export
+# #` @examples
+# #` \dontrun{
+# #` # Install a package from GitHub using the fastgit mirror
+# #` install_fastgit(pkg = "tidyverse/ggplot2", from = "github")
+# #`
+# #` # Install a package from Gitee
+# #` install_fastgit(pkg = "yourusername/yourpkg", from = "gitee")
+# #` }
 
-install_fastgit <-
-  function(pkg,
-           from = c("gitee", "gitlab", "github"),
-           ...) {
-    from <- match.arg(from)
-    
-    if (from == "gitee") {
-      if (!grepl("/", pkg)) {
-        stop("Invalid package name, should in 'name/repo' format.")
-      }
-      remotes::install_git(paste0("https://gitee.com/", pkg), ...)
-    } else {
-      if (any(grepl(":", pkg))) {
-        remotes::install_git(pkg, ...)
-      } else {
-        if (any(grepl("/", pkg))) {
-          tryCatch(
-            remotes::install_git(paste0("https://hub.fastgit.org/", pkg)),
-            error = function(e) {
-              message("Install error when use GitHub mirror, roll back to official GitHub.")
-              remotes::install_github(pkg)
-            }
-          )
-        }
-      }
-    }
-  }
+
+# install_fastgit <-
+#   function(pkg,
+#            from = c("gitee", "gitlab", "github"),
+#            ...) {
+#     from <- match.arg(from)
+# 
+#     if (from == "gitee") {
+#       if (!grepl("/", pkg)) {
+#         stop("Expected 'name/repo' format for 'pkg'.")
+#       }
+#       remotes::install_git(paste0("https://gitee.com/", pkg), ...)
+#     } else {
+#       if (any(grepl(":", pkg))) {
+#         remotes::install_git(pkg, ...)
+#       } else {
+#         if (any(grepl("/", pkg))) {
+#           tryCatch(
+#             remotes::install_git(paste0("https://hub.fastgit.org/", pkg)),
+#             error = function(e) {
+#               message("Installation failed using the GitHub mirror; falling back to the official GitHub.")
+#               remotes::install_github(pkg)
+#             }
+#           )
+#         }
+#       }
+#     }
+#   }
 
 
 

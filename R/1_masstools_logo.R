@@ -1,11 +1,12 @@
 #' @title Masstools Logo Printer
-#' @description `masstools_logo` is a function designed to display the masstools logo, 
-#' thank the user, show the version information, and provide a URL for 
+#' @description `masstools_logo` is a function designed to display the masstools
+#' logo,#' thank the user, show the version information, and provide a URL for
 #' additional details about the package. This can be useful for branding
 #' and user interaction when they load or utilize the package.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@outlook.com}
-#' @importFrom stringr str_replace str_split str_replace_all str_trim str_detect str_extract
+#' @importFrom stringr str_replace str_split str_replace_all str_trim str_detect
+#' str_extract
 #' @importFrom dplyr filter mutate select everything
 #' @importFrom utils packageDescription write.csv
 #' @importFrom cli rule symbol
@@ -32,10 +33,9 @@
 #' masstools_logo()
 masstools_logo <- function() {
   message("Thank you for using masstools!")
-  message("Version ", masstools_version, " (", update_date, ')')
+  message("Version ", masstools_version, " (", update_date, ")")
   message("More information: masstools.tidymass.org")
-  cat(
-    c(
+  ascii_art <- c(
       "                       _______          _     ",
       "                      |__   __|        | |    ",
       "  _ __ ___   __ _ ___ ___| | ___   ___ | |___ ",
@@ -44,9 +44,8 @@ masstools_logo <- function() {
       " |_| |_| |_|\\__,_|___/___/_|\\___/ \\___/|_|___/",
       "                                              ",
       "                                              "
-    ),
-    sep = "\n"
-  )
+    )
+  cli::cat_line(ascii_art)
 }
 
 masstools_version <-

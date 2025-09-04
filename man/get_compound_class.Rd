@@ -11,33 +11,31 @@ get_compound_class(
 )
 }
 \arguments{
-\item{inchikey}{A character string representing the InChIKey of the compound. 
+\item{inchikey}{A character string representing the InChIKey of the compound.
 Default is "QZDWODWEESGPLC-UHFFFAOYSA-N".}
 
-\item{server}{A character string representing the base URL of the ClassyFire server. 
+\item{server}{A character string representing the base URL of the ClassyFire server.
 Default is "http://classyfire.wishartlab.com/entities/".}
 
-\item{sleep}{A numeric value indicating the time (in seconds) to pause between the 
+\item{sleep}{A numeric value indicating the time (in seconds) to pause between the
 request and fetching the result to avoid overloading the server. Default is 5 seconds.}
 }
 \value{
-An S4 object of class "classyfire" containing details about the compound, 
-including its basic information, taxonomic classification, description, and external 
-descriptors. If the InChIKey is not found in the database or there's an error, it 
+An S4 object of class "classyfire" containing details about the compound,
+including its basic information, taxonomic classification, description, and external
+descriptors. If the InChIKey is not found in the database or there's an error, it
 returns relevant NA-filled placeholders and warnings.
 }
 \description{
-Queries the ClassyFire database to retrieve the taxonomic classification 
+Queries the ClassyFire database to retrieve the taxonomic classification
 information and other relevant details for a given compound, based on its InChIKey.
 }
 \examples{
-\dontrun{
 get_compound_class(
 inchikey = "QZDWODWEESGPLC-UHFFFAOYSA-N",
 server = "http://classyfire.wishartlab.com/entities/",
 sleep = 5
 )
-}
 }
 \author{
 Xiaotao Shen <xiaotao.shen@outlook.com>
