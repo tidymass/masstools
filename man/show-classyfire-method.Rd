@@ -35,7 +35,7 @@ cf <- new("classyfire",
   external_descriptors = tibble::tibble()
 )
 
-# 调用 show 方法
+# call show method
 show(cf)
 }
 
