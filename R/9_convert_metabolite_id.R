@@ -541,7 +541,7 @@ request_chemspider_metabolite <-
 #' - **OpenAI**: Returns a list of supported metabolite ID formats available through OpenAI models.
 #'
 #' **ChemSpider API Key Requirement**:
-#' If using the `"chemspider"` server, an API key is required for querying ChemSpider’s services.
+#' If using the `"chemspider"` server, an API key is required for querying ChemSpider's services.
 #'
 #' **How to Obtain a ChemSpider API Key:**
 #' 1. Visit the **Royal Society of Chemistry (RSC) Developer Portal**:

@@ -1,7 +1,7 @@
 Package: masstools
 Type: Package
 Title: A Collection of Useful Tools for Mass Spectrometry Data Processing and Analysis
-Version: 0.99.0
+Version: 0.99.1
 Date: 2025-08-14
 Authors@R: c(
     person(given = "Xiaotao",
