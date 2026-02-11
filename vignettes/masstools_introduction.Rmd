@@ -1,15 +1,13 @@
 ---
-title: "Introduction of masstools"
+title: "Introduction to masstools"
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
 date: "Created on 2022-02-18 and updated on `r Sys.Date()`"
 output:
-  html_document:
+  BiocStyle::html_document:
+    toc: true
+    toc_float: true
     number_sections: true
-    df_print: paged
-    toc: yes
-  pdf_document:
-    toc: no
 vignette: >
   %\VignetteIndexEntry{masstools_introduction}
   %\VignetteEngine{knitr::rmarkdown}
@@ -32,23 +30,20 @@ knitr::opts_chunk$set(
 
 The package includes specialized functions for: - Spectral similarity calculations and MS2 matching - Chemical formula processing - Mass spectrometry data file reading and manipulation - Data visualization tools for mass spectra
 
-Developed primarily by Xiaotao Shen and contributors, `masstools` is designed to work seamlessly with modern R workflows and integrates well with other packages in the `tidymass` ecosystem, making it an essential tool for anyone working with mass spectrometry data in R.And `masstools` is a part of [`tidymass` project](https://www.tidymass.org/).
+Developed primarily by Xiaotao Shen and contributors, `masstools` is designed to work seamlessly with modern R workflows and integrates well with other packages in the `tidymass` ecosystem, making it an essential tool for anyone working with mass spectrometry data in R. And `masstools` is a part of [`tidymass` project](https://www.tidymass.org/).
 
-# **Motivation for Inclusion in Bioconductor**
-
-The inclusion of masstools in Bioconductor is motivated by the need for a lightweight, dependency-conscious utility package that addresses common tasks in metabolomics and untargeted MS pipelines. It helps bridge gaps between core infrastructure packages (e.g., Spectra, MSnbase) and applied workflows by providing optimized, reusable building blocks for data parsing, similarity computation, and identifier conversion.
+The inclusion of masstools in Bioconductor is motivated by the need for a lightweight, dependency-conscious utility package that addresses common tasks in metabolomics and untargeted MS pipelines. It helps bridge gaps between core infrastructure packages (e.g., `r BiocStyle::Biocpkg("Spectra")`, `r BiocStyle::Biocpkg("MSnbase")`) and applied workflows by providing optimized, reusable building blocks for data parsing, similarity computation, and identifier conversion.
 
 # **Comparison to Related Bioconductor Packages**
 
--   `Spectra` (core MS infrastructure): `Spectra` provides a formal class system for raw and processed spectra. `masstools` does not define new S4 classes, but instead offers functional utilities that can be applied directly to vectors, data frames, or lists of spectra—often after data is read via `Spectra` or `MSnbase`. For example, similarity metrics (`get_dp()`) or plotting (`ms2_plot()`) can complement `Spectra` workflows in downstream annotation tasks.
+-   `r BiocStyle::Biocpkg("Spectra")` (core MS infrastructure): `r BiocStyle::Biocpkg("Spectra")` provides a formal class system for raw and processed spectra. `masstools` does not define new S4 classes, but instead offers functional utilities that can be applied directly to vectors, data frames, or lists of spectra—often after data is read via `r BiocStyle::Biocpkg("Spectra")` or `r BiocStyle::Biocpkg("MSnbase")`. For example, similarity metrics (`get_dp()`) or plotting (`ms2_plot()`) can complement `r BiocStyle::Biocpkg("Spectra")` workflows in downstream annotation tasks.
 
--   `MSCoreUtils`: This package offers generic low-level tools for MS data manipulation. `masstools` extends beyond these core operations by offering metabolomics-specific functions such as formula validation, adduct summation, and spectral similarity tailored to compound annotation tasks.
+-   `r BiocStyle::Biocpkg("MSCoreUtils")`: This package offers generic low-level tools for MS data manipulation. `masstools` extends beyond these core operations by offering metabolomics-specific functions such as formula validation, adduct summation, and spectral similarity tailored to compound annotation tasks.
 
--   `ProtGenerics`: Used internally to align with Bioconductor’s S4 generic interface, though `masstools` primarily operates using S3 methods and functional programming paradigms. Future compatibility with Bioconductor S4 classes is planned and partially supported through its flexible function design.
+-   `r BiocStyle::Biocpkg("ProtGenerics")`: Used internally to align with Bioconductor’s S4 generic interface, though `masstools` primarily operates using S3 methods and functional programming paradigms. Future compatibility with Bioconductor S4 classes is planned and partially supported through its flexible function design.
 
--   `MSnbase`: While not directly dependent on `MSnbase`, users often pair `MSnbase's` data structure and raw data access with `masstools` utilities for data exploration and spectral annotation, e.g., using MSnExp with `get_spectra_match_score()` or `ms2_plot()`.
+-   `r BiocStyle::Biocpkg("MSnbase")`: While not directly dependent on `r BiocStyle::Biocpkg("MSnbase")`, users often pair `r BiocStyle::Biocpkg("MSnbase")`'s data structure and raw data access with `masstools` utilities for data exploration and spectral annotation, e.g., using MSnExp with `get_spectra_match_score()` or `ms2_plot()`.
 
-- []
 
 # **Chemical formula operation**
 
@@ -56,7 +51,7 @@ You can use `masstools` to do the chemical formula operation.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 library(masstools)
-library(tidyverse)
+library(tidyverse) ## r BiocStyle::CRANpkg("tidyverse")
 ```
 
 The `sum_formula()` function is designed to calculate the resulting chemical formula after applying a specific adduct transformation to a given base formula. This is particularly useful in mass spectrometry and metabolomics, where observed m/z values often correspond to the base compound plus/minus an adduct (e.g., `[M+H]+`, `[M+Na]+`, `[M-H2O+H]+`).
@@ -185,16 +180,11 @@ library(masstools)
 We can use the `trans_id_database()` to get the databases that cts.fiehnlab.
 **Caution**: `trans_id_database` function temporarily can not be used.
 
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-database_name <- trans_id_database(server = "cts.fiehnlab")
 ```
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-head(database_name$From$From)
-```
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-head(database_name$To$From)
+# These examples are currently disabled due to API limitations
+# database_name <- trans_id_database(server = "cts.fiehnlab")
+# head(database_name$From$From)
+# head(database_name$To$From)
 ```
 
 We can see that it support a lot of (\> 200) databases.
@@ -213,7 +203,7 @@ trans_ID(
 )
 ```
 
-Now, `trans_ID` doesn't support verctor query. So you can use the `purrr::map()` to achive this.
+Now, `trans_ID` doesn't support verctor query. So you can use the `r BiocStyle::CRANpkg("purrr")`'s `map()` function to achieve this.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 c("C00001", "C00001", "C00001") %>%
@@ -238,16 +228,11 @@ This is from <https://www.chemspider.com/InChI.asmx>.
 
 We can use the `trans_id_database()` to get the databases that chemspider
 
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-database_name2 <- trans_id_database(server = "chemspider")
 ```
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-database_name2$From
-```
-
-```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-database_name2$To
+# These examples are currently disabled due to API limitations
+# database_name2 <- trans_id_database(server = "chemspider")
+# database_name2$From
+# database_name2$To
 ```
 
 This is very useful if you want to get the inchikey, inchi or smiles for one compound. But this web only support "ChemSpider ID" (csid), so we need use cts.fiehnlab convert to csid first.
@@ -313,6 +298,7 @@ Copy the file path in `File explorer` in `Windows`.
 Then type in R:
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
+# This is an interactive function that prompts for user input
 setwd_win()
 ```
 
@@ -339,7 +325,7 @@ masstools_logo()
 
 The `masstools_conflicts()` function is a diagnostic tool designed to identify function name conflicts between functions exported by the `masstools` package and functions from other packages currently attached in the R session.
 
-Function name conflicts are common in the R ecosystem due to the way the search path is managed. When multiple packages export functions with the same name (e.g., `filter()` from both `stats` and `dplyr`), the one most recently attached typically "masks" the others. This can lead to confusing or unintended behavior.
+Function name conflicts are common in the R ecosystem due to the way the search path is managed. When multiple packages export functions with the same name (e.g., `filter()` from both `stats` and `r BiocStyle::CRANpkg("dplyr")`), the one most recently attached typically "masks" the others. This can lead to confusing or unintended behavior.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 masstools_conflicts()

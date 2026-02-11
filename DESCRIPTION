@@ -2,7 +2,6 @@ Package: masstools
 Type: Package
 Title: A Collection of Useful Tools for Mass Spectrometry Data Processing and Analysis
 Version: 0.99.1
-Date: 2025-08-14
 Authors@R: c(
     person(given = "Xiaotao",
            family = "Shen",
@@ -16,7 +15,9 @@ Authors@R: c(
            family = "Bai",
            role = "cre",
            email = "bspchemy@gmail.com",
-           comment = c(ORCID = "0000-0002-6063-4537"))
+           comment = c(ORCID = "0000-0002-6063-4537")),
+    person(given = "Stanford University",
+           role = "fnd")
            )
 Description: The masstools package contains a lot of base functions which can be used for 
     mass spectrometry and metabolomics data processing and analysis. For example,
@@ -26,8 +27,8 @@ biocViews: Metabolomics, MassSpectrometry, Preprocessing, Visualization
 URL: https://masstools.tidymass.org/
 BugReports: https://github.com/tidymass/masstools/issues
 Encoding: UTF-8
-LazyData: true
-Depends: R (>= 4.1)
+LazyData: false
+Depends: R (>= 4.5)
 License: MIT + file LICENSE
 Imports: 
     dplyr,
@@ -57,7 +58,8 @@ Suggests:
     rmarkdown,
     tidyverse,
     testthat (>= 3.0.0),
-    plotly
+    plotly,
+    BiocStyle
 VignetteBuilder: knitr
 Note:
 Config/testthat/edition: 3
