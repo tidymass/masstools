@@ -4,9 +4,7 @@
 The data files in inst/extdata are derived from our previous article:
 https://doi.org/10.1016/j.cell.2020.05.002
 
-Citation: Shen, X., Li, X., Liang, L. et al. A plasma lipidomics strategy reveals 
-perturbed lipid metabolic pathways and potential lipid biomarkers of human colorectal cancer. 
-J. Chromatogr. B 1068-1069 (2017) 41-48.
+Full citation details available at the DOI link above.
 
 ## Data Files
 
