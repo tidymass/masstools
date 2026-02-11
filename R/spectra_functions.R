@@ -480,12 +480,21 @@ removeNoise <- function(spec,
 #' This function removes noisy fragments from a given spectrum based on m/z values and intensities.
 #' Fragments with m/z values that are too close to each other, determined by a ppm threshold, are considered noisy.
 #' Among these close fragments, the fragment with the lowest intensity is removed.
+#' Supports both data.frame and Spectra object inputs.
 #'
-#' @param spec A data frame representing the spectrum with columns for m/z and intensity.
+#' @param spec A mass spectrum. Can be:
+#'   \itemize{
+#'     \item A data frame with columns for m/z and intensity
+#'     \item A Spectra object from the Spectra package
+#'   }
 #' @param ppm.ms2match A numeric value specifying the ppm threshold for identifying close fragments. Default is 30.
 #' @param mz.ppm.thr A numeric value for the m/z threshold below which the m/z value will be set to this threshold. Default is 400.
 #'
-#' @return A data frame representing the cleaned spectrum after removing the noisy fragments.
+#' @return A spectrum in the same format as input:
+#'   \itemize{
+#'     \item If input is data.frame: returns data.frame
+#'     \item If input is Spectra: returns Spectra object
+#'   }
 #'
 #' @details
 #' The function first sorts the spectrum based on m/z values and calculates the differences between consecutive m/z values.
@@ -496,12 +505,43 @@ removeNoise <- function(spec,
 #' @examples
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 #' remove_noise(exp.spectrum)
+#' 
+#' # Works with Spectra objects too
+#' \dontrun{
+#' library(Spectra)
+#' spec_obj <- df_to_spectra(exp.spectrum)
+#' cleaned <- remove_noise(spec_obj)
+#' }
 remove_noise <- function(spec,
                          ppm.ms2match = 30,
                          mz.ppm.thr = 400) {
+  
+  # Check input type and convert if needed
+  input_type <- check_spectrum_type(spec)
+  
+  if (input_type == "Spectra") {
+    # Convert to data.frame for processing
+    spec_df <- spectra_to_df(spec, index = 1)
+    return_spectra <- TRUE
+    # Store metadata for reconstruction
+    spd <- Spectra::spectraData(spec)[1, ]
+  } else {
+    spec_df <- as_spectrum_df(spec)
+    return_spectra <- FALSE
+  }
+  
+  spec <- spec_df
+  
+  # Original noise removal logic
   if (nrow(spec) == 1) {
+    if (return_spectra) {
+      return(df_to_spectra(spec,
+                          precursor_mz = spd$precursorMz,
+                          precursor_rt = spd$rtime))
+    }
     return(spec)
   }
+  
   spec <- spec[order(spec[, 1]), ]
   mz <- spec[, 1]
   mz <- mz[-1]
@@ -509,6 +549,7 @@ remove_noise <- function(spec,
   mz[which(mz < mz.ppm.thr)] <- mz.ppm.thr
   mz.error <- diff.mz * 10 ^ 6 / mz
   temp.idx <- which(mz.error < ppm.ms2match)
+  
   if (length(temp.idx) > 0) {
     remove.idx <- lapply(temp.idx, function(idx) {
       c(idx, idx + 1)[which.min(spec[c(idx, idx + 1), 2])]
@@ -516,7 +557,14 @@ remove_noise <- function(spec,
     
     remove.idx <- unique(unlist(remove.idx))
     spec <- spec[-remove.idx, , drop = FALSE]
-  } else {
-    return(spec)
   }
+  
+  # Return in appropriate format
+  if (return_spectra) {
+    return(df_to_spectra(spec,
+                        precursor_mz = spd$precursorMz,
+                        precursor_rt = spd$rtime))
+  }
+  
+  return(spec)
 }

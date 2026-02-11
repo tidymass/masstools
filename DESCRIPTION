@@ -51,7 +51,9 @@ Imports:
     MSnbase,
     ProtGenerics,
     lifecycle,
-    ggplot2
+    ggplot2,
+    Spectra,
+    S4Vectors
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,
