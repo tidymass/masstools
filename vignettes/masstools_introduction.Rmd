@@ -47,11 +47,11 @@ The inclusion of masstools in Bioconductor is motivated by the need for a lightw
 
 # **Chemical formula operation**
 
-You can use `masstools` to do the chemical formula operation.
+You can use `masstools` to do the chemical formula operation. We will use functions from `r BiocStyle::CRANpkg("tidyverse")` for data manipulation in the following examples.
 
 ```{r,eval=TRUE,warning=FALSE, R.options="", message=FALSE}
 library(masstools)
-library(tidyverse) ## r BiocStyle::CRANpkg("tidyverse")
+library(tidyverse)
 ```
 
 The `sum_formula()` function is designed to calculate the resulting chemical formula after applying a specific adduct transformation to a given base formula. This is particularly useful in mass spectrometry and metabolomics, where observed m/z values often correspond to the base compound plus/minus an adduct (e.g., `[M+H]+`, `[M+Na]+`, `[M-H2O+H]+`).
