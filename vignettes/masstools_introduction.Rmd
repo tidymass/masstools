@@ -298,7 +298,7 @@ Copy the file path in `File explorer` in `Windows`.
 Then type in R:
 
 ```{r,eval=FALSE,warning=FALSE, R.options="", message=FALSE}
-# This is an interactive function that prompts for user input
+# Interactive function: setwd_win() sets working directory on Windows by prompting for user input
 setwd_win()
 ```
 
