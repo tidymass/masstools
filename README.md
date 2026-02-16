@@ -17,19 +17,30 @@
 
 # Installation
 
-You can install `masstools` from [GitLab](https://gitlab.com/tidymass/masstools)
+You can install `masstools` from Bioconductor (recommended):
+
+``` r
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("masstools")
+```
+
+Alternatively, for development purposes, you can install from [GitHub](https://github.com/tidymass/masstools):
 
 ``` r
 if(!require(remotes)){
 install.packages("remotes")
 }
-remotes::install_gitlab("tidymass/masstools")
+remotes::install_github("tidymass/masstools")
 ```
 
-or [GitHub](https://github.com/tidymass/masstools).
+**Note:** Installing from GitHub is not recommended for production use. Please install from the Bioconductor release or devel branch for the most stable and tested version.
+
+You can also install from [GitLab](https://gitlab.com/tidymass/masstools):
 
 ``` r
-remotes::install_github("tidymass/masstools")
+remotes::install_gitlab("tidymass/masstools")
 ```
 
 
