@@ -3,18 +3,11 @@
 #' This function computes the similarity score between two mass spectra.
 #' The similarity is calculated based on a weighted sum of the fraction of
 #' matching peaks and dot products (forward and reverse).
-#' Supports both data.frame and Spectra object inputs.
 #'
-#' @param exp.spectrum The experimental spectrum. Can be:
-#'   \itemize{
-#'     \item A data frame with 'mz' and 'intensity' columns
-#'     \item A Spectra object from the Spectra package
-#'   }
-#' @param lib.spectrum The library/reference spectrum. Can be:
-#'   \itemize{
-#'     \item A data frame with 'mz' and 'intensity' columns
-#'     \item A Spectra object from the Spectra package
-#'   }
+#' @param exp.spectrum A data frame representing the experimental spectrum.
+#'   This data frame should contain columns for 'mz' and 'intensity'.
+#' @param lib.spectrum A data frame representing the library spectrum.
+#'   This data frame should contain columns for 'mz' and 'intensity'.
 #' @param ppm.tol A numeric value indicating the ppm tolerance.
 #' @param mz.ppm.thr A numeric value for m/z threshold for ppm calculation.
 #' @param fraction.weight A numeric value for weight of fraction component in score.
@@ -46,10 +39,8 @@ getSpectraMatchScore <- function(exp.spectrum,
   lifecycle::deprecate_soft(when = "0.99.9",
                             what = "getSpectraMatchScore()",
                             with = "get_spectra_match_score()")
-  
-  # Convert inputs to data.frame if they are Spectra objects
-  exp.spectrum <- as_spectrum_df(exp.spectrum)
-  lib.spectrum <- as_spectrum_df(lib.spectrum)
+  exp.spectrum <- as.data.frame(exp.spectrum)
+  lib.spectrum <- as.data.frame(lib.spectrum)
   
   exp.spectrum$intensity <-
     exp.spectrum$intensity / max(exp.spectrum$intensity)
@@ -87,18 +78,11 @@ getSpectraMatchScore <- function(exp.spectrum,
 #'
 #' This function computes the similarity score between two mass spectra
 #' considering an option to filter out lower fragment intensities.
-#' Supports both data.frame and Spectra object inputs.
 #'
-#' @param exp.spectrum The experimental spectrum. Can be:
-#'   \itemize{
-#'     \item A data frame with 'mz' and 'intensity' columns
-#'     \item A Spectra object from the Spectra package
-#'   }
-#' @param lib.spectrum The library/reference spectrum. Can be:
-#'   \itemize{
-#'     \item A data frame with 'mz' and 'intensity' columns
-#'     \item A Spectra object from the Spectra package
-#'   }
+#' @param exp.spectrum A data frame representing the experimental spectrum.
+#'   This data frame should contain columns for 'mz' and 'intensity'.
+#' @param lib.spectrum A data frame representing the library spectrum.
+#'   This data frame should contain columns for 'mz' and 'intensity'.
 #' @param ppm.tol A numeric value indicating the ppm tolerance.
 #' @param mz.ppm.thr A numeric value for m/z threshold for ppm calculation.
 #' @param fraction.weight A numeric value for weight of fraction component in score.
@@ -119,14 +103,6 @@ getSpectraMatchScore <- function(exp.spectrum,
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 #' lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 #' get_spectra_match_score(exp.spectrum, lib.spectrum)
-#' 
-#' # Works with Spectra objects too
-#' \dontrun{
-#' library(Spectra)
-#' exp_spec <- df_to_spectra(exp.spectrum)
-#' lib_spec <- df_to_spectra(lib.spectrum)
-#' score <- get_spectra_match_score(exp_spec, lib_spec)
-#' }
 
 get_spectra_match_score <-
   function(exp.spectrum,
@@ -137,10 +113,8 @@ get_spectra_match_score <-
            dp.forward.weight = 0.7,
            dp.reverse.weight = 0.1,
            remove_fragment_intensity_cutoff = 0) {
-    
-    # Convert inputs to data.frame if they are Spectra objects
-    exp.spectrum <- as_spectrum_df(exp.spectrum)
-    lib.spectrum <- as_spectrum_df(lib.spectrum)
+    exp.spectrum <- as.data.frame(exp.spectrum)
+    lib.spectrum <- as.data.frame(lib.spectrum)
     
     exp.spectrum$intensity <-
       exp.spectrum$intensity / max(exp.spectrum$intensity)
@@ -295,11 +269,6 @@ ms2Match <- function(exp.spectrum,
   lifecycle::deprecate_soft(when = "0.99.9",
                             what = "ms2Match()",
                             with = "ms2_match()")
-  
-  # Convert inputs to data.frame if they are Spectra objects
-  exp.spectrum <- as_spectrum_df(exp.spectrum)
-  lib.spectrum <- as_spectrum_df(lib.spectrum)
-  
   ## remove noisy fragments
   exp.spectrum <- remove_noise(spec = exp.spectrum,
                                ppm.ms2match = ppm.tol,
@@ -369,18 +338,9 @@ ms2Match <- function(exp.spectrum,
 #'
 #' This function matches fragments in experimental and library spectra based on their m/z values
 #' within a given ppm tolerance. Noisy fragments are removed before matching.
-#' Supports both data.frame and Spectra object inputs.
 #'
-#' @param exp.spectrum The experimental spectrum. Can be:
-#'   \itemize{
-#'     \item A data frame with columns for m/z and intensity
-#'     \item A Spectra object from the Spectra package
-#'   }
-#' @param lib.spectrum The library/reference spectrum. Can be:
-#'   \itemize{
-#'     \item A data frame with columns for m/z and intensity
-#'     \item A Spectra object from the Spectra package
-#'   }
+#' @param exp.spectrum A data frame representing the experimental spectrum with columns for m/z and intensity.
+#' @param lib.spectrum A data frame representing the library spectrum with columns for m/z and intensity.
 #' @param ppm.tol A numeric value specifying the ppm tolerance for matching fragments. Default is 30.
 #' @param mz.ppm.thr A numeric value for the m/z threshold. Default is 400.
 #'
@@ -396,23 +356,10 @@ ms2Match <- function(exp.spectrum,
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 #' lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 #' ms2_match(exp.spectrum, lib.spectrum)
-#' 
-#' # Works with Spectra objects too
-#' \dontrun{
-#' library(Spectra)
-#' exp_spec <- df_to_spectra(exp.spectrum)
-#' lib_spec <- df_to_spectra(lib.spectrum)
-#' matches <- ms2_match(exp_spec, lib_spec)
-#' }
 ms2_match <- function(exp.spectrum,
                       lib.spectrum,
                       ppm.tol = 30,
                       mz.ppm.thr = 400) {
-  
-  # Convert inputs to data.frame if they are Spectra objects
-  exp.spectrum <- as_spectrum_df(exp.spectrum)
-  lib.spectrum <- as_spectrum_df(lib.spectrum)
-  
   ## remove noisy fragments
   exp.spectrum <- remove_noise(spec = exp.spectrum,
                                ppm.ms2match = ppm.tol,
@@ -533,21 +480,12 @@ removeNoise <- function(spec,
 #' This function removes noisy fragments from a given spectrum based on m/z values and intensities.
 #' Fragments with m/z values that are too close to each other, determined by a ppm threshold, are considered noisy.
 #' Among these close fragments, the fragment with the lowest intensity is removed.
-#' Supports both data.frame and Spectra object inputs.
 #'
-#' @param spec A mass spectrum. Can be:
-#'   \itemize{
-#'     \item A data frame with columns for m/z and intensity
-#'     \item A Spectra object from the Spectra package
-#'   }
+#' @param spec A data frame representing the spectrum with columns for m/z and intensity.
 #' @param ppm.ms2match A numeric value specifying the ppm threshold for identifying close fragments. Default is 30.
 #' @param mz.ppm.thr A numeric value for the m/z threshold below which the m/z value will be set to this threshold. Default is 400.
 #'
-#' @return A spectrum in the same format as input:
-#'   \itemize{
-#'     \item If input is data.frame: returns data.frame
-#'     \item If input is Spectra: returns Spectra object
-#'   }
+#' @return A data frame representing the cleaned spectrum after removing the noisy fragments.
 #'
 #' @details
 #' The function first sorts the spectrum based on m/z values and calculates the differences between consecutive m/z values.
@@ -558,43 +496,12 @@ removeNoise <- function(spec,
 #' @examples
 #' exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 #' remove_noise(exp.spectrum)
-#' 
-#' # Works with Spectra objects too
-#' \dontrun{
-#' library(Spectra)
-#' spec_obj <- df_to_spectra(exp.spectrum)
-#' cleaned <- remove_noise(spec_obj)
-#' }
 remove_noise <- function(spec,
                          ppm.ms2match = 30,
                          mz.ppm.thr = 400) {
-  
-  # Check input type and convert if needed
-  input_type <- check_spectrum_type(spec)
-  
-  if (input_type == "Spectra") {
-    # Convert to data.frame for processing
-    spec_df <- spectra_to_df(spec, index = 1)
-    return_spectra <- TRUE
-    # Store metadata for reconstruction
-    spd <- Spectra::spectraData(spec)[1, ]
-  } else {
-    spec_df <- as_spectrum_df(spec)
-    return_spectra <- FALSE
-  }
-  
-  spec <- spec_df
-  
-  # Original noise removal logic
   if (nrow(spec) == 1) {
-    if (return_spectra) {
-      return(df_to_spectra(spec,
-                          precursor_mz = spd$precursorMz,
-                          precursor_rt = spd$rtime))
-    }
     return(spec)
   }
-  
   spec <- spec[order(spec[, 1]), ]
   mz <- spec[, 1]
   mz <- mz[-1]
@@ -602,7 +509,6 @@ remove_noise <- function(spec,
   mz[which(mz < mz.ppm.thr)] <- mz.ppm.thr
   mz.error <- diff.mz * 10 ^ 6 / mz
   temp.idx <- which(mz.error < ppm.ms2match)
-  
   if (length(temp.idx) > 0) {
     remove.idx <- lapply(temp.idx, function(idx) {
       c(idx, idx + 1)[which.min(spec[c(idx, idx + 1), 2])]
@@ -610,14 +516,7 @@ remove_noise <- function(spec,
     
     remove.idx <- unique(unlist(remove.idx))
     spec <- spec[-remove.idx, , drop = FALSE]
+  } else {
+    return(spec)
   }
-  
-  # Return in appropriate format
-  if (return_spectra) {
-    return(df_to_spectra(spec,
-                        precursor_mz = spd$precursorMz,
-                        precursor_rt = spd$rtime))
-  }
-  
-  return(spec)
 }
