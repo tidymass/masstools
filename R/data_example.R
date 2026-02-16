@@ -5,6 +5,18 @@
 #' and testing purposes. These files are derived from a lipidomics study published
 #' in Cell (2020).
 #'
+#' @docType data
+#' @name example_data
+#' @aliases example.mzXML example.mgf
+#' @keywords datasets
+#'
+#' @format 
+#' The package contains two example files located in the `inst/extdata` directory:
+#' \describe{
+#'   \item{example.mzXML}{An mzXML file containing LC-MS data (approx. 100 scans).}
+#'   \item{example.mgf}{An MGF file containing 10 representative MS2 spectra.}
+#' }
+#'
 #' @details
 #' The package includes two example data files located in `inst/extdata`:
 #'
@@ -20,7 +32,7 @@
 #' The spectra represent common metabolite classes and can be used with MS2 matching
 #' functions such as `ms2Match()` and `getSpectraMatchScore()`.
 #'
-#' @section Data Source:
+#' @source
 #' The data files are derived from the publication:
 #'
 #' Shen, X., Li, X., Liang, L. et al. A plasma lipidomics strategy reveals
@@ -40,18 +52,11 @@
 #'
 #' For detailed provenance information, see `inst/scripts/data_sources.txt`.
 #'
-#' @section Usage:
-#' To access these files in your R session:
-#' ```
+#' @examples
 #' # Get path to example mzXML file
 #' mzxml_file <- system.file("extdata", "example.mzXML", package = "masstools")
 #'
 #' # Get path to example MGF file
 #' mgf_file <- system.file("extdata", "example.mgf", package = "masstools")
-#' ```
 #'
-#' @name example_data
-#' @aliases example.mzXML example.mgf
-#' @docType data
-#' @keywords datasets
 NULL

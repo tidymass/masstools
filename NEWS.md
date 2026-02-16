@@ -7,8 +7,6 @@
 * Enhanced documentation and vignettes
 * Improved data provenance documentation
 
-# Previous Development Versions
-
 ## Version 1.0.15 (20241203)
 
 * Fix a small bug in check_chemical_formula.
