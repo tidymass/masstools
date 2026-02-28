@@ -1,0 +1,119 @@
+---
+title: "Quick Start"
+author: "Xiaotao Shen"
+date: "`r Sys.Date()`"
+output:
+  BiocStyle::html_document:
+    toc: true
+    number_sections: true
+vignette: >
+  %\VignetteIndexEntry{Quick Start}
+  %\VignettePackage{masstools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+## Overview
+
+`masstools` provides small, reusable utilities for mass spectrometry workflows.
+It is especially useful for:
+
+- chemical formula parsing and validation
+- MS/MS spectrum matching and scoring
+- reading common MS data formats
+- converting between simple spectrum tables and Bioconductor `Spectra` objects
+
+```{r}
+library(masstools)
+```
+
+## Formula utilities
+
+Start with a chemical formula and inspect, validate, and calculate masses.
+
+```{r}
+check_chemical_formula("C6H12O6")
+parse_chemical_formula("C6H12O6")
+calculate_mass("C6H12O6", which = "exact_mass")
+combine_formula_adduct("C9H11NO2", "M+H")
+```
+
+`convert_precursor_mz2accurate_mass()` is useful when the observed precursor
+contains a supported adduct.
+
+```{r}
+convert_precursor_mz2accurate_mass(180.0634, "(M+H)+")
+```
+
+## Spectrum matching
+
+Create two small MS/MS spectra and compare them.
+
+```{r}
+exp_spectrum <- data.frame(
+  mz = c(100, 120, 150, 180),
+  intensity = c(10, 40, 100, 20)
+)
+
+lib_spectrum <- data.frame(
+  mz = c(100, 120.0005, 149.999, 190),
+  intensity = c(15, 35, 95, 10)
+)
+
+ms2_match(exp_spectrum, lib_spectrum, ppm.tol = 10)
+calculate_dot_product(c(1, 2, 3), c(1, 2, 3))
+calculate_spectra_match_score(exp_spectrum, lib_spectrum, ppm.tol = 10)
+```
+
+You can also visualize one or two spectra.
+
+```{r}
+plot_ms2(exp_spectrum)
+plot_ms2(exp_spectrum, lib_spectrum)
+```
+
+## Feature matching by m/z and retention time
+
+For feature tables, `match_mz_rt()` matches entries using both `mz` and `rt`.
+
+```{r}
+features_1 <- data.frame(mz = c(100, 200, 300), rt = c(30, 60, 90))
+features_2 <- data.frame(mz = c(100.0002, 199.9995, 305), rt = c(31, 58, 95))
+
+result <- match_mz_rt(features_1, features_2, mz.tol = 10, rt.tol = 5, rt.error.type = "abs")
+result
+keep_best_match(result, according.to = "mz.error")
+```
+
+## Read bundled example files
+
+The package ships with small example files in `extdata`.
+
+```{r}
+mgf_file <- system.file("extdata", "example.mgf", package = "masstools")
+mzxml_file <- system.file("extdata", "example.mzXML", package = "masstools")
+
+mgf_data <- suppressWarnings(read_mgf(mgf_file))
+mzxml_data <- read_mzxml(mzxml_file)
+
+length(mgf_data)
+length(mzxml_data)
+names(mgf_data[[1]])
+```
+
+## Next steps
+
+After installation, users can browse the available articles with:
+
+```{r eval = FALSE}
+browseVignettes("masstools")
+```

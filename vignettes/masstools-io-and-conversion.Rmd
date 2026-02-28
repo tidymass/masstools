@@ -1,0 +1,142 @@
+---
+title: "Input, Output, and Spectrum Conversion"
+author: "Xiaotao Shen"
+date: "`r Sys.Date()`"
+output:
+  BiocStyle::html_document:
+    toc: true
+    number_sections: true
+vignette: >
+  %\VignetteIndexEntry{Input, Output, and Spectrum Conversion}
+  %\VignettePackage{masstools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+## Read example files
+
+```{r}
+library(masstools)
+```
+
+The package includes small example MGF and mzXML files.
+
+```{r}
+mgf_file <- system.file("extdata", "example.mgf", package = "masstools")
+mzxml_file <- system.file("extdata", "example.mzXML", package = "masstools")
+
+mgf_file
+mzxml_file
+```
+
+### Read MGF
+
+```{r}
+mgf_data <- suppressWarnings(read_mgf(mgf_file))
+length(mgf_data)
+str(mgf_data[[1]], max.level = 1)
+```
+
+### Read mzXML
+
+```{r}
+mzxml_data <- read_mzxml(mzxml_file)
+length(mzxml_data)
+str(mzxml_data[[1]], max.level = 1)
+```
+
+## Convert between data frames and `Spectra`
+
+Many workflows start from a simple two-column spectrum table.
+
+```{r}
+spectrum_df <- data.frame(
+  mz = c(100, 120, 150),
+  intensity = c(10, 40, 100)
+)
+
+spectrum_df
+```
+
+Convert it to a `Spectra` object:
+
+```{r}
+spec <- df_to_spectra(
+  spectrum_df,
+  precursor_mz = 150.0,
+  precursor_rt = 25.0,
+  spectrum_id = "example-spectrum"
+)
+
+spec
+```
+
+And convert back to a plain data frame:
+
+```{r}
+spectra_to_df(spec)
+```
+
+## Match feature tables
+
+`match_mz_rt()` is useful when comparing peak tables from two runs or two
+processing steps.
+
+```{r}
+table_1 <- data.frame(
+  mz = c(100, 150, 200),
+  rt = c(10, 20, 30)
+)
+
+table_2 <- data.frame(
+  mz = c(100.0002, 149.9998, 210),
+  rt = c(10.3, 19.8, 35)
+)
+
+match_result <- match_mz_rt(
+  table_1,
+  table_2,
+  mz.tol = 10,
+  rt.tol = 1,
+  rt.error.type = "abs"
+)
+
+match_result
+```
+
+If one feature matches multiple candidates, use `keep_best_match()` to keep the best
+match.
+
+```{r}
+duplicated_result <- data.frame(
+  Index1 = c(1, 1),
+  Index2 = c(1, 2),
+  mz1 = c(100, 100),
+  mz2 = c(100, 100.00005),
+  `mz error` = c(0, 0.5),
+  rt1 = c(10, 10),
+  rt2 = c(10.4, 10.1),
+  `rt error` = c(0.4, 0.1),
+  check.names = FALSE
+)
+
+keep_best_match(duplicated_result, according.to = "mz.error")
+keep_best_match(duplicated_result, according.to = "rt.error")
+```
+
+## Package documentation
+
+After installation, users can open the vignette index with:
+
+```{r eval = FALSE}
+browseVignettes("masstools")
+```

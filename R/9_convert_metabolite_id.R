@@ -1,14 +1,16 @@
-#' Convert Metabolite Identifiers Between Different Databases
+#' Convert Metabolite Identifiers Between Databases
 #'
-#' This function converts metabolite identifiers from one database format to another using different
-#' online services, including CTS FiehnLab, ChemSpider, and OpenAI.
+#' Convert metabolite identifiers between supported database formats using one
+#' of the package's online backends.
 #'
-#' @param query Character. The metabolite ID to convert (e.g., "C00001").
-#' @param from Character. The source database (e.g., "KEGG", "InChIKey").
-#' @param to Character. The target database or chemical name format (e.g., "Chemical Name", "InChI").
-#' @param top Integer. The number of top matches to return.
-#' @param server Character. The server to use for conversion. Options: `"cts.fiehnlab"`, `"chemspider"`, `"openai"`.
-#' @param chemspider_apikey Character. API key for ChemSpider (required if using `"chemspider"` server).
+#' @param query Character. Identifier to convert, for example `"C00001"`.
+#' @param from Character. Source identifier system.
+#' @param to Character. Target identifier system.
+#' @param top Integer. Maximum number of matches to return.
+#' @param server Character. Conversion backend. One of `"cts.fiehnlab"`,
+#'   `"chemspider"`, or `"openai"`.
+#' @param chemspider_apikey Character. ChemSpider API key. Required when
+#'   `server = "chemspider"`.
 #'   **How to Obtain a ChemSpider API Key:**
 #'   1. Go to the **Royal Society of Chemistry (RSC) Developer Portal**:
 #'      [https://developer.rsc.org/](https://developer.rsc.org/)
@@ -17,18 +19,22 @@
 #'   4. Apply for access to the **ChemSpider API**.
 #'   5. Once approved, generate your API key and copy it for use.
 #'   6. Use this key as the `chemspider_apikey` argument in the function.
-#' @param openai_apikey Character. API key for OpenAI (required if using `"openai"` server).
+#' @param openai_apikey Character. OpenAI API key. Required when
+#'   `server = "openai"`.
 #'
-#' @return A data frame with the original query and converted metabolite ID(s).
+#' @return A data frame with the input identifier in the first column and the
+#'   converted identifier(s) in the second column.
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' convert_metabolite_id(query = "C00001", from = "KEGG",
 #' to = "Chemical Name", server = "cts.fiehnlab")
 #' convert_metabolite_id(query = "BQJCRHHNABKAKU-KBQPJGBKSA-N",
 #' from = "InChIKey", to = "InChI", server = "chemspider", chemspider_apikey = "your_key")
 #' convert_metabolite_id(query = "C00001", from = "KEGG",
 #' to = "Chemical Name", server = "openai", openai_apikey = "your_key")
+#' }
 
 
 convert_metabolite_id <-
@@ -93,14 +99,16 @@ convert_metabolite_id <-
 
 
 
-#' Convert Metabolite Identifiers Using CTS FiehnLab
+#' Convert Metabolite Identifiers with CTS FiehnLab
 #'
-#' Converts metabolite IDs from one database to another using the CTS FiehnLab online service.
+#' Convert metabolite identifiers using the CTS FiehnLab web service.
 #'
 #' @inheritParams convert_metabolite_id
-#' @return A data frame with the original query and converted metabolite ID(s).
+#' @return A two-column data frame containing the input identifier and the
+#'   converted identifier(s).
 #' @export
 #' @examples
+#' \dontrun{
 #' # Convert KEGG ID to Chemical Name using FiehnLab CTS
 #' convert_metabolite_id_oliver(
 #'   query = "C00001",
@@ -114,6 +122,7 @@ convert_metabolite_id <-
 #'   from = "InChIKey",
 #'   to = "PubChem CID"
 #' )
+#' }
 
 
 convert_metabolite_id_oliver <-
@@ -140,10 +149,10 @@ convert_metabolite_id_oliver <-
     result <-
       try(expr = xml2::read_html(url, encoding = "UTF-8"),
           silent = TRUE)
-    if (is(result, class2 = "try-error")) {
+    if (inherits(result, "try-error")) {
       warning(
         "Please check you query, 'from' and 'to' again.
-        You can use request_metabolite_id_systems() function to
+        You can use list_metabolite_id_systems() function to
         check the databases this package support."
       )
       result <- data.frame(query, NA, stringsAsFactors = FALSE)
@@ -167,7 +176,7 @@ convert_metabolite_id_oliver <-
               dplyr::filter(!stringr::str_detect(name, "fromIdentifier|searchTerm|toIdentifier")) %>%
               dplyr::pull(name))
 
-      if (is(result, class2 = "try-error")) {
+      if (inherits(result, "try-error")) {
         result <- data.frame(query, NA, stringsAsFactors = FALSE)
         colnames(result) <- c(from, to)
         return(result)
@@ -201,12 +210,13 @@ convert_metabolite_id_oliver <-
 
 
 
-#' Convert Metabolite Identifiers Using ChemSpider
+#' Convert Metabolite Identifiers with ChemSpider
 #'
-#' Converts metabolite IDs from one format to another using the ChemSpider API.
+#' Convert metabolite identifiers using the ChemSpider API.
 #'
 #' @inheritParams convert_metabolite_id
-#' @return A data frame with the original query and converted metabolite ID(s).
+#' @return A two-column data frame containing the input identifier and the
+#'   converted identifier(s).
 #' @export
 #' @examples
 #' \donttest{
@@ -220,7 +230,7 @@ convert_metabolite_id_oliver <-
 #' )
 #'
 #' # Example 2: Convert from a metabolite ID in "csid" format
-#' # Assuming '12345' is a valid ChemSpider ID
+#' # Replace '12345' with a valid ChemSpider ID
 #' convert_metabolite_id_chemspider(
 #'   query = "12345", 
 #'   from = "ChemSpider", 
@@ -235,6 +245,7 @@ convert_metabolite_id_chemspider <-
            to = "InChI",
            top = 1,
            chemspider_apikey = "") {
+    code_name_table <- chemspider_code_name_table()
     if (is.na(top)) {
       top <- 1
     }
@@ -244,16 +255,16 @@ convert_metabolite_id_chemspider <-
         "Please provide the ChemSpider API key. See the guidenace here: https://developer.rsc.org/"
       )
     }
-    from <- match.arg(from, choices = chemspider_code_name_table$name)
-    to <- match.arg(to, choices = chemspider_code_name_table$name)
+    from <- match.arg(from, choices = code_name_table$name)
+    to <- match.arg(to, choices = code_name_table$name)
 
     from2 <-
-      chemspider_code_name_table %>%
+      code_name_table %>%
       dplyr::filter(name == from) %>%
       dplyr::pull(code)
 
     to2 <-
-      chemspider_code_name_table %>%
+      code_name_table %>%
       dplyr::filter(name == to) %>%
       dplyr::pull(code)
 
@@ -263,7 +274,10 @@ convert_metabolite_id_chemspider <-
 
     ####if from2 is csid, then we need to use another function
     if (from2 == "csid") {
-      result <- request_chemspider_metabolite(chemspider_id = query, chemspider_apikey = chemspider_apikey)
+      result <- retrieve_chemspider_metabolite(
+        chemspider_id = query,
+        chemspider_apikey = chemspider_apikey
+      )
       if (is.na(result)) {
         result <-
           data.frame(query, NA, stringsAsFactors = FALSE)
@@ -296,7 +310,7 @@ convert_metabolite_id_chemspider <-
     ),
     silent = TRUE)
 
-    if (is(postres, class2 = "try-error")) {
+    if (inherits(postres, "try-error")) {
       result <-
         data.frame(query, NA, stringsAsFactors = FALSE)
       colnames(result) <- c(from, to)
@@ -319,9 +333,9 @@ convert_metabolite_id_chemspider <-
   }
 
 
-#' Convert Metabolite Identifiers Using OpenAI API
+#' Convert Metabolite Identifiers with OpenAI
 #'
-#' Converts metabolite IDs from one database format to another using OpenAI's language models.
+#' Convert metabolite identifiers using the OpenAI backend.
 #'
 #' @inheritParams convert_metabolite_id
 #' @return A data frame with the original query and converted metabolite ID(s).
@@ -405,260 +419,15 @@ convert_metabolite_id_openai <-
 
   }
 
-
-#' Retrieve Metabolite Information from ChemSpider
-#'
-#' This function queries the **ChemSpider API** to retrieve detailed metabolite information
-#' for a given ChemSpider ID, including molecular formula, mass, InChI, InChIKey, and other properties.
-#'
-#' @param chemspider_id Numeric or character. The ChemSpider compound ID(s) to query.
-#' @param chemspider_apikey Character. The API key required to access the ChemSpider database.
-#'   **How to Obtain a ChemSpider API Key:**
-#'   1. Visit the **Royal Society of Chemistry (RSC) Developer Portal**:
-#'      [https://developer.rsc.org/](https://developer.rsc.org/)
-#'   2. Sign in or create an account.
-#'   3. Navigate to **My Account** > **API Keys**.
-#'   4. Apply for access to the **ChemSpider API**.
-#'   5. Once approved, generate your API key and copy it for use.
-#'   6. Use this key as the `chemspider_apikey` argument in this function.
-#'
-#' @return A data frame containing metabolite properties retrieved from ChemSpider.
-#'   If the request fails, the function returns `NA`.
-#'
-#'   The returned data frame includes the following columns:
-#'   - **id**: ChemSpider compound ID.
-#'   - **SMILES**: Simplified molecular-input line-entry system (SMILES) notation.
-#'   - **Formula**: Molecular formula.
-#'   - **InChI**: IUPAC International Chemical Identifier.
-#'   - **InChIKey**: Standard InChIKey.
-#'   - **StdInChI**: Standardized InChI identifier.
-#'   - **StdInChIKey**: Standardized InChIKey.
-#'   - **AverageMass**: Average molecular mass.
-#'   - **MolecularWeight**: Exact molecular weight.
-#'   - **MonoisotopicMass**: Monoisotopic mass.
-#'   - **NominalMass**: Nominal mass.
-#'   - **CommonName**: Commonly used name.
-#'   - **ReferenceCount**: Number of references in ChemSpider.
-#'   - **DataSourceCount**: Number of linked data sources.
-#'   - **PubMedCount**: Number of associated PubMed articles.
-#'   - **RSCCount**: Number of references in the Royal Society of Chemistry database.
-#'
-#' @export
-#'
-#' @examples
-#' # Retrieve metabolite information for a specific ChemSpider ID
-#' request_chemspider_metabolite(chemspider_id = 12345, chemspider_apikey = "your_key")
-#'
-#' # Retrieve information for multiple IDs
-#' request_chemspider_metabolite(chemspider_id = c(12345, 67890), chemspider_apikey = "your_key")
-
-
-request_chemspider_metabolite <-
-  function(chemspider_id, chemspider_apikey = "") {
-    if (chemspider_apikey == "") {
-      stop("Please provide the ChemSpider API key.")
-    }
-
-    fields <- c(
-      "SMILES",
-      "Formula",
-      "InChI",
-      "InChIKey",
-      "StdInChI",
-      "StdInChIKey",
-      "AverageMass",
-      "MolecularWeight",
-      "MonoisotopicMass",
-      "NominalMass",
-      "CommonName",
-      "ReferenceCount",
-      "DataSourceCount",
-      "PubMedCount",
-      "RSCCount"
-    )
-    chemspider_id <- as.numeric(chemspider_id)
-    headers <- c("Content-Type" = "", "apikey" = chemspider_apikey)
-    body <- list("recordIds" = chemspider_id[!is.na(chemspider_id)], "fields" = fields)
-    body <- jsonlite::toJSON(body)
-
-    qurl <- "https://api.rsc.org/compounds/v1/records/batch"
-
-    postres <- try(httr::RETRY(
-      "POST",
-      url = qurl,
-      httr::add_headers(.headers = headers),
-      body = body,
-      terminate_on = 404,
-      quiet = TRUE
-    ),
-    silent = TRUE)
-
-    if (inherits(postres, "try-error")) {
-      return(NA)
-    }
-
-    if (postres$status_code == 200) {
-      res <- jsonlite::fromJSON(rawToChar(postres$content))$records
-      if (length(res) == 0) {
-        return(NA)
-      }
-      out <- data.frame(id = chemspider_id)
-      out <- dplyr::left_join(out, res, by = "id")
-      out$id <- as.character(out$id)
-      return(out)
-    } else {
-      return(NA)
-    }
-  }
-
-
-#' Retrieve Supported Metabolite Identifier Conversion Systems
-#'
-#' This function returns the available metabolite identifier conversion systems supported by
-#' different online services, including **CTS FiehnLab**, **ChemSpider**, and **OpenAI**.
-#' It provides a list of identifier formats that can be used for conversion.
-#'
-#' @param server Character. The server to retrieve supported identifier formats from.
-#'   Available options:
-#'   - `"cts.fiehnlab"`: The **Chemical Translation Service (CTS) by FiehnLab** at UC Davis.
-#'   - `"chemspider"`: The **ChemSpider API** provided by the Royal Society of Chemistry.
-#'   - `"openai"`: Uses OpenAI's language models for metabolite ID conversions.
-#' @param source_format Character. Specifies whether to use a **local** or **online** source
-#'   for fetching the available databases. Options:
-#'   - `"local"`: Uses locally stored information about supported databases.
-#'   - `"online"`: Fetches real-time data from the respective API endpoints.
-#'
-#' @return A data frame or vector containing the supported **From-To** identifier conversions
-#'   for the selected `server`.
-#'   - If `server = "cts.fiehnlab"`, returns a vector of available **from** and **to** databases.
-#'   - If `server = "chemspider"`, returns a data frame listing valid identifier conversions.
-#'   - If `server = "openai"`, returns a predefined set of supported sources.
-#'
-#' @details
-#' - **CTS FiehnLab**: The function queries `http://cts.fiehnlab.ucdavis.edu/rest/fromValues`
-#'   to retrieve the list of supported database formats.
-#' - **ChemSpider**: Retrieves a predefined set of identifier conversions.
-#' - **OpenAI**: Returns a list of supported metabolite ID formats available through OpenAI models.
-#'
-#' **ChemSpider API Key Requirement**:
-#' If using the `"chemspider"` server, an API key is required for querying ChemSpider's services.
-#'
-#' **How to Obtain a ChemSpider API Key:**
-#' 1. Visit the **Royal Society of Chemistry (RSC) Developer Portal**:
-#'    [https://developer.rsc.org/](https://developer.rsc.org/)
-#' 2. Sign in or create an account.
-#' 3. Navigate to **My Account** > **API Keys**.
-#' 4. Apply for access to the **ChemSpider API**.
-#' 5. Once approved, generate your API key and copy it for use.
-#'
-#' @export
-#'
-#' @examples
-#' # Get supported conversion systems for CTS FiehnLab (local)
-#' request_metabolite_id_systems(server = "cts.fiehnlab", source_format = "local")
-
-
-request_metabolite_id_systems <-
-  function(server = c("cts.fiehnlab", "chemspider", "openai"),
-           source_format = c("local", "online")) {
-    server <- match.arg(server)
-    source_format <- match.arg(source_format)
-    if (server == "cts.fiehnlab") {
-      server <- "https://cts.fiehnlab.ucdavis.edu/service/convert"
-    }
-
-    if (server == "chemspider") {
-      server <- "https://api.rsc.org/compounds/v1/tools/convert"
-    }
-
-    if (server == "https://cts.fiehnlab.ucdavis.edu/service/convert") {
-      if (source_format == "local") {
-        return(cts_fiehnlab_chemical_sources)
-      }
-      chemical_database_from <-
-        xml2::read_html("http://cts.fiehnlab.ucdavis.edu/rest/fromValues")
-      chemical_database_to <-
-        xml2::read_html("http://cts.fiehnlab.ucdavis.edu/rest/fromValues")
-
-      chemical_database_from <-
-        chemical_database_from %>%
-        rvest::html_nodes("p") %>%
-        rvest::html_text(TRUE) %>%
-        stringr::str_split(pattern = ",") %>%
-        `[[`(1) %>%
-        lapply(function(x) {
-          stringr::str_trim(x, "both") %>%
-            stringr::str_replace_all(pattern = '\"', replacement = "") %>%
-            stringr::str_replace_all(pattern = ",|\\[", replacement = "")
-        }) %>%
-        unlist() %>%
-        unname()
-
-      chemical_database_to <-
-        chemical_database_to %>%
-        rvest::html_nodes("p") %>%
-        rvest::html_text(TRUE) %>%
-        stringr::str_split(pattern = ",") %>%
-        `[[`(1) %>%
-        lapply(function(x) {
-          stringr::str_trim(x, "both") %>%
-            stringr::str_replace_all(pattern = '\"', replacement = "") %>%
-            stringr::str_replace_all(pattern = ",|\\[", replacement = "")
-        }) %>%
-        unlist() %>%
-        unname()
-
-      chemical_database_from <- sort(chemical_database_from)
-      chemical_database_to <- sort(chemical_database_to)
-
-      chemical_database_from
-    }
-
-    if (server == "https://api.rsc.org/compounds/v1/tools/convert") {
-      result <- c(
-        "inchikey_csid",
-        "inchikey_inchi",
-        "inchi_csid",
-        "inchi_inchikey",
-        "inchi_smiles",
-        "smiles_inchi"
-      )
-      result <-
-        stringr::str_split(result, "_") %>%
-        dplyr::bind_cols() %>%
-        t() %>%
-        tibble::as_tibble(.name_repair = "minimal")
-      colnames(result) <- c("From", "To")
-      message(
-        crayon::green(
-          nrow(result),
-          "are supported in server https://api.rsc.org/compounds/v1/tools/convert."
-        )
-      )
-
-      result <-
-        result %>%
-        dplyr::left_join(chemspider_code_name_table, by = c("From" = "code")) %>%
-        dplyr::left_join(chemspider_code_name_table, by = c("To" = "code")) %>%
-        dplyr::select(-c("From", "To")) %>%
-        dplyr::rename("From" = "name.x", "To" = "name.y")
-
-      return(result)
-    }
-
-    if (server %in% c("openai")) {
-      return(openai_chemical_sources)
-    }
-
-  }
-
-
-chemspider_code_name_table <-
+# Internal lookup table for translating ChemSpider identifier codes to
+# display names used by the package.
+chemspider_code_name_table <- function() {
   data.frame(
     "code" = c("csid", "inchikey", "inchi", "smiles"),
     "name" = c("ChemSpider", "InChIKey", "InChI", "SMILES"),
     stringsAsFactors = FALSE
   )
+}
 
 
 cts_fiehnlab_chemical_sources <- c(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/classyfire.R
 \name{show,classyfire-method}
 \alias{show,classyfire-method}
-\title{Display Method for 'classyfire' Objects}
+\title{Print a `classyfire` Object}
 \usage{
 \S4method{show}{classyfire}(object)
 }
@@ -13,15 +13,14 @@
 `NULL`. This method is called for its side effect of printing a summary of the 'classyfire' object.
 }
 \description{
-This function provides a custom display for 'classyfire' S4 objects.
-It prints out the main details of the object including compound
-information and its taxonomic classification in a structured format.
+Print the main fields of a `classyfire` object, including compound
+information and taxonomy.
 }
 \examples{
 \donttest{
 library(tibble)
 
-cf <- new("classyfire",
+cf <- methods::new("classyfire",
   compound_info = tibble::tibble(
     name = c("SMILES", "InChIKey", "Formula", "Mass"),
     value = c("C(C(=O)O)N", "BQJCRHHNABKAKU-KBQPJGBKSA-N", "C2H5NO2", "75.07")

@@ -2,34 +2,35 @@
 % Please edit documentation in R/read_mzxml.R
 \name{read_mzxml}
 \alias{read_mzxml}
-\title{Read and Process mzXML Files}
+\title{Read mzXML Files}
 \usage{
 read_mzxml(file, threads = 3, mode = c("inMemory", "onDisk"))
 }
 \arguments{
-\item{file}{A character vector specifying the path(s) to the mzXML file(s).}
+\item{file}{A character vector of mzXML file paths.}
 
-\item{threads}{An integer, indicating the number of cores to use (default: 3).}
+\item{threads}{Integer. Reserved for compatibility with older workflows.}
 
-\item{mode}{A character string, either \code{"inMemory"} or \code{"onDisk"} 
-specifying the mode of reading data. Default is \code{"inMemory"}.}
+\item{mode}{Character string specifying whether files are read with
+`\"inMemory\"` or `\"onDisk\"`.}
 }
 \value{
-A list containing processed MS2 spectra information for each provided mzXML file. 
-Each element of the list contains two components: 
+A list of spectra. Each element contains:
 \itemize{
-  \item \code{info}: A data frame with columns for the name (composed of m/z and retention time), 
-  m/z, retention time, and file name.
-  \item \code{spec}: A data frame where each row represents a fragment ion peak, 
-  with columns for m/z and intensity values.
+  \item \code{info}: a data frame containing spectrum name, precursor `mz`,
+    `rt`, and source file.
+  \item \code{spec}: a data frame with `mz` and `intensity` columns.
 }
 }
 \description{
-Reads mzXML files and extracts relevant MS2 spectra information.
+Read mzXML files and extract MS2 spectra in the legacy list format used by
+the package.
 }
 \examples{
-# Locate the example mzXML file in the installed package
+if (requireNamespace("MSnbase", quietly = TRUE)) {
 file_path <- system.file("extdata", "example.mzXML", package = "masstools")
-# Then use it in your function
 result <- read_mzxml(file_path)
+length(result)
+result[[1]]$info
+}
 }

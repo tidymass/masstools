@@ -5,17 +5,12 @@ Version: 0.99.1
 Authors@R: c(
     person(given = "Xiaotao",
            family = "Shen",
-           role = c("aut"),
+           role = c("aut", "cre"),
            email = "xiaotao.shen@outlook.com",
            comment = c(ORCID = "0000-0002-9608-9964")),
     person(given = "Chuchu",
            family = "Wang",
-           role = c("aut", "ctb")),
-    person(given = "Shunpeng",
-           family = "Bai",
-           role = "cre",
-           email = "bspchemy@gmail.com",
-           comment = c(ORCID = "0000-0002-6063-4537"))
+           role = c("aut", "ctb"))
            )
 Description: The masstools package contains a lot of base functions which can be used for 
     mass spectrometry and metabolomics data processing and analysis. For example,
@@ -31,7 +26,6 @@ License: MIT + file LICENSE
 Imports: 
     dplyr,
     jsonlite,
-    remotes,
     magrittr,
     tibble,
     tidyr,
@@ -46,7 +40,6 @@ Imports:
     xml2,
     stats,
     utils,
-    MSnbase,
     ProtGenerics,
     lifecycle,
     ggplot2,
@@ -59,7 +52,7 @@ Suggests:
     tidyverse,
     testthat (>= 3.0.0),
     plotly,
-    BiocStyle
+    BiocStyle,
+    MSnbase
 VignetteBuilder: knitr
-Note:
 Config/testthat/edition: 3

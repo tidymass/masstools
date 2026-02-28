@@ -2,7 +2,7 @@
 % Please edit documentation in R/9_convert_metabolite_id.R
 \name{convert_metabolite_id}
 \alias{convert_metabolite_id}
-\title{Convert Metabolite Identifiers Between Different Databases}
+\title{Convert Metabolite Identifiers Between Databases}
 \usage{
 convert_metabolite_id(
   query = "C00001",
@@ -15,17 +15,19 @@ convert_metabolite_id(
 )
 }
 \arguments{
-\item{query}{Character. The metabolite ID to convert (e.g., "C00001").}
+\item{query}{Character. Identifier to convert, for example `"C00001"`.}
 
-\item{from}{Character. The source database (e.g., "KEGG", "InChIKey").}
+\item{from}{Character. Source identifier system.}
 
-\item{to}{Character. The target database or chemical name format (e.g., "Chemical Name", "InChI").}
+\item{to}{Character. Target identifier system.}
 
-\item{top}{Integer. The number of top matches to return.}
+\item{top}{Integer. Maximum number of matches to return.}
 
-\item{server}{Character. The server to use for conversion. Options: `"cts.fiehnlab"`, `"chemspider"`, `"openai"`.}
+\item{server}{Character. Conversion backend. One of `"cts.fiehnlab"`,
+`"chemspider"`, or `"openai"`.}
 
-\item{chemspider_apikey}{Character. API key for ChemSpider (required if using `"chemspider"` server).
+\item{chemspider_apikey}{Character. ChemSpider API key. Required when
+`server = "chemspider"`.
 **How to Obtain a ChemSpider API Key:**
 1. Go to the **Royal Society of Chemistry (RSC) Developer Portal**:
    [https://developer.rsc.org/](https://developer.rsc.org/)
@@ -35,20 +37,24 @@ convert_metabolite_id(
 5. Once approved, generate your API key and copy it for use.
 6. Use this key as the `chemspider_apikey` argument in the function.}
 
-\item{openai_apikey}{Character. API key for OpenAI (required if using `"openai"` server).}
+\item{openai_apikey}{Character. OpenAI API key. Required when
+`server = "openai"`.}
 }
 \value{
-A data frame with the original query and converted metabolite ID(s).
+A data frame with the input identifier in the first column and the
+  converted identifier(s) in the second column.
 }
 \description{
-This function converts metabolite identifiers from one database format to another using different
-online services, including CTS FiehnLab, ChemSpider, and OpenAI.
+Convert metabolite identifiers between supported database formats using one
+of the package's online backends.
 }
 \examples{
+\dontrun{
 convert_metabolite_id(query = "C00001", from = "KEGG",
 to = "Chemical Name", server = "cts.fiehnlab")
 convert_metabolite_id(query = "BQJCRHHNABKAKU-KBQPJGBKSA-N",
 from = "InChIKey", to = "InChI", server = "chemspider", chemspider_apikey = "your_key")
 convert_metabolite_id(query = "C00001", from = "KEGG",
 to = "Chemical Name", server = "openai", openai_apikey = "your_key")
+}
 }

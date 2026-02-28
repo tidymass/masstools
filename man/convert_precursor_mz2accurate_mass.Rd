@@ -10,21 +10,16 @@ convert_precursor_mz2accurate_mass(
 )
 }
 \arguments{
-\item{precursor_mz}{A numeric value representing the precursor m/z value.
-Default is 805.559.}
+\item{precursor_mz}{Numeric precursor m/z value.}
 
-\item{adduct}{A character string representing the type of adduct.
-Possible values include but are not limited to "M+", "M-", and "2M-2H+Na".
-Default is "2M-2H+Na".}
+\item{adduct}{Character string describing the adduct, for example
+`"(M-H)-"` or `"(2M-2H+Na)-"`.}
 }
 \value{
-A numeric value representing the accurate mass of the molecule
-based on the precursor m/z and adduct type.
+A numeric value giving the calculated neutral mass.
 }
 \description{
-This function computes the accurate mass from the given precursor m/z and adduct type.
-It uses specific rules to adjust the provided m/z based on the adduct type,
-and then calculates the accurate mass of the molecule.
+Calculate neutral mass from a precursor m/z value and adduct.
 }
 \examples{
 convert_precursor_mz2accurate_mass(805.559, "(2M-2H+Na)-")

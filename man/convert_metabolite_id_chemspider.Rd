@@ -2,7 +2,7 @@
 % Please edit documentation in R/9_convert_metabolite_id.R
 \name{convert_metabolite_id_chemspider}
 \alias{convert_metabolite_id_chemspider}
-\title{Convert Metabolite Identifiers Using ChemSpider}
+\title{Convert Metabolite Identifiers with ChemSpider}
 \usage{
 convert_metabolite_id_chemspider(
   query = "BQJCRHHNABKAKU-KBQPJGBKSA-N",
@@ -13,15 +13,16 @@ convert_metabolite_id_chemspider(
 )
 }
 \arguments{
-\item{query}{Character. The metabolite ID to convert (e.g., "C00001").}
+\item{query}{Character. Identifier to convert, for example `"C00001"`.}
 
-\item{from}{Character. The source database (e.g., "KEGG", "InChIKey").}
+\item{from}{Character. Source identifier system.}
 
-\item{to}{Character. The target database or chemical name format (e.g., "Chemical Name", "InChI").}
+\item{to}{Character. Target identifier system.}
 
-\item{top}{Integer. The number of top matches to return.}
+\item{top}{Integer. Maximum number of matches to return.}
 
-\item{chemspider_apikey}{Character. API key for ChemSpider (required if using `"chemspider"` server).
+\item{chemspider_apikey}{Character. ChemSpider API key. Required when
+`server = "chemspider"`.
 **How to Obtain a ChemSpider API Key:**
 1. Go to the **Royal Society of Chemistry (RSC) Developer Portal**:
    [https://developer.rsc.org/](https://developer.rsc.org/)
@@ -32,10 +33,11 @@ convert_metabolite_id_chemspider(
 6. Use this key as the `chemspider_apikey` argument in the function.}
 }
 \value{
-A data frame with the original query and converted metabolite ID(s).
+A two-column data frame containing the input identifier and the
+  converted identifier(s).
 }
 \description{
-Converts metabolite IDs from one format to another using the ChemSpider API.
+Convert metabolite identifiers using the ChemSpider API.
 }
 \examples{
 \donttest{
@@ -49,7 +51,7 @@ convert_metabolite_id_chemspider(
 )
 
 # Example 2: Convert from a metabolite ID in "csid" format
-# Assuming '12345' is a valid ChemSpider ID
+# Replace '12345' with a valid ChemSpider ID
 convert_metabolite_id_chemspider(
   query = "12345", 
   from = "ChemSpider", 

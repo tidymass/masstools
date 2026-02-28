@@ -1,9 +1,7 @@
 #' Example Mass Spectrometry Data Files
 #'
-#' @description
-#' Example mass spectrometry data files included in the package for demonstration
-#' and testing purposes. These files are derived from a lipidomics study published
-#' in Cell (2020).
+#' @description Example mzXML and MGF files distributed with the package for
+#'   demonstrations, tests, and reproducible examples.
 #'
 #' @docType data
 #' @name example_data
@@ -21,16 +19,15 @@
 #' The package includes two example data files located in `inst/extdata`:
 #'
 #' ## example.mzXML
-#' An mzXML file containing LC-MS data. This file is a down-sampled subset of the
-#' original data, containing approximately 100 scans from a 1-5 minute time window.
-#' The file demonstrates typical LC-MS data structure and can be read using the
-#' `read_mzxml()` function.
+#' A down-sampled LC-MS file containing approximately 100 scans from a
+#' representative 1 to 5 minute retention time window. The file can be read
+#' with `read_mzxml()`.
 #'
 #' ## example.mgf
-#' An MGF (Mascot Generic Format) file containing MS2 spectra. This file includes
-#' 10 representative MS2 spectra selected from metabolite annotation workflows.
-#' The spectra represent common metabolite classes and can be used with MS2 matching
-#' functions such as `ms2Match()` and `getSpectraMatchScore()`.
+#' An MGF file containing 10 representative MS2 spectra selected from
+#' metabolite annotation workflows. The spectra can be used with matching and
+#' scoring functions such as `ms2_match()` and
+#' `calculate_spectra_match_score()`.
 #'
 #' @source
 #' The data files are derived from the publication:

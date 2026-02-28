@@ -3,11 +3,10 @@
 \docType{class}
 \name{classyfire}
 \alias{classyfire}
-\title{S4 Class Representation for ClassyFire Result}
+\title{S4 Class for ClassyFire Results}
 \description{
-An S4 class object that holds the results of a ClassyFire query,
-structured into various components like compound information, taxonomic
-classification, description, and external descriptors.
+Store the result of a ClassyFire query, including compound information,
+taxonomy, free-text description, and external descriptors.
 }
 \section{Slots}{
 

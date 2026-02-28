@@ -7,26 +7,44 @@
 remove_noise(spec, ppm.ms2match = 30, mz.ppm.thr = 400)
 }
 \arguments{
-\item{spec}{A data frame representing the spectrum with columns for m/z and intensity.}
+\item{spec}{A mass spectrum. Can be:
+\itemize{
+  \item A data frame with columns for m/z and intensity
+  \item A Spectra object from the Spectra package
+}}
 
 \item{ppm.ms2match}{A numeric value specifying the ppm threshold for identifying close fragments. Default is 30.}
 
 \item{mz.ppm.thr}{A numeric value for the m/z threshold below which the m/z value will be set to this threshold. Default is 400.}
 }
 \value{
-A data frame representing the cleaned spectrum after removing the noisy fragments.
+A spectrum in the same format as input:
+  \itemize{
+    \item If input is data.frame: returns data.frame
+    \item If input is Spectra: returns Spectra object
+  }
 }
 \description{
-This function removes noisy fragments from a given spectrum based on m/z values and intensities.
-Fragments with m/z values that are too close to each other, determined by a ppm threshold, are considered noisy.
-Among these close fragments, the fragment with the lowest intensity is removed.
+Remove fragments with nearly identical m/z values and keep the more intense
+peak.
 }
 \details{
-The function first sorts the spectrum based on m/z values and calculates the differences between consecutive m/z values.
-Fragments whose m/z differences are below the specified ppm threshold are identified.
-Among these fragments, the one with the lowest intensity is removed from the spectrum.
+Peaks are ordered by m/z, adjacent peaks are compared using the ppm
+threshold, and the less intense peak is removed when two peaks are too
+close. The function accepts both data frames and `Spectra` objects.
 }
 \examples{
-exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
-remove_noise(exp.spectrum)
+spectrum <- data.frame(
+  mz = c(100.0000, 100.0010, 124.0400, 150.0600, 150.0610),
+  intensity = c(10, 5, 35, 100, 20)
+)
+
+remove_noise(spectrum, ppm.ms2match = 30)
+
+# The function also accepts Spectra objects.
+\dontrun{
+spec_obj <- df_to_spectra(spectrum)
+
+remove_noise(spec_obj, ppm.ms2match = 30)
+}
 }

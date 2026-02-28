@@ -27,27 +27,6 @@
 #   }
 # }
 
-#' List all packages in the masstools
-#'
-#' @param include_self Include masstools in the list?
-#' @export
-#' @return masstools packages
-#' @examples
-#' masstools_packages()
-masstools_packages <- function(include_self = TRUE) {
-  raw <- utils::packageDescription("masstools")$Imports
-  imports <- strsplit(raw, ",")[[1]]
-  parsed <- gsub("^\\s+|\\s+$", "", imports)
-  names <-
-    vapply(strsplit(parsed, "\\s+"), "[[", 1, FUN.VALUE = character(1))
-
-  if (include_self) {
-    names <- c(names, "masstools")
-  }
-
-  names
-}
-
 invert <- function(x) {
   if (length(x) == 0) {
     return()
@@ -145,38 +124,6 @@ style_grey <- function(level, ...) {
 #
 #   return(NULL)
 # }
-
-
-
-#' @title show_progresser
-#' @description show_progresser
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@outlook.com}
-#' @param index index for loop
-#' @param progresser progresser
-#' @return A data.frame
-#' @importFrom magrittr %>%
-#' @importFrom dplyr case_when everything select filter
-#' @importFrom purrr map map2 walk
-#' @importFrom crayon green
-#' @export
-#' @examples
-#' show_progresser()
-
-show_progresser <-
-  function(index = seq_len(1000),
-           progresser = c(1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)) {
-    idx <-
-      seq(
-        from = 1,
-        to = max(index),
-        length.out = length(progresser)
-      ) %>%
-      round()
-
-    data.frame(idx = idx, progresser = paste0(progresser, "%"))
-  }
-
 
 
 
@@ -642,13 +589,14 @@ average_mass <- c(
   294.21
 )
 
-chemical_elements_information <-
+chemical_elements_information <- function() {
   data.frame(
     element = elements,
     name = names,
     accurate_mass = accurate_mass,
     average_mass = average_mass
   )
+}
 
 
 
@@ -701,4 +649,6 @@ mz_values <- c(
   59.0139,-59.0139
 )
 
-adduct_table <- data.frame(adduct = adducts, mz = mz_values)
+adduct_table <- function() {
+  data.frame(adduct = adducts, mz = mz_values)
+}

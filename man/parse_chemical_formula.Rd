@@ -2,26 +2,24 @@
 % Please edit documentation in R/2_chemical_formula_funcitons.R
 \name{parse_chemical_formula}
 \alias{parse_chemical_formula}
-\title{Parse a Chemical Formula into its Constituent Elements and Counts}
+\title{Parse a Molecular Formula}
 \usage{
 parse_chemical_formula(formula)
 }
 \arguments{
-\item{formula}{Character string representing the chemical formula to be parsed.}
+\item{formula}{Character string containing a molecular formula such as
+`"H2O"` or `"C6H12O6"`.}
 }
 \value{
-A data frame with two columns: 'Element' and 'Count', representing each element and its count in the given formula.
+A data frame with columns `Element` and `Count`.
 }
 \description{
-Breaks down a chemical formula into its individual elements and counts,
-returning the results as a data frame.
+Parse a molecular formula into element symbols and counts.
 }
 \details{
-Parse a Chemical Formula into its Constituent Elements and Counts
+Parse a Molecular Formula
 
-This function breaks down a chemical formula into its individual elements and their respective counts.
-If no count is specified for an element, it defaults to 1.
-The result is presented as a data frame with columns for elements and counts.
+Break a molecular formula into element symbols and counts.
 }
 \examples{
 parse_chemical_formula("H2O")       # Returns a data frame with H:2 and O:1

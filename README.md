@@ -7,17 +7,17 @@
 [![Dependencies](https://tinyverse.netlify.com/badge/masstools)](https://cran.r-project.org/package=masstools)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-`masstools` is a part of [tidymass](https://www.tidymass.org/)
+`masstools` is a part of [tidymass](https://www.tidymass.org/).
 
 -------
 
 # About
 
-`masstools` is a collections of useful tiny tools for mass spectrometry data processing.
+`masstools` is a collection of tools for mass spectrometry data processing and analysis.
 
 # Installation
 
-You can install `masstools` from Bioconductor (recommended):
+Install the released version from Bioconductor:
 
 ``` r
 if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -26,44 +26,25 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("masstools")
 ```
 
-Alternatively, for development purposes, you can install from [GitHub](https://github.com/tidymass/masstools):
+The development version is available from [GitHub](https://github.com/tidymass/masstools):
 
 ``` r
-if(!require(remotes)){
-install.packages("remotes")
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
 }
 remotes::install_github("tidymass/masstools")
 ```
 
-**Note:** Installing from GitHub is not recommended for production use. Please install from the Bioconductor release or devel branch for the most stable and tested version.
-
-You can also install from [GitLab](https://gitlab.com/tidymass/masstools):
-
-``` r
-remotes::install_gitlab("tidymass/masstools")
-```
-
-
 # Usage
 
-Please see the `Help documents` page to get the instruction of `masstools`.
+See the package website for reference documentation and articles:
+[https://masstools.tidymass.org/](https://masstools.tidymass.org/)
 
 # Need help?
 
-If you have any questions about `masstools`, please don’t hesitate to
-email me (<shenxt@stanford.edu>) or reach out me via the social medias below.
-
-<i class="fa fa-weixin"></i>
-[shenxt1990](https://www.shenxt.info/files/wechat_QR.jpg)
-
-<i class="fa fa-envelope"></i> <shenxt@stanford.edu>
-
-<i class="fa fa-twitter"></i>
-[Twitter](https://twitter.com/JasperShen1990)
-
-<i class="fa fa-map-marker-alt"></i> [M339, Alway Buidling, Cooper Lane,
-Palo Alto, CA
-94304](https://www.google.com/maps/place/Alway+Building/@37.4322345,-122.1770883,17z/data=!3m1!4b1!4m5!3m4!1s0x808fa4d335c3be37:0x9057931f3b312c29!8m2!3d37.4322345!4d-122.1748996)
+If you have questions or want to report a bug, please use
+[GitHub Issues](https://github.com/tidymass/masstools/issues) or email
+<xiaotao.shen@outlook.com>.
 
 # Citation
 
@@ -73,4 +54,4 @@ Shen, X., Yan, H., Wang, C. et al. TidyMass an object-oriented reproducible anal
 
 [Weblink](https://www.nature.com/articles/s41467-022-32155-w)
 
-Thanks very much!
+Thanks for using `masstools`.

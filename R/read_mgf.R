@@ -1,23 +1,21 @@
-#' Read and Process MGF Files
+#' Read MGF Files
 #'
-#' This function reads MGF files and extracts the relevant MS2 spectra information. 
-#' Duplicated peaks and noise can be optionally removed.
+#' Read MGF files and extract precursor metadata together with fragment peaks.
 #'
-#' @param file A character vector specifying the path(s) to the MGF file(s).
+#' @param file A character vector of MGF file paths.
 #'
-#' @return A list containing processed MS2 spectra information for each provided MGF file. 
-#' Each element of the list contains two components: 
+#' @return A list of spectra. Each element contains:
 #' \itemize{
-#'   \item \code{info}: A named numeric vector containing the m/z and retention time of the precursor ion.
-#'   \item \code{spec}: A matrix where each row represents a fragment ion peak, with columns for m/z and intensity values.
+#'   \item \code{info}: a named numeric vector containing precursor `mz` and `rt`.
+#'   \item \code{spec}: a numeric matrix with `mz` and `intensity` columns.
 #' }
 #' Empty spectra are removed from the output.
 #'
 #' @examples
-#' # Locate the example mgf file in the installed package
 #' file_path <- system.file("extdata", "example.mgf", package = "masstools")
-#' # Then use it in your function
 #' result <- read_mgf(file_path)
+#' length(result)
+#' result[[1]]$info
 #' @export
 
 read_mgf <- function(file) {
@@ -35,11 +33,8 @@ read_mgf <- function(file) {
         })
       
       ##remove NULL spec
-      remove_idx <- 
-        lapply(nl.spec, length) %>% 
-        unlist() %>% 
-        `==`(0) %>% 
-        which()
+      remove_idx <-
+        which(unlist(lapply(nl.spec, length)) == 0)
       
       if(length(remove_idx) > 0){
         mgf.data <- mgf.data[-remove_idx]
@@ -152,7 +147,7 @@ read_mgf <- function(file) {
   #   x
   # })
   
-  spec.info <- spec.info
+  spec.info
 }
 
 ListMGF <- function(file) {

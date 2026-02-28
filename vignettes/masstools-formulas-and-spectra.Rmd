@@ -1,0 +1,115 @@
+---
+title: "Formula and Spectra Workflows"
+author: "Xiaotao Shen"
+date: "`r Sys.Date()`"
+output:
+  BiocStyle::html_document:
+    toc: true
+    number_sections: true
+vignette: >
+  %\VignetteIndexEntry{Formula and Spectra Workflows}
+  %\VignettePackage{masstools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+## Chemical formulas
+
+`masstools` includes several helpers for validating and transforming chemical
+formulas.
+
+```{r}
+library(masstools)
+```
+
+### Validate and parse
+
+```{r}
+check_chemical_element("NaCl")
+check_chemical_formula("H2O")
+check_chemical_formula("2H")
+parse_chemical_formula("C10H14N2")
+```
+
+### Exact and average mass
+
+```{r}
+calculate_mass("H2O", which = "exact_mass")
+calculate_mass("H2O", which = "average_mass")
+```
+
+### Add adducts or neutral losses
+
+```{r}
+combine_formula_adduct("C9H11NO2", "M+H")
+combine_formula_adduct("C9H11NO2", "M+CH3COOH")
+combine_formula_adduct("C9H11NO2", "M-H2O+H")
+```
+
+### From precursor m/z to neutral mass
+
+```{r}
+convert_precursor_mz2accurate_mass(181.0707, "(M+H)+")
+convert_precursor_mz2accurate_mass(179.0561, "(M-H)-")
+```
+
+## MS/MS similarity
+
+### Remove redundant fragment peaks
+
+```{r}
+spec <- data.frame(
+  mz = c(100, 100.0004, 120, 150),
+  intensity = c(10, 15, 50, 100)
+)
+
+remove_noise(spec, ppm.ms2match = 10)
+```
+
+### Match two spectra
+
+```{r}
+exp_spec <- data.frame(
+  mz = c(100, 120, 150, 180),
+  intensity = c(10, 20, 80, 30)
+)
+
+lib_spec <- data.frame(
+  mz = c(100, 120.0003, 151, 180),
+  intensity = c(12, 18, 20, 25)
+)
+
+match_tbl <- ms2_match(exp_spec, lib_spec, ppm.tol = 10)
+match_tbl
+```
+
+### Score similarity
+
+```{r}
+calculate_dot_product(match_tbl$Exp.intensity, match_tbl$Lib.intensity)
+calculate_spectra_match_score(exp_spec, lib_spec, ppm.tol = 10)
+```
+
+### Plot spectra
+
+```{r}
+plot_ms2(exp_spec)
+plot_ms2(exp_spec, lib_spec, ppm.tol = 10)
+```
+
+## Deprecated compatibility functions
+
+Backward-compatible wrappers are still available, but new code should use:
+
+- `calculate_dot_product()`
+- `ms2_match()`
+- `remove_noise()`

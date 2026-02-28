@@ -1,19 +1,28 @@
-#' Convert Data Frame to Spectra Object
+#' Convert a Data Frame to a Spectra Object
 #'
-#' Converts a data frame with mz and intensity columns to a Spectra object.
+#' Convert a peak table with `mz` and `intensity` columns to a `Spectra`
+#' object.
 #'
-#' @param spectrum_df A data frame with 'mz' and 'intensity' columns
-#' @param precursor_mz Numeric, precursor m/z value (optional)
-#' @param precursor_rt Numeric, retention time (optional)
-#' @param spectrum_id Character, spectrum identifier (optional)
+#' @param spectrum_df A data frame with `mz` and `intensity` columns.
+#' @param precursor_mz Numeric. Optional precursor m/z value for the spectrum.
+#' @param precursor_rt Numeric. Optional retention time for the spectrum.
+#' @param spectrum_id Character. Optional spectrum identifier.
 #'
-#' @return A Spectra object
+#' @return A `Spectra` object containing one MS2 spectrum.
+#' @importFrom S4Vectors DataFrame
 #' @export
 #' @examples
-#' \dontrun{
-#' df <- data.frame(mz = c(100, 200, 300), intensity = c(10, 20, 30))
-#' spec <- df_to_spectra(df)
-#' }
+#' spectrum_df <- data.frame(
+#'   mz = c(100.00, 124.04, 150.06),
+#'   intensity = c(10, 35, 100)
+#' )
+#'
+#' spec <- df_to_spectra(
+#'   spectrum_df,
+#'   precursor_mz = 301.12,
+#'   precursor_rt = 120.5,
+#'   spectrum_id = "example_1"
+#' )
 df_to_spectra <- function(spectrum_df, 
                           precursor_mz = NA_real_,
                           precursor_rt = NA_real_,
@@ -27,46 +36,47 @@ df_to_spectra <- function(spectrum_df,
     stop("spectrum_df must contain 'mz' and 'intensity' columns")
   }
   
-  # Create spectrum data list
-  peak_list <- list(
-    matrix(c(spectrum_df$mz, spectrum_df$intensity), 
-           ncol = 2,
-           dimnames = list(NULL, c("mz", "intensity")))
-  )
-  
-  # Create spectrum data with metadata
-  spd <- S4Vectors::DataFrame(
+  spd <- data.frame(
     msLevel = 2L,
     precursorMz = precursor_mz,
-    rtime = precursor_rt
+    rtime = precursor_rt,
+    stringsAsFactors = FALSE
   )
+  spd$mz <- I(list(spectrum_df$mz))
+  spd$intensity <- I(list(spectrum_df$intensity))
   
   if (!is.na(spectrum_id)) {
     spd$spectrum_id <- spectrum_id
   }
   
-  # Create Spectra object
-  sps <- Spectra::Spectra(peak_list, spectraData = spd)
+  backend <-
+    Spectra::backendInitialize(
+      Spectra::MsBackendMemory(),
+      data = spd
+    )
+  sps <- Spectra::Spectra(backend = backend)
   
   return(sps)
 }
 
 
-#' Convert Spectra Object to Data Frame
+#' Convert a Spectra Object to a Data Frame
 #'
-#' Converts a Spectra object to a data frame with mz and intensity columns.
+#' Extract one spectrum from a `Spectra` object and return it as a data frame.
 #'
-#' @param spectra A Spectra object
-#' @param index Integer, which spectrum to extract (default: 1)
+#' @param spectra A `Spectra` object.
+#' @param index Integer. Which spectrum to extract.
 #'
-#' @return A data frame with 'mz' and 'intensity' columns
+#' @return A data frame with `mz` and `intensity` columns.
 #' @export
 #' @examples
-#' \dontrun{
-#' df <- data.frame(mz = c(100, 200, 300), intensity = c(10, 20, 30))
-#' spec <- df_to_spectra(df)
-#' df2 <- spectra_to_df(spec)
-#' }
+#' spectrum_df <- data.frame(
+#'   mz = c(100.00, 124.04, 150.06),
+#'   intensity = c(10, 35, 100)
+#' )
+#' spec <- df_to_spectra(spectrum_df)
+#'
+#' spectra_to_df(spec)
 spectra_to_df <- function(spectra, index = 1) {
   
   if (!inherits(spectra, "Spectra")) {
@@ -91,9 +101,9 @@ spectra_to_df <- function(spectra, index = 1) {
 }
 
 
-#' Check if Object is a Spectra Object or Data Frame
+#' Check the Type of a Spectrum-Like Object
 #'
-#' Helper function to determine the type of spectrum input.
+#' Internal helper that classifies supported spectrum input types.
 #'
 #' @param x An object to check
 #'
@@ -112,10 +122,10 @@ check_spectrum_type <- function(x) {
 }
 
 
-#' Convert Input to Data Frame Format
+#' Convert Spectrum Input to a Data Frame
 #'
-#' Internal helper to ensure spectrum data is in data.frame format.
-#' Accepts Spectra objects, data.frames, or matrices.
+#' Internal helper that converts supported spectrum inputs to a standard data
+#' frame representation.
 #'
 #' @param spectrum A spectrum in any supported format
 #' @param index Integer, which spectrum to extract if Spectra object (default: 1)
@@ -148,7 +158,7 @@ as_spectrum_df <- function(spectrum, index = 1) {
 }
 
 
-#' Convert Multiple Spectra to List Format
+#' Convert Multiple Spectra to a List Representation
 #'
 #' Converts a Spectra object with multiple spectra to the legacy list format
 #' used by read_mgf and read_mzxml functions.
@@ -194,7 +204,7 @@ spectra_to_list <- function(spectra) {
 }
 
 
-#' Convert List Format to Spectra Object
+#' Convert a Legacy Spectrum List to a Spectra Object
 #'
 #' Converts the legacy list format (from read_mgf/read_mzxml) to a Spectra object.
 #'
@@ -208,34 +218,28 @@ list_to_spectra <- function(spectrum_list) {
     stop("spectrum_list must be a list")
   }
   
-  # Extract peak data
-  peak_list <- lapply(spectrum_list, function(x) {
-    spec <- x$spec
-    if (is.data.frame(spec)) {
-      matrix(c(spec$mz, spec$intensity), 
-             ncol = 2,
-             dimnames = list(NULL, c("mz", "intensity")))
-    } else {
-      spec
-    }
-  })
-  
-  # Extract metadata
   spd_list <- lapply(spectrum_list, function(x) {
     info <- x$info
+    spec <- x$spec
+    if (is.matrix(spec)) {
+      spec <- as.data.frame(spec, stringsAsFactors = FALSE)
+    }
     list(
       msLevel = 2L,
       precursorMz = if ("mz" %in% names(info)) info["mz"] else NA_real_,
-      rtime = if ("rt" %in% names(info)) info["rt"] else NA_real_
+      rtime = if ("rt" %in% names(info)) info["rt"] else NA_real_,
+      mz = I(list(as.numeric(spec$mz))),
+      intensity = I(list(as.numeric(spec$intensity)))
     )
   })
   
-  # Create DataFrame
   spd <- do.call(rbind, lapply(spd_list, as.data.frame))
-  spd <- S4Vectors::DataFrame(spd)
-  
-  # Create Spectra object
-  sps <- Spectra::Spectra(peak_list, spectraData = spd)
+  backend <-
+    Spectra::backendInitialize(
+      Spectra::MsBackendMemory(),
+      data = spd
+    )
+  sps <- Spectra::Spectra(backend = backend)
   
   return(sps)
 }

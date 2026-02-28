@@ -1,8 +1,7 @@
 #' Plot MS2 Spectra Comparisons
 #'
-#' This function provides a method to visualize and compare two MS2 spectra side by side.
-#' The method to be used for the comparison depends on the class of the `spectrum1` and `spectrum2`
-#' objects provided.
+#' Visualize one or two MS2 spectra, with matched peaks shown in a mirrored
+#' comparison when two spectra are provided.
 #'
 #' @param spectrum1 A spectrum object representing the first MS2 spectrum.
 #' @param spectrum2 A spectrum object representing the second MS2 spectrum.
@@ -27,40 +26,20 @@
 #' @seealso The specific plotting methods associated with different spectrum classes that implement this generic function.
 #'
 #' @examples
-#' # Assuming `spec1` and `spec2` are spectrum objects
-#' spec1 <- data.frame(
-#'     mz = c(
-#'         87.50874,
-#'         94.85532,
-#'         97.17808,
-#'         97.25629,
-#'         103.36186,
-#'         106.96647,
-#'         107.21461,
-#'         111.00887,
-#'         113.79269,
-#'         118.70564
-#'     ),
-#'     intensity =
-#'         c(
-#'             8356.306,
-#'             7654.128,
-#'             9456.207,
-#'             8837.188,
-#'             8560.228,
-#'             8746.359,
-#'             8379.361,
-#'             169741.797,
-#'             7953.080,
-#'             8378.066
-#'         )
+#' spectrum1 <- data.frame(
+#'   mz = c(100.00, 124.04, 150.06, 180.08, 205.10),
+#'   intensity = c(10, 35, 100, 45, 20)
 #' )
-#' spec2 <- spec1
-#' ms2_plot(spec1, spec2)
+#' spectrum2 <- data.frame(
+#'   mz = c(100.01, 124.05, 150.06, 180.09, 220.12),
+#'   intensity = c(12, 30, 95, 50, 10)
+#' )
+#'
+#' plot_ms2(spectrum1, spectrum2)
 #'
 #' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
-ms2_plot <-
+plot_ms2 <-
   function(spectrum1,
            spectrum2,
            spectrum1_name = "spectrum1",
@@ -78,50 +57,33 @@ ms2_plot <-
            legend.title.size = 15,
            legend.text.size = 15,
            interactive_plot = FALSE) {
-    UseMethod("ms2_plot")
+    UseMethod("plot_ms2")
   }
 
 
-#' @method ms2_plot data.frame
-#' @rdname ms2_plot
+#' @method plot_ms2 data.frame
+#' @rdname plot_ms2
 
 #' @author Xiaotao Shen <xiaotao.shen@outlook.com>
 #' @export
 #' @examples
 #' spectrum1 <- data.frame(
-#'     mz = c(
-#'         87.50874,
-#'         94.85532,
-#'         97.17808,
-#'         97.25629,
-#'         103.36186,
-#'         106.96647,
-#'         107.21461,
-#'         111.00887,
-#'         113.79269,
-#'         118.70564
-#'     ),
-#'     intensity =
-#'         c(
-#'             8356.306,
-#'             7654.128,
-#'             9456.207,
-#'             8837.188,
-#'             8560.228,
-#'             8746.359,
-#'             8379.361,
-#'             169741.797,
-#'             7953.080,
-#'             8378.066
-#'         )
+#'   mz = c(100.00, 124.04, 150.06, 180.08, 205.10),
+#'   intensity = c(10, 35, 100, 45, 20)
 #' )
-#' spectrum2 <- spectrum1
-#' ms2_plot(spectrum1, spectrum2)
-#' ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)
-#' ms2_plot(spectrum1)
-#' ms2_plot(spectrum1, interactive_plot = TRUE)
+#' spectrum2 <- data.frame(
+#'   mz = c(100.01, 124.05, 150.06, 180.09, 220.12),
+#'   intensity = c(12, 30, 95, 50, 10)
+#' )
+#'
+#' plot_ms2(spectrum1, spectrum2)
+#' plot_ms2(spectrum1)
+#'
+#' \dontrun{
+#' plot_ms2(spectrum1, spectrum2, interactive_plot = TRUE)
+#' }
 
-ms2_plot.data.frame <- function(spectrum1,
+plot_ms2.data.frame <- function(spectrum1,
                                 spectrum2,
                                 spectrum1_name = "spectrum1",
                                 spectrum2_name = "spectrum2",
@@ -150,6 +112,7 @@ ms2_plot.data.frame <- function(spectrum1,
       }) %>%
       dplyr::bind_cols() %>%
       as.data.frame()
+    colnames(spectrum1) <- c("mz", "intensity")
 
     spectrum1[, 2] <- spectrum1[, 2] / max(spectrum1[, 2])
   }
@@ -163,6 +126,7 @@ ms2_plot.data.frame <- function(spectrum1,
       }) %>%
       dplyr::bind_cols() %>%
       as.data.frame()
+    colnames(spectrum2) <- c("mz", "intensity")
     spectrum2[, 2] <- spectrum2[, 2] / max(spectrum2[, 2])
   }
 
@@ -203,31 +167,31 @@ ms2_plot.data.frame <- function(spectrum1,
         breaks = c(-1, -0.5, 0, 0.5, 1),
         labels = c("1", "0.5", "0", "0.5", "1")
       ) +
-      theme_bw() +
-      theme(
+      ggplot2::theme_bw() +
+      ggplot2::theme(
         # axis.line = element_line(arrow = arrow()),
-        plot.title = element_text(
+        plot.title = ggplot2::element_text(
           color = "black",
           size = title.size,
           face = "plain",
           hjust = 0.5
         ),
-        axis.title = element_text(
+        axis.title = ggplot2::element_text(
           color = "black",
           size = lab.size,
           face = "plain"
         ),
-        axis.text = element_text(
+        axis.text = ggplot2::element_text(
           color = "black",
           size = axis.text.size,
           face = "plain"
         ),
-        legend.title = element_text(
+        legend.title = ggplot2::element_text(
           color = "black",
           size = legend.title.size,
           face = "plain"
         ),
-        legend.text = element_text(
+        legend.text = ggplot2::element_text(
           color = "black",
           size = legend.text.size,
           face = "plain"
@@ -235,7 +199,7 @@ ms2_plot.data.frame <- function(spectrum1,
       )
 
     plot <- plot +
-      annotate(
+      ggplot2::annotate(
         geom = "text",
         x = Inf,
         y = Inf,
@@ -244,7 +208,7 @@ ms2_plot.data.frame <- function(spectrum1,
         hjust = 1,
         vjust = 1
       ) +
-      annotate(
+      ggplot2::annotate(
         geom = "text",
         x = Inf,
         y = -Inf,
@@ -255,9 +219,9 @@ ms2_plot.data.frame <- function(spectrum1,
       )
 
     plot <- plot +
-      geom_segment(
+      ggplot2::geom_segment(
         data = matched.spec,
-        mapping = aes(
+        mapping = ggplot2::aes(
           x = Lib.mz,
           y = Lib.intensity - Lib.intensity,
           xend = Lib.mz,
@@ -265,9 +229,9 @@ ms2_plot.data.frame <- function(spectrum1,
         ),
         colour = col1
       ) +
-      geom_point(
+      ggplot2::geom_point(
         data = matched.spec[matched.idx, , drop = FALSE],
-        mapping = aes(x = Lib.mz, y = -Lib.intensity),
+        mapping = ggplot2::aes(x = Lib.mz, y = -Lib.intensity),
         colour = col1
       )
     if (interactive_plot) {
@@ -290,42 +254,42 @@ ms2_plot.data.frame <- function(spectrum1,
     range.mz <- c(min(spectrum[, 1]), max(spectrum[, 1]))
   }
 
-  plot <- ggplot(spectrum) +
-    geom_segment(mapping = aes(
+  plot <- ggplot2::ggplot(spectrum) +
+    ggplot2::geom_segment(mapping = ggplot2::aes(
       x = mz,
       y = 0,
       xend = mz,
       yend = intensity
     ),
     colour = col1) +
-    xlim(range.mz[1], range.mz[2]) +
-    labs(x = xlab, y = ylab) +
-    scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-    theme_bw() +
-    theme(
+    ggplot2::xlim(range.mz[1], range.mz[2]) +
+    ggplot2::labs(x = xlab, y = ylab) +
+    ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0, 0.1))) +
+    ggplot2::theme_bw() +
+    ggplot2::theme(
       # axis.line = element_line(arrow = arrow()),
-      plot.title = element_text(
+      plot.title = ggplot2::element_text(
         color = "black",
         size = title.size,
         face = "plain",
         hjust = 0.5
       ),
-      axis.title = element_text(
+      axis.title = ggplot2::element_text(
         color = "black",
         size = lab.size,
         face = "plain"
       ),
-      axis.text = element_text(
+      axis.text = ggplot2::element_text(
         color = "black",
         size = axis.text.size,
         face = "plain"
       ),
-      legend.title = element_text(
+      legend.title = ggplot2::element_text(
         color = "black",
         size = legend.title.size,
         face = "plain"
       ),
-      legend.text = element_text(
+      legend.text = ggplot2::element_text(
         color = "black",
         size = legend.text.size,
         face = "plain"
@@ -343,42 +307,32 @@ ms2_plot.data.frame <- function(spectrum1,
 
 
 #' @examples
-#' # Assuming `spec1_mat` and `spec2_mat` are matrices with MS2 spectra data
-#' spec1_mat <- data.frame(
-#'     mz = c(
-#'         87.50874,
-#'         94.85532,
-#'         97.17808,
-#'         97.25629,
-#'         103.36186,
-#'         106.96647,
-#'         107.21461,
-#'         111.00887,
-#'         113.79269,
-#'         118.70564
-#'     ),
-#'     intensity =
-#'         c(
-#'             8356.306,
-#'             7654.128,
-#'             9456.207,
-#'             8837.188,
-#'             8560.228,
-#'             8746.359,
-#'             8379.361,
-#'             169741.797,
-#'             7953.080,
-#'             8378.066
-#'         )
+#' spectrum1_mat <- matrix(
+#'   c(100.00, 10,
+#'     124.04, 35,
+#'     150.06, 100,
+#'     180.08, 45,
+#'     205.10, 20),
+#'   ncol = 2,
+#'   byrow = TRUE
 #' )
-#' spec2_mat <- spec1_mat
-#' ms2_plot(spec1_mat, spec2_mat)
+#' spectrum2_mat <- matrix(
+#'   c(100.01, 12,
+#'     124.05, 30,
+#'     150.06, 95,
+#'     180.09, 50,
+#'     220.12, 10),
+#'   ncol = 2,
+#'   byrow = TRUE
+#' )
+#'
+#' plot_ms2(spectrum1_mat, spectrum2_mat)
 #'
 #' @author Xiaotao Shen <xiaotao.shen@outlook.com>
-#' @method ms2_plot matrix
-#' @rdname ms2_plot
+#' @method plot_ms2 matrix
+#' @rdname plot_ms2
 #' @export
-ms2_plot.matrix <- function(spectrum1,
+plot_ms2.matrix <- function(spectrum1,
                             spectrum2,
                             spectrum1_name = "spectrum1",
                             spectrum2_name = "spectrum2",
@@ -407,6 +361,7 @@ ms2_plot.matrix <- function(spectrum1,
       }) %>%
       dplyr::bind_cols() %>%
       as.data.frame()
+    colnames(spectrum1) <- c("mz", "intensity")
 
     spectrum1[, 2] <- spectrum1[, 2] / max(spectrum1[, 2])
   }
@@ -420,10 +375,11 @@ ms2_plot.matrix <- function(spectrum1,
       }) %>%
       dplyr::bind_cols() %>%
       as.data.frame()
+    colnames(spectrum2) <- c("mz", "intensity")
     spectrum2[, 2] <- spectrum2[, 2] / max(spectrum2[, 2])
   }
 
-  ms2_plot.data.frame(
+  plot_ms2.data.frame(
     spectrum1 = spectrum1,
     spectrum2 = spectrum2,
     spectrum1_name = spectrum1_name,

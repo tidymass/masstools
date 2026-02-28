@@ -2,19 +2,18 @@
 % Please edit documentation in R/99_check_functions.R
 \name{check_adduct_formula}
 \alias{check_adduct_formula}
-\title{Validate if a given adduct formula is correct}
+\title{Validate an Adduct Formula}
 \usage{
 check_adduct_formula(adduct)
 }
 \arguments{
-\item{adduct}{A character string representing the adduct formula to be validated.}
+\item{adduct}{A character string to validate.}
 }
 \value{
-A logical value: TRUE if the adduct formula is valid, FALSE otherwise.
+`TRUE` if `adduct` is valid and `FALSE` otherwise.
 }
 \description{
-This function checks whether a given adduct formula is valid by comparing it to known valid adducts.
-It returns TRUE if the adduct formula is valid, otherwise returns FALSE.
+Check whether an adduct string matches the package's supported syntax.
 }
 \examples{
 check_adduct_formula("(M+H)+") # TRUE

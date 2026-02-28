@@ -1,32 +1,41 @@
-#' Read and Process mzXML Files
+#' Read mzXML Files
 #'
-#' Reads mzXML files and extracts relevant MS2 spectra information.
+#' Read mzXML files and extract MS2 spectra in the legacy list format used by
+#' the package.
 #'
-#' @param file A character vector specifying the path(s) to the mzXML file(s).
-#' @param threads An integer, indicating the number of cores to use (default: 3). 
-#' @param mode A character string, either \code{"inMemory"} or \code{"onDisk"} 
-#'   specifying the mode of reading data. Default is \code{"inMemory"}.
+#' @param file A character vector of mzXML file paths.
+#' @param threads Integer. Reserved for compatibility with older workflows.
+#' @param mode Character string specifying whether files are read with
+#'   `\"inMemory\"` or `\"onDisk\"`.
 #'
-#' @return A list containing processed MS2 spectra information for each provided mzXML file. 
-#' Each element of the list contains two components: 
+#' @return A list of spectra. Each element contains:
 #' \itemize{
-#'   \item \code{info}: A data frame with columns for the name (composed of m/z and retention time), 
-#'   m/z, retention time, and file name.
-#'   \item \code{spec}: A data frame where each row represents a fragment ion peak, 
-#'   with columns for m/z and intensity values.
+#'   \item \code{info}: a data frame containing spectrum name, precursor `mz`,
+#'     `rt`, and source file.
+#'   \item \code{spec}: a data frame with `mz` and `intensity` columns.
 #' }
 #'
 #' @examples
-#' # Locate the example mzXML file in the installed package
+#' if (requireNamespace("MSnbase", quietly = TRUE)) {
 #' file_path <- system.file("extdata", "example.mzXML", package = "masstools")
-#' # Then use it in your function
 #' result <- read_mzxml(file_path)
+#' length(result)
+#' result[[1]]$info
+#' }
 #' @export
 
 read_mzxml <-
   function(file,
            threads = 3,
            mode = c("inMemory", "onDisk")) {
+    mode <- match.arg(mode)
+    if (!requireNamespace("MSnbase", quietly = TRUE)) {
+      stop(
+        "read_mzxml() requires the optional package 'MSnbase'. ",
+        "Install it with BiocManager::install('MSnbase').",
+        call. = FALSE
+      )
+    }
     # pbapply::pboptions(style = 1)
     message(crayon::green("Reading MS2 data..."))
     # mzxml.data.list <- pbapply::pblapply(file, ListMGF)
@@ -110,8 +119,5 @@ read_mzxml <-
     #     ms2 = new.ms2
     #   )
     #
-    new.ms2 <- new.ms2
+    new.ms2
   }
-
-
-

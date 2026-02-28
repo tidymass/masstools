@@ -27,7 +27,7 @@ Full citation details available at the DOI link above.
   - No modifications to peak intensities or m/z values
   - Reduced from full library for package size constraints
 - **Format:** MGF (Mascot Generic Format)
-- **Purpose:** Example data for demonstrating MS2 matching functions (ms2Match, getSpectraMatchScore)
+- **Purpose:** Example data for demonstrating MS2 matching functions (ms2_match, calculate_spectra_match_score)
 
 ## Reproducibility
 

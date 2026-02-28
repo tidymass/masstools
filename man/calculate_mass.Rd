@@ -2,25 +2,27 @@
 % Please edit documentation in R/2_chemical_formula_funcitons.R
 \name{calculate_mass}
 \alias{calculate_mass}
-\title{Calculate Mass of a Chemical Formula}
+\title{Calculate the Mass of a Molecular Formula}
 \usage{
 calculate_mass(formula, which = c("exact_mass", "average_mass"))
 }
 \arguments{
-\item{formula}{Character string representing the chemical formula for which the mass is to be computed.}
+\item{formula}{Character string containing a molecular formula.}
 
-\item{which}{Character string indicating the type of mass to be computed. Possible values are "exact_mass" or "average_mass". Default is "exact_mass".}
+\item{which}{Character string specifying whether to calculate `"exact_mass"`
+or `"average_mass"`.}
 }
 \value{
-A numeric value representing the computed mass of the given chemical formula based on the specified type (exact or average).
+A named numeric value giving the calculated mass.
 }
 \description{
-Computes the mass of a given chemical formula based either on the exact mass or the average mass of its constituent elements.
+Calculate the exact or average mass of a molecular formula.
 }
 \details{
-Calculate Mass of a Chemical Formula
+Calculate the Mass of a Molecular Formula
 
-This function computes the mass of a given chemical formula based on either exact or average mass of its constituent elements.
+Calculate the exact or average mass of a molecular formula from its element
+composition.
 }
 \examples{
 calculate_mass("H2O")                      # Using default exact_mass

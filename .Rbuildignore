@@ -19,9 +19,9 @@ vignettes/*.pdf
 vignettes/*.cache
 vignettes/install.Rmd
 vignettes/contact_us.Rmd
-
-.DS_Store
-
+(^|/)\\.DS_Store$
+^.*\\.Rcheck$
+^.*\\.tar\\.gz$
 cran-comments.md
 ^LICENSE\.md$
 ^doc$

@@ -1,12 +1,11 @@
-#' Validate if a given chemical element symbol is valid
+#' Validate a Chemical Element Symbol
 #'
-#' This function checks whether a given symbol is a valid chemical element.
-#' The function uses a list of known chemical elements up to 2022.
-#' It returns TRUE if the symbol is valid, otherwise returns FALSE.
+#' Check whether a character string is a valid chemical element symbol.
 #'
-#' @param element A character string representing the chemical element symbol to be validated.
+#' @param element A character string to validate.
 #'
-#' @return A logical value: TRUE if the element symbol is valid, FALSE otherwise.
+#' @return `TRUE` if `element` is a valid chemical element symbol and `FALSE`
+#'   otherwise.
 #'
 #' @examples
 #' check_chemical_element("Fe") # TRUE
@@ -17,7 +16,7 @@
 check_chemical_element <-
   function(element) {
     # List of all chemical element symbols up to 2022.
-    all_elements <- chemical_elements_information$element
+    all_elements <- chemical_elements_information()$element
     
     # Use a regex to match chemical element symbols, ensuring proper capitalization.
     matches <- gregexpr("[A-Z][a-z]?", element)
@@ -30,16 +29,13 @@ check_chemical_element <-
   }
 
 
-#' Validate if a given chemical formula is a standard valid formula
+#' Validate a Chemical Formula
 #'
-#' This function checks whether a given chemical formula is valid based on standard conventions.
-#' It ensures that element symbols are followed by valid numeric subscripts (if present).
-#' The function uses a list of known chemical elements up to 2022.
-#' It returns TRUE if the formula is valid, otherwise returns FALSE.
+#' Check whether a chemical formula follows the package's validation rules.
 #'
-#' @param formula A character string representing the chemical formula to be validated.
+#' @param formula A character string to validate.
 #'
-#' @return A logical value: TRUE if the formula is valid, FALSE otherwise.
+#' @return `TRUE` if `formula` is valid and `FALSE` otherwise.
 #'
 #' @examples
 #' check_chemical_formula("H2O") # TRUE
@@ -48,10 +44,13 @@ check_chemical_element <-
 #' @export
 check_chemical_formula <-
   function(formula) {
-    elements <- chemical_elements_information$element
+    elements <- chemical_elements_information()$element
     
     # Ensure the formula contains only valid characters (letters and numbers)
     if (grepl("[^A-Za-z0-9]", formula)) {
+      return(FALSE)
+    }
+    if (grepl("^\\d", formula)) {
       return(FALSE)
     }
     
@@ -90,14 +89,13 @@ check_chemical_formula <-
   }
 
 
-#' Validate if a given adduct formula is correct
+#' Validate an Adduct Formula
 #'
-#' This function checks whether a given adduct formula is valid by comparing it to known valid adducts.
-#' It returns TRUE if the adduct formula is valid, otherwise returns FALSE.
+#' Check whether an adduct string matches the package's supported syntax.
 #'
-#' @param adduct A character string representing the adduct formula to be validated.
+#' @param adduct A character string to validate.
 #'
-#' @return A logical value: TRUE if the adduct formula is valid, FALSE otherwise.
+#' @return `TRUE` if `adduct` is valid and `FALSE` otherwise.
 #'
 #' @examples
 #' check_adduct_formula("(M+H)+") # TRUE

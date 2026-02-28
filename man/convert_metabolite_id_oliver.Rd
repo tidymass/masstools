@@ -2,7 +2,7 @@
 % Please edit documentation in R/9_convert_metabolite_id.R
 \name{convert_metabolite_id_oliver}
 \alias{convert_metabolite_id_oliver}
-\title{Convert Metabolite Identifiers Using CTS FiehnLab}
+\title{Convert Metabolite Identifiers with CTS FiehnLab}
 \usage{
 convert_metabolite_id_oliver(
   query = "C00001",
@@ -12,21 +12,23 @@ convert_metabolite_id_oliver(
 )
 }
 \arguments{
-\item{query}{Character. The metabolite ID to convert (e.g., "C00001").}
+\item{query}{Character. Identifier to convert, for example `"C00001"`.}
 
-\item{from}{Character. The source database (e.g., "KEGG", "InChIKey").}
+\item{from}{Character. Source identifier system.}
 
-\item{to}{Character. The target database or chemical name format (e.g., "Chemical Name", "InChI").}
+\item{to}{Character. Target identifier system.}
 
-\item{top}{Integer. The number of top matches to return.}
+\item{top}{Integer. Maximum number of matches to return.}
 }
 \value{
-A data frame with the original query and converted metabolite ID(s).
+A two-column data frame containing the input identifier and the
+  converted identifier(s).
 }
 \description{
-Converts metabolite IDs from one database to another using the CTS FiehnLab online service.
+Convert metabolite identifiers using the CTS FiehnLab web service.
 }
 \examples{
+\dontrun{
 # Convert KEGG ID to Chemical Name using FiehnLab CTS
 convert_metabolite_id_oliver(
   query = "C00001",
@@ -40,4 +42,5 @@ convert_metabolite_id_oliver(
   from = "InChIKey",
   to = "PubChem CID"
 )
+}
 }

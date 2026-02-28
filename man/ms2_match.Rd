@@ -2,14 +2,22 @@
 % Please edit documentation in R/spectra_functions.R
 \name{ms2_match}
 \alias{ms2_match}
-\title{Match Fragments in Experimental and Library Spectra}
+\title{Match Fragments Between Two Spectra}
 \usage{
 ms2_match(exp.spectrum, lib.spectrum, ppm.tol = 30, mz.ppm.thr = 400)
 }
 \arguments{
-\item{exp.spectrum}{A data frame representing the experimental spectrum with columns for m/z and intensity.}
+\item{exp.spectrum}{The experimental spectrum. Can be:
+\itemize{
+  \item A data frame with columns for m/z and intensity
+  \item A Spectra object from the Spectra package
+}}
 
-\item{lib.spectrum}{A data frame representing the library spectrum with columns for m/z and intensity.}
+\item{lib.spectrum}{The library/reference spectrum. Can be:
+\itemize{
+  \item A data frame with columns for m/z and intensity
+  \item A Spectra object from the Spectra package
+}}
 
 \item{ppm.tol}{A numeric value specifying the ppm tolerance for matching fragments. Default is 30.}
 
@@ -19,16 +27,31 @@ ms2_match(exp.spectrum, lib.spectrum, ppm.tol = 30, mz.ppm.thr = 400)
 A data frame with columns for library index, experimental index, library m/z, library intensity, experimental m/z, and experimental intensity.
 }
 \description{
-This function matches fragments in experimental and library spectra based on their m/z values
-within a given ppm tolerance. Noisy fragments are removed before matching.
+Match fragments between two spectra based on m/z values within a ppm
+tolerance.
 }
 \details{
-For each fragment in the library spectrum, the function searches for a matching fragment in the experimental spectrum based on the specified ppm tolerance. 
-Prior to matching, noisy fragments are removed from both spectra using the `remove_noise` function.
-The resulting data frame provides matched fragments as well as unmatched fragments from both spectra.
+Noisy fragments are removed before matching. For each fragment in the
+library spectrum, the function looks for a matching fragment in the
+experimental spectrum and returns matched as well as unmatched peaks.
 }
 \examples{
-exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
-lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
-ms2_match(exp.spectrum, lib.spectrum)
+exp.spectrum <- data.frame(
+  mz = c(100.0000, 124.0400, 150.0600, 180.0800, 205.1000),
+  intensity = c(10, 35, 100, 45, 20)
+)
+lib.spectrum <- data.frame(
+  mz = c(100.0015, 124.0395, 150.0610, 180.0820, 220.1200),
+  intensity = c(12, 30, 95, 50, 10)
+)
+
+ms2_match(exp.spectrum, lib.spectrum, ppm.tol = 50)
+
+# The function also accepts Spectra objects.
+\dontrun{
+exp_spec <- df_to_spectra(exp.spectrum)
+lib_spec <- df_to_spectra(lib.spectrum)
+
+ms2_match(exp_spec, lib_spec, ppm.tol = 50)
+}
 }
